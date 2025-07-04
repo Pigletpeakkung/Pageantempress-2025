@@ -1,0 +1,206 @@
+{
+  "projects": [
+    {
+      "id": "miss-universe-2025",
+      "title": "Miss Universe 2025 Coverage",
+      "category": "Pageant Coverage",
+      "featured": true,
+      "date": "2025-01-15",
+      "description": "Exclusive behind-the-scenes coverage of Miss Universe 2025, featuring interviews with contestants, fashion highlights, and crown moments.",
+      "thumbnail": "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1542140372-de3e121eb11e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1549062572-544a64fb0c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/embed/example1",
+        "duration": "45:30",
+        "views": "1.2M"
+      },
+      "highlights": [
+        "Exclusive contestant interviews",
+        "Evening gown competition analysis",
+        "National costume showcase",
+        "Final coronation ceremony"
+      ],
+      "stats": {
+        "contestants": 85,
+        "countries": 85,
+        "viewership": "500M+",
+        "socialReach": "2.5B"
+      },
+      "tags": ["miss universe", "pageant", "2025", "crown", "international"]
+    },
+    {
+      "id": "fashion-week-2025",
+      "title": "Pageant Fashion Week 2025",
+      "category": "Fashion Show",
+      "featured": true,
+      "date": "2024-12-20",
+      "description": "A spectacular showcase of evening gowns and national costumes designed specifically for pageant competitions.",
+      "thumbnail": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1580894908361-967195033215?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ],
+      "video": {
+        "url": "https://www.youtube.com/embed/example2",
+        "duration": "22:45",
+        "views": "850K"
+      },
+      "highlights": [
+        "200+ designer gowns",
+        "Trend forecast for 2025",
+        "Celebrity designer interviews",
+        "Sustainable fashion focus"
+      ],
+      "designers": [
+        "Michael Cinco",
+        "Mak Tumang",
+        "Oliver Tolentino",
+        "Francis Libiran"
+      ],
+      "tags": ["fashion", "gowns", "designers", "trends", "2025"]
+    },
+    {
+      "id": "crown-collection-exhibit",
+      "title": "The Crown Collection Exhibition",
+      "category": "Special Feature",
+      "featured": false,
+      "date": "2024-11-30",
+      "description": "An exclusive look at the most iconic pageant crowns throughout history, featuring rare pieces worth millions.",
+      "thumbnail": "https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1560707303-4e980ce876ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+      ],
+      "highlights": [
+        "50+ historic crowns",
+        "Combined value: $100M+",
+        "Virtual reality experience",
+        "Expert authentication"
+      ],
+      "crowns": [
+        {
+          "name": "The Power of Unity Crown",
+          "year": 2019,
+          "value": "$5 million",
+          "designer": "Mouawad"
+        },
+        {
+          "name": "The Force for Good Crown",
+          "year": 2023,
+          "value": "$5.3 million",
+          "designer": "Mouawad"
+        }
+      ],
+      "tags": ["crown", "exhibition", "history", "luxury"]
+    },
+    {
+      "id": "rising-stars-2025",
+      "title": "Rising Stars: New Faces in Pageantry",
+      "category": "Talent Spotlight",
+      "featured": true,
+      "date": "2024-12-10",
+      "description": "Introducing the next generation of pageant queens who are making waves in the industry.",
+      "thumbnail": "https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "contestants": [
+        {
+          "name": "Isabella Rodriguez",
+          "country": "Venezuela",
+          "title": "Miss Earth Venezuela 2024",
+          "age": 23,
+          "achievements": ["Law Graduate", "Environmental Activist"]
+        },
+        {
+          "name": "Sakura Tanaka",
+          "country": "Japan",
+          "title": "Miss International Japan 2024",
+          "age": 25,
+          "achievements": ["Medical Student", "UNICEF Ambassador"]
+        },
+        {
+          "name": "Amara Okonkwo",
+          "country": "Nigeria",
+          "title": "Miss World Nigeria 2024",
+          "age": 24,
+          "achievements": ["Tech Entrepreneur", "Women's Rights Advocate"]
+        }
+      ],
+      "tags": ["rising stars", "new faces", "2025", "talent"]
+    },
+    {
+      "id": "pageant-training-academy",
+      "title": "PageantEmpress Training Academy Launch",
+      "category": "Education",
+      "featured": false,
+      "date": "2024-11-15",
+      "description": "Announcing our comprehensive online training program for aspiring pageant contestants worldwide.",
+      "thumbnail": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "courses": [
+        {
+          "title": "Runway Mastery",
+          "duration": "8 weeks",
+          "price": "$299",
+          "enrolled": 1250
+        },
+        {
+          "title": "Interview Excellence",
+          "duration": "6 weeks",
+          "price": "$249",
+          "enrolled": 980
+        },
+        {
+          "title": "Stage Presence & Confidence",
+          "duration": "4 weeks",
+          "price": "$199",
+          "enrolled": 1500
+        }
+      ],
+      "instructors": [
+        "George G. - Head Coach",
+        "Maria Santos - Runway Expert",
+        "Dr. Lisa Chen - Communication Coach"
+      ],
+      "tags": ["training", "education", "academy", "online course"]
+    },
+    {
+      "id": "sustainable-pageantry",
+      "title": "Sustainable Pageantry Initiative",
+      "category": "Social Impact",
+      "featured": false,
+      "date": "2024-10-28",
+      "description": "Leading the movement towards eco-friendly pageants with sustainable fashion and zero-waste events.",
+      "thumbnail": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "initiatives": [
+        "Recycled material gowns",
+        "Carbon-neutral events",
+        "Digital judging systems",
+        "Sustainable crown materials"
+      ],
+      "partners": [
+        "Green Fashion Alliance",
+        "Eco Pageant Foundation",
+        "Sustainable Beauty Council"
+      ],
+      "impact": {
+        "carbonReduced": "500 tons",
+        "plasticSaved": "10,000 kg",
+        "treesPlanted": 5000
+      },
+      "tags": ["sustainability", "eco-friendly", "green", "innovation"]
+    }
+  ],
+  "metadata": {
+    "totalProjects": 6,
+    "lastUpdated": "2025-01-15T10:00:00Z",
+    "categories": [
+      "Pageant Coverage",
+      "Fashion Show",
+      "Special Feature",
+      "Talent Spotlight",
+      "Education",
+      "Social Impact"
+    ]
+  }
+}
