@@ -1,0 +1,148 @@
+{
+  "testimonials": [
+    {
+      "id": "test-001",
+      "name": "Maria Rodriguez",
+            "title": "Miss Universe 2022",
+      "country": "Venezuela",
+      "image": "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "PageantEmpress has been instrumental in my journey. George's analysis and insights helped me understand the nuances of international pageantry. The training resources are absolutely world-class!",
+      "date": "2024-12-10",
+      "featured": true,
+      "achievements": [
+        "Top 10 Miss Universe",
+        "Best National Costume",
+        "People's Choice Award"
+      ]
+    },
+    {
+      "id": "test-002",
+      "name": "Ashley Chen",
+      "title": "Miss World America 2023",
+      "country": "USA",
+      "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "The video content on PageantEmpress YouTube channel transformed my stage presence. Their fashion trend analysis helped me choose the perfect evening gown that ultimately won me the crown!",
+      "date": "2024-11-28",
+      "featured": true,
+      "videoTestimonial": "https://youtube.com/watch?v=example"
+    },
+    {
+      "id": "test-003",
+      "name": "Priya Patel",
+      "title": "Fashion Designer & Pageant Coach",
+      "country": "India",
+      "image": "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "As a designer specializing in pageant gowns, PageantEmpress provides invaluable insights into current trends. Their coverage helps me create winning designs for my clients.",
+      "date": "2024-11-15",
+      "featured": false,
+      "designsWorn": 45,
+      "clientWins": 12
+    },
+    {
+      "id": "test-004",
+      "name": "Sarah Johnson",
+      "title": "Miss Teen International 2024",
+      "country": "Canada",
+      "image": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "Starting my pageant journey at 16, PageantEmpress was my go-to resource. The interview tips and runway techniques shared by George helped me win my first international title!",
+      "date": "2024-10-20",
+      "featured": true,
+      "age": 18
+    },
+    {
+      "id": "test-005",
+      "name": "Dr. Michelle Thompson",
+      "title": "Pageant Judge & Consultant",
+      "country": "UK",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "George's expert analysis on PageantEmpress reflects deep understanding of pageant dynamics. I often recommend this platform to contestants seeking authentic, professional guidance.",
+      "date": "2024-09-30",
+      "featured": false,
+      "judgedPageants": 50,
+      "yearsExperience": 15
+    },
+    {
+      "id": "test-006",
+      "name": "Isabella Martinez",
+      "title": "Miss Earth 2023 Finalist",
+      "country": "Philippines",
+      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "The environmental advocacy tips and sustainable fashion guidance on PageantEmpress aligned perfectly with Miss Earth's vision. This platform truly understands modern pageantry!",
+      "date": "2024-09-15",
+      "featured": false,
+      "advocacy": "Ocean Conservation"
+    },
+    {
+      "id": "test-007",
+      "name": "Victoria Osei",
+      "title": "Miss Africa 2024",
+      "country": "Ghana",
+      "image": "https://images.unsplash.com/photo-1582610285985-a42d9193f2fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "PageantEmpress celebrates diversity in pageantry beautifully. Their coverage of African queens and our unique cultural presentations has been phenomenal. Thank you for the representation!",
+      "date": "2024-08-25",
+      "featured": true,
+      "socialImpact": "Education for Girls Initiative"
+    },
+    {
+      "id": "test-008",
+      "name": "Alexandra Petrova",
+      "title": "Pageant Photographer",
+      "country": "Russia",
+      "image": "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "As a pageant photographer, PageantEmpress helps me stay updated with the latest trends in pageant fashion and presentation. Their insights have elevated my work significantly.",
+      "date": "2024-08-10",
+      "featured": false,
+      "photosPublished": 5000,
+      "pageantsCovered": 75
+    },
+    {
+      "id": "test-009",
+      "name": "Sophia Kim",
+      "title": "National Director - Miss Universe Korea",
+      "country": "South Korea",
+      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "PageantEmpress provides comprehensive coverage that helps national directors like me prepare our contestants better. George's analytical approach to pageantry is unmatched.",
+      "date": "2024-07-20",
+      "featured": false,
+      "contestantsSent": 10,
+      "placements": 6
+    },
+    {
+      "id": "test-010",
+      "name": "Emily Watson",
+      "title": "Aspiring Pageant Contestant",
+      "country": "Australia",
+      "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      "rating": 5,
+      "testimonial": "As someone preparing for my first pageant, PageantEmpress has been my bible! The training videos, fashion tips, and motivational content keep me inspired every day.",
+      "date": "2024-07-05",
+      "featured": false,
+      "preparingFor": "Miss World Australia 2025"
+    }
+  ],
+  "statistics": {
+    "totalTestimonials": 10,
+    "averageRating": 5.0,
+    "countries": 10,
+    "featuredCount": 5,
+    "videoTestimonials": 1
+  },
+  "categories": [
+    "Titleholders",
+    "Designers",
+    "Coaches",
+    "Judges",
+    "National Directors",
+    "Photographers",
+    "Aspiring Contestants"
+  ]
+}
