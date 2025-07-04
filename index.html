@@ -7,6 +7,11 @@
     <meta name="keywords" content="pageant, fashion, beauty, crowns, miss universe, miss world, pageant tips, fashion trends 2025">
     <meta name="author" content="George G. & Thanattsitt S.">
     
+    <!-- Preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="PageantEmpress 2025 | Where Crowns Meet Digital Empires">
     <meta property="og:description" content="Premium pageant content, rising stars spotlight, and expert analysis by George G.">
@@ -22,11 +27,25 @@
     
     <title>PageantEmpress 2025 | Where Crowns Meet Digital Empires</title>
     
-    <!-- Font Awesome -->
+    <!-- Critical CSS (Inline for performance) -->
+    <style>
+        :root{--primary-gold:#D4AF37;--secondary-purple:#9B59B6;--accent-pink:#FF376C;--dark-bg:#0a0a0a;--light-bg:#1a1a1a}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:var(--dark-bg);color:#fff;overflow-x:hidden}
+        .loading-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--dark-bg);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column}
+    </style>
+    
+    <!-- Font Awesome Pro CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts with display swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+    <!-- Swiper for Advanced Sliders -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/main.css">
@@ -35,45 +54,86 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=192&q=80">
     <meta name="theme-color" content="#D4AF37">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "PageantEmpress",
+        "url": "https://pageantempress.com",
+        "logo": "https://pageantempress.com/logo.png",
+        "sameAs": [
+            "https://youtube.com/@pageantempress",
+            "https://instagram.com/pageantempress"
+        ],
+        "founder": {
+            "@type": "Person",
+            "name": "George G."
+        }
+    }
+    </script>
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- Enhanced Loading Screen with Crown Animation -->
     <div id="loading-screen" class="loading-screen">
-        <div class="crown-loader">
-            <i class="fas fa-crown"></i>
-            <p>Loading PageantEmpress...</p>
+        <div class="crown-loader-3d">
+            <div class="crown-base"></div>
+            <div class="crown-jewel jewel-1"></div>
+            <div class="crown-jewel jewel-2"></div>
+            <div class="crown-jewel jewel-3"></div>
+            <div class="sparkle-container">
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+            </div>
         </div>
+        <p class="loading-text">Preparing Your Royal Experience...</p>
     </div>
 
-    <!-- Header Navigation -->
-    <header class="main-header">
+    <!-- Enhanced Header with Glass Morphism -->
+    <header class="main-header glass-morphism">
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <i class="fas fa-crown"></i>
-                    <span>PageantEmpress</span>
+                <div class="logo magnetic-hover">
+                    <div class="logo-crown">
+                        <i class="fas fa-crown"></i>
+                        <div class="crown-sparkles">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <span class="logo-text">PageantEmpress</span>
                 </div>
+                
                 <ul class="nav-links desktop-nav">
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#featured" class="nav-link">Featured</a></li>
-                    <li><a href="#pageants" class="nav-link">Pageants</a></li>
-                    <li><a href="#fashion" class="nav-link">Fashion</a></li>
-                    <li><a href="#videos" class="nav-link">Videos</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#home" class="nav-link glow-hover active" data-text="Home">Home</a></li>
+                    <li><a href="#featured" class="nav-link glow-hover" data-text="Featured">Featured</a></li>
+                    <li><a href="#pageants" class="nav-link glow-hover" data-text="Pageants">Pageants</a></li>
+                    <li><a href="#fashion" class="nav-link glow-hover" data-text="Fashion">Fashion</a></li>
+                    <li><a href="#videos" class="nav-link glow-hover" data-text="Videos">Videos</a></li>
+                    <li><a href="#about" class="nav-link glow-hover" data-text="About">About</a></li>
                 </ul>
+                
                 <div class="nav-actions">
-                    <button class="search-toggle" aria-label="Search">
+                    <button class="search-toggle glass-button" aria-label="Search">
                         <i class="fas fa-search"></i>
                     </button>
-                    <button class="mobile-toggle" aria-label="Menu">
+                    <button class="theme-toggle glass-button" aria-label="Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="mobile-toggle glass-button" aria-label="Menu">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </nav>
         
-        <!-- Mobile Menu -->
-        <div class="mobile-menu">
+        <!-- Enhanced Mobile Menu -->
+        <div class="mobile-menu glass-morphism">
             <div class="mobile-menu-header">
                 <div class="logo">
                     <i class="fas fa-crown"></i>
@@ -84,146 +144,212 @@
                 </button>
             </div>
             <ul class="mobile-nav-links">
-                <li><a href="#home" class="mobile-nav-link">Home</a></li>
-                <li><a href="#featured" class="mobile-nav-link">Featured</a></li>
-                <li><a href="#pageants" class="mobile-nav-link">Pageants</a></li>
-                <li><a href="#fashion" class="mobile-nav-link">Fashion</a></li>
-                <li><a href="#videos" class="mobile-nav-link">Videos</a></li>
-                <li><a href="#about" class="mobile-nav-link">About</a></li>
+                <li><a href="#home" class="mobile-nav-link"><span>01</span> Home</a></li>
+                <li><a href="#featured" class="mobile-nav-link"><span>02</span> Featured</a></li>
+                <li><a href="#pageants" class="mobile-nav-link"><span>03</span> Pageants</a></li>
+                <li><a href="#fashion" class="mobile-nav-link"><span>04</span> Fashion</a></li>
+                <li><a href="#videos" class="mobile-nav-link"><span>05</span> Videos</a></li>
+                <li><a href="#about" class="mobile-nav-link"><span>06</span> About</a></li>
             </ul>
             <div class="mobile-social">
-                <a href="https://youtube.com/@pageantempress" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="https://instagram.com/pageantempress" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/@pageantempress" target="_blank" class="social-icon">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://instagram.com/pageantempress" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" target="_blank" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
             </div>
         </div>
     </header>
 
-    <!-- Search Overlay -->
+    <!-- Enhanced Search Overlay -->
     <div class="search-overlay">
-        <button class="search-close">
+        <button class="search-close floating-action">
             <i class="fas fa-times"></i>
         </button>
-        <form class="search-form">
-            <input type="text" class="search-input" placeholder="Search for pageants, fashion tips, crown moments...">
-            <button type="submit" class="search-submit">
-                <i class="fas fa-search"></i>
-            </button>
-        </form>
-        <div class="search-suggestions">
-            <h3>Popular Searches</h3>
-            <div class="suggestion-tags">
-                <span class="tag">Miss Universe 2025</span>
-                <span class="tag">Pageant Tips</span>
-                <span class="tag">Evening Gowns</span>
-                <span class="tag">Crown Collection</span>
+        <div class="search-container">
+            <form class="search-form">
+                <div class="search-input-wrapper">
+                    <input type="text" class="search-input" placeholder="Search for pageants, fashion tips, crown moments..." autocomplete="off">
+                    <button type="submit" class="search-submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-sparkles">
+                    <i></i><i></i><i></i><i></i><i></i>
+                </div>
+            </form>
+            <div class="search-suggestions">
+                <h3 class="suggestions-title">Trending Searches</h3>
+                <div class="suggestion-tags">
+                    <span class="tag holographic">Miss Universe 2025</span>
+                    <span class="tag holographic">Pageant Tips</span>
+                    <span class="tag holographic">Evening Gowns</span>
+                    <span class="tag holographic">Crown Collection</span>
+                    <span class="tag holographic">Runway Walk</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Enhanced Hero Section with Particle Effects -->
     <section id="home" class="hero-section">
+        <div class="particle-container" id="particles"></div>
         <div class="hero-video-bg">
-            <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Pageant Crown">
-            <div class="glitter-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Pageant Crown" loading="eager">
+            <div class="gradient-overlay"></div>
         </div>
+        
+        <div class="floating-elements">
+            <div class="floating-crown crown-1"><i class="fas fa-crown"></i></div>
+            <div class="floating-crown crown-2"><i class="fas fa-crown"></i></div>
+            <div class="floating-crown crown-3"><i class="fas fa-crown"></i></div>
+        </div>
+        
         <div class="hero-content">
             <h1 class="hero-title">
-                <span class="glitter-text">Where Crowns Meet</span>
-                <span class="gradient-text">Digital Empires</span>
+                <span class="title-line-1 glitch-text" data-text="Where Crowns Meet">
+                    Where Crowns Meet
+                </span>
+                <span class="title-line-2 shimmer-text">
+                    Digital Empires
+                </span>
             </h1>
-            <p class="hero-subtitle">Premium pageant content, rising stars spotlight, and expert analysis by George G.</p>
-            <div class="hero-buttons">
-                <a href="#featured" class="btn btn-primary">
-                    <i class="fas fa-crown"></i>
-                    Explore Content
+            <p class="hero-subtitle typewriter" data-aos="fade-up" data-aos-delay="300">
+                Premium pageant content, rising stars spotlight, and expert analysis by George G.
+            </p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="600">
+                <a href="#featured" class="btn btn-primary magnetic-button">
+                    <span class="btn-text">Explore Content</span>
+                    <span class="btn-sparkle">
+                        <i class="fas fa-crown"></i>
+                    </span>
                 </a>
-                <a href="https://youtube.com/@pageantempress" target="_blank" class="btn btn-secondary">
-                    <i class="fab fa-youtube"></i>
-                    Watch Videos
+                <a href="https://youtube.com/@pageantempress" target="_blank" class="btn btn-secondary holographic-button">
+                    <span class="btn-text">Watch Videos</span>
+                    <span class="btn-icon">
+                        <i class="fab fa-youtube"></i>
+                    </span>
                 </a>
             </div>
         </div>
+        
         <div class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to Explore</span>
         </div>
     </section>
 
-    <!-- Featured Content -->
+    <!-- Enhanced Featured Content with 3D Cards -->
     <section id="featured" class="featured-section">
+        <div class="section-bg-pattern"></div>
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title glitter-text">Featured Stories</h2>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Featured</span>
+                <h2 class="section-title">
+                    <span class="title-main">Featured Stories</span>
+                    <span class="title-sparkle">✨</span>
+                </h2>
                 <p class="section-subtitle">Latest from the pageant world</p>
             </div>
             
             <div class="featured-grid">
-                <!-- Featured Card 1 -->
-                <article class="featured-card large">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1542140372-de3e121eb11e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Miss Universe 2025">
-                        <div class="card-overlay">
-                            <span class="category">Miss Universe</span>
-                        </div>
-                        <div class="glitter-overlay"></div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">Miss Universe 2025: The Road to the Crown</h3>
-                        <p class="card-excerpt">Exclusive coverage of the journey to the most prestigious crown in the pageant world.</p>
-                        <div class="card-meta">
-                            <span class="author">
-                                <i class="fas fa-user"></i> George G.
-                            </span>
-                            <span class="date">
-                                <i class="fas fa-calendar"></i> Dec 15, 2024
-                            </span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Featured Card 2 -->
-                <article class="featured-card">
-                    <div class="card-image is-video">
-                        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pageant Fashion">
-                        <div class="play-button">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="card-overlay">
-                            <span class="category">Fashion</span>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">2025 Pageant Fashion Trends</h3>
-                        <p class="card-excerpt">Discover the latest runway trends dominating pageant stages worldwide.</p>
-                        <div class="card-meta">
-                            <span class="views">
-                                <i class="fas fa-eye"></i> 15.2K
-                            </span>
-                            <span class="duration">
-                                <i class="fas fa-clock"></i> 12:45
-                            </span>
+                <!-- Enhanced 3D Card 1 -->
+                <article class="featured-card-3d large" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-3d-wrapper">
+                        <div class="card-3d-content">
+                            <div class="card-shine"></div>
+                            <div class="card-image">
+                                                                <img src="https://images.unsplash.com/photo-1542140372-de3e121eb11e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Miss Universe 2025" loading="lazy">
+                                <div class="image-overlay">
+                                    <div class="sparkle-overlay">
+                                        <div class="sparkle-particle"></div>
+                                        <div class="sparkle-particle"></div>
+                                        <div class="sparkle-particle"></div>
+                                    </div>
+                                </div>
+                                <div class="card-badge holographic">
+                                    <span>Exclusive</span>
+                                </div>
+                            </div>
+                            <div class="card-body glass-effect">
+                                <span class="card-category gradient-text">Miss Universe</span>
+                                <h3 class="card-title">Miss Universe 2025: The Road to the Crown</h3>
+                                <p class="card-excerpt">Exclusive coverage of the journey to the most prestigious crown in the pageant world.</p>
+                                <div class="card-footer">
+                                    <div class="card-meta">
+                                        <span class="author">
+                                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=50&q=80" alt="Author" class="author-avatar">
+                                            George G.
+                                        </span>
+                                        <span class="date">
+                                            <i class="fas fa-calendar-alt"></i> Dec 15, 2024
+                                        </span>
+                                    </div>
+                                    <button class="card-action floating-action">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
 
-                <!-- Featured Card 3 -->
-                <article class="featured-card">
-                    <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Crown Collection">
-                        <div class="card-overlay">
-                            <span class="category">Crown Collection</span>
+                <!-- Enhanced 3D Card 2 -->
+                <article class="featured-card-3d" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-3d-wrapper">
+                        <div class="card-3d-content">
+                            <div class="card-shine"></div>
+                            <div class="card-image is-video">
+                                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pageant Fashion" loading="lazy">
+                                <div class="play-button-3d">
+                                    <div class="play-icon">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="play-pulse"></div>
+                                </div>
+                                <div class="video-duration">12:45</div>
+                            </div>
+                            <div class="card-body glass-effect">
+                                <span class="card-category gradient-text">Fashion</span>
+                                <h3 class="card-title">2025 Pageant Fashion Trends</h3>
+                                <p class="card-excerpt">Discover the latest runway trends dominating pageant stages.</p>
+                                <div class="card-stats">
+                                    <span><i class="fas fa-eye"></i> 15.2K</span>
+                                    <span><i class="fas fa-heart"></i> 3.4K</span>
+                                    <span><i class="fas fa-comment"></i> 234</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <h3 class="card-title">The Most Iconic Crowns in History</h3>
-                        <p class="card-excerpt">A dazzling showcase of legendary crowns and their stories.</p>
-                        <div class="card-meta">
-                            <span class="comments">
-                                <i class="fas fa-comments"></i> 342
-                            </span>
-                            <span class="likes">
-                                <i class="fas fa-heart"></i> 5.8K
-                            </span>
+                </article>
+
+                <!-- Enhanced 3D Card 3 -->
+                <article class="featured-card-3d" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-3d-wrapper">
+                        <div class="card-3d-content">
+                            <div class="card-shine"></div>
+                            <div class="card-image">
+                                <img src="https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Crown Collection" loading="lazy">
+                                <div class="image-overlay">
+                                    <div class="glitter-rain"></div>
+                                </div>
+                            </div>
+                            <div class="card-body glass-effect">
+                                <span class="card-category gradient-text">Crown Collection</span>
+                                <h3 class="card-title">The Most Iconic Crowns in History</h3>
+                                <p class="card-excerpt">A dazzling showcase of legendary crowns and their stories.</p>
+                                <div class="card-tags">
+                                    <span class="tag shimmer">#luxury</span>
+                                    <span class="tag shimmer">#heritage</span>
+                                    <span class="tag shimmer">#iconic</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -231,65 +357,140 @@
         </div>
     </section>
 
-    <!-- Video Section -->
-    <section id="videos" class="video-section">
+    <!-- Pageants Section -->
+    <section id="pageants" class="pageants-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title gradient-text">Latest Videos</h2>
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Pageants</span>
+                <h2 class="section-title gradient-text">Major Pageants</h2>
+                <p class="section-subtitle">World's most prestigious beauty competitions</p>
+            </div>
+            
+            <div class="pageants-showcase">
+                <div class="swiper pageants-swiper">
+                    <div class="swiper-wrapper" id="pageantsWrapper">
+                        <!-- Pageant cards will be loaded dynamically -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fashion Section -->
+    <section id="fashion" class="fashion-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Fashion</span>
+                <h2 class="section-title shimmer-text">Fashion Trends</h2>
+                <p class="section-subtitle">Latest pageant fashion and style guides</p>
+            </div>
+            
+            <div class="fashion-grid" id="fashionGrid">
+                <!-- Fashion items will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Video Section -->
+    <section id="videos" class="video-section">
+        <div class="video-bg-animation">
+            <div class="video-particle"></div>
+            <div class="video-particle"></div>
+            <div class="video-particle"></div>
+        </div>
+        
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Videos</span>
+                <h2 class="section-title shimmer-text">Latest Videos</h2>
                 <p class="section-subtitle">Watch exclusive pageant content</p>
             </div>
             
             <div class="video-showcase">
-                <div class="main-video">
-                    <div class="video-wrapper">
-                        <img src="https://images.unsplash.com/photo-1549062572-544a64fb0c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Featured Video">
+                <div class="main-video" data-aos="fade-right">
+                    <div class="video-wrapper glass-morphism">
+                        <img src="https://images.unsplash.com/photo-1549062572-544a64fb0c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Featured Video" loading="lazy">
                         <div class="video-overlay">
-                            <button class="play-btn-large">
-                                <i class="fas fa-play"></i>
+                            <button class="play-btn-holographic">
+                                <div class="play-icon-wrapper">
+                                    <i class="fas fa-play"></i>
+                                    <div class="play-glow"></div>
+                                </div>
                             </button>
-                            <div class="video-info">
+                            <div class="video-info glass-effect">
                                 <h3>Pageant Training Masterclass 2025</h3>
                                 <p>Expert tips from industry professionals</p>
+                                <div class="video-stats">
+                                    <span><i class="fas fa-clock"></i> 45:30</span>
+                                    <span><i class="fas fa-eye"></i> 1.2M views</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="video-playlist">
-                    <h3 class="playlist-title">More Videos</h3>
-                    <div class="playlist-items">
-                        <div class="playlist-item">
-                            <div class="thumbnail">
-                                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Video Thumbnail">
-                                <span class="duration">8:45</span>
-                            </div>
-                            <div class="video-details">
-                                <h4>Evening Gown Perfection</h4>
-                                <span class="views">23K views</span>
-                            </div>
-                        </div>
-                        
-                        <div class="playlist-item">
-                            <div class="thumbnail">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Video Thumbnail">
-                                <span class="duration">15:20</span>
-                            </div>
-                            <div class="video-details">
-                                <h4>Interview Techniques</h4>
-                                <span class="views">18K views</span>
-                            </div>
-                        </div>
-                        
-                        <div class="playlist-item">
-                            <div class="thumbnail">
-                                <img src="https://images.unsplash.com/photo-1580894908361-967195033215?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Video Thumbnail">
-                                <span class="duration">10:15</span>
-                                                        <div class="video-details">
-                                <h4>Runway Walk Masterclass</h4>
-                                <span class="views">31K views</span>
-                            </div>
-                        </div>
+                <div class="video-playlist" data-aos="fade-left">
+                    <h3 class="playlist-title gradient-text">More Videos</h3>
+                    <div class="playlist-items custom-scrollbar" id="videoPlaylist">
+                        <!-- Video items will be loaded dynamically -->
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Gallery</span>
+                <h2 class="section-title glitter-text">Crown Moments</h2>
+                <p class="section-subtitle">Capturing beauty and elegance</p>
+            </div>
+            
+            <div class="gallery-filters" data-aos="fade-up" data-aos-delay="100">
+                <button class="filter-btn active holographic" data-filter="all">
+                    <span>All</span>
+                    <div class="filter-glow"></div>
+                </button>
+                <button class="filter-btn holographic" data-filter="pageants">
+                    <span>Pageants</span>
+                    <div class="filter-glow"></div>
+                </button>
+                <button class="filter-btn holographic" data-filter="fashion">
+                    <span>Fashion</span>
+                    <div class="filter-glow"></div>
+                </button>
+                <button class="filter-btn holographic" data-filter="events">
+                    <span>Events</span>
+                    <div class="filter-glow"></div>
+                </button>
+            </div>
+            
+            <div class="gallery-masonry" id="galleryGrid">
+                <!-- Gallery items will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title gradient-text">Success Stories</h2>
+                <p class="section-subtitle">From our pageant champions</p>
+            </div>
+            
+            <div class="testimonials-carousel">
+                <div class="swiper testimonials-swiper">
+                    <div class="swiper-wrapper" id="testimonialsWrapper">
+                        <!-- Testimonials will be loaded dynamically -->
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
             </div>
         </div>
@@ -297,30 +498,75 @@
 
     <!-- About Section -->
     <section id="about" class="about-section">
+        <div class="parallax-bg">
+            <div class="parallax-layer layer-1"></div>
+            <div class="parallax-layer layer-2"></div>
+            <div class="parallax-layer layer-3"></div>
+        </div>
+        
         <div class="container">
             <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title glitter-text">About PageantEmpress</h2>
+                <div class="about-text" data-aos="fade-right">
+                    <span class="section-label">About Us</span>
+                    <h2 class="section-title">
+                        <span class="gradient-text">About</span>
+                        <span class="glitter-text">PageantEmpress</span>
+                    </h2>
                     <p class="lead">Your premier destination for pageant excellence and fashion insights.</p>
                     <p>Founded by George G., PageantEmpress brings you exclusive coverage of the pageant world, featuring rising stars, expert analysis, and behind-the-scenes content that celebrates the art of pageantry.</p>
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="stat-number">500K+</span>
-                            <span class="stat-label">Followers</span>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card glass-morphism" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number counter" data-target="500000">0</span>
+                                <span class="stat-suffix">+</span>
+                                <span class="stat-label">Followers</span>
+                            </div>
+                            <div class="stat-sparkle"></div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">1000+</span>
-                            <span class="stat-label">Articles</span>
+                        
+                        <div class="stat-card glass-morphism" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="stat-icon">
+                                <i class="fas fa-newspaper"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number counter" data-target="1000">0</span>
+                                <span class="stat-suffix">+</span>
+                                <span class="stat-label">Articles</span>
+                            </div>
+                            <div class="stat-sparkle"></div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Countries</span>
+                        
+                        <div class="stat-card glass-morphism" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="stat-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number counter" data-target="50">0</span>
+                                <span class="stat-suffix">+</span>
+                                <span class="stat-label">Countries</span>
+                            </div>
+                            <div class="stat-sparkle"></div>
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About PageantEmpress">
-                    <div class="glitter-overlay"></div>
+                
+                <div class="about-image" data-aos="fade-left">
+                    <div class="image-wrapper tilt-effect">
+                        <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="About PageantEmpress" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="floating-particles">
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                                <div class="particle"></div>
+                            </div>
+                        </div>
+                        <div class="image-frame"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -328,72 +574,117 @@
 
     <!-- Newsletter Section -->
     <section class="newsletter-section">
+        <div class="aurora-bg">
+            <div class="aurora"></div>
+            <div class="aurora"></div>
+        </div>
+        
         <div class="container">
-            <div class="newsletter-content">
-                <h2 class="newsletter-title gradient-text">Stay Updated</h2>
+                        <div class="newsletter-content glass-morphism" data-aos="zoom-in">
+                <div class="newsletter-icon">
+                    <i class="fas fa-envelope"></i>
+                    <div class="icon-glow"></div>
+                </div>
+                <h2 class="newsletter-title shimmer-text">Stay Updated</h2>
                 <p class="newsletter-subtitle">Get the latest pageant news and exclusive content delivered to your inbox</p>
+                
                 <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-envelope"></i> Subscribe
-                    </button>
+                    <div class="form-wrapper">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-subscribe holographic-button">
+                            <span>Subscribe</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="form-sparkles">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
                 </form>
+                
+                <p class="newsletter-promise">
+                    <i class="fas fa-lock"></i>
+                    We respect your privacy. Unsubscribe at any time.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Enhanced Footer -->
     <footer class="main-footer">
+        <div class="footer-bg-animation">
+            <div class="footer-wave wave-1"></div>
+            <div class="footer-wave wave-2"></div>
+            <div class="footer-wave wave-3"></div>
+        </div>
+        
         <div class="container">
             <div class="footer-content">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <i class="fas fa-crown"></i>
+                <div class="footer-brand" data-aos="fade-up">
+                    <div class="footer-logo">
+                        <div class="logo-crown-animated">
+                            <i class="fas fa-crown"></i>
+                            <div class="crown-glow"></div>
+                        </div>
                         <span>PageantEmpress</span>
                     </div>
-                    <p>Where crowns meet digital empires</p>
+                    <p class="tagline">Where crowns meet digital empires</p>
                     <div class="social-links">
-                        <a href="https://youtube.com/@pageantempress" target="_blank" aria-label="YouTube">
+                        <a href="https://youtube.com/@pageantempress" target="_blank" class="social-link youtube" aria-label="YouTube">
                             <i class="fab fa-youtube"></i>
+                            <span class="social-tooltip">YouTube</span>
                         </a>
-                        <a href="https://instagram.com/pageantempress" target="_blank" aria-label="Instagram">
+                        <a href="https://instagram.com/pageantempress" target="_blank" class="social-link instagram" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
+                            <span class="social-tooltip">Instagram</span>
                         </a>
-                        <a href="#" target="_blank" aria-label="Twitter">
+                        <a href="#" target="_blank" class="social-link twitter" aria-label="Twitter">
                             <i class="fab fa-twitter"></i>
+                            <span class="social-tooltip">Twitter</span>
                         </a>
-                        <a href="#" target="_blank" aria-label="Facebook">
+                        <a href="#" target="_blank" class="social-link facebook" aria-label="Facebook">
                             <i class="fab fa-facebook"></i>
+                            <span class="social-tooltip">Facebook</span>
                         </a>
                     </div>
                 </div>
                 
                 <div class="footer-links">
-                    <div class="footer-column">
-                        <h3>Content</h3>
+                    <div class="footer-column" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="column-title">
+                            <span>Content</span>
+                            <div class="title-underline"></div>
+                        </h3>
                         <ul>
-                            <li><a href="#pageants">Pageants</a></li>
-                            <li><a href="#fashion">Fashion</a></li>
-                            <li><a href="#videos">Videos</a></li>
-                            <li><a href="#featured">Featured</a></li>
+                            <li><a href="#pageants" class="footer-link">Pageants</a></li>
+                            <li><a href="#fashion" class="footer-link">Fashion</a></li>
+                            <li><a href="#videos" class="footer-link">Videos</a></li>
+                            <li><a href="#featured" class="footer-link">Featured</a></li>
                         </ul>
                     </div>
-                    <div class="footer-column">
-                        <h3>About</h3>
+                    
+                    <div class="footer-column" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="column-title">
+                            <span>About</span>
+                            <div class="title-underline"></div>
+                        </h3>
                         <ul>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                            <li><a href="#privacy">Privacy Policy</a></li>
-                            <li><a href="#terms">Terms of Service</a></li>
+                            <li><a href="#about" class="footer-link">About Us</a></li>
+                            <li><a href="#contact" class="footer-link">Contact</a></li>
+                            <li><a href="#privacy" class="footer-link">Privacy Policy</a></li>
+                            <li><a href="#terms" class="footer-link">Terms of Service</a></li>
                         </ul>
                     </div>
-                    <div class="footer-column">
-                        <h3>Resources</h3>
+                    
+                    <div class="footer-column" data-aos="fade-up" data-aos-delay="300">
+                        <h3 class="column-title">
+                            <span>Resources</span>
+                            <div class="title-underline"></div>
+                        </h3>
                         <ul>
-                            <li><a href="#tips">Pageant Tips</a></li>
-                            <li><a href="#training">Training</a></li>
-                            <li><a href="#coaching">Coaching</a></li>
-                            <li><a href="#events">Events</a></li>
+                            <li><a href="#tips" class="footer-link">Pageant Tips</a></li>
+                            <li><a href="#training" class="footer-link">Training</a></li>
+                            <li><a href="#coaching" class="footer-link">Coaching</a></li>
+                            <li><a href="#events" class="footer-link">Events</a></li>
                         </ul>
                     </div>
                 </div>
@@ -401,22 +692,26 @@
             
             <div class="footer-bottom">
                 <div class="copyright">
-                    <p>&copy; 2025 PageantEmpress. All rights reserved.</p>
+                    <p>&copy; 2025 PageantEmpress. All rights reserved. Created with <span class="heart">❤</span> by George G. & Thanattsitt S.</p>
                 </div>
-                <div class="credits">
-                    <p>Created by <a href="https://youtube.com/@pageantempress" target="_blank">George G.</a> | 
-                    Developed by <a href="mailto:thanattsitt.info@yahoo.co.uk">Thanattsitt S.</a></p>
+                <div class="footer-badges">
+                    <span class="badge">Premium Content</span>
+                    <span class="badge">Verified Creator</span>
+                    <span class="badge">2025 Edition</span>
                 </div>
             </div>
         </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" aria-label="Back to top">
+    <button class="back-to-top floating-action" aria-label="Back to top">
         <i class="fas fa-chevron-up"></i>
+        <div class="btn-glow"></div>
     </button>
 
-    <!-- Scripts -->
+    <!-- External Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
