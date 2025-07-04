@@ -1,0 +1,29 @@
+# Gallery Image Structure: assets/images/gallery/
+
+## Directory Organization
+gallery/
+├── pageants/
+│   ├── miss-universe-2025/
+│   ├── miss-world-2024/
+│   ├── miss-international-2024/
+│   └── miss-earth-2024/
+├── fashion/
+│   ├── evening-gowns/
+│   ├── national-costumes/
+│   ├── swimwear/
+│   └── interview-attire/
+├── events/
+│   ├── fashion-week-2025/
+│   ├── crown-exhibition/
+│   ├── charity-galas/
+│   └── training-workshops/
+├── portraits/
+│   ├── titleholders/
+│   ├── contestants/
+│   ├── coaches/
+│   └── designers/
+└── behind-scenes/
+    ├── backstage/
+    ├── preparation/
+    ├── rehearsals/
+    └── celebrations/
