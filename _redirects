@@ -1,0 +1,5 @@
+# Redirect www to non-www
+https://www.pageantempress.com/* https://pageantempress.com/:splat 301!
+
+# Redirect old URLs
+/pageant-tips/* /blog/:splat 301
