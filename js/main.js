@@ -1026,44 +1026,200 @@ style.textContent = `
 
 document.head.appendChild(style);
 
-// Import Instagram functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Load Instagram CSS
-    const instagramCSS = document.createElement('link');
-    instagramCSS.rel = 'stylesheet';
-    instagramCSS.href = 'css/instagram.css';
-    document.head.appendChild(instagramCSS);
-    
-    // Load Instagram scripts
-    const scripts = [
-        'js/instagram.js',
-        'js/instagram-advanced.js',
-        'js/instagram-stories.js'
-    ];
-    
-    scripts.forEach(src => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.async = true;
-        document.body.appendChild(script);
-    });
-});
+// js/main.js
 
 // Instagram Feed Manager
 class InstagramManager {
     constructor() {
         this.config = null;
-        this.loadConfig();
+        this.isLoaded = false;
+        this.retryCount = 0;
+        this.maxRetries = 3;
+        this.init();
+    }
+    
+    async init() {
+        try {
+            await this.loadConfig();
+            await this.loadInstagramAssets();
+            this.initializeFeatures();
+            this.setupEventListeners();
+            this.isLoaded = true;
+            console.log('✅ Instagram Manager initialized successfully');
+        } catch (error) {
+            console.error('❌ Error initializing Instagram Manager:', error);
+            this.handleInitializationError(error);
+        }
     }
     
     async loadConfig() {
         try {
-            const response = await fetch('/instagram-config.json');
+            // Try to load from data folder first
+            const response = await fetch('data/instagram-config.json');
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
             this.config = await response.json();
-            this.initializeFeatures();
+            console.log('✅ Instagram config loaded:', this.config);
         } catch (error) {
-            console.error('Error loading Instagram config:', error);
+            console.warn('⚠️ Using fallback Instagram config');
+            // Fallback configuration
+            this.config = {
+                instagram: {
+                    settings: {
+                        enableAnalytics: true,
+                        autoRefresh: false,
+                        refreshInterval: 300000, // 5 minutes
+                        lazyLoad: true,
+                        enableStories: true,
+                        enableEmbeds: true,
+                        fallbackToImages: true
+                    },
+                    api: {
+                        useOEmbed: true,
+                        embedScript: '//www.instagram.com/embed.js'
+                    }
+                }
+            };
         }
+    }
+    
+    async loadInstagramAssets() {
+        // Load Instagram CSS
+        await this.loadCSS('css/instagram.css');
+        
+        // Load Instagram scripts conditionally
+        const instagramSection = document.getElementById('instagram');
+        if (instagramSection && this.config.instagram.settings.lazyLoad) {
+            this.setupLazyLoading(instagramSection);
+        } else {
+            await this.loadInstagramScripts();
+        }
+    }
+    
+    loadCSS(href) {
+        return new Promise((resolve, reject) => {
+            const existingLink = document.querySelector(`link[href="${href}"]`);
+            if (existingLink) {
+                resolve();
+                return;
+            }
+            
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            
+            link.onload = () => {
+                console.log(`✅ Loaded CSS: ${href}`);
+                resolve();
+            };
+            
+            link.onerror = () => {
+                console.error(`❌ Failed to load CSS: ${href}`);
+                reject(new Error(`Failed to load CSS: ${href}`));
+            };
+            
+            document.head.appendChild(link);
+        });
+    }
+    
+    setupLazyLoading(instagramSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.loadInstagramScripts();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            rootMargin: '100px',
+            threshold: 0.1 
+        });
+        
+        observer.observe(instagramSection);
+    }
+    
+    async loadInstagramScripts() {
+        const scripts = [
+            { src: 'js/instagram.js', priority: 1 },
+            { src: 'js/instagram-advanced.js', priority: 2 },
+            { src: 'js/instagram-stories.js', priority: 3 }
+        ];
+        
+        // Sort by priority
+        scripts.sort((a, b) => a.priority - b.priority);
+        
+        // Load scripts sequentially
+        for (const scriptInfo of scripts) {
+            try {
+                await this.loadScript(scriptInfo.src);
+            } catch (error) {
+                console.warn(`⚠️ Failed to load ${scriptInfo.src}, continuing...`);
+            }
+        }
+        
+        // Initialize Instagram Feed after scripts are loaded
+        this.initializeInstagramFeed();
+    }
+    
+    loadScript(src) {
+        return new Promise((resolve, reject) => {
+            const existingScript = document.querySelector(`script[src="${src}"]`);
+            if (existingScript) {
+                resolve();
+                return;
+            }
+            
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.defer = true;
+            
+            script.onload = () => {
+                console.log(`✅ Loaded script: ${src}`);
+                resolve();
+            };
+            
+            script.onerror = () => {
+                console.error(`❌ Failed to load script: ${src}`);
+                reject(new Error(`Failed to load script: ${src}`));
+            };
+            
+            document.body.appendChild(script);
+        });
+    }
+    
+    initializeInstagramFeed() {
+        // Try to initialize main Instagram feed
+        if (typeof InstagramFeed !== 'undefined') {
+            new InstagramFeed(this.config);
+        } else if (typeof window.InstagramFeedFallback !== 'undefined') {
+            new window.InstagramFeedFallback(this.config);
+        } else {
+            console.warn('⚠️ Instagram Feed classes not found, using basic fallback');
+            this.initializeFallback();
+        }
+    }
+    
+    initializeFallback() {
+        const feedContainer = document.getElementById('instagramFeed');
+        if (!feedContainer) return;
+        
+        // Create basic Instagram post links
+        const posts = document.querySelectorAll('.instagram-post');
+        posts.forEach(post => {
+            post.addEventListener('click', (e) => {
+                const link = post.querySelector('a');
+                if (link) {
+                    this.trackEngagement('post_click', link.href);
+                }
+            });
+        });
+        
+        // Animate stats
+        this.animateStats();
     }
     
     initializeFeatures() {
@@ -1072,27 +1228,63 @@ class InstagramManager {
         }
         
         if (this.config.instagram.settings.autoRefresh) {
-            setInterval(() => {
-                this.refreshFeed();
-            }, this.config.instagram.settings.refreshInterval);
+            this.setupAutoRefresh();
+        }
+        
+        if (this.config.instagram.settings.enableStories) {
+            this.setupStories();
         }
     }
     
-    trackEngagement() {
+    setupEventListeners() {
+        // Custom event listeners
+        document.addEventListener('instagram:refresh', () => {
+            this.refreshFeed();
+        });
+        
+        document.addEventListener('instagram:error', (e) => {
+            console.error('Instagram error:', e.detail);
+            this.handleError(e.detail);
+        });
+        
+        // Window events
+        window.addEventListener('online', () => {
+            if (this.isLoaded) {
+                this.refreshFeed();
+            }
+        });
+        
+        // Page visibility
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && this.config.instagram.settings.autoRefresh) {
+                this.refreshFeed();
+            }
+        });
+    }
+    
+    trackEngagement(action = 'section_view', label = 'Instagram Feed') {
         // Track Instagram section engagement
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Track view
+                    // Google Analytics
                     if (typeof gtag !== 'undefined') {
-                        gtag('event', 'instagram_section_view', {
+                        gtag('event', `instagram_${action}`, {
                             'event_category': 'engagement',
-                            'event_label': 'Instagram Feed'
+                            'event_label': label,
+                            'value': 1
                         });
                     }
+                    
+                    // Custom analytics
+                    if (typeof this.customAnalytics === 'function') {
+                        this.customAnalytics(action, label);
+                    }
+                    
+                    observer.unobserve(entry.target);
                 }
             });
-        });
+        }, { threshold: 0.5 });
         
         const instagramSection = document.querySelector('.instagram-section');
         if (instagramSection) {
@@ -1100,12 +1292,141 @@ class InstagramManager {
         }
     }
     
+    setupAutoRefresh() {
+        const interval = this.config.instagram.settings.refreshInterval;
+        setInterval(() => {
+            this.refreshFeed();
+        }, interval);
+    }
+    
+    setupStories() {
+        // Initialize Instagram Stories if enabled
+        if (typeof InstagramStories !== 'undefined') {
+            new InstagramStories(this.config);
+        }
+    }
+    
     refreshFeed() {
-        // Refresh Instagram feed
-        const event = new CustomEvent('instagram:refresh');
+        console.log('🔄 Refreshing Instagram feed...');
+        
+        // Dispatch refresh event
+        const event = new CustomEvent('instagram:feed:refresh', {
+            detail: { timestamp: Date.now() }
+        });
         document.dispatchEvent(event);
+        
+        // Update stats
+        this.animateStats();
+    }
+    
+    animateStats() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        statNumbers.forEach(stat => {
+            const finalValue = stat.textContent;
+            const numericValue = parseInt(finalValue.replace(/[^\d]/g, ''));
+            
+            if (numericValue > 0) {
+                this.animateNumber(stat, numericValue, finalValue);
+            }
+        });
+    }
+    
+    animateNumber(element, target, finalFormat) {
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            
+            if (current >= target) {
+                element.textContent = finalFormat;
+                clearInterval(timer);
+            } else {
+                const value = Math.floor(current);
+                if (finalFormat.includes('K')) {
+                    element.textContent = Math.floor(value / 1000) + 'K';
+                } else if (finalFormat.includes('M')) {
+                    element.textContent = (value / 1000000).toFixed(1) + 'M';
+                } else {
+                    element.textContent = value.toLocaleString();
+                }
+            }
+        }, 50);
+    }
+    
+    handleError(error) {
+        console.error('Instagram Manager Error:', error);
+        
+        // Show user-friendly error message
+        const errorContainer = document.getElementById('instagram-error');
+        if (errorContainer) {
+            errorContainer.innerHTML = `
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Unable to load Instagram content</h3>
+                    <p>Please check your connection and try again.</p>
+                    <button onclick="window.instagramManager.retry()" class="retry-btn">
+                        <i class="fas fa-redo"></i> Retry
+                    </button>
+                </div>
+            `;
+            errorContainer.style.display = 'block';
+        }
+    }
+    
+    handleInitializationError(error) {
+        if (this.retryCount < this.maxRetries) {
+            this.retryCount++;
+            console.log(`🔄 Retrying Instagram initialization (${this.retryCount}/${this.maxRetries})`);
+            
+            setTimeout(() => {
+                this.init();
+            }, 2000 * this.retryCount);
+        } else {
+            console.error('❌ Instagram initialization failed after maximum retries');
+            this.handleError(error);
+        }
+    }
+    
+    retry() {
+        this.retryCount = 0;
+        const errorContainer = document.getElementById('instagram-error');
+        if (errorContainer) {
+            errorContainer.style.display = 'none';
+        }
+        this.init();
+    }
+    
+    // Public API methods
+    getConfig() {
+        return this.config;
+    }
+    
+    isInitialized() {
+        return this.isLoaded;
+    }
+    
+    forceRefresh() {
+        this.refreshFeed();
     }
 }
 
-// Initialize Instagram Manager
-new InstagramManager();
+// Initialize Instagram Manager when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Create global instance
+    window.instagramManager = new InstagramManager();
+    
+    // Add error boundary
+    window.addEventListener('error', (e) => {
+        if (e.filename && e.filename.includes('instagram')) {
+            console.error('Instagram script error:', e.error);
+            if (window.instagramManager) {
+                window.instagramManager.handleError(e.error);
+            }
+        }
+    });
+});
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = InstagramManager;
+                                  }
