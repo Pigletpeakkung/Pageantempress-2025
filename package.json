@@ -1,0 +1,15 @@
+{
+  "name": "pageantempress",
+  "version": "1.0.0",
+  "description": "Pageant Empress - Ultimate Pageant Training Website",
+  "scripts": {
+    "build": "echo 'Static site build'",
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+}
