@@ -279,3 +279,166 @@
         padding: 1rem;
     }
 }
+
+// CSS for additional features (add to faq.css)
+const additionalStyles = `
+    .highlight {
+        background-color: #ffd700;
+        color: #000;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-weight: bold;
+    }
+    
+    .no-results-message {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--text-secondary);
+    }
+    
+    .no-results-message i {
+        font-size: 4rem;
+        color: var(--primary-gold);
+        margin-bottom: 1rem;
+    }
+    
+    .scroll-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background: var(--primary-gold);
+        color: var(--dark-bg);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.2rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 20px rgba(193, 53, 132, 0.3);
+    }
+    
+    .scroll-to-top.show {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .scroll-to-top:hover {
+        background: var(--accent-gold);
+        transform: translateY(-2px);
+    }
+    
+    .share-faq-btn {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        margin-left: 1rem;
+    }
+    
+    .share-faq-btn:hover {
+        color: var(--primary-gold);
+        background: rgba(193, 53, 132, 0.1);
+    }
+    
+    .faq-feedback {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--glass-border);
+        text-align: center;
+    }
+    
+    .feedback-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+    
+    .feedback-btn {
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        color: var(--text-secondary);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .feedback-btn:hover {
+        border-color: var(--primary-gold);
+        color: var(--primary-gold);
+    }
+    
+    .feedback-thanks {
+        color: var(--primary-gold);
+        font-weight: 500;
+        margin: 1rem 0;
+    }
+    
+    .toast {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        background: var(--primary-gold);
+        color: var(--dark-bg);
+        padding: 1rem 2rem;
+        border-radius: var(--border-radius);
+        z-index: 1001;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .toast.show {
+        transform: translateX(0);
+    }
+    
+    .print-faq-btn {
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        color: var(--text-secondary);
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-left: 1rem;
+    }
+    
+    .print-faq-btn:hover {
+        background: var(--primary-gold);
+        color: var(--dark-bg);
+        border-color: var(--primary-gold);
+    }
+    
+    @media print {
+        .navbar, .footer, .scroll-to-top, .share-faq-btn, .faq-feedback, .print-faq-btn {
+            display: none !important;
+        }
+        
+        .faq-item {
+            page-break-inside: avoid;
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-answer {
+            max-height: none !important;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+    }
+`;
+
+// Inject additional styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);1
