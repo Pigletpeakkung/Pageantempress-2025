@@ -1025,3 +1025,87 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+
+// Import Instagram functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Load Instagram CSS
+    const instagramCSS = document.createElement('link');
+    instagramCSS.rel = 'stylesheet';
+    instagramCSS.href = 'css/instagram.css';
+    document.head.appendChild(instagramCSS);
+    
+    // Load Instagram scripts
+    const scripts = [
+        'js/instagram.js',
+        'js/instagram-advanced.js',
+        'js/instagram-stories.js'
+    ];
+    
+    scripts.forEach(src => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        document.body.appendChild(script);
+    });
+});
+
+// Instagram Feed Manager
+class InstagramManager {
+    constructor() {
+        this.config = null;
+        this.loadConfig();
+    }
+    
+    async loadConfig() {
+        try {
+            const response = await fetch('/instagram-config.json');
+            this.config = await response.json();
+            this.initializeFeatures();
+        } catch (error) {
+            console.error('Error loading Instagram config:', error);
+        }
+    }
+    
+    initializeFeatures() {
+        if (this.config.instagram.settings.enableAnalytics) {
+            this.trackEngagement();
+        }
+        
+        if (this.config.instagram.settings.autoRefresh) {
+            setInterval(() => {
+                this.refreshFeed();
+            }, this.config.instagram.settings.refreshInterval);
+        }
+    }
+    
+    trackEngagement() {
+        // Track Instagram section engagement
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Track view
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'instagram_section_view', {
+                            'event_category': 'engagement',
+                            'event_label': 'Instagram Feed'
+                        });
+                    }
+                }
+            });
+        });
+        
+        const instagramSection = document.querySelector('.instagram-section');
+        if (instagramSection) {
+            observer.observe(instagramSection);
+        }
+    }
+    
+    refreshFeed() {
+        // Refresh Instagram feed
+        const event = new CustomEvent('instagram:refresh');
+        document.dispatchEvent(event);
+    }
+}
+
+// Initialize Instagram Manager
+new InstagramManager();
