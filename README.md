@@ -348,3 +348,351 @@ blog/
 │   └── ...
 ├── 📁 categories/
 │   
+```
+├── 📁 categories/
+│   ├── training-tips.html          # Training advice
+│   ├── success-stories.html        # Winner stories
+│   ├── beauty-tips.html            # Beauty & styling
+│   ├── interview-prep.html         # Interview guidance
+│   ├── runway-training.html        # Runway techniques
+│   ├── mindset-coaching.html       # Mental preparation
+│   └── industry-news.html          # Pageant news
+├── 📁 tags/
+│   ├── beginner.html              # Beginner content
+│   ├── advanced.html              # Advanced techniques
+│   ├── miss-universe.html         # Miss Universe specific
+│   ├── miss-world.html            # Miss World specific
+│   └── competition-prep.html      # Competition preparation
+└── 📁 archives/
+    ├── 2024.html                  # 2024 posts
+    ├── 2023.html                  # 2023 posts
+    └── popular.html               # Most popular posts
+```
+
+## **🔌 API Directory**
+
+```
+api/
+├── 📁 mock/                       # Development mock APIs
+│   ├── newsletter.json            # Newsletter subscription
+│   ├── contact.json               # Contact form
+│   ├── videos.json                # YouTube videos
+│   ├── testimonials.json          # Client testimonials
+│   ├── gallery.json               # Gallery items
+│   ├── blog.json                  # Blog posts
+│   ├── search.json                # Search results
+│   └── analytics.json             # Analytics data
+├── 📁 endpoints/                  # Server-side APIs
+│   ├── 📁 php/                    # PHP backend
+│   │   ├── newsletter.php         # Newsletter handler
+│   │   ├── contact.php            # Contact form handler
+│   │   ├── search.php             # Search functionality
+│   │   ├── analytics.php          # Analytics tracking
+│   │   ├── upload.php             # File upload handler
+│   │   └── config.php             # Database config
+│   ├── 📁 nodejs/                 # Node.js backend
+│   │   ├── app.js                 # Main application
+│   │   ├── package.json           # Dependencies
+│   │   ├── 📁 routes/             # API routes
+│   │   │   ├── newsletter.js
+│   │   │   ├── contact.js
+│   │   │   ├── search.js
+│   │   │   └── analytics.js
+│   │   ├── 📁 middleware/         # Express middleware
+│   │   │   ├── auth.js
+│   │   │   ├── validation.js
+│   │   │   └── cors.js
+│   │   └── 📁 models/             # Data models
+│   │       ├── user.js
+│   │       ├── contact.js
+│   │       └── newsletter.js
+│   └── 📁 python/                 # Python backend
+│       ├── app.py                 # Flask application
+│       ├── requirements.txt       # Python dependencies
+│       ├── 📁 routes/             # API routes
+│       │   ├── newsletter.py
+│       │   ├── contact.py
+│       │   └── analytics.py
+│       └── 📁 models/             # Data models
+│           ├── user.py
+│           └── contact.py
+└── 📁 documentation/              # API documentation
+    ├── openapi.yaml               # OpenAPI specification
+    ├── postman-collection.json    # Postman collection
+    └── api-guide.md               # API usage guide
+```
+
+## **👑 Admin Directory**
+
+```
+admin/
+├── 📄 index.html                  # Admin dashboard
+├── 📄 login.html                  # Admin login
+├── 📄 dashboard.html              # Main dashboard
+├── 📄 content-manager.html        # Content management
+├── 📄 analytics.html              # Analytics dashboard
+├── 📄 user-management.html        # User management
+├── 📄 newsletter.html             # Newsletter management
+├── 📄 gallery-manager.html        # Gallery management
+├── 📄 blog-editor.html            # Blog post editor
+├── 📄 settings.html               # System settings
+├── 📁 assets/
+│   ├── admin.css                  # Admin styles
+│   ├── admin.js                   # Admin functionality
+│   ├── dashboard.js               # Dashboard logic
+│   ├── content-editor.js          # Content editing
+│   ├── analytics.js               # Analytics display
+│   └── 📁 images/                 # Admin interface images
+│       ├── dashboard-bg.jpg
+│       ├── admin-avatar.png
+│       └── icons/
+└── 📁 components/
+    ├── sidebar.html               # Admin sidebar
+    ├── header.html                # Admin header
+    ├── footer.html                # Admin footer
+    └── modals.html                # Admin modals
+```
+
+## **📚 Documentation Directory**
+
+```
+docs/
+├── 📄 README.md                   # Main documentation
+├── 📄 INSTALLATION.md             # Installation guide
+├── 📄 DEPLOYMENT.md               # Deployment guide
+├── 📄 API-DOCUMENTATION.md        # API reference
+├── 📄 CONTRIBUTING.md             # Contribution guidelines
+├── 📄 CHANGELOG.md                # Version history
+├── 📄 CODE-OF-CONDUCT.md          # Code of conduct
+├── 📄 SECURITY.md                 # Security policy
+├── 📄 PERFORMANCE.md              # Performance guidelines
+├── 📄 ACCESSIBILITY.md            # Accessibility guide
+├── 📄 SEO-GUIDE.md                # SEO best practices
+├── 📄 PWA-GUIDE.md                # PWA implementation
+├── 📁 tutorials/
+│   ├── getting-started.md         # Getting started
+│   ├── customization.md           # Customization guide
+│   ├── adding-content.md          # Content management
+│   ├── theme-development.md       # Theme creation
+│   └── deployment-options.md      # Deployment methods
+├── 📁 api/
+│   ├── authentication.md          # Auth documentation
+│   ├── endpoints.md               # API endpoints
+│   ├── examples.md                # Usage examples
+│   └── rate-limiting.md           # Rate limiting info
+├── 📁 screenshots/
+│   ├── desktop-homepage.png       # Desktop view
+│   ├── mobile-homepage.png        # Mobile view
+│   ├── youtube-page.png           # YouTube page
+│   ├── gallery-page.png           # Gallery page
+│   ├── admin-dashboard.png        # Admin interface
+│   └── features-overview.png      # Features showcase
+└── 📁 architecture/
+    ├── system-overview.md          # System architecture
+    ├── database-schema.md          # Database design
+    ├── component-structure.md      # Component architecture
+    └── security-model.md           # Security architecture
+```
+
+## **🧪 Testing Directory**
+
+```
+tests/
+├── 📄 test-config.js               # Test configuration
+├── 📄 jest.config.js               # Jest configuration
+├── 📄 setup.js                     # Test setup
+├── 📁 unit/
+│   ├── components/
+│   │   ├── navigation.test.js      # Navigation tests
+│   │   ├── modal.test.js           # Modal tests
+│   │   ├── form-handler.test.js    # Form tests
+│   │   ├── theme-switcher.test.js  # Theme tests
+│   │   └── search.test.js          # Search tests
+│   ├── utils/
+│   │   ├── helpers.test.js         # Helper function tests
+│   │   ├── validation.test.js      # Validation tests
+│   │   ├── api.test.js             # API utility tests
+│   │   ├── storage.test.js         # Storage tests
+│   │   └── analytics.test.js       # Analytics tests
+│   └── pages/
+│       ├── home.test.js            # Homepage tests
+│       ├── youtube.test.js         # YouTube page tests
+│       ├── faq.test.js             # FAQ tests
+│       └── contact.test.js         # Contact tests
+├── 📁 integration/
+│   ├── navigation.test.js          # Navigation flow
+│   ├── forms.test.js               # Form submissions
+│   ├── youtube.test.js             # YouTube integration
+│   ├── search.test.js              # Search functionality
+│   ├── theme-switching.test.js     # Theme changes
+│   └── responsive.test.js          # Responsive behavior
+├── 📁 e2e/
+│   ├── user-journey.test.js        # Complete user flows
+│   ├── mobile-experience.test.js   # Mobile testing
+│   ├── accessibility.test.js       # A11y testing
+│   ├── performance.test.js         # Performance testing
+│   ├── seo.test.js                 # SEO testing
+│   └── pwa.test.js                 # PWA functionality
+├── 📁 visual/
+│   ├── screenshot.test.js          # Visual regression
+│   ├── responsive.test.js          # Responsive design
+│   └── cross-browser.test.js       # Browser compatibility
+├── 📁 fixtures/
+│   ├── mock-data.json              # Test data
+│   ├── sample-images/              # Test images
+│   └── api-responses/              # Mock API responses
+└── 📁 coverage/                    # Coverage reports (generated)
+    ├── lcov-report/
+    └── coverage-summary.json
+```
+
+## **🔧 Build Directory**
+
+```
+build/
+├── 📁 scripts/
+│   ├── build.js                    # Main build script
+│   ├── deploy.js                   # Deployment script
+│   ├── optimize-images.js          # Image optimization
+│   ├── generate-sitemap.js         # Sitemap generation
+│   ├── minify-css.js               # CSS minification
+│   ├── minify-js.js                # JS minification
+│   ├── critical-css.js             # Critical CSS extraction
+│   └── pwa-builder.js              # PWA asset generation
+├── 📁 templates/
+│   ├── sitemap.xml                 # Sitemap template
+│   ├── robots.txt                  # Robots template
+│   ├── .htaccess                   # Apache config template
+│   └── web.config                  # IIS config template
+├── 📁 config/
+│   ├── webpack.config.js           # Webpack configuration
+│   ├── postcss.config.js           # PostCSS configuration
+│   ├── babel.config.js             # Babel configuration
+│   └── eslint.config.js            # ESLint configuration
+└── 📁 tools/
+    ├── image-optimizer.js          # Image optimization tool
+    ├── css-purger.js               # Unused CSS removal
+    ├── bundle-analyzer.js          # Bundle analysis
+    └── performance-checker.js      # Performance audit
+```
+
+## **🖥️ Server Directory**
+
+```
+server/
+├── 📁 php/
+│   ├── contact-handler.php         # Contact form processing
+│   ├── newsletter.php              # Newsletter subscription
+│   ├── search.php                  # Search functionality
+│   ├── upload.php                  # File upload handler
+│   ├── analytics.php               # Analytics tracking
+│   ├── admin-auth.php              # Admin authentication
+│   ├── config.php                  # Database configuration
+│   ├── database.php                # Database connection
+│   └── 📁 includes/                # PHP includes
+│       ├── functions.php           # Common functions
+│       ├── validation.php          # Input validation
+│       └── security.php            # Security functions
+├── 📁 nodejs/
+│   ├── app.js                      # Express application
+│   ├── package.json                # Node dependencies
+│   ├── 📁 routes/                  # Express routes
+│   │   ├── api.js                  # API routes
+│   │   ├── admin.js                # Admin routes
+│   │   └── auth.js                 # Authentication routes
+│   ├── 📁 middleware/              # Express middleware
+│   │   ├── auth.js                 # Authentication
+│   │   ├── validation.js           # Input validation
+│   │   ├── cors.js                 # CORS handling
+│   │   ├── rate-limit.js           # Rate limiting
+│   │   └── error-handler.js        # Error handling
+│   ├── 📁 models/                  # Data models
+│   │   ├── user.js                 # User model
+│   │   ├── contact.js              # Contact model
+│   │   └── newsletter.js           # Newsletter model
+│   ├── 📁 controllers/             # Route controllers
+│   │   ├── contact.js              # Contact controller
+│   │   ├── newsletter.js           # Newsletter controller
+│   │   └── analytics.js            # Analytics controller
+│   └── 📁 utils/                   # Utility functions
+│       ├── email.js                # Email utilities
+│       ├── validation.js           # Validation utilities
+│       └── database.js             # Database utilities
+└── 📁 python/
+    ├── app.py                      # Flask application
+    ├── requirements.txt            # Python dependencies
+    ├── config.py                   # Application config
+    ├── 📁 routes/                  # Flask routes
+    │   ├── api.py                  # API routes
+    │   ├── admin.py                # Admin routes
+    │   └── auth.py                 # Authentication
+    ├── 📁 models/                  # SQLAlchemy models
+    │   ├── user.py                 # User model
+    │   ├── contact.py              # Contact model
+    │   └── newsletter.py           # Newsletter model
+    └── 📁 utils/                   # Utility modules
+        ├── email.py                # Email utilities
+        ├── validation.py           # Validation utilities
+        └── database.py             # Database utilities
+```
+
+## **⚙️ GitHub Directory**
+
+```
+.github/
+├── 📁 workflows/
+│   ├── ci.yml                      # Continuous Integration
+│   ├── deploy.yml                  # Deployment workflow
+│   ├── lighthouse.yml              # Performance audit
+│   ├── security-scan.yml           # Security scanning
+│   ├── dependency-update.yml       # Dependency updates
+│   └── release.yml                 # Release automation
+├── 📁 ISSUE_TEMPLATE/
+│   ├── bug_report.md               # Bug report template
+│   ├── feature_request.md          # Feature request template
+│   ├── documentation.md            # Documentation request
+│   └── question.md                 # Question template
+├── 📄 PULL_REQUEST_TEMPLATE.md     # PR template
+├── 📄 CONTRIBUTING.md              # Contribution guidelines
+├── 📄 CODE_OF_CONDUCT.md           # Code of conduct
+├── 📄 SECURITY.md                  # Security policy
+└── 📄 FUNDING.yml                  # Sponsorship info
+```
+
+## **📦 Distribution Directory (Generated)**
+
+```
+dist/ (auto-generated)
+├── 📄 index.html                   # Optimized homepage
+├── 📄 manifest.json                # PWA manifest
+├── 📄 sw.js                        # Service worker
+├── 📄 sitemap.xml                  # Generated sitemap
+├── 📄 robots.txt                   # SEO robots file
+├── 📁 css/
+│   ├── main.min.css                # Minified main styles
+│   ├── critical.css                # Critical CSS
+│   └── non-critical.css            # Non-critical CSS
+├── 📁 js/
+│   ├── main.bundle.js              # Main JS bundle
+│   ├── vendor.bundle.js            # Vendor libraries
+│   ├── youtube.bundle.js           # YouTube page bundle
+│   └── service-worker.js           # SW registration
+├── 📁 assets/
+│   ├── 📁 images/                  # Optimized images
+│   │   ├── *.webp                  # WebP format
+│   │   ├── *.avif                  # AVIF format
+│   │   └── *.jpg                   # Fallback JPEG
+│   ├── 📁 fonts/                   # Optimized fonts
+│   └── 📁 icons/                   # PWA icons
+└── 📁 pages/                       # Optimized pages
+    ├── about.html
+    ├── services.html
+    ├── youtube.html
+    └── ...
+```
+
+## **🚀 Quick Setup Commands**
+
+```bash
+# Create complete directory structure
+mkdir -p assets/{images/{logos,icons,pageants,gallery/{thumbnails,full-size,winners,before-after},blog/{featured,thumbnails,content},team,backgrounds/{section-dividers},youtube/{video-thumbnails,playlist-covers},screenshots,placeholders},videos
