@@ -160,29 +160,5 @@ confidential/
 *.private
 *.confidential
 
-<?php
-// API Configuration File
-// This file should NOT be accessible from the web
 
-// Instagram API Settings
-define('INSTAGRAM_ACCESS_TOKEN', 'YOUR_ACCESS_TOKEN_HERE');
-define('INSTAGRAM_USER_ID', 'YOUR_USER_ID_HERE');
-define('INSTAGRAM_CLIENT_ID', 'YOUR_CLIENT_ID_HERE');
-define('INSTAGRAM_CLIENT_SECRET', 'YOUR_CLIENT_SECRET_HERE');
 
-// Database Configuration (if needed)
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'pageantempress');
-define('DB_USER', 'your_db_user');
-define('DB_PASS', 'your_db_password');
-
-// API Settings
-define('API_CACHE_TIME', 3600); // 1 hour
-define('API_RATE_LIMIT', 100); // requests per hour
-
-// Security
-define('API_SECRET_KEY', 'your_secret_key_here');
-
-// Environment
-define('ENVIRONMENT', 'production'); // development or production
-?>
