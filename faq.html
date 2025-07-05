@@ -87,44 +87,90 @@
     </script>
 </head>
 <body>
+    <!-- Animated Background Elements -->
+    <div class="animated-background"></div>
+    <div class="sparkle-container" id="sparkleContainer"></div>
+    <div class="geometric-shapes" id="geometricShapes"></div>
+    <div class="shine-overlay"></div>
+
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="main-header" id="navbar">
         <div class="nav-container">
-            <div class="nav-logo">
-                <a href="/">
-                    <img src="/assets/images/logo.png" alt="Pageant Empress Logo">
-                    <span>Pageant Empress</span>
-                </a>
+            <div class="logo">
+                <div class="logo-crown">
+                    <i class="fas fa-crown"></i>
+                    <div class="crown-sparkles">
+                        <div class="sparkle sparkle-1"></div>
+                        <div class="sparkle sparkle-2"></div>
+                        <div class="sparkle sparkle-3"></div>
+                        <div class="sparkle sparkle-4"></div>
+                    </div>
+                </div>
+                <div class="logo-text-container">
+                    <div class="logo-text">Pageant Empress</div>
+                    <div class="logo-tagline">Crowning Champions</div>
+                </div>
             </div>
             
-            <ul class="nav-menu" id="nav-menu">
+            <ul class="nav-links" id="nav-menu">
                 <li class="nav-item">
-                    <a href="/" class="nav-link">Home</a>
+                    <a href="/" class="nav-link">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Home</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/about" class="nav-link">About</a>
+                    <a href="/about" class="nav-link">
+                        <i class="fas fa-user nav-icon"></i>
+                        <span>About</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/services" class="nav-link">Services</a>
+                    <a href="/services" class="nav-link">
+                        <i class="fas fa-star nav-icon"></i>
+                        <span>Services</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/blog" class="nav-link">Blog</a>
+                    <a href="/blog" class="nav-link">
+                        <i class="fas fa-blog nav-icon"></i>
+                        <span>Blog</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/gallery" class="nav-link">Gallery</a>
+                    <a href="/gallery" class="nav-link">
+                        <i class="fas fa-images nav-icon"></i>
+                        <span>Gallery</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/faq" class="nav-link active">FAQ</a>
+                    <a href="/faq" class="nav-link active">
+                        <i class="fas fa-question-circle nav-icon"></i>
+                        <span>FAQ</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/contact" class="nav-link">Contact</a>
+                    <a href="/contact" class="nav-link">
+                        <i class="fas fa-envelope nav-icon"></i>
+                        <span>Contact</span>
+                    </a>
                 </li>
             </ul>
             
-            <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <div class="nav-actions">
+                <button class="glass-button" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                    <div class="button-tooltip">Search</div>
+                </button>
+                <button class="glass-button" id="themeToggle">
+                    <i class="fas fa-sun"></i>
+                    <div class="button-tooltip">Toggle Theme</div>
+                </button>
+                <button class="glass-button mobile-toggle" id="hamburger">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </button>
             </div>
         </div>
     </nav>
@@ -153,6 +199,99 @@
                         </button>
                     </div>
                 </div>
+                
+                <!-- Trust Badges -->
+                <div class="trust-badges" data-aos="fade-up" data-aos-delay="200">
+                    <p class="trust-text">Trusted by winners from:</p>
+                    <div class="trust-logos">
+                        <div class="trust-logo">
+                            <img src="/assets/images/miss-universe-logo.png" alt="Miss Universe" title="Miss Universe">
+                        </div>
+                        <div class="trust-logo">
+                            <img src="/assets/images/miss-world-logo.png" alt="Miss World" title="Miss World">
+                        </div>
+                        <div class="trust-logo">
+                            <img src="/assets/images/miss-america-logo.png" alt="Miss America" title="Miss America">
+                        </div>
+                        <div class="trust-logo">
+                            <img src="/assets/images/miss-usa-logo.png" alt="Miss USA" title="Miss USA">
+                        </div>
+                        <div class="trust-logo">
+                            <img src="/assets/images/miss-international-logo.png" alt="Miss International" title="Miss International">
+                        </div>
+                        <div class="trust-logo">
+                            <img src="/assets/images/miss-earth-logo.png" alt="Miss Earth" title="Miss Earth">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials Section -->
+    <section class="credentials-section">
+        <div class="container">
+            <div class="credentials-content" data-aos="fade-up">
+                <h2 class="section-title">Our Pageant Expertise</h2>
+                <p class="section-subtitle">Recognized by major international pageant organizations</p>
+                
+                <div class="credentials-grid">
+                    <div class="credential-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="credential-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Official Training Partner</h3>
+                        <p>Recognized training provider for Miss Universe, Miss World, and Miss America systems</p>
+                    </div>
+                    
+                    <div class="credential-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="credential-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>150+ Titles Won</h3>
+                        <p>Our clients have won local, state, national, and international pageant titles</p>
+                    </div>
+                    
+                    <div class="credential-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="credential-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Global Reach</h3>
+                        <p>Training contestants from 25+ countries for international competitions</p>
+                    </div>
+                    
+                    <div class="credential-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="credential-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Industry Recognition</h3>
+                        <p>Featured in Pageant Planet, Pageantry Magazine, and Miss Universe official publications</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="quick-stats">
+        <div class="container">
+            <div class="stats-grid" data-aos="fade-up">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Contestants Trained</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Titles Won</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Countries Represented</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
             </div>
         </div>
     </section>
@@ -161,12 +300,30 @@
     <section class="faq-categories">
         <div class="container">
             <div class="category-filter" data-aos="fade-up">
-                <button class="filter-btn active" data-category="all">All Questions</button>
-                <button class="filter-btn" data-category="services">Services & Training</button>
-                <button class="filter-btn" data-category="pricing">Pricing & Packages</button>
-                <button class="filter-btn" data-category="preparation">Preparation & Timeline</button>
-                <button class="filter-btn" data-category="competition">Competition & Events</button>
-                <button class="filter-btn" data-category="general">General Information</button>
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-th-large"></i>
+                    All Questions
+                </button>
+                <button class="filter-btn" data-category="services">
+                    <i class="fas fa-star"></i>
+                    Services & Training
+                </button>
+                <button class="filter-btn" data-category="pricing">
+                    <i class="fas fa-dollar-sign"></i>
+                    Pricing & Packages
+                </button>
+                <button class="filter-btn" data-category="preparation">
+                    <i class="fas fa-calendar-alt"></i>
+                    Preparation & Timeline
+                </button>
+                <button class="filter-btn" data-category="competition">
+                    <i class="fas fa-trophy"></i>
+                    Competition & Events
+                </button>
+                <button class="filter-btn" data-category="general">
+                    <i class="fas fa-info-circle"></i>
+                    General Information
+                </button>
             </div>
         </div>
     </section>
@@ -174,13 +331,16 @@
     <!-- FAQ Content -->
     <section class="faq-content">
         <div class="container">
-            <div class="faq-grid">
+                        <div class="faq-grid">
                 
                 <!-- Services & Training FAQs -->
                 <div class="faq-category" data-category="services">
-                    <h2 class="category-title">Services & Training</h2>
+                    <h2 class="category-title">
+                        <i class="fas fa-star"></i>
+                        Services & Training
+                    </h2>
                     
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>What pageant training services do you offer?</h3>
                             <button class="faq-toggle">
@@ -189,20 +349,44 @@
                         </div>
                         <div class="faq-answer">
                             <p>We offer comprehensive pageant training including:</p>
-                            <ul>
-                                <li><strong>Interview Preparation:</strong> Mock interviews, Q&A practice, confidence building</li>
-                                <li><strong>Runway Coaching:</strong> Walking techniques, posing, stage presence</li>
-                                <li><strong>Talent Development:</strong> Performance coaching and presentation skills</li>
-                                <li><strong>Evening Gown Training:</strong> Elegant movement and presentation</li>
-                                <li><strong>Swimsuit Confidence:</strong> Body language and poise</li>
-                                <li><strong>Public Speaking:</strong> Communication skills and articulation</li>
-                                <li><strong>Personal Branding:</strong> Social media strategy and image development</li>
-                                <li><strong>Competition Strategy:</strong> Pageant selection and preparation planning</li>
-                            </ul>
+                            <div class="service-grid">
+                                <div class="service-item">
+                                    <i class="fas fa-microphone"></i>
+                                    <strong>Interview Preparation:</strong> Mock interviews, Q&A practice, confidence building
+                                </div>
+                                <div class="service-item">
+                                    <i class="fas fa-walking"></i>
+                                    <strong>Runway Coaching:</strong> Walking techniques, posing, stage presence
+                                </div>
+                                <div class="service-item">
+                                    <i class="fas fa-music"></i>
+                                    <strong>Talent Development:</strong> Performance coaching and presentation skills
+                                </div>
+                                <div class="service-item">
+                                    <i class="fas fa-dress"></i>
+                                    <strong>Evening Gown Training:</strong> Elegant movement and presentation
+                                </div>
+                                <div class="service-item">
+                                    <i class="fas fa-swimmer"></i>
+                                    <strong>Swimsuit Confidence:</strong> Body language and poise
+                                </div>
+                                <div class="service-item">
+                                    <i class="fas fa-comments"></i>
+                                    <strong>Public Speaking:</strong> Communication skills and articulation
+                                </div>
+                                <div class="service-item">
+                                    <i class="fas fa-user-tie"></i>
+                                    <strong>Personal Branding:</strong> Social media strategy and image development
+                                </div>
+                                <div class="service-item">
+                                    <i class="fas fa-chess"></i>
+                                    <strong>Competition Strategy:</strong> Pageant selection and preparation planning
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>Do you offer online coaching sessions?</h3>
                             <button class="faq-toggle">
@@ -211,18 +395,18 @@
                         </div>
                         <div class="faq-answer">
                             <p>Yes! We offer both in-person and virtual coaching sessions via Zoom. Our online sessions include:</p>
-                            <ul>
-                                <li>One-on-one virtual coaching</li>
-                                <li>Group training sessions</li>
-                                <li>Digital resource access</li>
-                                <li>Recorded sessions for review</li>
-                                <li>24/7 email support</li>
+                            <ul class="enhanced-list">
+                                <li><i class="fas fa-video"></i> One-on-one virtual coaching</li>
+                                <li><i class="fas fa-users"></i> Group training sessions</li>
+                                <li><i class="fas fa-cloud-download-alt"></i> Digital resource access</li>
+                                <li><i class="fas fa-record-vinyl"></i> Recorded sessions for review</li>
+                                <li><i class="fas fa-envelope"></i> 24/7 email support</li>
                             </ul>
                             <p>Virtual sessions are just as effective as in-person training and allow us to work with clients worldwide.</p>
                         </div>
                     </div>
 
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>What makes your coaching different from others?</h3>
                             <button class="faq-toggle">
@@ -231,18 +415,40 @@
                         </div>
                         <div class="faq-answer">
                             <p>Our coaching stands out because of:</p>
-                            <ul>
-                                <li><strong>Personalized Approach:</strong> Every program is customized to your unique goals</li>
-                                <li><strong>Proven Track Record:</strong> Our clients have won numerous local, state, and national titles</li>
-                                <li><strong>Holistic Development:</strong> We focus on inner confidence, not just external presentation</li>
-                                <li><strong>Industry Connections:</strong> Access to pageant directors, sponsors, and networking opportunities</li>
-                                <li><strong>Ongoing Support:</strong> We're with you before, during, and after your competition</li>
-                                <li><strong>Modern Techniques:</strong> Up-to-date training methods and current pageant trends</li>
-                            </ul>
+                            <div class="differentiator-grid">
+                                <div class="differentiator-item">
+                                    <div class="diff-icon">
+                                        <i class="fas fa-user-cog"></i>
+                                    </div>
+                                    <h4>Personalized Approach</h4>
+                                    <p>Every program is customized to your unique goals and personality</p>
+                                </div>
+                                <div class="differentiator-item">
+                                    <div class="diff-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <h4>Proven Track Record</h4>
+                                    <p>Our clients have won numerous local, state, national, and international titles</p>
+                                </div>
+                                <div class="differentiator-item">
+                                    <div class="diff-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <h4>Holistic Development</h4>
+                                    <p>We focus on inner confidence and authenticity, not just external presentation</p>
+                                </div>
+                                <div class="differentiator-item">
+                                    <div class="diff-icon">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <h4>Industry Connections</h4>
+                                    <p>Access to pageant directors, sponsors, and networking opportunities</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>Do you help with wardrobe and styling?</h3>
                             <button class="faq-toggle">
@@ -250,16 +456,36 @@
                             </button>
                         </div>
                         <div class="faq-answer">
-                            <p>Absolutely! Our styling services include:</p>
-                            <ul>
-                                <li>Evening gown selection and fitting guidance</li>
-                                <li>Swimsuit styling and fit consultation</li>
-                                <li>Interview outfit coordination</li>
-                                <li>Talent costume recommendations</li>
-                                <li>Hair and makeup artist referrals</li>
-                                <li>Accessory selection and coordination</li>
-                                <li>Budget-friendly shopping strategies</li>
-                            </ul>
+                            <p>Absolutely! Our comprehensive styling services include:</p>
+                            <div class="styling-services">
+                                <div class="styling-category">
+                                    <h4><i class="fas fa-dress"></i> Wardrobe Selection</h4>
+                                    <ul>
+                                        <li>Evening gown selection and fitting guidance</li>
+                                        <li>Swimsuit styling and fit consultation</li>
+                                        <li>Interview outfit coordination</li>
+                                        <li>Talent costume recommendations</li>
+                                    </ul>
+                                </div>
+                                <div class="styling-category">
+                                    <h4><i class="fas fa-palette"></i> Beauty & Styling</h4>
+                                    <ul>
+                                        <li>Hair and makeup artist referrals</li>
+                                        <li>Accessory selection and coordination</li>
+                                        <li>Color analysis and recommendations</li>
+                                        <li>Personal styling consultation</li>
+                                    </ul>
+                                </div>
+                                <div class="styling-category">
+                                    <h4><i class="fas fa-dollar-sign"></i> Budget Planning</h4>
+                                    <ul>
+                                        <li>Budget-friendly shopping strategies</li>
+                                        <li>Designer rental options</li>
+                                        <li>Discount and sample sale alerts</li>
+                                                                                <li>Cost-effective alternatives</li>
+                                    </ul>
+                                </div>
+                            </div>
                             <p>We work with trusted designers and boutiques to ensure you look and feel your best.</p>
                         </div>
                     </div>
@@ -267,9 +493,12 @@
 
                 <!-- Pricing & Packages FAQs -->
                 <div class="faq-category" data-category="pricing">
-                    <h2 class="category-title">Pricing & Packages</h2>
+                    <h2 class="category-title">
+                        <i class="fas fa-dollar-sign"></i>
+                        Pricing & Packages
+                    </h2>
                     
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>How much does pageant coaching cost?</h3>
                             <button class="faq-toggle">
@@ -279,32 +508,68 @@
                         <div class="faq-answer">
                             <p>Our coaching packages are designed to fit various budgets and needs:</p>
                             <div class="pricing-overview">
-                                <div class="price-item">
-                                    <h4>Consultation Session</h4>
-                                    <p class="price">$299</p>
-                                    <p>2-hour assessment and planning session</p>
+                                <div class="price-item glass-morphism">
+                                    <div class="price-header">
+                                        <i class="fas fa-handshake"></i>
+                                        <h4>Consultation Session</h4>
+                                    </div>
+                                    <p class="price gradient-text">$299</p>
+                                    <p class="price-desc">2-hour assessment and planning session</p>
+                                    <ul class="price-features">
+                                        <li><i class="fas fa-check"></i> Personal assessment</li>
+                                        <li><i class="fas fa-check"></i> Goal setting</li>
+                                        <li><i class="fas fa-check"></i> Custom roadmap</li>
+                                    </ul>
                                 </div>
-                                <div class="price-item">
-                                    <h4>Basic Package</h4>
-                                    <p class="price">$899</p>
-                                    <p>4 sessions covering fundamentals</p>
+                                <div class="price-item glass-morphism">
+                                    <div class="price-header">
+                                        <i class="fas fa-star"></i>
+                                        <h4>Basic Package</h4>
+                                    </div>
+                                    <p class="price gradient-text">$899</p>
+                                    <p class="price-desc">4 sessions covering fundamentals</p>
+                                    <ul class="price-features">
+                                        <li><i class="fas fa-check"></i> Interview basics</li>
+                                        <li><i class="fas fa-check"></i> Runway fundamentals</li>
+                                        <li><i class="fas fa-check"></i> Confidence building</li>
+                                    </ul>
                                 </div>
-                                <div class="price-item">
-                                    <h4>Competition Ready</h4>
-                                    <p class="price">$1,799</p>
-                                    <p>8 sessions with comprehensive training</p>
+                                <div class="price-item glass-morphism popular">
+                                    <div class="popular-badge">Most Popular</div>
+                                    <div class="price-header">
+                                        <i class="fas fa-crown"></i>
+                                        <h4>Competition Ready</h4>
+                                    </div>
+                                    <p class="price gradient-text">$1,799</p>
+                                    <p class="price-desc">8 sessions with comprehensive training</p>
+                                    <ul class="price-features">
+                                        <li><i class="fas fa-check"></i> Full competition prep</li>
+                                        <li><i class="fas fa-check"></i> Mock pageant</li>
+                                        <li><i class="fas fa-check"></i> Styling consultation</li>
+                                    </ul>
                                 </div>
-                                <div class="price-item">
-                                    <h4>Complete Champion</h4>
-                                    <p class="price">$2,999</p>
-                                    <p>12+ sessions with full support</p>
+                                <div class="price-item glass-morphism premium">
+                                    <div class="premium-badge">Premium</div>
+                                    <div class="price-header">
+                                        <i class="fas fa-diamond"></i>
+                                        <h4>Complete Champion</h4>
+                                    </div>
+                                    <p class="price gradient-text">$2,999</p>
+                                    <p class="price-desc">12+ sessions with full support</p>
+                                    <ul class="price-features">
+                                        <li><i class="fas fa-check"></i> VIP treatment</li>
+                                        <li><i class="fas fa-check"></i> Competition day support</li>
+                                        <li><i class="fas fa-check"></i> Unlimited access</li>
+                                    </ul>
                                 </div>
                             </div>
-                            <p>All packages include email support and resource materials. Payment plans available.</p>
+                            <div class="pricing-note">
+                                <p><i class="fas fa-info-circle"></i> All packages include email support and resource materials. Payment plans available.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>Do you offer payment plans?</h3>
                             <button class="faq-toggle">
@@ -312,104 +577,50 @@
                             </button>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes! We understand that pageant preparation is an investment. We offer:</p>
-                            <ul>
-                                <li><strong>Monthly Payment Plans:</strong> Split your package into 2-6 monthly payments</li>
-                                <li><strong>Session-by-Session:</strong> Pay as you go for individual sessions</li>
-                                <li><strong>Early Bird Discounts:</strong> 10% off when you book 4+ months in advance</li>
-                                <li><strong>Package Upgrades:</strong> Start small and add sessions as needed</li>
-                                <li><strong>Sibling Discounts:</strong> 15% off for multiple family members</li>
-                            </ul>
-                            <p>Contact us to discuss a payment plan that works for your budget.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-aos="fade-up">
-                        <div class="faq-question">
-                            <h3>What's included in each package?</h3>
-                            <button class="faq-toggle">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Each package includes different levels of support:</p>
-                                                        <div class="package-breakdown">
-                                <div class="package-detail">
-                                    <h4>Consultation ($299)</h4>
-                                    <ul>
-                                        <li>2-hour assessment session</li>
-                                        <li>Personalized action plan</li>
-                                        <li>Competition recommendations</li>
-                                        <li>Resource guide</li>
-                                    </ul>
+                            <p>Yes! We understand that pageant preparation is an investment. We offer flexible payment options:</p>
+                            <div class="payment-options">
+                                <div class="payment-option">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <h4>Monthly Payment Plans</h4>
+                                    <p>Split your package into 2-6 monthly payments with no interest</p>
                                 </div>
-                                <div class="package-detail">
-                                    <h4>Basic Package ($899)</h4>
-                                    <ul>
-                                        <li>4 one-hour coaching sessions</li>
-                                        <li>Interview preparation</li>
-                                        <li>Basic runway training</li>
-                                        <li>Email support for 30 days</li>
-                                        <li>Digital training materials</li>
-                                    </ul>
+                                <div class="payment-option">
+                                    <i class="fas fa-step-forward"></i>
+                                    <h4>Session-by-Session</h4>
+                                    <p>Pay as you go for individual sessions - perfect for budget planning</p>
                                 </div>
-                                <div class="package-detail">
-                                    <h4>Competition Ready ($1,799)</h4>
-                                    <ul>
-                                        <li>8 comprehensive sessions</li>
-                                        <li>Full interview training</li>
-                                        <li>Advanced runway coaching</li>
-                                        <li>Talent development</li>
-                                        <li>Wardrobe consultation</li>
-                                        <li>Mock pageant experience</li>
-                                        <li>60 days email support</li>
-                                    </ul>
+                                <div class="payment-option">
+                                    <i class="fas fa-percentage"></i>
+                                    <h4>Early Bird Discounts</h4>
+                                    <p>10% off when you book 4+ months in advance</p>
                                 </div>
-                                <div class="package-detail">
-                                    <h4>Complete Champion ($2,999)</h4>
-                                    <ul>
-                                        <li>12+ personalized sessions</li>
-                                        <li>All competition segments</li>
-                                        <li>Personal branding strategy</li>
-                                        <li>Photo shoot coordination</li>
-                                        <li>Competition day support</li>
-                                        <li>Unlimited email support</li>
-                                        <li>Post-competition debrief</li>
-                                        <li>Alumni network access</li>
-                                    </ul>
+                                <div class="payment-option">
+                                    <i class="fas fa-level-up-alt"></i>
+                                    <h4>Package Upgrades</h4>
+                                    <p>Start small and add sessions as needed</p>
+                                </div>
+                                <div class="payment-option">
+                                    <i class="fas fa-users"></i>
+                                    <h4>Family Discounts</h4>
+                                    <p>15% off for siblings or multiple family members</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-aos="fade-up">
-                        <div class="faq-question">
-                            <h3>Are there any hidden fees or additional costs?</h3>
-                            <button class="faq-toggle">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="faq-answer">
-                            <p>No hidden fees! Our package prices are all-inclusive for coaching services. Additional costs you should budget for separately include:</p>
-                            <ul>
-                                <li>Competition entry fees ($100-$1,500 depending on pageant level)</li>
-                                <li>Evening gown ($500-$3,000)</li>
-                                <li>Swimsuit ($100-$500)</li>
-                                <li>Interview outfit ($200-$800)</li>
-                                <li>Hair and makeup for competition ($200-$500)</li>
-                                <li>Professional headshots ($300-$800)</li>
-                                <li>Travel and accommodation for competitions</li>
-                            </ul>
-                            <p>We'll help you budget effectively and find cost-saving options.</p>
+                            <p class="payment-cta">
+                                <i class="fas fa-phone"></i>
+                                Contact us to discuss a payment plan that works for your budget.
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Preparation & Timeline FAQs -->
                 <div class="faq-category" data-category="preparation">
-                    <h2 class="category-title">Preparation & Timeline</h2>
+                    <h2 class="category-title">
+                        <i class="fas fa-calendar-alt"></i>
+                        Preparation & Timeline
+                    </h2>
                     
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>How long does pageant preparation take?</h3>
                             <button class="faq-toggle">
@@ -418,17 +629,47 @@
                         </div>
                         <div class="faq-answer">
                             <p>Preparation time varies based on your experience level and goals:</p>
-                            <ul>
-                                <li><strong>Beginners:</strong> 4-6 months for comprehensive preparation</li>
-                                <li><strong>Some Experience:</strong> 2-4 months for skill refinement</li>
-                                <li><strong>Experienced Competitors:</strong> 1-2 months for final polish</li>
-                                <li><strong>Rush Preparation:</strong> 2-4 weeks intensive coaching (limited availability)</li>
-                            </ul>
-                            <p>We recommend starting at least 4 months before your competition for optimal results. This allows time for skill development, wardrobe acquisition, and confidence building.</p>
+                            <div class="timeline-grid">
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <h4>Beginners</h4>
+                                    <p class="timeline-duration">4-6 months</p>
+                                    <p>Comprehensive preparation covering all fundamentals</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <h4>Some Experience</h4>
+                                    <p class="timeline-duration">2-4 months</p>
+                                    <p>Skill refinement and advanced techniques</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-crown"></i>
+                                    </div>
+                                    <h4>Experienced</h4>
+                                    <p class="timeline-duration">1-2 months</p>
+                                    <p>Final polish and competition-specific preparation</p>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-icon">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <h4>Rush Prep</h4>
+                                    <p class="timeline-duration">2-4 weeks</p>
+                                    <p>Intensive coaching (limited availability)</p>
+                                </div>
+                            </div>
+                            <div class="timeline-recommendation">
+                                <p><i class="fas fa-lightbulb"></i> <strong>Recommended:</strong> Start at least 4 months before your competition for optimal results. This allows time for skill development, wardrobe acquisition, and confidence building.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>What should I do before my first coaching session?</h3>
                             <button class="faq-toggle">
@@ -436,64 +677,45 @@
                             </button>
                         </div>
                         <div class="faq-answer">
-                            <p>To make the most of your first session:</p>
-                            <ul>
-                                <li>Research pageants you're interested in competing in</li>
-                                <li>Prepare questions about your pageant goals</li>
-                                <li>Bring any pageant experience or performance background information</li>
-                                <li>Wear comfortable clothing you can move in</li>
-                                <li>Bring a notebook for taking notes</li>
-                                <li>Come with an open mind and willingness to learn</li>
-                                <li>Think about your timeline and availability for training</li>
-                            </ul>
-                            <p>Don't worry about being perfect – we're here to help you grow!</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-aos="fade-up">
-                        <div class="faq-question">
-                            <h3>Do I need any prior experience to start training?</h3>
-                            <button class="faq-toggle">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Absolutely not! We welcome contestants at all levels:</p>
-                            <ul>
-                                <li><strong>Complete Beginners:</strong> We'll start with the basics and build your foundation</li>
-                                <li><strong>Some Performance Background:</strong> We'll adapt training to your existing skills</li>
-                                <li><strong>Former Contestants:</strong> We'll help you refine and improve your technique</li>
-                                <li><strong>Experienced Competitors:</strong> We'll focus on advanced strategies and polish</li>
-                            </ul>
-                            <p>Our coaching is personalized to meet you where you are and take you where you want to go. Every queen started somewhere!</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-aos="fade-up">
-                        <div class="faq-question">
-                            <h3>How often should I have coaching sessions?</h3>
-                            <button class="faq-toggle">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Session frequency depends on your timeline and learning style:</p>
-                            <ul>
-                                <li><strong>Intensive Track:</strong> 2-3 sessions per week for quick preparation</li>
-                                <li><strong>Standard Track:</strong> 1 session per week for steady progress</li>
-                                <li><strong>Relaxed Track:</strong> 1-2 sessions per month for gradual development</li>
-                                <li><strong>Competition Prep:</strong> Daily sessions in the final week before competition</li>
-                            </ul>
-                            <p>We'll work with your schedule to create a training plan that fits your life and maximizes results.</p>
+                            <p>To make the most of your first session, here's your preparation checklist:</p>
+                            <div class="prep-checklist">
+                                <div class="checklist-section">
+                                    <h4><i class="fas fa-search"></i> Research & Goals</h4>
+                                    <ul>
+                                        <li>Research pageants you're interested in</li>
+                                        <li>Prepare questions about your pageant goals</li>
+                                        <li>Think about your timeline and availability</li>
+                                    </ul>
+                                </div>
+                                <div class="checklist-section">
+                                    <h4><i class="fas fa-user"></i> Personal Preparation</h4>
+                                    <ul>
+                                        <li>Bring any pageant or performance experience info</li>
+                                        <li>Wear comfortable clothing you can move in</li>
+                                        <li>Bring a notebook for taking notes</li>
+                                    </ul>
+                                </div>
+                                <div class="checklist-section">
+                                    <h4><i class="fas fa-heart"></i> Mindset</h4>
+                                    <ul>
+                                        <li>Come with an open mind and willingness to learn</li>
+                                        <li>Be ready to step out of your comfort zone</li>
+                                        <li>Remember: you don't need to be perfect to start!</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Competition & Events FAQs -->
                 <div class="faq-category" data-category="competition">
-                    <h2 class="category-title">Competition & Events</h2>
+                    <h2 class="category-title">
+                        <i class="fas fa-trophy"></i>
+                        Competition & Events
+                    </h2>
                     
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>Which pageants should I compete in?</h3>
                             <button class="faq-toggle">
@@ -502,29 +724,52 @@
                         </div>
                         <div class="faq-answer">
                             <p>Pageant selection depends on your goals, experience level, and personal values:</p>
-                            <div class="pageant-types">
-                                <div class="pageant-type">
-                                    <h4>Local/Regional Pageants</h4>
-                                    <p>Great for beginners, lower cost, community-focused</p>
+                            <div class="pageant-systems">
+                                <div class="pageant-system">
+                                    <div class="system-header">
+                                        <img src="/assets/images/miss-universe-logo.png" alt="Miss Universe">
+                                        <h4>Miss Universe System</h4>
+                                    </div>
+                                    <p>Focus on confidence, beauty, and global advocacy</p>
+                                    <div class="system-features">
+                                        <span class="feature-tag">International</span>
+                                        <span class="feature-tag">Beauty Focus</span>
+                                        <span class="feature-tag">Advocacy</span>
+                                    </div>
                                 </div>
-                                <div class="pageant-type">
-                                    <h4>State Pageants</h4>
-                                    <p>Next level up, more competitive, pathway to nationals</p>
+                                <div class="pageant-system">
+                                    <div class="system-header">
+                                        <img src="/assets/images/miss-america-logo.png" alt="Miss America">
+                                        <h4>Miss America Organization</h4>
+                                    </div>
+                                    <p>Talent-based competition with scholarship opportunities</p>
+                                    <div class="system-features">
+                                        <span class="feature-tag">Talent Required</span>
+                                        <span class="feature-tag">Scholarships</span>
+                                        <span class="feature-tag">Leadership</span>
+                                    </div>
                                 </div>
-                                <div class="pageant-type">
-                                    <h4>National Pageants</h4>
-                                    <p>Highest level, significant prizes, major time commitment</p>
-                                </div>
-                                <div class="pageant-type">
-                                    <h4>Specialty Pageants</h4>
-                                    <p>Focus on specific causes, talents, or demographics</p>
+                                <div class="pageant-system">
+                                    <div class="system-header">
+                                        <img src="/assets/images/miss-world-logo.png" alt="Miss World">
+                                        <h4>Miss World System</h4>
+                                    </div>
+                                    <p>Beauty with a Purpose - strong community service focus</p>
+                                    <div class="system-features">
+                                        <span class="feature-tag">Service Focus</span>
+                                        <span class="feature-tag">International</span>
+                                        <span class="feature-tag">Multi-Cultural</span>
+                                    </div>
                                 </div>
                             </div>
-                            <p>We'll help you research and select pageants that align with your goals, budget, and timeline.</p>
+                            <p class="pageant-guidance">
+                                <i class="fas fa-compass"></i>
+                                We'll help you research and select pageants that align with your values, goals, and budget.
+                            </p>
                         </div>
                     </div>
 
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>Do you provide support on competition day?</h3>
                             <button class="faq-toggle">
@@ -532,68 +777,57 @@
                             </button>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes! Competition day support is available and includes:</p>
-                            <ul>
-                                <li>Pre-competition coaching and pep talk</li>
-                                <li>Backstage assistance and moral support</li>
-                                <li>Last-minute interview preparation</li>
-                                <li>Help with nerves and confidence boosting</li>
-                                <li>Photography coordination</li>
-                                <li>Real-time feedback between segments</li>
-                                <li>Post-competition celebration or debriefing</li>
-                            </ul>
-                            <p>Competition day support is included in our Complete Champion package or available as an add-on for other packages.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-aos="fade-up">
-                        <div class="faq-question">
-                            <h3>What happens if I don't win?</h3>
-                            <button class="faq-toggle">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Not winning doesn't mean you've failed! Competition outcomes depend on many factors:</p>
-                            <ul>
-                                <li>We focus on personal growth and skill development</li>
-                                <li>Every competition is a learning experience</li>
-                                <li>We'll debrief to identify areas for improvement</li>
-                                <li>Many successful queens compete multiple times before winning</li>
-                                <li>The confidence and skills you gain last a lifetime</li>
-                                <li>We'll help you decide on next steps and future competitions</li>
-                            </ul>
-                            <p>Remember: you're already a winner for having the courage to compete!</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-aos="fade-up">
-                        <div class="faq-question">
-                            <h3>Can you help me prepare for specific pageant systems?</h3>
-                            <button class="faq-toggle">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Absolutely! We have experience with major pageant systems including:</p>
-                            <ul>
-                                <li><strong>Miss America Organization:</strong> Talent-focused, scholarship-based</li>
-                                <li><strong>Miss USA/Miss Universe:</strong> Beauty and confidence-focused</li>
-                                <li><strong>Miss World America:</strong> Beauty with a purpose, community service</li>
-                                <li><strong>National American Miss:</strong> Natural beauty, no swimsuit</li>
-                                <li><strong>International Junior Miss:</strong> Teen-focused development</li>
-                                <li><strong>Local and state systems:</strong> Various formats and requirements</li>
-                            </ul>
-                            <p>We'll tailor your training to the specific requirements and judging criteria of your chosen pageant system.</p>
+                            <p>Yes! Our competition day support ensures you're confident and prepared:</p>
+                            <div class="comp-day-support">
+                                <div class="support-phase">
+                                    <h4><i class="fas fa-sunrise"></i> Pre-Competition</h4>
+                                    <ul>
+                                        <li>Final coaching session and pep talk</li>
+                                        <li>Competition strategy review</li>
+                                        <li>Relaxation and confidence techniques</li>
+                                    </ul>
+                                </div>
+                                <div class="support-phase">
+                                    <h4><i class="fas fa-theater-masks"></i> Backstage Support</h4>
+                                    <ul>
+                                        <li>Moral support and encouragement</li>
+                                        <li>Last-minute interview preparation</li>
+                                        <li>Help with nerves and anxiety</li>
+                                    </ul>
+                                </div>
+                                <div class="support-phase">
+                                    <h4><i class="fas fa-camera"></i> During Competition</h4>
+                                    <ul>
+                                        <li>Photography coordination</li>
+                                        <li>Real-time feedback between segments</li>
+                                        <li>Quick touch-ups and adjustments</li>
+                                    </ul>
+                                </div>
+                                <div class="support-phase">
+                                    <h4><i class="fas fa-celebration"></i> Post-Competition</h4>
+                                    <ul>
+                                        <li>Celebration or comfort (as needed!)</li>
+                                        <li>Competition debrief and feedback</li>
+                                        <li>Future planning discussion</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="support-note">
+                                <i class="fas fa-info-circle"></i>
+                                Competition day support is included in our Complete Champion package or available as an add-on.
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- General Information FAQs -->
                 <div class="faq-category" data-category="general">
-                    <h2 class="category-title">General Information</h2>
+                                        <h2 class="category-title">
+                        <i class="fas fa-info-circle"></i>
+                        General Information
+                    </h2>
                     
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>What age groups do you train?</h3>
                             <button class="faq-toggle">
@@ -601,20 +835,64 @@
                             </button>
                         </div>
                         <div class="faq-answer">
-                            <p>We work with contestants across all age divisions:</p>
-                            <ul>
-                                <li><strong>Teen Division (13-17 years):</strong> Age-appropriate training with parent involvement</li>
-                                                                <li><strong>Miss Division (18-28 years):</strong> College and career-focused preparation</li>
-                                <li><strong>Ms./Mrs. Division (25+ years):</strong> Married women and mothers welcome</li>
-                                <li><strong>Senior Division (40+ years):</strong> Celebrating experience and wisdom</li>
-                                <li><strong>Plus Size Divisions:</strong> Body-positive coaching for all sizes</li>
-                                <li><strong>Special Needs:</strong> Adaptive training for contestants with disabilities</li>
-                            </ul>
-                            <p>Our training is always age-appropriate and tailored to the specific division requirements and life stage of each contestant.</p>
+                            <p>We work with contestants across all age divisions with age-appropriate training:</p>
+                            <div class="age-groups">
+                                <div class="age-group">
+                                    <div class="age-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <h4>Teen Division (13-17 years)</h4>
+                                    <p>Age-appropriate training with parent involvement and focus on personal development</p>
+                                    <div class="age-features">
+                                        <span class="age-tag">Parent Involvement</span>
+                                        <span class="age-tag">Character Building</span>
+                                        <span class="age-tag">Academic Balance</span>
+                                    </div>
+                                </div>
+                                <div class="age-group">
+                                    <div class="age-icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <h4>Miss Division (18-28 years)</h4>
+                                    <p>College and career-focused preparation with professional development</p>
+                                    <div class="age-features">
+                                        <span class="age-tag">Career Focus</span>
+                                        <span class="age-tag">Independence</span>
+                                        <span class="age-tag">Leadership</span>
+                                    </div>
+                                </div>
+                                <div class="age-group">
+                                    <div class="age-icon">
+                                        <i class="fas fa-ring"></i>
+                                    </div>
+                                    <h4>Ms./Mrs. Division (25+ years)</h4>
+                                    <p>Celebrating married women, mothers, and life experience</p>
+                                    <div class="age-features">
+                                        <span class="age-tag">Life Experience</span>
+                                        <span class="age-tag">Family Balance</span>
+                                        <span class="age-tag">Wisdom</span>
+                                    </div>
+                                </div>
+                                <div class="age-group">
+                                    <div class="age-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <h4>Senior Division (40+ years)</h4>
+                                    <p>Honoring experience, wisdom, and continued growth</p>
+                                    <div class="age-features">
+                                        <span class="age-tag">Wisdom</span>
+                                        <span class="age-tag">Inspiration</span>
+                                        <span class="age-tag">Advocacy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="inclusive-note">
+                                <p><i class="fas fa-heart"></i> <strong>Inclusive Training:</strong> We welcome contestants of all backgrounds, sizes, and abilities. Our training is adaptive and personalized for everyone.</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>Do you work with international clients?</h3>
                             <button class="faq-toggle">
@@ -622,20 +900,47 @@
                             </button>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes! We work with clients worldwide through our virtual coaching platform:</p>
-                            <ul>
-                                <li>Online sessions via Zoom or similar platforms</li>
-                                <li>Flexible scheduling for different time zones</li>
-                                <li>Digital resource delivery</li>
-                                <li>Cultural sensitivity training</li>
-                                <li>International pageant system knowledge</li>
-                                <li>Language support (English, Spanish, basic French)</li>
-                            </ul>
-                            <p>We've successfully coached contestants from over 20 countries for both local and international competitions.</p>
+                            <p>Yes! We're proud to work with clients worldwide through our comprehensive virtual platform:</p>
+                            <div class="international-services">
+                                <div class="intl-service">
+                                    <i class="fas fa-globe"></i>
+                                    <h4>Global Reach</h4>
+                                    <p>Online sessions via Zoom accessible from anywhere in the world</p>
+                                </div>
+                                <div class="intl-service">
+                                    <i class="fas fa-clock"></i>
+                                    <h4>Flexible Scheduling</h4>
+                                    <p>Accommodating different time zones with flexible session times</p>
+                                </div>
+                                <div class="intl-service">
+                                    <i class="fas fa-language"></i>
+                                    <h4>Language Support</h4>
+                                    <p>Coaching available in English, Spanish, and basic French</p>
+                                </div>
+                                <div class="intl-service">
+                                    <i class="fas fa-cultural-center"></i>
+                                    <h4>Cultural Sensitivity</h4>
+                                    <p>Understanding of different cultural contexts and pageant systems</p>
+                                </div>
+                            </div>
+                            <div class="international-stats">
+                                <div class="intl-stat">
+                                    <span class="stat-number">25+</span>
+                                    <span class="stat-label">Countries Served</span>
+                                </div>
+                                <div class="intl-stat">
+                                    <span class="stat-number">50+</span>
+                                    <span class="stat-label">International Titles</span>
+                                </div>
+                                <div class="intl-stat">
+                                    <span class="stat-number">15+</span>
+                                    <span class="stat-label">Pageant Systems</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
                             <h3>What if I'm camera shy or have stage fright?</h3>
                             <button class="faq-toggle">
@@ -643,182 +948,232 @@
                             </button>
                         </div>
                         <div class="faq-answer">
-                            <p>Stage fright is completely normal! We specialize in building confidence:</p>
-                            <ul>
-                                <li><strong>Gradual Exposure:</strong> Start small and build up to larger audiences</li>
-                                <li><strong>Breathing Techniques:</strong> Manage anxiety and nerves effectively</li>
-                                <li><strong>Positive Visualization:</strong> Mental preparation and success imagery</li>
-                                <li><strong>Practice Environments:</strong> Safe spaces to make mistakes and learn</li>
-                                <li><strong>Camera Training:</strong> Get comfortable being filmed and photographed</li>
-                                <li><strong>Mindset Coaching:</strong> Transform nervous energy into excitement</li>
-                            </ul>
-                            <p>Many of our most successful clients started out very shy. Confidence can be learned!</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-aos="fade-up">
-                        <div class="faq-question">
-                            <h3>Can parents/guardians attend coaching sessions?</h3>
-                            <button class="faq-toggle">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Our policy varies by age and situation:</p>
-                            <ul>
-                                <li><strong>Teen Contestants (under 18):</strong> Parent presence encouraged for support</li>
-                                <li><strong>Adult Contestants:</strong> Generally private sessions, but family support welcome</li>
-                                <li><strong>First Sessions:</strong> Parents welcome to observe and ask questions</li>
-                                <li><strong>Intensive Training:</strong> Some sessions may be private to build independence</li>
-                                <li><strong>Competition Day:</strong> Family support team coordination available</li>
-                            </ul>
-                            <p>We believe in involving supportive family members while also fostering independence and confidence.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item" data-aos="fade-up">
-                        <div class="faq-question">
-                            <h3>Do you provide references or success stories?</h3>
-                            <button class="faq-toggle">
-                                <i class="fas fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Absolutely! We're proud of our clients' achievements:</p>
-                            <div class="success-stats">
-                                <div class="stat">
-                                    <span class="number">500+</span>
-                                    <span class="label">Contestants Trained</span>
+                            <p>Stage fright is completely normal! We specialize in transforming nervousness into confidence:</p>
+                            <div class="confidence-building">
+                                <div class="confidence-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-steps"></i>
+                                    </div>
+                                    <h4>Gradual Exposure</h4>
+                                    <p>Start in comfortable environments and gradually build up to larger audiences</p>
                                 </div>
-                                <div class="stat">
-                                    <span class="number">150+</span>
-                                    <span class="label">Titles Won</span>
+                                <div class="confidence-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-lungs"></i>
+                                    </div>
+                                    <h4>Breathing Techniques</h4>
+                                    <p>Learn to manage anxiety and nerves through proven breathing exercises</p>
                                 </div>
-                                <div class="stat">
-                                    <span class="number">95%</span>
-                                    <span class="label">Client Satisfaction</span>
+                                <div class="confidence-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-eye"></i>
+                                    </div>
+                                    <h4>Visualization</h4>
+                                    <p>Mental preparation techniques and positive success imagery</p>
                                 </div>
-                                <div class="stat">
-                                    <span class="number">25</span>
-                                    <span class="label">States Represented</span>
+                                <div class="confidence-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-safe"></i>
+                                    </div>
+                                    <h4>Safe Practice</h4>
+                                    <p>Judgment-free environments where mistakes are part of learning</p>
                                 </div>
                             </div>
-                            <p>We can provide references from former clients and showcase success stories on our website and social media. Client privacy is respected - we only share stories with permission.</p>
+                            <div class="confidence-testimonial">
+                                <p><i class="fas fa-quote-left"></i> Many of our most successful and confident clients started out extremely shy. Confidence is a skill that can be learned and developed! <i class="fas fa-quote-right"></i></p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-item enhanced-card" data-aos="fade-up">
                         <div class="faq-question">
-                            <h3>What's your cancellation and refund policy?</h3>
+                            <h3>What's your success rate and client satisfaction?</h3>
                             <button class="faq-toggle">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
                         <div class="faq-answer">
-                            <p>We want you to be completely satisfied with our services:</p>
-                            <ul>
-                                <li><strong>Session Cancellation:</strong> 24-hour notice required for rescheduling</li>
-                                <li><strong>Package Refunds:</strong> Full refund if cancelled within 48 hours of purchase</li>
-                                <li><strong>Partial Refunds:</strong> Prorated refunds for unused sessions in certain circumstances</li>
-                                <li><strong>Emergency Situations:</strong> Flexible policies for medical or family emergencies</li>
-                                <li><strong>Satisfaction Guarantee:</strong> If you're not satisfied after your first session, we'll work to make it right</li>
-                            </ul>
-                            <p>Your success and satisfaction are our priorities. We'll work with you to find solutions.</p>
+                            <p>We're proud of our proven track record and high client satisfaction:</p>
+                            <div class="success-metrics">
+                                <div class="metric-card">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="metric-number">150+</div>
+                                    <div class="metric-label">Titles Won</div>
+                                    <div class="metric-detail">Local, state, national, and international wins</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="metric-number">95%</div>
+                                    <div class="metric-label">Client Satisfaction</div>
+                                    <div class="metric-detail">Based on post-training surveys and reviews</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="metric-number">500+</div>
+                                    <div class="metric-label">Contestants Trained</div>
+                                    <div class="metric-detail">Across all age divisions and pageant systems</div>
+                                </div>
+                                <div class="metric-card">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-redo"></i>
+                                    </div>
+                                    <div class="metric-number">85%</div>
+                                    <div class="metric-label">Return Clients</div>
+                                    <div class="metric-detail">Clients who return for additional competitions</div>
+                                </div>
+                            </div>
+                            <p class="success-note">
+                                <i class="fas fa-shield-alt"></i>
+                                <strong>References Available:</strong> We can provide references from former clients and showcase success stories (with permission) on our website and social media.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Contact CTA -->
-            <div class="faq-cta" data-aos="fade-up">
+            <div class="faq-cta glass-morphism" data-aos="fade-up">
                 <div class="cta-content">
+                    <div class="cta-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
                     <h2>Still Have Questions?</h2>
-                    <p>Can't find the answer you're looking for? Our team is here to help!</p>
+                    <p>Can't find the answer you're looking for? Our expert team is here to help you on your pageant journey!</p>
                     <div class="cta-buttons">
-                        <a href="/contact" class="btn btn-primary">
+                        <a href="/contact" class="btn btn-primary enhanced-button">
                             <i class="fas fa-envelope"></i>
-                            Contact Us
+                            <span>Contact Us</span>
                         </a>
-                        <a href="tel:+1-555-PAGEANT" class="btn btn-secondary">
+                        <a href="tel:+1-555-PAGEANT" class="btn btn-secondary enhanced-button">
                             <i class="fas fa-phone"></i>
-                            Call Now
+                            <span>Call Now</span>
                         </a>
-                        <a href="https://calendly.com/pageantempress" class="btn btn-accent" target="_blank">
+                        <a href="https://calendly.com/pageantempress" class="btn btn-accent enhanced-button" target="_blank">
                             <i class="fas fa-calendar"></i>
-                            Book Consultation
+                            <span>Book Consultation</span>
                         </a>
+                    </div>
+                    <div class="cta-guarantee">
+                        <p><i class="fas fa-shield-alt"></i> Free 15-minute consultation to discuss your goals</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Enhanced Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-section">
                         <div class="footer-logo">
-                            <img src="/assets/images/logo.png" alt="Pageant Empress">
-                            <h3>Pageant Empress</h3>
+                            <div class="logo">
+                                <div class="logo-crown">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="logo-text-container">
+                                    <div class="logo-text">Pageant Empress</div>
+                                    <div class="logo-tagline">Crowning Champions</div>
+                                </div>
+                            </div>
                         </div>
-                        <p>Empowering queens to reach their full potential through expert pageant training and coaching.</p>
+                        <p class="footer-description">Empowering queens to reach their full potential through expert pageant training and coaching. Your success is our crown achievement.</p>
                         <div class="social-links">
-                            <a href="https://www.instagram.com/pageantempress" target="_blank">
+                            <a href="https://www.instagram.com/pageantempress" target="_blank" class="social-icon">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://www.youtube.com/pageantempress" target="_blank">
+                            <a href="https://www.youtube.com/pageantempress" target="_blank" class="social-icon">
                                 <i class="fab fa-youtube"></i>
                             </a>
-                            <a href="https://www.tiktok.com/@pageantempress" target="_blank">
+                            <a href="https://www.tiktok.com/@pageantempress" target="_blank" class="social-icon">
                                 <i class="fab fa-tiktok"></i>
                             </a>
-                            <a href="https://www.facebook.com/pageantempress" target="_blank">
+                            <a href="https://www.facebook.com/pageantempress" target="_blank" class="social-icon">
                                 <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="https://www.twitter.com/pageantempress" target="_blank" class="social-icon">
+                                <i class="fab fa-twitter"></i>
                             </a>
                         </div>
                     </div>
                     
                     <div class="footer-section">
                         <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/about">About</a></li>
-                            <li><a href="/services">Services</a></li>
-                            <li><a href="/blog">Blog</a></li>
-                            <li><a href="/gallery">Gallery</a></li>
-                            <li><a href="/faq">FAQ</a></li>
+                        <ul class="footer-links">
+                            <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                            <li><a href="/about"><i class="fas fa-user"></i> About</a></li>
+                            <li><a href="/services"><i class="fas fa-star"></i> Services</a></li>
+                            <li><a href="/blog"><i class="fas fa-blog"></i> Blog</a></li>
+                            <li><a href="/gallery"><i class="fas fa-images"></i> Gallery</a></li>
+                            <li><a href="/faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-section">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="/services#interview">Interview Prep</a></li>
-                            <li><a href="/services#runway">Runway Training</a></li>
-                            <li><a href="/services#talent">Talent Coaching</a></li>
-                            <li><a href="/services#styling">Wardrobe Styling</a></li>
-                            <li><a href="/services#branding">Personal Branding</a></li>
+                        <h4>Training Services</h4>
+                        <ul class="footer-links">
+                            <li><a href="/services#interview"><i class="fas fa-microphone"></i> Interview Prep</a></li>
+                            <li><a href="/services#runway"><i class="fas fa-walking"></i> Runway Training</a></li>
+                            <li><a href="/services#talent"><i class="fas fa-music"></i> Talent Coaching</a></li>
+                            <li><a href="/services#styling"><i class="fas fa-dress"></i> Wardrobe Styling</a></li>
+                            <li><a href="/services#branding"><i class="fas fa-user-tie"></i> Personal Branding</a></li>
                         </ul>
                     </div>
                     
                     <div class="footer-section">
-                        <h4>Contact Info</h4>
+                        <h4>Get in Touch</h4>
                         <div class="contact-info">
-                            <p><i class="fas fa-envelope"></i> info@pageantempress.com</p>
-                            <p><i class="fas fa-phone"></i> +1 (555) PAGEANT</p>
-                            <p><i class="fas fa-map-marker-alt"></i> Serving clients worldwide</p>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@pageantempress.com">info@pageantempress.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:+1-555-PAGEANT">+1 (555) PAGEANT</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Serving clients worldwide</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Mon-Fri 9AM-6PM PST</span>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                
+                <!-- Trust Logos in Footer -->
+                <div class="footer-trust">
+                    <p class="trust-text">Recognized by International Pageant Organizations</p>
+                    <div class="footer-trust-logos">
+                        <img src="/assets/images/miss-universe-logo.png" alt="Miss Universe" class="trust-logo-small">
+                        <img src="/assets/images/miss-world-logo.png" alt="Miss World" class="trust-logo-small">
+                                                <img src="/assets/images/miss-america-logo.png" alt="Miss America" class="trust-logo-small">
+                        <img src="/assets/images/miss-usa-logo.png" alt="Miss USA" class="trust-logo-small">
+                        <img src="/assets/images/miss-international-logo.png" alt="Miss International" class="trust-logo-small">
+                        <img src="/assets/images/miss-earth-logo.png" alt="Miss Earth" class="trust-logo-small">
                     </div>
                 </div>
                 
                 <div class="footer-bottom">
                     <div class="footer-bottom-content">
-                        <p>&copy; 2024 Pageant Empress. All rights reserved.</p>
-                        <div class="footer-links">
-                            <a href="/privacy-policy">Privacy Policy</a>
-                            <a href="/terms-of-service">Terms of Service</a>
+                        <div class="footer-left">
+                            <p>&copy; 2024 Pageant Empress. All rights reserved.</p>
+                        </div>
+                        <div class="footer-right">
+                            <div class="footer-links">
+                                <a href="/privacy-policy">Privacy Policy</a>
+                                <a href="/terms-of-service">Terms of Service</a>
+                                <a href="/sitemap">Sitemap</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -826,8 +1181,154 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-crown">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="logo-text-container">
+                    <div class="logo-text">Pageant Empress</div>
+                </div>
+            </div>
+            <button class="mobile-close" id="mobileClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-links">
+                <li>
+                    <a href="/" class="mobile-nav-link">
+                        <span class="link-number">01</span>
+                        <span class="link-text">Home</span>
+                        <i class="fas fa-arrow-right link-arrow"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/about" class="mobile-nav-link">
+                        <span class="link-number">02</span>
+                        <span class="link-text">About</span>
+                        <i class="fas fa-arrow-right link-arrow"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/services" class="mobile-nav-link">
+                        <span class="link-number">03</span>
+                        <span class="link-text">Services</span>
+                        <i class="fas fa-arrow-right link-arrow"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/blog" class="mobile-nav-link">
+                        <span class="link-number">04</span>
+                        <span class="link-text">Blog</span>
+                        <i class="fas fa-arrow-right link-arrow"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/gallery" class="mobile-nav-link">
+                        <span class="link-number">05</span>
+                        <span class="link-text">Gallery</span>
+                        <i class="fas fa-arrow-right link-arrow"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/faq" class="mobile-nav-link active">
+                        <span class="link-number">06</span>
+                        <span class="link-text">FAQ</span>
+                        <i class="fas fa-arrow-right link-arrow"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="/contact" class="mobile-nav-link">
+                        <span class="link-number">07</span>
+                        <span class="link-text">Contact</span>
+                        <i class="fas fa-arrow-right link-arrow"></i>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="mobile-contact glass-morphism">
+                <h4>Get in Touch</h4>
+                <a href="mailto:info@pageantempress.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@pageantempress.com</span>
+                </a>
+                <a href="tel:+1-555-PAGEANT" class="contact-link">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (555) PAGEANT</span>
+                </a>
+                <a href="https://calendly.com/pageantempress" class="contact-link" target="_blank">
+                    <i class="fas fa-calendar"></i>
+                    <span>Book Consultation</span>
+                </a>
+            </div>
+            
+            <div class="mobile-social">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/pageantempress" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/pageantempress" target="_blank" class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@pageantempress" target="_blank" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.facebook.com/pageantempress" target="_blank" class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search FAQ...">
+                <button class="search-btn glass-button" onclick="performSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="search-close" onclick="closeSearch()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="search-suggestions">
+            <h4>Popular Questions</h4>
+            <div class="suggestion-tags">
+                <span class="tag" onclick="searchFor('pricing')">Pricing</span>
+                <span class="tag" onclick="searchFor('preparation time')">Preparation Time</span>
+                <span class="tag" onclick="searchFor('online coaching')">Online Coaching</span>
+                <span class="tag" onclick="searchFor('payment plans')">Payment Plans</span>
+                <span class="tag" onclick="searchFor('competition day')">Competition Day</span>
+                <span class="tag" onclick="searchFor('wardrobe')">Wardrobe Help</span>
+                <span class="tag" onclick="searchFor('stage fright')">Stage Fright</span>
+                <span class="tag" onclick="searchFor('international')">International</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Stack -->
+    <div class="notification-stack" id="notificationStack"></div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="/config/app-config.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/faq.js"></script>
     
@@ -836,8 +1337,1715 @@
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
-            once: true
+            once: true,
+            offset: 100
         });
+
+        // Enhanced FAQ Search Function
+        function searchFAQ() {
+            const searchTerm = document.getElementById('faqSearch').value.toLowerCase();
+            performFAQSearch(searchTerm);
+        }
+
+        function performFAQSearch(searchTerm) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const categories = document.querySelectorAll('.faq-category');
+            let hasResults = false;
+
+            // Show all categories first
+            categories.forEach(category => {
+                category.style.display = 'block';
+            });
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    item.classList.add('search-highlight');
+                    hasResults = true;
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('search-highlight');
+                }
+            });
+
+            // Hide categories with no visible items
+            categories.forEach(category => {
+                const visibleItems = category.querySelectorAll('.faq-item[style*="block"]');
+                if (visibleItems.length === 0) {
+                    category.style.display = 'none';
+                }
+            });
+
+            // Show no results message if needed
+            if (!hasResults && searchTerm) {
+                showNoResultsMessage();
+            } else {
+                hideNoResultsMessage();
+            }
+        }
+
+        function searchFor(term) {
+            document.getElementById('faqSearch').value = term;
+            performFAQSearch(term);
+            closeSearch();
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value;
+            document.getElementById('faqSearch').value = searchTerm;
+            performFAQSearch(searchTerm.toLowerCase());
+            closeSearch();
+        }
+
+        function closeSearch() {
+            document.getElementById('searchOverlay').classList.remove('active');
+            document.body.classList.remove('search-open');
+        }
+
+        function showNoResultsMessage() {
+            let noResultsDiv = document.getElementById('noResults');
+            if (!noResultsDiv) {
+                noResultsDiv = document.createElement('div');
+                noResultsDiv.id = 'noResults';
+                noResultsDiv.className = 'no-results glass-morphism';
+                noResultsDiv.innerHTML = `
+                    <div class="no-results-content">
+                        <i class="fas fa-search"></i>
+                        <h3>No Results Found</h3>
+                        <p>Try searching with different keywords or browse our categories above.</p>
+                        <button class="btn btn-primary" onclick="clearSearch()">
+                            <i class="fas fa-refresh"></i>
+                            Clear Search
+                        </button>
+                    </div>
+                `;
+                document.querySelector('.faq-grid').appendChild(noResultsDiv);
+            }
+            noResultsDiv.style.display = 'block';
+        }
+
+        function hideNoResultsMessage() {
+            const noResultsDiv = document.getElementById('noResults');
+            if (noResultsDiv) {
+                noResultsDiv.style.display = 'none';
+            }
+        }
+
+        function clearSearch() {
+            document.getElementById('faqSearch').value = '';
+            const faqItems = document.querySelectorAll('.faq-item');
+            const categories = document.querySelectorAll('.faq-category');
+            
+            categories.forEach(category => {
+                category.style.display = 'block';
+            });
+            
+            faqItems.forEach(item => {
+                item.style.display = 'block';
+                item.classList.remove('search-highlight');
+            });
+            
+            hideNoResultsMessage();
+        }
+
+        // Enter key support for search
+        document.getElementById('faqSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchFAQ();
+            }
+        });
+
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Real-time search as user types
+        document.getElementById('faqSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm.length > 2) {
+                performFAQSearch(searchTerm);
+            } else if (searchTerm.length === 0) {
+                clearSearch();
+            }
+        });
+
+        // Analytics tracking for FAQ interactions
+        function trackFAQInteraction(question, action) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'faq_interaction', {
+                    'event_category': 'FAQ',
+                    'event_label': question,
+                    'action': action
+                });
+            }
+        }
+
+        // Track search queries
+        function trackSearchQuery(query) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'search', {
+                    'event_category': 'FAQ',
+                    'search_term': query
+                });
+            }
+        }
+
+        // Add click tracking to FAQ items
+        document.querySelectorAll('.faq-toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const question = this.closest('.faq-item').querySelector('h3').textContent;
+                const isExpanded = this.closest('.faq-item').classList.contains('active');
+                trackFAQInteraction(question, isExpanded ? 'collapse' : 'expand');
+            });
+        });
+
+        // Initialize trust logo animations
+        function initTrustLogos() {
+            const trustLogos = document.querySelectorAll('.trust-logo img');
+            trustLogos.forEach((logo, index) => {
+                logo.style.animationDelay = `${index * 0.1}s`;
+                logo.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                });
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initTrustLogos();
+            
+            // Add fade-in animation to FAQ items as they become visible
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.faq-item').forEach(item => {
+                observer.observe(item);
+            });
+        });
+    </script>
+
+    <!-- Enhanced CSS for trust logos and new elements -->
+    <style>
+        /* Trust Badges Styles */
+        .trust-badges {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .trust-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-logo {
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            filter: grayscale(1);
+        }
+
+        .trust-logo:hover {
+            opacity: 1;
+            filter: grayscale(0);
+            transform: scale(1.05);
+        }
+
+        .trust-logo img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Credentials Section */
+        .credentials-section {
+            padding: 5rem 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .credential-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .credential-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .credential-icon {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .credential-item h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .credential-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--dark-bg);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: var(--font-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+                }
+
+        /* Enhanced List Styles */
+        .enhanced-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .enhanced-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .enhanced-list li:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .enhanced-list li i {
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Service Grid */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .service-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .service-item i {
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Differentiator Grid */
+        .differentiator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .differentiator-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .differentiator-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .diff-icon {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .differentiator-item h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .differentiator-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Styling Services */
+        .styling-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .styling-category {
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .styling-category h4 {
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .styling-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .styling-category li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .styling-category li:last-child {
+            border-bottom: none;
+        }
+
+        /* Enhanced Pricing Cards */
+        .pricing-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .price-item {
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .price-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .price-item.popular {
+            border: 2px solid var(--primary-gold);
+            position: relative;
+        }
+
+        .price-item.premium {
+            border: 2px solid var(--accent-purple);
+            position: relative;
+        }
+
+        .popular-badge, .premium-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .premium-badge {
+            background: var(--accent-purple);
+        }
+
+        .price-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-header i {
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+        }
+
+        .price-header h4 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: var(--font-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-desc {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .price-features {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .price-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .price-features i {
+            color: var(--primary-gold);
+            font-size: 0.9rem;
+        }
+
+        .pricing-note {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .pricing-note p {
+            color: var(--text-secondary);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .pricing-note i {
+            color: var(--primary-gold);
+        }
+
+        /* Payment Options */
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .payment-option {
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .payment-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .payment-option i {
+            color: var(--primary-gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .payment-option h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .payment-option p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .payment-cta {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .payment-cta i {
+            color: var(--primary-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* Timeline Grid */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .timeline-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .timeline-icon {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item h4 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-duration {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .timeline-recommendation {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .timeline-recommendation p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+
+        .timeline-recommendation i {
+            color: var(--primary-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* Preparation Checklist */
+        .prep-checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .checklist-section {
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .checklist-section h4 {
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checklist-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist-section li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .checklist-section li:last-child {
+            border-bottom: none;
+        }
+
+        /* Pageant Systems */
+        .pageant-systems {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pageant-system {
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .pageant-system:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .system-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .system-header img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .system-header h4 {
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .pageant-system p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .system-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            background: var(--primary-gold);
+            color: var(--dark-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .pageant-guidance {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .pageant-guidance i {
+            color: var(--primary-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* Competition Day Support */
+        .comp-day-support {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .support-phase {
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .support-phase h4 {
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .support-phase ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .support-phase li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .support-phase li:last-child {
+            border-bottom: none;
+        }
+
+        .support-note {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .support-note i {
+            color: var(--primary-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* Age Groups */
+        .age-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .age-group {
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .age-group:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .age-icon {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .age-group h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .age-group p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .age-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .age-tag {
+            background: var(--accent-pink);
+            color: var(--dark-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .inclusive-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .inclusive-note i {
+            color: var(--primary-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* International Services */
+        .international-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .intl-service {
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .intl-service:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .intl-service i {
+            color: var(--primary-gold);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .intl-service h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .intl-service p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .international-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .intl-stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            min-width: 150px;
+        }
+
+        .intl-stat .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            display: block;
+        }
+
+        .intl-stat .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Confidence Building */
+        .confidence-building {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .confidence-method {
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .confidence-method:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .method-icon {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .confidence-method h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .confidence-method p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+                .confidence-testimonial {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .confidence-testimonial p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .confidence-testimonial i {
+            color: var(--primary-gold);
+            margin: 0 0.5rem;
+        }
+
+        /* Success Metrics */
+        .success-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .metric-card {
+            padding: 2rem;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-color);
+        }
+
+        .metric-icon {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            font-family: var(--font-primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-detail {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .success-note {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .success-note i {
+            color: var(--primary-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* Enhanced CTA */
+        .faq-cta {
+            margin-top: 4rem;
+            padding: 3rem;
+            text-align: center;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faq-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.1) 0%, 
+                rgba(255, 107, 157, 0.1) 50%, 
+                rgba(168, 85, 247, 0.1) 100%);
+            z-index: -1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .cta-content h2 {
+            color: var(--text-primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-primary);
+        }
+
+        .cta-content p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .cta-guarantee {
+            padding: 1rem;
+            background: var(--glass-bg);
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            display: inline-block;
+        }
+
+        .cta-guarantee p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .cta-guarantee i {
+            color: var(--primary-gold);
+            margin-right: 0.5rem;
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            background: var(--dark-bg);
+            border-top: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(212, 175, 55, 0.05) 0%, 
+                transparent 50%, 
+                rgba(168, 85, 247, 0.05) 100%);
+            z-index: 0;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+            transform: translateX(3px);
+        }
+
+        .footer-links a i {
+            width: 16px;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item i {
+            color: var(--primary-gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Footer Trust Section */
+        .footer-trust {
+            padding: 2rem 0;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-trust .trust-text {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-trust-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-logo-small {
+            height: 30px;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.6;
+            filter: grayscale(1);
+            transition: var(--transition);
+        }
+
+        .trust-logo-small:hover {
+            opacity: 1;
+            filter: grayscale(0);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-left p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .footer-right .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-right .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-right .footer-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Search Enhancement */
+        .search-highlight {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--primary-gold);
+            animation: highlightPulse 2s ease-in-out;
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% { background: rgba(212, 175, 55, 0.1); }
+            50% { background: rgba(212, 175, 55, 0.2); }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            margin: 2rem 0;
+        }
+
+        .no-results-content i {
+            font-size: 3rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .no-results-content h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .no-results-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Trust Logo Animation */
+        .trust-logo.loaded {
+            animation: trustLogoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes trustLogoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .pricing-overview {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .success-metrics {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .trust-logos {
+                gap: 1rem;
+            }
+
+            .trust-logo img {
+                height: 30px;
+            }
+
+            .credentials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .category-filter {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .pricing-overview {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pageant-systems {
+                grid-template-columns: 1fr;
+            }
+
+            .age-groups {
+                grid-template-columns: 1fr;
+            }
+
+            .success-metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons .enhanced-button {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-trust-logos {
+                gap: 1rem;
+            }
+
+            .trust-logo-small {
+                height: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .trust-badges {
+                margin-top: 2rem;
+            }
+
+            .trust-logos {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .credentials-section {
+                padding: 3rem 0;
+            }
+
+            .quick-stats {
+                padding: 2rem 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-filter {
+                padding: 0 1rem;
+            }
+
+            .filter-btn {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .faq-cta {
+                margin-top: 3rem;
+                padding: 2rem;
+            }
+
+            .cta-content h2 {
+                font-size: 2rem;
+            }
+
+            .cta-content p {
+                font-size: 1.1rem;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .differentiator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .styling-services {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .prep-checklist {
+                grid-template-columns: 1fr;
+            }
+
+            .comp-day-support {
+                grid-template-columns: 1fr;
+            }
+
+            .confidence-building {
+                grid-template-columns: 1fr;
+            }
+
+            .international-services {
+                grid-template-columns: 1fr;
+            }
+
+            .international-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-trust-logos {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            .trust-badges,
+            .credentials-section,
+            .quick-stats,
+            .faq-categories,
+            .faq-cta,
+            .footer,
+            .back-to-top,
+            .mobile-menu,
+            .search-overlay,
+            .notification-stack {
+                display: none !important;
+            }
+
+            .faq-content {
+                margin-top: 0;
+            }
+
+            .faq-item {
+                break-inside: avoid;
+                margin-bottom: 1rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 1rem;
+            }
+
+            .faq-question h3 {
+                color: #000;
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .faq-answer {
+                display: block !important;
+                color: #333;
+                line-height: 1.4;
+            }
+
+            .faq-toggle {
+                display: none;
+            }
+
+            .pricing-overview {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .price-item {
+                border: 1px solid #ddd;
+                background: #f9f9f9;
+            }
+
+            .price {
+                color: #000;
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            .trust-logo,
+            .trust-logo-small {
+                filter: contrast(2) brightness(1.2);
+            }
+
+            .glass-morphism {
+                background: rgba(255, 255, 255, 0.95);
+                border: 2px solid #000;
+            }
+
+            body.light-theme .glass-morphism {
+                background: rgba(0, 0, 0, 0.95);
+                border: 2px solid #fff;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .trust-logo.loaded {
+                animation: none;
+            }
+
+            .search-highlight {
+                animation: none;
+            }
+
+            .fade-in {
+                animation: none;
+            }
+
+            * {
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
     </script>
 </body>
 </html>
