@@ -115,76 +115,197 @@
     </div>
 
     <!-- Enhanced Header with Glass Morphism -->
-    <header class="main-header glass-morphism">
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo magnetic-hover">
-                    <div class="logo-crown">
-                        <i class="fas fa-crown"></i>
-                        <div class="crown-sparkles">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                    <span class="logo-text">PageantEmpress</span>
-                </div>
-                
-                <ul class="nav-links desktop-nav">
-                    <li><a href="#home" class="nav-link glow-hover active" data-text="Home">Home</a></li>
-                    <li><a href="#featured" class="nav-link glow-hover" data-text="Featured">Featured</a></li>
-                    <li><a href="#pageants" class="nav-link glow-hover" data-text="Pageants">Pageants</a></li>
-                    <li><a href="#fashion" class="nav-link glow-hover" data-text="Fashion">Fashion</a></li>
-                    <li><a href="#videos" class="nav-link glow-hover" data-text="Videos">Videos</a></li>
-                    <li><a href="#about" class="nav-link glow-hover" data-text="About">About</a></li>
-                </ul>
-                
-                <div class="nav-actions">
-                    <button class="search-toggle glass-button" aria-label="Search">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <button class="theme-toggle glass-button" aria-label="Theme">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <button class="mobile-toggle glass-button" aria-label="Menu">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        
-        <!-- Enhanced Mobile Menu -->
-        <div class="mobile-menu glass-morphism">
-            <div class="mobile-menu-header">
-                <div class="logo">
+  <header class="main-header glass-morphism" id="mainHeader">
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Enhanced Logo -->
+            <div class="logo magnetic-hover" id="mainLogo">
+                <div class="logo-crown">
                     <i class="fas fa-crown"></i>
-                    <span>PageantEmpress</span>
+                    <div class="crown-sparkles">
+                        <span class="sparkle sparkle-1"></span>
+                        <span class="sparkle sparkle-2"></span>
+                        <span class="sparkle sparkle-3"></span>
+                        <span class="sparkle sparkle-4"></span>
+                    </div>
                 </div>
-                <button class="mobile-close">
-                    <i class="fas fa-times"></i>
+                <span class="logo-text gradient-text">PageantEmpress</span>
+                <div class="logo-tagline">Crown Your Dreams</div>
+            </div>
+            
+            <!-- Enhanced Navigation -->
+            <ul class="nav-links desktop-nav">
+                <li><a href="index.html" class="nav-link glow-hover active" data-text="Home">
+                    <i class="fas fa-home nav-icon"></i>
+                    <span>Home</span>
+                </a></li>
+                <li><a href="featured.html" class="nav-link glow-hover" data-text="Featured">
+                    <i class="fas fa-star nav-icon"></i>
+                    <span>Featured</span>
+                </a></li>
+                <li><a href="pageants.html" class="nav-link glow-hover" data-text="Pageants">
+                    <i class="fas fa-trophy nav-icon"></i>
+                    <span>Pageants</span>
+                </a></li>
+                <li><a href="fashion.html" class="nav-link glow-hover" data-text="Fashion">
+                    <i class="fas fa-gem nav-icon"></i>
+                    <span>Fashion</span>
+                </a></li>
+                <li><a href="videos.html" class="nav-link glow-hover" data-text="Videos">
+                    <i class="fas fa-play-circle nav-icon"></i>
+                    <span>Videos</span>
+                </a></li>
+                <li><a href="about.html" class="nav-link glow-hover" data-text="About">
+                    <i class="fas fa-heart nav-icon"></i>
+                    <span>About</span>
+                </a></li>
+                <li><a href="faq.html" class="nav-link glow-hover" data-text="FAQ">
+                    <i class="fas fa-question-circle nav-icon"></i>
+                    <span>FAQ</span>
+                </a></li>
+            </ul>
+            
+            <!-- Enhanced Action Buttons -->
+            <div class="nav-actions">
+                <button class="search-toggle glass-button pulse-hover" aria-label="Search" id="searchToggle">
+                    <i class="fas fa-search"></i>
+                    <span class="button-tooltip">Search</span>
+                </button>
+                <button class="theme-toggle glass-button pulse-hover" aria-label="Theme Toggle" id="themeToggle">
+                    <i class="fas fa-moon theme-icon"></i>
+                    <span class="button-tooltip">Dark Mode</span>
+                </button>
+                <button class="contact-btn glass-button pulse-hover" aria-label="Contact" id="contactBtn">
+                    <i class="fas fa-envelope"></i>
+                    <span class="button-tooltip">Contact</span>
+                </button>
+                <button class="mobile-toggle glass-button pulse-hover" aria-label="Menu" id="mobileToggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
                 </button>
             </div>
-            <ul class="mobile-nav-links">
-                <li><a href="#home" class="mobile-nav-link"><span>01</span> Home</a></li>
-                <li><a href="#featured" class="mobile-nav-link"><span>02</span> Featured</a></li>
-                <li><a href="#pageants" class="mobile-nav-link"><span>03</span> Pageants</a></li>
-                <li><a href="#fashion" class="mobile-nav-link"><span>04</span> Fashion</a></li>
-                <li><a href="#videos" class="mobile-nav-link"><span>05</span> Videos</a></li>
-                <li><a href="#about" class="mobile-nav-link"><span>06</span> About</a></li>
-            </ul>
-            <div class="mobile-social">
-                <a href="https://youtube.com/@pageantempress" target="_blank" class="social-icon">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="https://instagram.com/pageantempress" target="_blank" class="social-icon">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="#" target="_blank" class="social-icon">
-                    <i class="fab fa-twitter"></i>
-                </a>
+        </div>
+    </nav>
+    
+    <!-- Enhanced Search Bar -->
+    <div class="search-overlay glass-morphism" id="searchOverlay">
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" class="search-input" placeholder="Search pageants, fashion, videos..." id="searchInput">
+                <button class="search-btn glass-button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <button class="search-close glass-button" id="searchClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="search-suggestions">
+            <h4>Popular Searches</h4>
+            <div class="suggestion-tags">
+                <span class="tag">Miss Universe</span>
+                <span class="tag">Evening Gowns</span>
+                <span class="tag">Pageant Tips</span>
+                <span class="tag">Crown Collection</span>
+                <span class="tag">Beauty Tutorials</span>
             </div>
         </div>
-    </header>
+    </div>
+    
+    <!-- Enhanced Mobile Menu -->
+    <div class="mobile-menu glass-morphism" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                <span class="gradient-text">PageantEmpress</span>
+            </div>
+            <button class="mobile-close glass-button" id="mobileClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu-content">
+            <ul class="mobile-nav-links">
+                <li><a href="index.html" class="mobile-nav-link">
+                    <span class="link-number">01</span>
+                    <i class="fas fa-home"></i>
+                    <span class="link-text">Home</span>
+                    <i class="fas fa-chevron-right link-arrow"></i>
+                </a></li>
+                <li><a href="featured.html" class="mobile-nav-link">
+                    <span class="link-number">02</span>
+                    <i class="fas fa-star"></i>
+                    <span class="link-text">Featured</span>
+                    <i class="fas fa-chevron-right link-arrow"></i>
+                </a></li>
+                <li><a href="pageants.html" class="mobile-nav-link">
+                    <span class="link-number">03</span>
+                    <i class="fas fa-trophy"></i>
+                    <span class="link-text">Pageants</span>
+                    <i class="fas fa-chevron-right link-arrow"></i>
+                </a></li>
+                <li><a href="fashion.html" class="mobile-nav-link">
+                    <span class="link-number">04</span>
+                    <i class="fas fa-gem"></i>
+                    <span class="link-text">Fashion</span>
+                    <i class="fas fa-chevron-right link-arrow"></i>
+                </a></li>
+                <li><a href="videos.html" class="mobile-nav-link">
+                    <span class="link-number">05</span>
+                    <i class="fas fa-play-circle"></i>
+                    <span class="link-text">Videos</span>
+                    <i class="fas fa-chevron-right link-arrow"></i>
+                </a></li>
+                <li><a href="about.html" class="mobile-nav-link">
+                    <span class="link-number">06</span>
+                    <i class="fas fa-heart"></i>
+                    <span class="link-text">About</span>
+                    <i class="fas fa-chevron-right link-arrow"></i>
+                </a></li>
+                <li><a href="faq.html" class="mobile-nav-link">
+                    <span class="link-number">07</span>
+                    <i class="fas fa-question-circle"></i>
+                    <span class="link-text">FAQ</span>
+                    <i class="fas fa-chevron-right link-arrow"></i>
+                </a></li>
+            </ul>
+            
+            <div class="mobile-contact">
+                <h4>Get in Touch</h4>
+                <a href="mailto:info@pageantempress.com" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@pageantempress.com</span>
+                </a>
+                <a href="tel:+1234567890" class="contact-link">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (234) 567-8900</span>
+                </a>
+            </div>
+            
+            <div class="mobile-social">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://youtube.com/@pageantempress" target="_blank" class="social-icon" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://instagram.com/pageantempress" target="_blank" class="social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://tiktok.com/@pageantempress" target="_blank" class="social-icon" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://facebook.com/pageantempress" target="_blank" class="social-icon" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+</header>
 
     <!-- Enhanced Search Overlay -->
     <div class="search-overlay">
@@ -1064,7 +1185,7 @@
                         </h3>
                         <ul>
                             <li><a href="#about" class="footer-link">About Us</a></li>
-                            <li><a href="#faq" class="footer-link">Pageant FAQ</a></li>
+                            <li><a href="faq.html" class="footer-link">Pageant FAQ</a></li>
                             <li><a href="#contact" class="footer-link">Contact</a></li>
                             <li><a href="#privacy" class="footer-link">Privacy Policy</a></li>
                             <li><a href="#terms" class="footer-link">Terms of Service</a></li>
