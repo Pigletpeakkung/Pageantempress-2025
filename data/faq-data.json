@@ -1,0 +1,144 @@
+{
+  "categories": [
+    {
+      "id": "services",
+      "name": "Services & Training",
+      "questions": [
+        {
+          "id": "services-offered",
+          "question": "What pageant training services do you offer?",
+          "answer": "We offer comprehensive pageant training including:<ul><li><strong>Interview Preparation:</strong> Mock interviews, Q&A practice, confidence building</li><li><strong>Runway Coaching:</strong> Walking techniques, posing, stage presence</li><li><strong>Talent Development:</strong> Performance coaching and presentation skills</li><li><strong>Evening Gown Training:</strong> Elegant movement and presentation</li><li><strong>Swimsuit Confidence:</strong> Body language and poise</li><li><strong>Public Speaking:</strong> Communication skills and articulation</li><li><strong>Personal Branding:</strong> Social media strategy and image development</li><li><strong>Competition Strategy:</strong> Pageant selection and preparation planning</li></ul>"
+        },
+        {
+          "id": "online-coaching",
+          "question": "Do you offer online coaching sessions?",
+          "answer": "Yes! We offer both in-person and virtual coaching sessions via Zoom. Our online sessions include:<ul><li>One-on-one virtual coaching</li><li>Group training sessions</li><li>Digital resource access</li><li>Recorded sessions for review</li><li>24/7 email support</li></ul><p>Virtual sessions are just as effective as in-person training and allow us to work with clients worldwide.</p>"
+        },
+        {
+          "id": "coaching-difference",
+          "question": "What makes your coaching different from others?",
+          "answer": "Our coaching stands out because of:<ul><li><strong>Personalized Approach:</strong> Every program is customized to your unique goals</li><li><strong>Proven Track Record:</strong> Our clients have won numerous local, state, and national titles</li><li><strong>Holistic Development:</strong> We focus on inner confidence, not just external presentation</li><li><strong>Industry Connections:</strong> Access to pageant directors, sponsors, and networking opportunities</li><li><strong>Ongoing Support:</strong> We're with you before, during, and after your competition</li><li><strong>Modern Techniques:</strong> Up-to-date training methods and current pageant trends</li></ul>"
+        },
+        {
+          "id": "wardrobe-styling",
+          "question": "Do you help with wardrobe and styling?",
+          "answer": "Absolutely! Our styling services include:<ul><li>Evening gown selection and fitting guidance</li><li>Swimsuit styling and fit consultation</li><li>Interview outfit coordination</li><li>Talent costume recommendations</li><li>Hair and makeup artist referrals</li><li>Accessory selection and coordination</li><li>Budget-friendly shopping strategies</li></ul><p>We work with trusted designers and boutiques to ensure you look and feel your best.</p>"
+        }
+      ]
+    },
+    {
+      "id": "pricing",
+      "name": "Pricing & Packages",
+      "questions": [
+        {
+          "id": "coaching-cost",
+          "question": "How much does pageant coaching cost?",
+          "answer": "Our coaching packages are designed to fit various budgets and needs:<div class='pricing-overview'><div class='price-item'><h4>Consultation Session</h4><p class='price'>$299</p><p>2-hour assessment and planning session</p></div><div class='price-item'><h4>Basic Package</h4><p class='price'>$899</p><p>4 sessions covering fundamentals</p></div><div class='price-item'><h4>Competition Ready</h4><p class='price'>$1,799</p><p>8 sessions with comprehensive training</p></div><div class='price-item'><h4>Complete Champion</h4><p class='price'>$2,999</p><p>12+ sessions with full support</p></div></div><p>All packages include email support and resource materials. Payment plans available.</p>"
+        },
+        {
+          "id": "payment-plans",
+          "question": "Do you offer payment plans?",
+          "answer": "Yes! We understand that pageant preparation is an investment. We offer:<ul><li><strong>Monthly Payment Plans:</strong> Split your package into 2-6 monthly payments</li><li><strong>Session-by-Session:</strong> Pay as you go for individual sessions</li><li><strong>Early Bird Discounts:</strong> 10% off when you book 4+ months in advance</li><li><strong>Package Upgrades:</strong> Start small and add sessions as needed</li><li><strong>Sibling Discounts:</strong> 15% off for multiple family members</li></ul><p>Contact us to discuss a payment plan that works for your budget.</p>"
+        },
+        {
+          "id": "package-inclusions",
+          "question": "What's included in each package?",
+          "answer": "Each package includes different levels of support:<div class='package-breakdown'><div class='package-detail'><h4>Consultation ($299)</h4><ul><li>2-hour assessment session</li><li>Personalized action plan</li><li>Competition recommendations</li><li>Resource guide</li></ul></div><div class='package-detail'><h4>Basic Package ($899)</h4><ul><li>4 one-hour coaching sessions</li><li>Interview preparation</li><li>Basic runway training</li><li>Email support for 30 days</li><li>Digital training materials</li></ul></div><div class='package-detail'><h4>Competition Ready ($1,799)</h4><ul><li>8 comprehensive sessions</li><li>Full interview training</li><li>Advanced runway coaching</li><li>Talent development</li><li>Wardrobe consultation</li><li>Mock pageant experience</li><li>60 days email support</li></ul></div><div class='package-detail'><h4>Complete Champion ($2,999)</h4><ul><li>12+ personalized sessions</li><li>All competition segments</li><li>Personal branding strategy</li><li>Photo shoot coordination</li><li>Competition day support</li><li>Unlimited email support</li><li>Post-competition debrief</li><li>Alumni network access</li></ul></div></div>"
+        },
+        {
+          "id": "hidden-fees",
+          "question": "Are there any hidden fees or additional costs?",
+          "answer": "No hidden fees! Our package prices are all-inclusive for coaching services. Additional costs you should budget for separately include:<ul><li>Competition entry fees ($100-$1,500 depending on pageant level)</li><li>Evening gown ($500-$3,000)</li><li>Swimsuit ($100-$500)</li><li>Interview outfit ($200-$800)</li><li>Hair and makeup for competition ($200-$500)</li><li>Professional headshots ($300-$800)</li><li>Travel and accommodation for competitions</li></ul><p>We'll help you budget effectively and find cost-saving options.</p>"
+        }
+      ]
+    },
+    {
+      "id": "preparation",
+      "name": "Preparation & Timeline",
+      "questions": [
+        {
+          "id": "preparation-time",
+          "question": "How long does pageant preparation take?",
+          "answer": "Preparation time varies based on your experience level and goals:<ul><li><strong>Beginners:</strong> 4-6 months for comprehensive preparation</li><li><strong>Some Experience:</strong> 2-4 months for skill refinement</li><li><strong>Experienced Competitors:</strong> 1-2 months for final polish</li><li><strong>Rush Preparation:</strong> 2-4 weeks intensive coaching (limited availability)</li></ul><p>We recommend starting at least 4 months before your competition for optimal results. This allows time for skill development, wardrobe acquisition, and confidence building.</p>"
+        },
+        {
+          "id": "first-session-prep",
+          "question": "What should I do before my first coaching session?",
+          "answer": "To make the most of your first session:<ul><li>Research pageants you're interested in competing in</li><li>Prepare questions about your pageant goals</li><li>Bring any pageant experience or performance background information</li><li>Wear comfortable clothing you can move in</li><li>Bring a notebook for taking notes</li><li>Come with an open mind and willingness to learn</li><li>Think about your timeline and availability for training</li></ul><p>Don't worry about being perfect – we're here to help you grow!</p>"
+        },
+        {
+          "id": "prior-experience",
+          "question": "Do I need any prior experience to start training?",
+          "answer": "Absolutely not! We welcome contestants at all levels:<ul><li><strong>Complete Beginners:</strong> We'll start with the basics and build your foundation</li><li><strong>Some Performance Background:</strong> We'll adapt training to your existing skills</li><li><strong>Former Contestants:</strong> We'll help you refine and improve your technique</li><li><strong>Experienced Competitors:</strong> We'll focus on advanced strategies and polish</li></ul><p>Our coaching is personalized to meet you where you are and take you where you want to go. Every queen started somewhere!</p>"
+        },
+        {
+          "id": "session-frequency",
+          "question": "How often should I have coaching sessions?",
+          "answer": "Session frequency depends on your timeline and learning style:<ul><li><strong>Intensive Track:</strong> 2-3 sessions per week for quick preparation</li><li><strong>Standard Track:</strong> 1 session per week for steady progress</li><li><strong>Relaxed Track:</strong> 1-2 sessions per month for gradual development</li><li><strong>Competition Prep:</strong> Daily sessions in the final week before competition</li></ul><p>We'll work with your schedule to create a training plan that fits your life and maximizes results.</p>"
+        }
+      ]
+    },
+    {
+      "id": "competition",
+      "name": "Competition & Events",
+      "questions": [
+        {
+          "id": "pageant-selection",
+          "question": "Which pageants should I compete in?",
+          "answer": "Pageant selection depends on your goals, experience level, and personal values:<div class='pageant-types'><div class='pageant-type'><h4>Local/Regional Pageants</h4><p>Great for beginners, lower cost, community-focused</p></div><div class='pageant-type'><h4>State Pageants</h4><p>Next level up, more competitive, pathway to nationals</p></div><div class='pageant-type'><h4>National Pageants</h4><p>Highest level, significant prizes, major time commitment</p></div><div class='pageant-type'><h4>Specialty Pageants</h4><p>Focus on specific causes, talents, or demographics</p></div></div><p>We'll help you research and select pageants that align with your goals, budget, and timeline.</p>"
+        },
+        {
+          "id": "competition-day-support",
+          "question": "Do you provide support on competition day?",
+          "answer": "Yes! Competition day support is available and includes:<ul><li>Pre-competition coaching and pep talk</li><li>Backstage assistance and moral support</li><li>Last-minute interview preparation</li><li>Help with nerves and confidence boosting</li><li>Photography coordination</li><li>Real-time feedback between segments</li><li>Post-competition celebration or debriefing</li></ul><p>Competition day support is included in our Complete Champion package or available as an add-on for other packages.</p>"
+        },
+        {
+          "id": "not-winning",
+          "question": "What happens if I don't win?",
+                    "answer": "Not winning doesn't mean you've failed! Competition outcomes depend on many factors:<ul><li>We focus on personal growth and skill development</li><li>Every competition is a learning experience</li><li>We'll debrief to identify areas for improvement</li><li>Many successful queens compete multiple times before winning</li><li>The confidence and skills you gain last a lifetime</li><li>We'll help you decide on next steps and future competitions</li></ul><p>Remember: you're already a winner for having the courage to compete!</p>"
+        },
+        {
+          "id": "specific-pageant-systems",
+          "question": "Can you help me prepare for specific pageant systems?",
+          "answer": "Absolutely! We have experience with major pageant systems including:<ul><li><strong>Miss America Organization:</strong> Talent-focused, scholarship-based</li><li><strong>Miss USA/Miss Universe:</strong> Beauty and confidence-focused</li><li><strong>Miss World America:</strong> Beauty with a purpose, community service</li><li><strong>National American Miss:</strong> Natural beauty, no swimsuit</li><li><strong>International Junior Miss:</strong> Teen-focused development</li><li><strong>Local and state systems:</strong> Various formats and requirements</li></ul><p>We'll tailor your training to the specific requirements and judging criteria of your chosen pageant system.</p>"
+        }
+      ]
+    },
+    {
+      "id": "general",
+      "name": "General Information",
+      "questions": [
+        {
+          "id": "age-groups",
+          "question": "What age groups do you train?",
+          "answer": "We work with contestants across all age divisions:<ul><li><strong>Teen Division (13-17 years):</strong> Age-appropriate training with parent involvement</li><li><strong>Miss Division (18-28 years):</strong> College and career-focused preparation</li><li><strong>Ms./Mrs. Division (25+ years):</strong> Married women and mothers welcome</li><li><strong>Senior Division (40+ years):</strong> Celebrating experience and wisdom</li><li><strong>Plus Size Divisions:</strong> Body-positive coaching for all sizes</li><li><strong>Special Needs:</strong> Adaptive training for contestants with disabilities</li></ul><p>Our training is always age-appropriate and tailored to the specific division requirements and life stage of each contestant.</p>"
+        },
+        {
+          "id": "international-clients",
+          "question": "Do you work with international clients?",
+          "answer": "Yes! We work with clients worldwide through our virtual coaching platform:<ul><li>Online sessions via Zoom or similar platforms</li><li>Flexible scheduling for different time zones</li><li>Digital resource delivery</li><li>Cultural sensitivity training</li><li>International pageant system knowledge</li><li>Language support (English, Spanish, basic French)</li></ul><p>We've successfully coached contestants from over 20 countries for both local and international competitions.</p>"
+        },
+        {
+          "id": "stage-fright",
+          "question": "What if I'm camera shy or have stage fright?",
+          "answer": "Stage fright is completely normal! We specialize in building confidence:<ul><li><strong>Gradual Exposure:</strong> Start small and build up to larger audiences</li><li><strong>Breathing Techniques:</strong> Manage anxiety and nerves effectively</li><li><strong>Positive Visualization:</strong> Mental preparation and success imagery</li><li><strong>Practice Environments:</strong> Safe spaces to make mistakes and learn</li><li><strong>Camera Training:</strong> Get comfortable being filmed and photographed</li><li><strong>Mindset Coaching:</strong> Transform nervous energy into excitement</li></ul><p>Many of our most successful clients started out very shy. Confidence can be learned!</p>"
+        },
+        {
+          "id": "parent-attendance",
+          "question": "Can parents/guardians attend coaching sessions?",
+          "answer": "Our policy varies by age and situation:<ul><li><strong>Teen Contestants (under 18):</strong> Parent presence encouraged for support</li><li><strong>Adult Contestants:</strong> Generally private sessions, but family support welcome</li><li><strong>First Sessions:</strong> Parents welcome to observe and ask questions</li><li><strong>Intensive Training:</strong> Some sessions may be private to build independence</li><li><strong>Competition Day:</strong> Family support team coordination available</li></ul><p>We believe in involving supportive family members while also fostering independence and confidence.</p>"
+        },
+        {
+          "id": "references-success",
+          "question": "Do you provide references or success stories?",
+          "answer": "Absolutely! We're proud of our clients' achievements:<div class='success-stats'><div class='stat'><span class='number'>500+</span><span class='label'>Contestants Trained</span></div><div class='stat'><span class='number'>150+</span><span class='label'>Titles Won</span></div><div class='stat'><span class='number'>95%</span><span class='label'>Client Satisfaction</span></div><div class='stat'><span class='number'>25</span><span class='label'>States Represented</span></div></div><p>We can provide references from former clients and showcase success stories on our website and social media. Client privacy is respected - we only share stories with permission.</p>"
+        },
+        {
+          "id": "cancellation-policy",
+          "question": "What's your cancellation and refund policy?",
+          "answer": "We want you to be completely satisfied with our services:<ul><li><strong>Session Cancellation:</strong> 24-hour notice required for rescheduling</li><li><strong>Package Refunds:</strong> Full refund if cancelled within 48 hours of purchase</li><li><strong>Partial Refunds:</strong> Prorated refunds for unused sessions in certain circumstances</li><li><strong>Emergency Situations:</strong> Flexible policies for medical or family emergencies</li><li><strong>Satisfaction Guarantee:</strong> If you're not satisfied after your first session, we'll work to make it right</li></ul><p>Your success and satisfaction are our priorities. We'll work with you to find solutions.</p>"
+        }
+      ]
+    }
+  ]
+}
