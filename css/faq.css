@@ -437,6 +437,408 @@ const additionalStyles = `
         }
     }
 `;
+/* Missing CSS styles for FAQ page */
+
+/* Pricing Overview Styles */
+.pricing-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.price-item {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.price-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-gold);
+    box-shadow: 0 10px 30px rgba(193, 53, 132, 0.2);
+}
+
+.price-item h4 {
+    color: var(--primary-gold);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.price-item .price {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 1rem 0;
+    font-family: var(--font-primary);
+}
+
+/* Package Breakdown Styles */
+.package-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.package-detail {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.package-detail h4 {
+    color: var(--primary-gold);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-primary);
+}
+
+.package-detail ul {
+    list-style: none;
+    padding: 0;
+}
+
+.package-detail ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+}
+
+.package-detail ul li:last-child {
+    border-bottom: none;
+}
+
+.package-detail ul li::before {
+    content: "✓";
+    color: var(--primary-gold);
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+/* Pageant Types Styles */
+/* Pageant Types Styles */
+.pageant-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.pageant-type {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.pageant-type:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-gold);
+}
+
+.pageant-type h4 {
+    color: var(--primary-gold);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.pageant-type p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Success Stats Styles */
+.success-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+}
+
+.stat .number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    font-family: var(--font-primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat .label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* FAQ CTA Styles */
+.faq-cta {
+    margin-top: 4rem;
+    padding: 4rem 2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.cta-content h2 {
+    color: var(--primary-gold);
+    font-family: var(--font-primary);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-content p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary-gold);
+    color: var(--dark-bg);
+}
+
+.btn-primary:hover {
+    background: var(--accent-gold);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+}
+
+.btn-secondary:hover {
+    background: var(--text-primary);
+    color: var(--dark-bg);
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, var(--primary-gold), var(--accent-gold));
+    color: var(--dark-bg);
+}
+
+.btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(193, 53, 132, 0.3);
+}
+
+/* Footer Styles */
+.footer {
+    background: var(--dark-bg);
+    color: var(--text-secondary);
+    padding: 3rem 0 1rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    color: var(--primary-gold);
+    margin-bottom: 1rem;
+    font-family: var(--font-primary);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-gold);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.footer-logo img {
+    width: 40px;
+    height: 40px;
+}
+
+.footer-logo h3 {
+    color: var(--primary-gold);
+    font-family: var(--font-primary);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--primary-gold);
+    color: var(--dark-bg);
+    transform: translateY(-2px);
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-info i {
+    color: var(--primary-gold);
+    width: 20px;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--glass-border);
+    padding-top: 2rem;
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-gold);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pricing-overview {
+        grid-template-columns: 1fr;
+    }
+    
+    .package-breakdown {
+        grid-template-columns: 1fr;
+    }
+    
+    .pageant-types {
+        grid-template-columns: 1fr;
+    }
+    
+    .success-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .success-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat .number {
+        font-size: 2rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-content p {
+        font-size: 1rem;
+    }
+}
 
 // Inject additional styles
 const styleSheet = document.createElement('style');
