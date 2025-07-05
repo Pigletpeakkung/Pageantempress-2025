@@ -1,0 +1,35 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://pageantempress.com/sitemap.xml
+Sitemap: https://pageantempress.com/sitemap-images.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /includes/
+Disallow: /temp/
+Disallow: /*.log$
+Disallow: /error/
+
+# Allow specific files
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+Allow: /images/
+
+# Crawl delay
+Crawl-delay: 1
+
+# Specific bots
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
