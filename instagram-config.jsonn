@@ -1,0 +1,65 @@
+{
+    "instagram": {
+        "username": "pageantempress",
+        "userId": "YOUR_INSTAGRAM_USER_ID",
+        "accessToken": "YOUR_ACCESS_TOKEN",
+        "clientId": "YOUR_CLIENT_ID",
+        "clientSecret": "YOUR_CLIENT_SECRET",
+        "redirectUri": "https://pageantempress.com/instagram-callback",
+        "posts": [
+            {
+                "id": "1",
+                "permalink": "https://www.instagram.com/p/DLT_RR-zDLT/",
+                "embedCode": "DLT_RR-zDLT",
+                "type": "post",
+                "category": "pageant"
+            },
+            {
+                "id": "2",
+                "permalink": "https://www.instagram.com/p/DLsOJ9zBFXM/",
+                "embedCode": "DLsOJ9zBFXM",
+                "type": "post",
+                "category": "fashion"
+            },
+            {
+                "id": "3",
+                "permalink": "https://www.instagram.com/p/DLrK-t1BO7Y/",
+                "embedCode": "DLrK-t1BO7Y",
+                "type": "post",
+                "category": "event"
+            },
+            {
+                "id": "4",
+                "permalink": "https://www.instagram.com/p/DLpuGlNB2MZ/",
+                "embedCode": "DLpuGlNB2MZ",
+                "type": "post",
+                "category": "tips"
+            },
+            {
+                "id": "5",
+                "permalink": "https://www.instagram.com/p/DLnGXS3zGVy/",
+                "embedCode": "DLnGXS3zGVy",
+                "type": "post",
+                "category": "beauty"
+            },
+            {
+                "id": "6",
+                "permalink": "https://www.instagram.com/p/DLmBQ_gztpb/",
+                "embedCode": "DLmBQ_gztpb",
+                "type": "post",
+                "category": "pageant"
+            }
+        ],
+        "settings": {
+            "postsPerPage": 8,
+            "enableStories": true,
+            "enableAnalytics": true,
+            "cacheTime": 3600,
+            "layout": "grid",
+            "showCaptions": true,
+            "showStats": true,
+            "autoRefresh": true,
+            "refreshInterval": 300000
+        }
+    }
+}
