@@ -1,1 +1,812 @@
-/* ===== MAIN.JS - LUXURY WEBSITE FUNCTIONALITY ===== */'use strict';// ===== GLOBAL VARIABLES =====const DOM = {header: document.querySelector('.main-header'),navLinks: document.querySelectorAll('.nav-link'),themeToggle: document.querySelector('.theme-toggle'),searchToggle: document.querySelector('.search-toggle'),searchOverlay: document.querySelector('.search-overlay'),mobileToggle: document.querySelector('.mobile-toggle'),mobileMenu: document.querySelector('.mobile-menu'),mobileOverlay: document.querySelector('.mobile-overlay'),backToTop: document.querySelector('.back-to-top'),scrollProgress: document.querySelector('.scroll-progress'),sparkleContainer: document.querySelector('.sparkle-container'),geometricShapes: document.querySelector('.geometric-shapes'),loader: document.querySelector('.about-loader')};// Application stateconst AppState = {isInitialized: false,currentPage: 'home',activeModals: [],activeAnimations: [],scrollPosition: 0,windowWidth: window.innerWidth,windowHeight: window.innerHeight,userPreferences: {},touchSupported: 'ontouchstart' in window,reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches};// ===== INITIALIZATION =====document.addEventListener('DOMContentLoaded', () => {console.log('🚀 Initializing Luxury Website...');try {loadUserPreferences();initializeHeader();initializeTheme();initializeSearch();initializeMobileMenu();initializeScrollFeatures();initializeAnimations();initializeSparkles();initializeGeometricShapes();initializeParallax();initializeGallery();initializeBlog();initializeDashboard();initializeCounters();initializeCharts();initializeTooltips();initializeModals();initializeTabs();initializeNotifications();initializeTestimonials();initializeLazyLoading();initializeFormValidation();initializePerformanceOptimizations();initializeAdvancedGallery();initializeRealTimeFeatures();initializeKeyboardShortcuts();initializeAccessibility();initializeErrorHandling();AppState.isInitialized = true;console.log('✅ Website initialized successfully!');hideLoader();} catch (error) {console.error('❌ Initialization error:', error);showNotification('Failed to initialize website. Please refresh the page.', 'error');}});// ===== USER PREFERENCES =====function loadUserPreferences() {const saved = localStorage.getItem('userPreferences');if (saved) {try {AppState.userPreferences = JSON.parse(saved);applyUserPreferences();} catch (error) {console.warn('Invalid user preferences in localStorage');}}}function applyUserPreferences() {const prefs = AppState.userPreferences;// Apply themeif (prefs.theme === 'light') {document.body.classList.add('light-theme');}// Apply reduced motionif (prefs.reducedMotion) {document.body.classList.add('reduced-motion');}// Apply font sizeif (prefs.fontSize) {document.documentElement.style.fontSize = prefs.fontSize + 'px';}}function saveUserPreferences() {const prefs = {theme: document.body.classList.contains('light-theme') ? 'light' : 'dark',reducedMotion: document.body.classList.contains('reduced-motion'),fontSize: parseInt(getComputedStyle(document.documentElement).fontSize),lastVisit: new Date().toISOString()};localStorage.setItem('userPreferences', JSON.stringify(prefs));AppState.userPreferences = prefs;}// ===== LOADER =====function hideLoader() {setTimeout(() => {if (DOM.loader) {DOM.loader.classList.add('hidden');document.body.classList.remove('loading');// Trigger entrance animationstriggerEntranceAnimations();}}, 1500);}function triggerEntranceAnimations() {const elements = document.querySelectorAll('.entrance-animation');elements.forEach((element, index) => {setTimeout(() => {element.classList.add('animated');}, index * 100);});}// ===== HEADER FUNCTIONALITY =====function initializeHeader() {if (!DOM.header) return;let lastScroll = 0;let ticking = false;function updateHeader() {const currentScroll = window.scrollY;// Add/remove scrolled classif (currentScroll > 50) {DOM.header.classList.add('scrolled');} else {DOM.header.classList.remove('scrolled');}// Hide/show header on scrollif (currentScroll > lastScroll && currentScroll > 300) {DOM.header.classList.add('header-hidden');} else {DOM.header.classList.remove('header-hidden');}lastScroll = currentScroll;ticking = false;}function requestTick() {if (!ticking) {window.requestAnimationFrame(updateHeader);ticking = true;}}window.addEventListener('scroll', requestTick);updateActiveNavLink();}function updateActiveNavLink() {const sections = document.querySelectorAll('section[id]');if (sections.length === 0) return;const updateActiveLink = throttle(() => {const scrollY = window.scrollY + 100;sections.forEach(section => {const sectionHeight = section.ofsetHeight;const sectionTop = section.ofsetTop;const sectionId = section.getAttribute('id');if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {DOM.navLinks.forEach(link => {link.classList.remove('active');if (link.getAttribute('href') === `#${sectionId}`) {link.classList.add('active');}});}});}, 100);window.addEventListener('scroll', updateActiveLink);}// ===== THEME FUNCTIONALITY =====function initializeTheme() {if (!DOM.themeToggle) return;const savedTheme = localStorage.getItem('theme') || 'dark';document.body.classList.toggle('light-theme', savedTheme === 'light');DOM.themeToggle.addEventListener('click', () => {document.body.classList.toggle('light-theme');const currentTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';localStorage.setItem('theme', currentTheme);// Animate theme transitionif (!AppState.reducedMotion) {document.body.style.transition = 'all 0.3s ease';setTimeout(() => {document.body.style.transition = '';}, 300);}// Update theme iconupdateThemeIcon(currentTheme);// Save preferencessaveUserPreferences();});// Initialize theme iconupdateThemeIcon(savedTheme);}function updateThemeIcon(theme) {const icon = DOM.themeToggle?.querySelector('i');if (icon) {icon.className = theme === 'light' ? 'fas fa-moon' : 'fas fa-sun';}}// ===== SEARCH FUNCTIONALITY =====function initializeSearch() {if (!DOM.searchToggle || !DOM.searchOverlay) return;const searchInput = document.querySelector('.search-input');const searchResults = document.querySelector('.search-results');const searchSuggestions = document.querySelector('.search-suggestions');DOM.searchToggle.addEventListener('click', () => {openSearch();});DOM.searchOverlay.addEventListener('click', (e) => {if (e.target === DOM.searchOverlay || e.target.classList.contains('search-close')) {closeSearch();}});// Search suggestionsconst suggestionTags = document.querySelectorAll('.tag');suggestionTags.forEach(tag => {tag.addEventListener('click', () => {if (searchInput) {searchInput.value = tag.textContent;performSearch(tag.textContent);}});});// Search input handlingif (searchInput) {searchInput.addEventListener('input', debounce((e) => {const query = e.target.value.trim();if (query.length > 2) {showSearchSuggestions(query);} else {hideSearchSuggestions();}}, 300));searchInput.addEventListener('keypress', (e) => {if (e.key === 'Enter') {performSearch(e.target.value);}});}// Keyboard shortcutsdocument.addEventListener('keydown', (e) => {if ((e.ctrlKey || e.metaKey) && e.key === 'k') {e.preventDefault();openSearch();}if (e.key === 'Escape' && DOM.searchOverlay.classList.contains('active')) {closeSearch();}});}function openSearch() {DOM.searchOverlay?.classList.add('active');document.body.classList.add('menu-open');AppState.activeModals.push('search');setTimeout(() => {document.querySelector('.search-input')?.focus();}, 300);}function closeSearch() {DOM.searchOverlay?.classList.remove('active');document.body.classList.remove('menu-open');AppState.activeModals = AppState.activeModals.filter(modal => modal !== 'search');// Clear search resultsconst searchResults = document.querySelector('.search-results');if (searchResults) {searchResults= ''.innerHTML ;}}function showSearchSuggestions(query) {const suggestions = ['pageant coaching','beauty pageant training','miss universe preparation','runway training','interview skills','confidence building','personal branding','competition strategy'];const filtered = suggestions.filter(suggestion =>suggestion.toLowerCase().includes(query.toLowerCase()));const suggestionsContainer = document.querySelector('.search-suggestions');if (suggestionsContainer && filtered.length > 0) {suggestionsContainer.innerHTML = filtered.map(suggestion => `<div class="search-suggestion"data-query="${suggestion}">${suggestion}</div>`).join('');// Add click handlerssuggestionsContainer.querySelectorAll('.search-suggestion').forEach(item => {item.addEventListener('click', () => {performSearch(item.dataset.query);});});}}function hideSearchSuggestions() {const suggestionsContainer = document.querySelector('.search-suggestions');if (suggestionsContainer) {suggestionsContainer.innerHTML = '';}}function performSearch(query) {console.log('Searching for:', query);// Show loading stateshowNotification('Searching...', 'info', 1000);// Simulate searchsetTimeout(() => {const results = mockSearchResults(query);displaySearchResults(results);showNotification(`Found ${results.length} results for "${query}"`, 'success');}, 500);}function mockSearchResults(query) {const mockData = [{ title: 'Pageant Coaching Services', type: 'service', url: '/services' },{ title: 'Success Stories', type: 'page', url: '/success' },{ title: 'Training Programs', type: 'program', url: '/programs' },{ title: 'Beauty Tips Blog', type: 'blog', url: '/blog' },{ title: 'Contact Information', type: 'contact', url: '/contact' }];return mockData.filter(item =>item.title.toLowerCase().includes(query.toLowerCase()));}function displaySearchResults(results) {const resultsContainer = document.querySelector('.search-results');if (!resultsContainer) return;if (results.length === 0) {resultsContainer.innerHTML = '<div class="no-results">No results found</div>';return;}`resultsContainer.innerHTML = results.map(result => <div class="search-result-item"><div class="search-result-icon"><i class="fas fa-${getResultIcon(result.type)}"></i></div><div class="search-result-content"><h4>${result.title}</h4><p class="search-result-type">${result.type}</p></div></div>`).join('');// Add click handlersresultsContainer.querySelectorAll('.search-result-item').forEach((item, index) => {item.addEventListener('click', () => {window.location.href = results[index].url;});});}function getResultIcon(type) {const icons = {service: 'cog',page: 'file-alt',program: 'graduation-cap',blog: 'blog',contact: 'envelope'};return icons[type] || 'search';}// ===== MOBILE MENU =====function initializeMobileMenu() {if (!DOM.mobileToggle) return;DOM.mobileToggle.addEventListener('click', () => {toggleMobileMenu();});DOM.mobileOverlay?.addEventListener('click', closeMobileMenu);// Close menu on link clickdocument.querySelectorAll('.mobile-nav-link').forEach(link => {link.addEventListener('click', closeMobileMenu);});// Handle window resizewindow.addEventListener('resize', () => {if (window.innerWidth > 768) {closeMobileMenu();}});}function toggleMobileMenu() {const isActive = DOM.mobileMenu?.classList.contains('active');if (isActive) {closeMobileMenu();} else {openMobileMenu();}}function openMobileMenu() {DOM.mobileToggle?.classList.add('active');DOM.mobileMenu?.classList.add('active');DOM.mobileOverlay?.classList.add('active');document.body.classList.add('menu-open');AppState.activeModals.push('mobile-menu');}function closeMobileMenu() {DOM.mobileToggle?.classList.remove('active');DOM.mobileMenu?.classList.remove('active');DOM.mobileOverlay?.classList.remove('active');document.body.classList.remove('menu-open');AppState.activeModals = AppState.activeModals.filter(modal => modal !=='mobile-menu');}// ===== SCROLL FEATURES =====function initializeScrollFeatures() {// Scroll progresswindow.addEventListener('scroll', throttle(updateScrollProgress, 16));// Back to topwindow.addEventListener('scroll', throttle(() => {if (window.scrollY > 500) {DOM.backToTop?.classList.add('visible');} else {DOM.backToTop?.classList.remove('visible');}}, 100));DOM.backToTop?.addEventListener('click', () => {smoothScrollTo(0);});// Smooth scrolling for anchor linksdocument.querySelectorAll('a[href^="#"]').forEach(anchor => {anchor.addEventListener('click', function (e) {e.preventDefault();const target = document.querySelector(this.getAttribute('href'));if (target) {smoothScrollToElement(target);}});});// Store initial scroll positionAppState.scrollPosition = window.scrollY;}function updateScrollProgress() {const scrollTop = window.scrollY;const docHeight = document.documentElement.scrollHeight - window.innerHeight;const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);if (DOM.scrollProgress) {DOM.scrollProgress.style.width = scrollPercent + '%';}AppState.scrollPosition = scrollTop;}function smoothScrollTo(targetY) {const startY = window.scrollY;const distance = targetY - startY;const duration = 800;let startTime = null;function animation(currentTime) {if (startTime === null) startTime = currentTime;const timeElapsed = currentTime - startTime;const run = easeInOutQuad(timeElapsed, startY, distance, duration);window.scrollTo(0, run);if (timeElapsed < duration) {requestAnimationFrame(animation);}}requestAnimationFrame(animation);}function smoothScrollToElement(element) {const ofset = 100;const targetPosition = element.ofsetTop - ofset;smoothScrollTo(targetPosition);}function easeInOutQuad(t, b, c, d) {t /= d / 2;if (t < 1) return c / 2 * t * t + b;t--;return -c / 2 * (t * (t - 2) - 1) + b;}// ===== ANIMATIONS =====function initializeAnimations() {if (AppState.reducedMotion) {document.body.classList.add('reduced-motion');return;}// Intersection Observer for fade-in animationsconst observerOptions = {threshold: 0.1,rootMargin: '0px 0px -50px 0px'};const observer = new IntersectionObserver((entries) => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('visible');// Add stagger efect for grouped elementsaddStaggerEfect(entry.target);observer.unobserve(entry.target);}});}, observerOptions);// Observe elementsdocument.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in,.bounce-in').forEach(el => {observer.observe(el);});// Ripple efectdocument.addEventListener('click', (e) => {if (e.target.matches('.btn, .enhanced-button, .glass-button')) {createRipple(e);}});// Floating elementsinitializeFloatingElements();}function addStaggerEfect(element) {const siblings = element.parentElement.querySelectorAll('.fade-in, .slide-in-left,.slide-in-right, .scale-in, .bounce-in');siblings.forEach((sibling, index) => {if (sibling !== element) {setTimeout(() => {sibling.classList.add('visible');}, index * 100);}});}function createRipple(e) {const button = e.currentTarget;const ripple = document.createElement('span');const rect = button.getBoundingClientRect();const size = Math.max(rect.width, rect.height);const x = e.clientX - rect.left - size / 2;const y = e.clientY - rect.top - size / 2;ripple.classList.add('ripple');ripple.style.width = ripple.style.height = size + 'px';ripple.style.left = x + 'px';ripple.style.top = y + 'px';button.appendChild(ripple);setTimeout(() => ripple.remove(), 600);}function initializeFloatingElements() {const floatingElements = document.querySelectorAll('.floating-element');floatingElements.forEach(element => {const speed = parseFloat(element.dataset.speed) || 1;const direction = element.dataset.direction || 'up';animateFloatingElement(element, speed, direction);});}function animateFloatingElement(element, speed, direction) {let position = 0;const amplitude = 20;const frequency = 0.01 * speed;function animate() {position += frequency;const ofset = Math.sin(position) * amplitude;if (direction === 'up') {element.style.transform = `translateY(${ofset}px)`;} else if (direction === 'horizontal') {element.style.transform = `translateX(${ofset}px)`;} else {element.style.transform = `translate(${ofset}px, ${ofset * 0.5}px)`;}requestAnimationFrame(animate);}animate();}// ===== SPARKLES =====function initializeSparkles() {if (!DOM.sparkleContainer || AppState.reducedMotion) return;const sparkleTypes = ['small', 'medium', 'large', 'star'];function createSparkle() {const sparkle = document.createElement('div');const type = sparkleTypes[Math.floor(Math.random() * sparkleTypes.length)];sparkle.classList.add('sparkle', `sparkle-${type}`);sparkle.style.left = Math.random() * 100 + '%';sparkle.style.animationDelay = Math.random() * 3 + 's';sparkle.style.animationDuration = (3 + Math.random() * 2) + 's';DOM.sparkleContainer.appendChild(sparkle);setTimeout(() => {if (sparkle.parentNode) {sparkle.remove();}}, 5000);}// Create sparkles periodicallyconst sparkleInterval = setInterval(createSparkle, 300);// Stop sparkles when page is hiddendocument.addEventListener('visibilitychange', () => {if (document.hidden) {clearInterval(sparkleInterval);}});}// ===== GEOMETRIC SHAPES =====function initializeGeometricShapes() {if (!DOM.geometricShapes || AppState.reducedMotion) return;const shapes = ['diamond', 'hexagon', 'triangle', 'circle'];const shapeCount = Math.min(6, Math.floor(window.innerWidth / 300));for (let i = 0; i < shapeCount; i++) {const shape = document.createElement('div');const shapeType = shapes[Math.floor(Math.random() * shapes.length)];shape.classList.add('geometric-shape', `shape-${shapeType}`);shape.style.left = Math.random() * 100 + '%';shape.style.top = Math.random() * 100 + '%';shape.style.animationDelay = Math.random() * 15 + 's';shape.style.animationDuration = (15 + Math.random() * 10) + 's';DOM.geometricShapes.appendChild(shape);}}// ===== PARALLAX =====function initializeParallax() {if (AppState.reducedMotion) return;const parallaxElements = document.querySelectorAll('.parallax-element');if (parallaxElements.length === 0) return;const updateParallax = throttle(() => {const scrolled = window.scrollY;parallaxElements.forEach(element => {const speed = parseFloat(element.dataset.speed) || 0.5;const yPos = -(scrolled * speed);element.style.transform = `translateY(${yPos}px)`;});}, 16);window.addEventListener('scroll', updateParallax);}// ===== GALLERY FUNCTIONALITY =====function initializeGallery() {const filterButtons = document.querySelectorAll('.filter-btn');const galleryItems = document.querySelectorAll('.gallery-item');const lightbox = document.querySelector('.lightbox-overlay');if (!filterButtons.length && !galleryItems.length) return;// Filter functionalityfilterButtons.forEach(button => {button.addEventListener('click', () => {const filter = button.dataset.filter;// Update active statefilterButtons.forEach(btn => btn.classList.remove('active'));button.classList.add('active');// Filter items with animationfilterGalleryItems(filter);});});// Lightbox functionalitygalleryItems.forEach((item, index) => {item.addEventListener('click', () => {openLightbox(index);});// Add keyboard supportitem.addEventListener('keydown', (e) => {if (e.key === 'Enter' || e.key === ' ') {e.preventDefault();openLightbox(index);}});});// Lightbox controlsinitializeLightboxControls();}function filterGalleryItems(filter) {const galleryItems = document.querySelectorAll('.gallery-item');galleryItems.forEach(item => {const shouldShow = filter === 'all' || item.dataset.category === filter;if (shouldShow) {item.style.display = '';item.classList.remove('hiding');setTimeout(() => {item.classList.add('showing');}, 10);} else {item.classList.add('hiding');setTimeout(() => {item.style.display = 'none';item.classList.remove('showing');}, 300);}});}function initializeLightboxControls() {const lightbox = document.querySelector('.lightbox-overlay');if (!lightbox) return;// Close buttonconst closeBtn = lightbox.querySelector('.lightbox-close');closeBtn?.addEventListener('click', closeLightbox);// Navigation buttonsconst prevBtn = lightbox.querySelector('.lightbox-prev');const nextBtn = lightbox.querySelector('.lightbox-next');prevBtn?.addEventListener('click', () => navigateLightbox(-1));nextBtn?.addEventListener('click', () => navigateLightbox(1));// Overlay clicklightbox.addEventListener('click', (e) => {if (e.target === lightbox) {closeLightbox();}});// Keyboard navigationdocument.addEventListener('keydown', (e) => {if (!lightbox.classList.contains('active')) return;switch (e.key) {case 'Escape':closeLightbox();break;case 'ArrowLeft':navigateLightbox(-1);break;case 'ArrowRight':navigateLightbox(1);break;}});}let currentLightboxIndex = 0;let galleryImages = [];function openLightbox(index) {const lightbox = document.querySelector('.lightbox-overlay');if (!lightbox) return;currentLightboxIndex = index;// Populate gallery images arrayconst galleryItems = document.querySelectorAll('.gallery-item:not([style*="display:none"])');galleryImages = Array.from(galleryItems).map(item => {const img = item.querySelector('.gallery-image');return {src: img.src,alt: img.alt,title: item.querySelector('.gallery-info-title')?.textContent || '',category: item.querySelector('.gallery-info-category')?.textContent || ''};});updateLightboxImage();lightbox.classList.add('active');document.body.classList.add('menu-open');AppState.activeModals.push('lightbox');}function closeLightbox() {const lightbox = document.querySelector('.lightbox-overlay');if (!lightbox) return;lightbox.classList.remove('active');document.body.classList.remove('menu-open');AppState.activeModals = AppState.activeModals.filter(modal => modal !== 'lightbox');}function navigateLightbox(direction) {currentLightboxIndex += direction;if (currentLightboxIndex < 0) {currentLightboxIndex = galleryImages.length - 1;} else if (currentLightboxIndex >= galleryImages.length) {currentLightboxIndex = 0;}updateLightboxImage();}function updateLightboxImage() {const lightboxImage = document.querySelector('.lightbox-image');const lightboxTitle = document.querySelector('.lightbox-title');const lightboxCounter = document.querySelector('.lightbox-counter');const currentImage = galleryImages[currentLightboxIndex];if (lightboxImage && currentImage) {// Add loading statelightboxImage.classList.add('loading');// Create new image to preloadconst img = new Image();img.onload = () => {lightboxImage.src = currentImage.src;lightboxImage.alt = currentImage.alt;lightboxImage.classList.remove('loading');};img.src = currentImage.src;if (lightboxTitle) {lightboxTitle.textContent = currentImage.title;}if (lightboxCounter) {lightboxCounter.textContent = `${currentLightboxIndex + 1} /${galleryImages.length}`;}}}// ===== BLOG FUNCTIONALITY =====function initializeBlog() {// Blog searchconst blogSearchForm = document.querySelector('.blog-search-form');if (blogSearchForm) {blogSearchForm.addEventListener('submit', (e) => {e.preventDefault();const query = e.target.querySelector('.blog-search-input').value;performBlogSearch(query);});}// Category filterconst categoryLinks = document.querySelectorAll('.category-link');categoryLinks.forEach(link => {link.addEventListener('click', (e) => {e.preventDefault();const category = link.textContent.trim();filterBlogByCategory(filterBlogByCategory(category);});});// Load more postsconst loadMoreBtn = document.querySelector('.load-more-posts');loadMoreBtn?.addEventListener('click', loadMorePosts);// Newsletter subscriptionconst newsletterForm = document.querySelector('.newsletter-form');newsletterForm?.addEventListener('submit', handleNewsletterSubmit);// Blog post interactionsinitializeBlogInteractions();}function initializeBlogInteractions() {// Reading time calculationconst blogPosts = document.querySelectorAll('.blog-post');blogPosts.forEach(post => {const content = post.querySelector('.blog-content');if (content) {const readingTime = calculateReadingTime(content.textContent);const readingTimeElement = post.querySelector('.reading-time');if (readingTimeElement) {readingTimeElement.textContent = `${readingTime} min read`;}}});// Social sharingconst shareButtons = document.querySelectorAll('.share-button');shareButtons.forEach(button => {button.addEventListener('click', (e) => {e.preventDefault();const platform = button.dataset.platform;const url = window.location.href;const title = document.title;shareOnSocialMedia(platform, url, title);});});// Like functionalityconst likeButtons = document.querySelectorAll('.like-button');likeButtons.forEach(button => {button.addEventListener('click', () => {toggleLike(button);});});}function calculateReadingTime(text) {const wordsPerMinute = 200;const words = text.trim().split(/\s+/).length;return Math.ceil(words / wordsPerMinute);}function shareOnSocialMedia(platform, url, title) {const shareUrls = {facebook:`https:/www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,twitter:`https:/twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`,linkedin:`https:/www.linkedin.com/sharing/share-ofsite/?url=${encodeURIComponent(url)}`,pinterest:`https:/pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&description=${encodeURIComponent(title)}`};if (shareUrls[platform]) {window.open(shareUrls[platform], '_blank', 'width=600,height=400');}}function toggleLike(button) {const isLiked = button.classList.contains('liked');const countElement = button.querySelector('.like-count');let count = parseInt(countElement.textContent) || 0;if (isLiked) {button.classList.remove('liked');count--;showNotification('Removed from favorites', 'info');} else {button.classList.add('liked');count++;showNotification('Added to favorites', 'success');}countElement.textContent = count;}function performBlogSearch(query) {console.log('Searching blog for:', query);showNotification(`Searching blog for "${query}"...`, 'info');// Simulate searchsetTimeout(() => {const results = mockBlogSearch(query);displayBlogSearchResults(results);}, 500);}function mockBlogSearch(query) {const mockPosts = [{ title: 'Beauty Tips for Pageants', excerpt: 'Learn the best beauty practices...', category:'Beauty' },{ title: 'Confidence Building Techniques', excerpt: 'How to build unshakeableconfidence...', category: 'Personal Development' },{ title: 'Interview Preparation Guide', excerpt: 'Master your pageant interview...',category: 'Training' }];return mockPosts.filter(post =>post.title.toLowerCase().includes(query.toLowerCase()) ||post.excerpt.toLowerCase().includes(query.toLowerCase()));}function displayBlogSearchResults(results) {const resultsContainer = document.querySelector('.blog-search-results');if (!resultsContainer) return;if (results.length === 0) {resultsContainer.innerHTML = '<div class="no-results">No blog posts found</div>';return;}`resultsContainer.innerHTML = results.map(result => <div class="blog-search-result"><h4>${result.title}</h4><p>${result.excerpt}</p><span class="blog-category">${result.category}</span></div>`).join('');showNotification(`Found ${results.length} blog posts`, 'success');}function filterBlogByCategory(category) {const blogCards = document.querySelectorAll('.blog-card');blogCards.forEach(card => {const cardCategory = card.querySelector('.blog-card-category')?.textContent;const shouldShow = category === 'All' || cardCategory === category;if (shouldShow) {card.style.display = '';card.classList.add('fade-in');} else {card.style.display = 'none';card.classList.remove('fade-in');}});showNotification(`Filtered by: ${category}`, 'info');}function loadMorePosts() {showNotification('Loading more posts...', 'info');// Simulate loadingsetTimeout(() => {const blogGrid = document.querySelector('.blog-grid');if (blogGrid) {const newPosts = createMockBlogPosts(3);newPosts.forEach(post => {blogGrid.appendChild(post);setTimeout(() => post.classList.add('fade-in'), 100);});}showNotification('New posts loaded!', 'success');}, 1000);}function createMockBlogPosts(count) {const posts = [];const categories = ['Beauty', 'Training', 'Personal Development', 'Success Stories'];for (let i = 0; i < count; i++) {const post = document.createElement('div');post.className = 'blog-card';post.innerHTML = `<div class="blog-card-image"><img src="https:/picsum.photos/400/250?random=${Date.now() + i}" alt="BlogPost"></div><div class="blog-card-content"><span class="blog-card-category">${categories[Math.floor(Math.random() *categories.length)]}</span><h3>New Blog Post ${Date.now() + i}</h3><p>This is a dynamically generated blog post excerpt...</p><div class="blog-card-meta"><span class="blog-date">Just now</span><span class="reading-time">3 min read</span></div></div>`;posts.push(post);}return posts;}function handleNewsletterSubmit(e) {e.preventDefault();const email = e.target.querySelector('.newsletter-input').value;if (validateEmail(email)) {showNotification('Successfully subscribed to newsletter!', 'success');e.target.reset();// Track subscriptiontrackEvent('newsletter_subscription', { email });} else {showNotification('Please enter a valid email address', 'error');}}// ===== DASHBOARD ANIMATIONS =====function initializeDashboard() {const dashboardSection = document.querySelector('.dashboard-section');if (!dashboardSection) return;const observerOptions = {threshold: 0.3,rootMargin: '0px'};const dashboardObserver = new IntersectionObserver((entries) => {entries.forEach(entry => {if (entry.isIntersecting) {animateMetrics();animateCharts();animateActivityFeed();dashboardObserver.unobserve(entry.target);}});}, observerOptions);dashboardObserver.observe(dashboardSection);}function animateMetrics() {const metricValues = document.querySelectorAll('.metric-value.counting');metricValues.forEach(element => {const target = parseInt(element.dataset.target) || 0;const duration = 2000;const startTime = performance.now();function updateCounter(currentTime) {const elapsed = currentTime - startTime;const progress = Math.min(elapsed / duration, 1);const current = Math.floor(target * easeOutQuart(progress));if (element.dataset.format === 'currency') {element.textContent = '$' + current.toLocaleString();} else if (element.dataset.format === 'percentage') {element.textContent = current + '%';} else {element.textContent = current.toLocaleString();}if (progress < 1) {requestAnimationFrame(updateCounter);}}requestAnimationFrame(updateCounter);});}function easeOutQuart(t) {return 1 - Math.pow(1 - t, 4);}function animateCharts() {// Animate bar chartconst bars = document.querySelectorAll('.bar');bars.forEach((bar, index) => {const height = bar.dataset.value + '%';setTimeout(() => {bar.style.height = height;bar.style.opacity = '1';}, index * 100);});// Animate pie chartconst pieSegments = document.querySelectorAll('.pie-segment');pieSegments.forEach((segment, index) => {const value = segment.dataset.value || '0';setTimeout(() => {segment.style.strokeDasharray = `${value} 314`;segment.style.opacity = '1';}, index * 200);});// Animate line chartconst linePath = document.querySelector('.line-path');if (linePath) {const pathLength = linePath.getTotalLength();linePath.style.strokeDasharray = pathLength;linePath.style.strokeDashofset = pathLength;setTimeout(() => {linePath.style.transition = 'stroke-dashofset 2s ease-out';linePath.style.strokeDashofset = '0';}, 500);}}function animateActivityFeed() {const activityItems = document.querySelectorAll('.activity-item');activityItems.forEach((item, index) => {setTimeout(() => {item.classList.add('visible');}, index * 100);});}// ===== COUNTERS =====function initializeCounters() {const counters = document.querySelectorAll('[data-count]');const counterObserver = new IntersectionObserver((entries) => {entries.forEach(entry => {if (entry.isIntersecting) {startCounter(entry.target);counterObserver.unobserve(entry.target);}});}, { threshold: 0.5 });counters.forEach(counter => {counterObserver.observe(counter);});}function startCounter(element) {const target = parseInt(element.dataset.count) || 0;const duration = 2000;const startTime = performance.now();function updateCounter(currentTime) {const elapsed = currentTime - startTime;const progress = Math.min(elapsed / duration, 1);const current = Math.floor(target * easeOutQuart(progress));element.textContent = current.toLocaleString();if (progress < 1) {requestAnimationFrame(updateCounter);}}requestAnimationFrame(updateCounter);}// ===== INTERACTIVE CHARTS =====function initializeCharts() {// Chart option togglesconst chartOptions = document.querySelectorAll('.chart-option');chartOptions.forEach(option => {option.addEventListener('click', function() {const parent = this.closest('.chart-card');const options = parent.querySelectorAll('.chart-option');options.forEach(opt => opt.classList.remove('active'));this.classList.add('active');updateChart(parent, this.dataset.period);});});// Pie chart interactionsconst pieSegments = document.querySelectorAll('.pie-segment');pieSegments.forEach(segment => {segment.addEventListener('mouseenter', function() {if (!AppState.reducedMotion) {this.style.transform = 'scale(1.05)';this.style.filter = 'brightness(1.2)';}});segment.addEventListener('mouseleave', function() {this.style.transform = 'scale(1)';this.style.filter = 'brightness(1)';});});// Data point tooltipsconst dataPoints = document.querySelectorAll('.data-point');dataPoints.forEach(point => {point.addEventListener('mouseenter', showDataTooltip);point.addEventListener('mouseleave', hideDataTooltip);});}function updateChart(chartCard, period) {console.log('Updating chart for period:', period);// Show loading stateconst loadingIndicator = chartCard.querySelector('.chart-loading');if (loadingIndicator) {loadingIndicator.style.display = 'block';}// Simulate data updatesetTimeout(() => {if (loadingIndicator) {loadingIndicator.style.display = 'none';}showNotification(`Chart updated to ${period} view`, 'success');// Trigger chart animationanimateCharts();}, 1000);}function showDataTooltip(e) {let tooltip = document.querySelector('.data-tooltip');if (!tooltip) {tooltip = document.createElement('div');tooltip.className = 'data-tooltip';document.body.appendChild(tooltip);}const value = e.target.dataset.value || 'No data';const date = e.target.dataset.date || 'No date';tooltip.innerHTML = `<div class="tooltip-content"><strong>${value}</strong><small>${date}</small></div>`;const rect = e.target.getBoundingClientRect();tooltip.style.left = rect.left + rect.width / 2 + 'px';tooltip.style.top = rect.top - 10 + 'px';tooltip.classList.add('show');}function hideDataTooltip() {const tooltip = document.querySelector('.data-tooltip');tooltip?.classList.remove('show');}// ===== TOOLTIPS =====function initializeTooltips() {const tooltipTriggers = document.querySelectorAll('[data-tooltip]');tooltipTriggers.forEach(trigger => {let tooltip = null;const showTooltip = () => {if (!tooltip) {tooltip = document.createElement('div');tooltip.className = 'tooltip';tooltip.textContent = trigger.dataset.tooltip;trigger.appendChild(tooltip);}positionTooltip(trigger, tooltip);tooltip.classList.add('show');};const hideTooltip = () => {if (tooltip) {tooltip.classList.remove('show');}};trigger.addEventListener('mouseenter', showTooltip);trigger.addEventListener('mouseleave', hideTooltip);trigger.addEventListener('focus', showTooltip);trigger.addEventListener('blur', hideTooltip);});}function positionTooltip(trigger, tooltip) {const triggerRect = trigger.getBoundingClientRect();const tooltipRect = tooltip.getBoundingClientRect();// Check if tooltip goes of-screen and adjust positionif (triggerRect.top - tooltipRect.height < 0) {tooltip.classList.add('tooltip-bottom');} else {tooltip.classList.remove('tooltip-bottom');}if (triggerRect.left + tooltipRect.width > window.innerWidth) {tooltip.classList.add('tooltip-left');} else {tooltip.classList.remove('tooltip-left');}}// ===== MODALS =====function initializeModals() {const modalTriggers = document.querySelectorAll('[data-modal]');const modalClosers = document.querySelectorAll('.modal-close, .modal-overlay');modalTriggers.forEach(trigger => {trigger.addEventListener('click', (e) => {e.preventDefault();const modalId = trigger.dataset.modal;openModal(modalId);});});modalClosers.forEach(closer => {closer.addEventListener('click', (e) => {if (e.target === e.currentTarget) {const modal = e.target.closest('.modal-overlay');closeModal(modal);}});});// Keyboard supportdocument.addEventListener('keydown', (e) => {if (e.key === 'Escape' && AppState.activeModals.length > 0) {closeTopModal();}});}function openModal(modalId) {const modal = document.getElementById(modalId);if (!modal) return;modal.classList.add('active');document.body.classList.add('menu-open');AppState.activeModals.push(modalId);// Focus managementconst focusableElements = modal.querySelectorAll('button, [href], input, select, textarea,[tabindex]:not([tabindex="-1"])');if (focusableElements.length > 0) {focusableElements[0].focus();}// Trap focus within modaltrapFocus(modal);}function closeModal(modal) {if (!modal) return;const modalId = modal.id;modal.classList.remove('active');document.body.classList.remove('menu-open');AppState.activeModals = AppState.activeModals.filter(id => id !== modalId);// Return focus to triggerconst trigger = document.querySelector(`[data-modal="${modalId}"]`);trigger?.focus();}function closeTopModal() {if (AppState.activeModals.length === 0) return;const topModalId = AppState.activeModals[AppState.activeModals.length - 1];const modal = document.getElementById(topModalId);if (modal) {closeModal(modal);}}function trapFocus(element) {const focusableElements = element.querySelectorAll('button, [href], input, select, textarea,[tabindex]:not([tabindex="-1"])');const firstElement = focusableElements[0];const lastElement = focusableElements[focusableElements.length - 1];element.addEventListener('keydown', (e) => {if (e.key === 'Tab') {if (e.shiftKey) {if (document.activeElement === firstElement) {e.preventDefault();lastElement.focus();}} else {if (document.activeElement === lastElement) {e.preventDefault();firstElement.focus();}}}});}// ===== TABS =====function initializeTabs() {const tabContainers = document.querySelectorAll('.tab-container');tabContainers.forEach(container => {const buttons = container.querySelectorAll('.tab-button');const contents = container.querySelectorAll('.tab-content');buttons.forEach((button, index) => {button.addEventListener('click', () => {activateTab(container, index);});// Keyboard supportbutton.addEventListener('keydown', (e) => {let newIndex = index;switch (e.key) {case 'ArrowLeft':newIndex = index > 0 ? index - 1 : buttons.length - 1;break;case 'ArrowRight':newIndex = index < buttons.length - 1 ? index + 1 : 0;break;case 'Home':newIndex = 0;break;case 'End':newIndex = buttons.length - 1;break;default:return;}e.preventDefault();activateTab(container, newIndex);buttons[newIndex].focus();});});});}function activateTab(container, index) {const buttons = container.querySelectorAll('.tab-button');const contents = container.querySelectorAll('.tab-content');// Remove active statesbuttons.forEach(btn => {btn.classList.remove('active');btn.setAttribute('aria-selected', 'false');});contents.forEach(content => {content.classList.remove('active');content.setAttribute('aria-hidden', 'true');});// Add active statesif (buttons[index] && contents[index]) {buttons[index].classList.add('active');buttons[index].setAttribute('aria-selected', 'true');contents[index].classList.add('active');contents[index].setAttribute('aria-hidden', 'false');}}// ===== NOTIFICATIONS =====function initializeNotifications() {// Create notification container if it doesn't existif (!document.querySelector('.notification-stack')) {const stack = document.createElement('div');stack.className = 'notification-stack';stack.setAttribute('aria-live', 'polite');document.body.appendChild(stack);}}function showNotification(message, type = 'info', duration = 3000) {const stack = document.querySelector('.notification-stack');if (!stack) return;const notification = document.createElement('div');const id = 'notification-' + Date.now();notification.id = id;notification.className = `notification-item ${type}`;notification.setAttribute('role', 'alert');notification.innerHTML = `<div class="notification-content"><i class="fas fa-${getNotificationIcon(type)}" aria-hidden="true"></i><s
+// ===== FIXED MAIN APPLICATION CONTROLLER =====
+class PageantEmpressApp {
+    constructor() {
+        this.theme = this.loadTheme() || 'dark';
+        this.isInitialized = false;
+        
+        // Initialize with error handling
+        this.initializeApp();
+    }
+
+    async initializeApp() {
+        try {
+            console.log('Starting Pageant Empress initialization...');
+            
+            // Apply theme immediately
+            this.applyTheme();
+            
+            // Initialize core components with error handling
+            await this.initializeComponents();
+            
+            // Setup event listeners
+            this.setupEventListeners();
+            
+            // Remove loading screen
+            this.hideLoadingScreen();
+            
+            // Mark as initialized
+            this.isInitialized = true;
+            
+            console.log('✨ Pageant Empress initialized successfully!');
+            
+        } catch (error) {
+            console.error('Initialization error:', error);
+            this.handleInitError(error);
+        }
+    }
+
+    async initializeComponents() {
+        // Initialize components only if they exist in DOM
+        const components = [];
+        
+        // Only initialize components that have their containers in the DOM
+        if (document.querySelector('.sparkle-container') || document.body) {
+            this.sparkles = new SparkleSystem();
+            components.push(this.sparkles.init().catch(e => console.warn('Sparkles init failed:', e)));
+        }
+        
+        if (document.querySelector('.geometric-shapes') || document.body) {
+            this.geometricShapes = new GeometricShapeSystem();
+            components.push(this.geometricShapes.init().catch(e => console.warn('Shapes init failed:', e)));
+        }
+        
+        if (document.querySelector('.main-header')) {
+            this.header = new HeaderController();
+            components.push(this.header.init().catch(e => console.warn('Header init failed:', e)));
+        }
+        
+        if (document.querySelector('.search-overlay')) {
+            this.search = new SearchController();
+            components.push(this.search.init().catch(e => console.warn('Search init failed:', e)));
+        }
+        
+        // Always initialize these
+        this.notifications = new NotificationSystem();
+        this.animations = new AnimationController();
+        
+        components.push(
+            this.notifications.init().catch(e => console.warn('Notifications init failed:', e)),
+            this.animations.init().catch(e => console.warn('Animations init failed:', e))
+        );
+        
+        // Wait for all components to initialize
+        await Promise.allSettled(components);
+    }
+
+    hideLoadingScreen() {
+        const loadingScreen = document.querySelector('.loading-screen');
+        if (loadingScreen) {
+            // Fade out animation
+            loadingScreen.style.opacity = '0';
+            
+            setTimeout(() => {
+                loadingScreen.remove();
+                document.body.classList.remove('loading');
+                
+                // Show welcome notification after loading screen is removed
+                if (this.notifications) {
+                    setTimeout(() => {
+                        this.notifications.show({
+                            type: 'success',
+                            message: 'Welcome to Pageant Empress! ✨',
+                            duration: 3000
+                        });
+                    }, 500);
+                }
+            }, 500);
+        } else {
+            // If no loading screen, just remove loading class
+            document.body.classList.remove('loading');
+        }
+    }
+
+    setupEventListeners() {
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => this.toggleTheme());
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const href = anchor.getAttribute('href');
+                if (href && href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        this.smoothScroll(target);
+                    }
+                }
+            });
+        });
+    }
+
+    toggleTheme() {
+        this.theme = this.theme === 'dark' ? 'light' : 'dark';
+        this.applyTheme();
+        this.saveTheme();
+        
+        if (this.animations) {
+            this.animations.playThemeTransition();
+        }
+    }
+
+    applyTheme() {
+        document.body.classList.toggle('light-theme', this.theme === 'light');
+    }
+
+    loadTheme() {
+        try {
+            return localStorage.getItem('pageant-empress-theme') || 'dark';
+        } catch (e) {
+            return 'dark';
+        }
+    }
+
+    saveTheme() {
+        try {
+            localStorage.setItem('pageant-empress-theme', this.theme);
+        } catch (e) {
+            console.warn('Failed to save theme preference');
+        }
+    }
+
+    smoothScroll(target) {
+        const headerHeight = document.querySelector('.main-header')?.offsetHeight || 80;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+
+    handleInitError(error) {
+        console.error('App initialization failed:', error);
+        
+        // Remove loading screen even on error
+        this.hideLoadingScreen();
+        
+        // Show error message if notifications are available
+        if (this.notifications) {
+            this.notifications.show({
+                type: 'error',
+                message: 'Some features may not be available. Please refresh the page.',
+                duration: 5000
+            });
+        }
+    }
+}
+
+// ===== SIMPLIFIED SPARKLE SYSTEM =====
+class SparkleSystem {
+    constructor() {
+        this.container = null;
+        this.sparkles = [];
+        this.maxSparkles = window.innerWidth < 768 ? 20 : 50;
+        this.isActive = true;
+    }
+
+    async init() {
+        try {
+            this.createContainer();
+            this.generateInitialSparkles();
+            return Promise.resolve();
+        } catch (error) {
+            console.warn('SparkleSystem init error:', error);
+            return Promise.reject(error);
+        }
+    }
+
+    createContainer() {
+        // Check if container already exists
+        if (document.querySelector('.sparkle-container')) {
+            this.container = document.querySelector('.sparkle-container');
+            return;
+        }
+        
+        this.container = document.createElement('div');
+        this.container.className = 'sparkle-container';
+        this.container.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(this.container);
+    }
+
+    generateInitialSparkles() {
+        // Create fewer sparkles initially for better performance
+        for (let i = 0; i < Math.min(10, this.maxSparkles); i++) {
+            setTimeout(() => this.createSparkle(), i * 200);
+        }
+    }
+
+    createSparkle() {
+        if (!this.isActive || !this.container) return;
+        
+        const sparkle = document.createElement('div');
+        const types = ['sparkle-small', 'sparkle-medium', 'sparkle-large'];
+        const type = types[Math.floor(Math.random() * types.length)];
+        
+        sparkle.className = `sparkle ${type}`;
+        sparkle.style.left = `${Math.random() * 100}%`;
+        sparkle.style.animationDelay = `${Math.random() * 5}s`;
+        sparkle.style.animationDuration = `${3 + Math.random() * 4}s`;
+        
+        this.container.appendChild(sparkle);
+        this.sparkles.push(sparkle);
+        
+        // Remove sparkle after animation
+        sparkle.addEventListener('animationend', () => {
+            sparkle.remove();
+            this.sparkles = this.sparkles.filter(s => s !== sparkle);
+            
+            // Create new sparkle to maintain count
+            if (this.isActive && this.sparkles.length < this.maxSparkles) {
+                setTimeout(() => this.createSparkle(), Math.random() * 3000);
+            }
+        });
+    }
+}
+
+// ===== SIMPLIFIED GEOMETRIC SHAPE SYSTEM =====
+class GeometricShapeSystem {
+    constructor() {
+        this.container = null;
+        this.shapes = [];
+        this.maxShapes = 10;
+    }
+
+    async init() {
+        try {
+            this.createContainer();
+            this.generateShapes();
+            return Promise.resolve();
+        } catch (error) {
+            console.warn('GeometricShapeSystem init error:', error);
+            return Promise.reject(error);
+        }
+    }
+
+    createContainer() {
+        // Check if container already exists
+        if (document.querySelector('.geometric-shapes')) {
+            this.container = document.querySelector('.geometric-shapes');
+            return;
+        }
+        
+        this.container = document.createElement('div');
+        this.container.className = 'geometric-shapes';
+        this.container.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(this.container);
+    }
+
+    generateShapes() {
+        const shapeTypes = ['shape-diamond', 'shape-hexagon', 'shape-triangle'];
+        
+        for (let i = 0; i < this.maxShapes; i++) {
+            const shape = document.createElement('div');
+            const type = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
+            
+            shape.className = `geometric-shape ${type}`;
+            shape.style.left = `${Math.random() * 100}%`;
+            shape.style.top = `${Math.random() * 100}%`;
+            shape.style.animationDelay = `${Math.random() * 10}s`;
+            shape.style.animationDuration = `${15 + Math.random() * 15}s`;
+            
+            this.container.appendChild(shape);
+            this.shapes.push(shape);
+        }
+    }
+}
+
+// ===== SIMPLIFIED HEADER CONTROLLER =====
+class HeaderController {
+    constructor() {
+        this.header = document.querySelector('.main-header');
+        this.lastScrollY = 0;
+    }
+
+    async init() {
+        if (!this.header) return Promise.resolve();
+        
+        try {
+            this.setupScrollBehavior();
+            this.setupMobileMenu();
+            return Promise.resolve();
+        } catch (error) {
+            console.warn('HeaderController init error:', error);
+            return Promise.reject(error);
+        }
+    }
+
+    setupScrollBehavior() {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    this.updateHeader();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    }
+
+    updateHeader() {
+        const currentScrollY = window.scrollY;
+        
+        if (currentScrollY > 100) {
+            this.header.classList.add('scrolled');
+        } else {
+            this.header.classList.remove('scrolled');
+        }
+        
+        if (currentScrollY > 500) {
+            if (currentScrollY > this.lastScrollY) {
+                this.header.classList.add('header-hidden');
+            } else {
+                this.header.classList.remove('header-hidden');
+            }
+        }
+        
+        this.lastScrollY = currentScrollY;
+    }
+
+    setupMobileMenu() {
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileOverlay = document.querySelector('.mobile-overlay');
+        
+        if (!mobileToggle || !mobileMenu) return;
+        
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            mobileOverlay?.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+        });
+        
+        mobileOverlay?.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+    }
+}
+
+// ===== SIMPLIFIED SEARCH CONTROLLER =====
+class SearchController {
+    constructor() {
+        this.searchToggle = document.querySelector('.search-toggle');
+        this.searchOverlay = document.querySelector('.search-overlay');
+        this.searchInput = document.querySelector('.search-input');
+        this.isOpen = false;
+    }
+
+    async init() {
+        if (!this.searchToggle || !this.searchOverlay) return Promise.resolve();
+        
+        try {
+            this.setupEventListeners();
+            return Promise.resolve();
+        } catch (error) {
+            console.warn('SearchController init error:', error);
+            return Promise.reject(error);
+        }
+    }
+
+    setupEventListeners() {
+        this.searchToggle.addEventListener('click', () => this.openSearch());
+        
+        const closeBtn = this.searchOverlay.querySelector('.search-close');
+        closeBtn?.addEventListener('click', () => this.closeSearch());
+        
+        this.searchOverlay.addEventListener('click', (e) => {
+            if (e.target === this.searchOverlay) {
+                this.closeSearch();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen) {
+                this.closeSearch();
+            }
+        });
+    }
+
+    openSearch() {
+        this.isOpen = true;
+        this.searchOverlay.classList.add('active');
+        setTimeout(() => {
+            this.searchInput?.focus();
+        }, 300);
+    }
+
+    closeSearch() {
+        this.isOpen = false;
+        this.searchOverlay.classList.remove('active');
+        if (this.searchInput) {
+            this.searchInput.value = '';
+        }
+    }
+}
+
+// ===== SIMPLIFIED NOTIFICATION SYSTEM =====
+class NotificationSystem {
+    constructor() {
+        this.container = null;
+        this.notifications = new Map();
+    }
+
+    async init() {
+        try {
+            this.createContainer();
+            return Promise.resolve();
+        } catch (error) {
+            console.warn('NotificationSystem init error:', error);
+            return Promise.reject(error);
+        }
+    }
+
+    createContainer() {
+        if (document.querySelector('.notification-stack')) {
+            this.container = document.querySelector('.notification-stack');
+            return;
+        }
+        
+        this.container = document.createElement('div');
+        this.container.className = 'notification-stack';
+        document.body.appendChild(this.container);
+    }
+
+    show(options) {
+        if (!this.container) return;
+        
+        const defaults = {
+            type: 'info',
+            message: '',
+            duration: 5000,
+            dismissible: true
+        };
+        
+        const config = { ...defaults, ...options };
+        const id = Date.now().toString();
+        
+        const notification = this.createNotification(id, config);
+        this.notifications.set(id, notification);
+        
+        if (config.duration > 0) {
+            setTimeout(() => this.dismiss(id), config.duration);
+        }
+        
+        return id;
+    }
+
+    createNotification(id, config) {
+        const notification = document.createElement('div');
+        notification.className = `notification-item ${config.type}`;
+        notification.dataset.id = id;
+        
+        const icons = {
+            'success': 'check-circle',
+            'error': 'exclamation-circle',
+                        'warning': 'exclamation-triangle',
+            'info': 'info-circle'
+        };
+        
+        const icon = icons[config.type] || 'info-circle';
+        
+        notification.innerHTML = `
+            <div class="notification-content">
+                <i class="fas fa-${icon}"></i>
+                <span>${config.message}</span>
+            </div>
+            ${config.dismissible ? '<button class="notification-close" aria-label="Close"><i class="fas fa-times"></i></button>' : ''}
+        `;
+        
+        if (config.dismissible) {
+            notification.querySelector('.notification-close')?.addEventListener('click', () => {
+                this.dismiss(id);
+            });
+        }
+        
+        this.container.appendChild(notification);
+        
+        // Trigger show animation
+        requestAnimationFrame(() => {
+            notification.classList.add('show');
+        });
+        
+        return notification;
+    }
+
+    dismiss(id) {
+        const notification = this.notifications.get(id);
+        if (!notification) return;
+        
+        notification.classList.remove('show');
+        
+        notification.addEventListener('transitionend', () => {
+            notification.remove();
+            this.notifications.delete(id);
+        });
+    }
+}
+
+// ===== SIMPLIFIED ANIMATION CONTROLLER =====
+class AnimationController {
+    constructor() {
+        this.observers = new Map();
+    }
+
+    async init() {
+        try {
+            this.setupScrollAnimations();
+            this.setupHoverEffects();
+            return Promise.resolve();
+        } catch (error) {
+            console.warn('AnimationController init error:', error);
+            return Promise.reject(error);
+        }
+    }
+
+    setupScrollAnimations() {
+        const animationOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    animationObserver.unobserve(entry.target);
+                }
+            });
+        }, animationOptions);
+        
+        // Observe elements with animation classes
+        document.querySelectorAll('.animate-on-scroll, [data-animate]').forEach(el => {
+            animationObserver.observe(el);
+        });
+        
+        this.observers.set('scroll', animationObserver);
+    }
+
+    setupHoverEffects() {
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn, .enhanced-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const rect = button.getBoundingClientRect();
+                const ripple = document.createElement('span');
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.className = 'ripple';
+                ripple.style.width = ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                button.appendChild(ripple);
+                
+                ripple.addEventListener('animationend', () => {
+                    ripple.remove();
+                });
+            });
+        });
+    }
+
+    playThemeTransition() {
+        document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+        
+        setTimeout(() => {
+            document.body.style.transition = '';
+        }, 300);
+    }
+}
+
+// ===== LOADING SCREEN HTML =====
+const loadingScreenHTML = `
+<div class="loading-screen">
+    <div class="loading-content">
+        <div class="loading-logo">
+            <i class="fas fa-crown"></i>
+        </div>
+        <h2 class="loading-title">Pageant Empress</h2>
+        <p class="loading-text">Preparing Your Royal Experience...</p>
+        <div class="loading-progress">
+            <div class="loading-progress-bar"></div>
+        </div>
+    </div>
+</div>
+`;
+
+// ===== LOADING SCREEN STYLES =====
+const loadingScreenStyles = `
+<style>
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark-bg, #0a0a0a);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+}
+
+.loading-content {
+    text-align: center;
+    max-width: 400px;
+}
+
+.loading-logo {
+    font-size: 5rem;
+    color: var(--primary-gold, #d4af37);
+    margin-bottom: 2rem;
+    animation: crownFloat 2s ease-in-out infinite;
+}
+
+@keyframes crownFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.loading-title {
+    font-size: 2.5rem;
+    font-family: 'Playfair Display', serif;
+    color: var(--text-primary, #ffffff);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #d4af37, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.loading-text {
+    color: var(--text-secondary, #b0b0b0);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.loading-progress {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.loading-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #d4af37, #ffd700);
+    border-radius: 2px;
+    animation: loadingProgress 2s ease-in-out;
+}
+
+@keyframes loadingProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+body.loading {
+    overflow: hidden;
+}
+</style>
+`;
+
+// ===== INITIALIZATION =====
+// Add loading screen styles immediately
+document.head.insertAdjacentHTML('beforeend', loadingScreenStyles);
+
+// Initialize app when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeApp);
+} else {
+    initializeApp();
+}
+
+function initializeApp() {
+    // Add loading screen if not already present
+    if (!document.querySelector('.loading-screen')) {
+        document.body.insertAdjacentHTML('afterbegin', loadingScreenHTML);
+        document.body.classList.add('loading');
+    }
+    
+    // Initialize the app with a small delay to ensure all resources are loaded
+    setTimeout(() => {
+        try {
+            window.app = new PageantEmpressApp();
+        } catch (error) {
+            console.error('Failed to initialize app:', error);
+            // Remove loading screen even on error
+            const loadingScreen = document.querySelector('.loading-screen');
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.remove();
+                    document.body.classList.remove('loading');
+                }, 500);
+            }
+        }
+    }, 100);
+}
+
+// ===== FALLBACK FOR STUCK LOADING SCREEN =====
+// If loading screen is still visible after 5 seconds, force remove it
+setTimeout(() => {
+    const loadingScreen = document.querySelector('.loading-screen');
+    if (loadingScreen && loadingScreen.style.opacity !== '0') {
+        console.warn('Loading screen timeout - forcing removal');
+        loadingScreen.style.opacity = '0';
+        setTimeout(() => {
+            loadingScreen.remove();
+            document.body.classList.remove('loading');
+        }, 500);
+    }
+}, 5000);
+
+// ===== UTILITY FUNCTIONS =====
+const Utils = {
+    debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    },
+
+    throttle(func, limit) {
+        let inThrottle;
+        return function(...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    },
+
+    formatNumber(num) {
+        return new Intl.NumberFormat('en-US').format(num);
+    },
+
+    formatDate(date, options = {}) {
+        return new Intl.DateTimeFormat('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            ...options
+        }).format(new Date(date));
+    }
+};
+
+// ===== EXPORT FOR MODULE USAGE =====
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        PageantEmpressApp,
+        SparkleSystem,
+        GeometricShapeSystem,
+        HeaderController,
+        SearchController,
+        NotificationSystem,
+        AnimationController,
+        Utils
+    };
+}
+
+// ===== CONSOLE MESSAGE =====
+console.log('%c🎉 Pageant Empress %c\nEmpowering Beauty, Inspiring Confidence', 
+    'color: #d4af37; font-size: 24px; font-weight: bold; font-family: "Playfair Display", serif;',
+    'color: #b0b0b0; font-size: 14px; font-style: italic;'
+);
