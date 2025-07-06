@@ -1,1118 +1,1854 @@
-// js/instagram.js
-
-/**
- * Instagram Feed Integration
- * Handles Instagram post loading, display, and interactions
- */
-
-class InstagramFeed {
-    constructor(config = null) {
-        this.config = config || this.getDefaultConfig();
-        this.feedContainer = document.getElementById('instagramFeed');
-        this.posts = [];
-        this.isLoading = false;
-        this.hasMorePosts = true;
-        this.currentPage = 1;
-        this.postsPerPage = 8;
-        
-        // Instagram post data with real URLs
-        this.instagramPosts = [
-            {
-                id: 'DLT_RR-zDLT',
-                permalink: 'https://www.instagram.com/p/DLT_RR-zDLT/?igsh=MW1sYWhlOGoxdXc3Yg==',
-                type: 'photo',
-                image: 'https://scontent-lax3-1.cdninstagram.com/v/t51.29350-15/470830273_1110709340662080_1839799652302234543_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDEwODAuaGRyLmYyOTM1MCJ9&_nc_ht=scontent-lax3-1.cdninstagram.com&_nc_cat=107&_nc_ohc=KUmjZP9xTLYQ7kNvgHaLWWz&_nc_gid=c03d1c6d5c6e4eadb4d6e1b2a4c5d6e7&edm=ACx9VUEEAAAA&ccb=7-5&oh=00_AYCvJfZQ9tPfAGXPNKQMtbgcPQXZQwUxHgfBdvFoVEXGRw&oe=676B1D8F&_nc_sid=0c4154',
-                caption: 'Crown moments and pageant highlights ✨',
-                likes: 5400,
-                comments: 234,
-                timestamp: '2024-12-20T10:30:00Z'
-            },
-            {
-                id: 'DLsOJ9zBFXM',
-                permalink: 'https://www.instagram.com/p/DLsOJ9zBFXM/?igsh=eGg5am9xMXUzZDZ4',
-                type: 'photo',
-                image: 'https://scontent-lax3-1.cdninstagram.com/v/t51.29350-15/470927372_1211259703613084_8726372859392734621_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDEwODAuaGRyLmYyOTM1MCJ9&_nc_ht=scontent-lax3-1.cdninstagram.com&_nc_cat=111&_nc_ohc=YHfJzP4nKL4Q7kNvgGxJmYz&_nc_gid=c03d1c6d5c6e4eadb4d6e1b2a4c5d6e7&edm=ACx9VUEEAAAA&ccb=7-5&oh=00_AYDmFhGt5BnZjGqGcKWFvKNjhGfBdvFoVEXGRw&oe=676B2F7A&_nc_sid=0c4154',
-                caption: 'Fashion trends and style tips 👗',
-                likes: 3800,
-                comments: 156,
-                timestamp: '2024-12-19T14:15:00Z'
-            },
-            {
-                id: 'DLrK-t1BO7Y',
-                permalink: 'https://www.instagram.com/p/DLrK-t1BO7Y/?igsh=MWNuZzVmdWtveTFy',
-                type: 'video',
-                image: 'https://scontent-lax3-1.cdninstagram.com/v/t51.29350-15/470755389_1112701310445617_3849372849203734521_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDEwODAuaGRyLmYyOTM1MCJ9&_nc_ht=scontent-lax3-1.cdninstagram.com&_nc_cat=108&_nc_ohc=ZKfMtQ8wRL8Q7kNvgHbNzYx&_nc_gid=c03d1c6d5c6e4eadb4d6e1b2a4c5d6e7&edm=ACx9VUEEAAAA&ccb=7-5&oh=00_AYBpJhGt5BnZjGqGcKWFvKNjhGfBdvFoVEXGRw&oe=676B3A8B&_nc_sid=0c4154',
-                caption: 'Exclusive interviews and BTS content 🎬',
-                likes: 8700,
-                comments: 432,
-                timestamp: '2024-12-18T16:45:00Z'
-            },
-            {
-                id: 'DLpuGlNB2MZ',
-                permalink: 'https://www.instagram.com/p/DLpuGlNB2MZ/?igsh=OGFvOWszdmlobDVz',
-                type: 'carousel',
-                image: 'https://scontent-lax3-1.cdninstagram.com/v/t51.29350-15/470648372_1211259703613084_8726372859392734621_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDEwODAuaGRyLmYyOTM1MCJ9&_nc_ht=scontent-lax3-1.cdninstagram.com&_nc_cat=109&_nc_ohc=MKnQsR7yNM4Q7kNvgGaKzWx&_nc_gid=c03d1c6d5c6e4eadb4d6e1b2a4c5d6e7&edm=ACx9VUEEAAAA&ccb=7-5&oh=00_AYCnGhGt5BnZjGqGcKWFvKNjhGfBdvFoVEXGRw&oe=676B4C9D&_nc_sid=0c4154',
-                caption: 'Pageant preparation and training tips 💪',
-                likes: 6500,
-                comments: 287,
-                timestamp: '2024-12-17T11:20:00Z'
-            },
-            {
-                id: 'DLnGXS3zGVy',
-                permalink: 'https://www.instagram.com/p/DLnGXS3zGVy/?igsh=MzlnM3BjdXdyNTly',
-                type: 'photo',
-                image: 'https://scontent-lax3-1.cdninstagram.com/v/t51.29350-15/470583721_1112701310445617_3849372849203734521_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDEwODAuaGRyLmYyOTM1MCJ9&_nc_ht=scontent-lax3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=RLpTwQ3zKN8Q7kNvgHcMxYz&_nc_gid=c03d1c6d5c6e4eadb4d6e1b2a4c5d6e7&edm=ACx9VUEEAAAA&ccb=7-5&oh=00_AYDhGhGt5BnZjGqGcKWFvKNjhGfBdvFoVEXGRw&oe=676B5E7F&_nc_sid=0c4154',
-                caption: 'Beauty tips and makeup tutorials 💄',
-                likes: 4200,
-                comments: 198,
-                timestamp: '2024-12-16T13:10:00Z'
-            },
-            {
-                id: 'DLmBQ_gztpb',
-                permalink: 'https://www.instagram.com/p/DLmBQ_gztpb/?igsh=MXZjeXpsbXRrcnNmMQ==',
-                type: 'photo',
-                image: 'https://scontent-lax3-1.cdninstagram.com/v/t51.29350-15/470519832_1112701310445617_3849372849203734521_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDEwODAuaGRyLmYyOTM1MCJ9&_nc_ht=scontent-lax3-1.cdninstagram.com&_nc_cat=112&_nc_ohc=TKmRzQ4yPL4Q7kNvgHdKwYx&_nc_gid=c03d1c6d5c6e4eadb4d6e1b2a4c5d6e7&edm=ACx9VUEEAAAA&ccb=7-5&oh=00_AYBmGhGt5BnZjGqGcKWFvKNjhGfBdvFoVEXGRw&oe=676B6F8A&_nc_sid=0c4154',
-                caption: 'Latest pageant news and updates 📰',
-                likes: 7100,
-                comments: 345,
-                timestamp: '2024-12-15T09:30:00Z'
-            }
-        ];
-        
-        this.init();
-    }
+// ===== ENHANCED PAGEANT EMPRESS MAIN JAVASCRIPT =====
+document.addEventListener('DOMContentLoaded', function() {
     
-    getDefaultConfig() {
-        return {
-            instagram: {
-                settings: {
-                    enableAnalytics: true,
-                    autoRefresh: false,
-                    refreshInterval: 300000,
-                    lazyLoad: true,
-                    enableStories: true,
-                    enableEmbeds: true,
-                    fallbackToImages: true,
-                    enableLightbox: true,
-                    enableHoverEffects: true
-                },
-                api: {
-                    useOEmbed: true,
-                    embedScript: '//www.instagram.com/embed.js'
+    // Initialize AOS with enhanced settings
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+    }
+
+    // ===== ENHANCED ANIMATION MANAGER =====
+    class EnhancedAnimationManager {
+        constructor() {
+            this.sparkles = [];
+            this.shapes = [];
+            this.isAnimating = true;
+            this.performanceMode = this.detectPerformanceMode();
+            this.init();
+        }
+
+                detectPerformanceMode() {
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            const isLowEnd = connection && connection.effectiveType && 
+                            ['slow-2g', '2g', '3g'].includes(connection.effectiveType);
+            const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            return {
+                highPerformance: !isLowEnd && !isReducedMotion,
+                sparkleCount: isLowEnd ? 10 : isReducedMotion ? 0 : 30,
+                shapeCount: isLowEnd ? 5 : isReducedMotion ? 0 : 15
+            };
+        }
+
+        init() {
+            this.createAnimatedBackground();
+            this.createSparkleSystem();
+            this.createGeometricShapes();
+            this.createShineOverlay();
+            this.setupInteractionEffects();
+            this.startAnimationLoop();
+        }
+
+        createAnimatedBackground() {
+            const existingBg = document.querySelector('.animated-background');
+            if (!existingBg) {
+                const bg = document.createElement('div');
+                bg.className = 'animated-background';
+                document.body.insertBefore(bg, document.body.firstChild);
+            }
+        }
+
+        createSparkleSystem() {
+            if (!this.performanceMode.highPerformance || this.performanceMode.sparkleCount === 0) return;
+
+            let container = document.querySelector('.sparkle-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.className = 'sparkle-container';
+                document.body.appendChild(container);
+            }
+
+            // Create initial sparkles
+            for (let i = 0; i < this.performanceMode.sparkleCount; i++) {
+                setTimeout(() => this.createSparkle(container), i * 200);
+            }
+
+            // Continuously create new sparkles
+            this.sparkleInterval = setInterval(() => {
+                if (this.isAnimating && this.sparkles.length < this.performanceMode.sparkleCount) {
+                    this.createSparkle(container);
                 }
-            }
-        };
-    }
-    
-    init() {
-        if (!this.feedContainer) {
-            console.error('Instagram feed container not found');
-            return;
+            }, 800);
         }
-        
-        this.setupEventListeners();
-        this.loadPosts();
-        this.updateStats();
-        
-        console.log('✅ Instagram Feed initialized');
-    }
-    
-    setupEventListeners() {
-        // Load more posts button
-        const loadMoreBtn = document.getElementById('loadMorePosts');
-        if (loadMoreBtn) {
-            loadMoreBtn.addEventListener('click', () => this.loadMorePosts());
-        }
-        
-        // Refresh event listener
-        document.addEventListener('instagram:feed:refresh', () => {
-            this.refreshFeed();
-        });
-        
-        // Post click tracking
-        document.addEventListener('click', (e) => {
-            const post = e.target.closest('.instagram-post');
-            if (post) {
-                this.trackPostClick(post);
-            }
-        });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'r' && e.ctrlKey) {
-                e.preventDefault();
-                this.refreshFeed();
-            }
-        });
-        
-        // Intersection Observer for lazy loading
-        if (this.config.instagram.settings.lazyLoad) {
-            this.setupLazyLoading();
-        }
-    }
-    
-        loadPosts() {
-        if (this.isLoading) return;
-        
-        this.isLoading = true;
-        this.showLoading();
-        
-        try {
-            // Simulate API delay
+
+        createSparkle(container) {
+            const sparkle = document.createElement('div');
+            const types = ['sparkle-small', 'sparkle-medium', 'sparkle-large', 'sparkle-star'];
+            const type = types[Math.floor(Math.random() * types.length)];
+            
+            sparkle.className = `sparkle ${type}`;
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+
+            container.appendChild(sparkle);
+            this.sparkles.push(sparkle);
+
+            // Remove sparkle after animation
             setTimeout(() => {
-                this.renderPosts();
-                this.hideLoading();
-                this.isLoading = false;
+                if (sparkle.parentNode) {
+                    sparkle.parentNode.removeChild(sparkle);
+                }
+                this.sparkles = this.sparkles.filter(s => s !== sparkle);
+            }, 6000);
+        }
+
+        createGeometricShapes() {
+            if (!this.performanceMode.highPerformance || this.performanceMode.shapeCount === 0) return;
+
+            let container = document.querySelector('.geometric-shapes');
+            if (!container) {
+                container = document.createElement('div');
+                container.className = 'geometric-shapes';
+                document.body.appendChild(container);
+            }
+
+            const shapeTypes = ['shape-diamond', 'shape-hexagon', 'shape-triangle'];
+            
+            for (let i = 0; i < this.performanceMode.shapeCount; i++) {
+                const shape = document.createElement('div');
+                const shapeType = shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
                 
-                // Trigger AOS animation refresh
-                if (typeof AOS !== 'undefined') {
-                    AOS.refresh();
-                }
-            }, 1000);
-        } catch (error) {
-            console.error('Error loading Instagram posts:', error);
-            this.showError(error);
-            this.isLoading = false;
-        }
-    }
-    
-    renderPosts() {
-        // Clear existing posts if this is a refresh
-        if (this.currentPage === 1) {
-            this.feedContainer.innerHTML = '';
-        }
-        
-        // Get posts for current page
-        const startIndex = (this.currentPage - 1) * this.postsPerPage;
-        const endIndex = startIndex + this.postsPerPage;
-        const postsToRender = this.instagramPosts.slice(startIndex, endIndex);
-        
-        postsToRender.forEach((post, index) => {
-            const postElement = this.createPostElement(post, startIndex + index);
-            this.feedContainer.appendChild(postElement);
-        });
-        
-        // Update hasMorePosts
-        this.hasMorePosts = endIndex < this.instagramPosts.length;
-        
-        // Update load more button
-        this.updateLoadMoreButton();
-        
-        // Setup hover effects
-        if (this.config.instagram.settings.enableHoverEffects) {
-            this.setupHoverEffects();
-        }
-    }
-    
-    createPostElement(post, index) {
-        const postElement = document.createElement('div');
-        postElement.className = 'instagram-post';
-        postElement.setAttribute('data-aos', 'fade-up');
-        postElement.setAttribute('data-aos-delay', `${(index % 8) * 100}`);
-        postElement.setAttribute('data-post-id', post.id);
-        postElement.setAttribute('data-post-type', post.type);
-        
-        // Create post type indicator
-        const typeIndicator = this.createTypeIndicator(post.type);
-        
-        // Format engagement numbers
-        const formattedLikes = this.formatNumber(post.likes);
-        const formattedComments = this.formatNumber(post.comments);
-        
-        postElement.innerHTML = `
-            <a href="${post.permalink}" target="_blank" rel="noopener noreferrer" class="instagram-link">
-                <div class="instagram-post-wrapper">
-                    <img src="${post.image}" 
-                         alt="${post.caption}" 
-                         loading="lazy"
-                         class="instagram-image"
-                         onerror="this.onerror=null; this.src='${this.getFallbackImage()}'; this.classList.add('error-image');">
-                    
-                    <div class="instagram-overlay">
-                        <div class="instagram-stats-overlay">
-                            <span class="ig-stat">
-                                <i class="fas fa-heart"></i>
-                                <span>${formattedLikes}</span>
-                            </span>
-                            <span class="ig-stat">
-                                <i class="fas fa-comment"></i>
-                                <span>${formattedComments}</span>
-                            </span>
-                        </div>
-                        <p class="ig-caption">${post.caption}</p>
-                        <div class="ig-timestamp">${this.formatTimestamp(post.timestamp)}</div>
-                    </div>
-                    
-                    ${typeIndicator}
-                    
-                    <div class="ig-logo-overlay">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    
-                    <div class="post-engagement">
-                        <div class="engagement-actions">
-                            <div class="engagement-left">
-                                <button class="engagement-action like-btn" data-post-id="${post.id}">
-                                    <i class="far fa-heart"></i>
-                                </button>
-                                <button class="engagement-action comment-btn" data-post-id="${post.id}">
-                                    <i class="far fa-comment"></i>
-                                </button>
-                                <button class="engagement-action share-btn" data-post-id="${post.id}">
-                                    <i class="far fa-paper-plane"></i>
-                                </button>
-                            </div>
-                            <button class="engagement-action bookmark-btn" data-post-id="${post.id}">
-                                <i class="far fa-bookmark"></i>
-                            </button>
-                        </div>
-                        <div class="engagement-stats">
-                            ${formattedLikes} likes
-                        </div>
-                    </div>
-                </div>
-            </a>
-        `;
-        
-        return postElement;
-    }
-    
-    createTypeIndicator(type) {
-        const indicators = {
-            'photo': '',
-            'video': '<div class="post-type-indicator"><i class="fas fa-play"></i></div>',
-            'carousel': '<div class="post-type-indicator"><i class="fas fa-images"></i></div>',
-            'reel': '<div class="post-type-indicator"><i class="fas fa-film"></i></div>'
-        };
-        
-        return indicators[type] || '';
-    }
-    
-    formatNumber(num) {
-        if (num >= 1000000) {
-            return (num / 1000000).toFixed(1) + 'M';
-        } else if (num >= 1000) {
-            return (num / 1000).toFixed(1) + 'K';
-        }
-        return num.toString();
-    }
-    
-    formatTimestamp(timestamp) {
-        const date = new Date(timestamp);
-        const now = new Date();
-        const diff = now - date;
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const days = Math.floor(hours / 24);
-        
-        if (days > 0) {
-            return `${days}d ago`;
-        } else if (hours > 0) {
-            return `${hours}h ago`;
-        } else {
-            return 'Just now';
-        }
-    }
-    
-    getFallbackImage() {
-        return 'https://images.unsplash.com/photo-1611695434398-4f4b330623e6?w=400&h=400&fit=crop&crop=center';
-    }
-    
-    setupHoverEffects() {
-        const posts = document.querySelectorAll('.instagram-post');
-        
-        posts.forEach(post => {
-            post.addEventListener('mouseenter', () => {
-                post.style.transform = 'translateY(-5px)';
-                post.style.boxShadow = '0 10px 30px rgba(193, 53, 132, 0.3)';
-            });
-            
-            post.addEventListener('mouseleave', () => {
-                post.style.transform = 'translateY(0)';
-                post.style.boxShadow = 'none';
-            });
-        });
-        
-        // Setup engagement button effects
-        const engagementButtons = document.querySelectorAll('.engagement-action');
-        engagementButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                this.handleEngagementAction(button);
-            });
-        });
-    }
-    
-    handleEngagementAction(button) {
-        const action = button.classList.contains('like-btn') ? 'like' :
-                      button.classList.contains('comment-btn') ? 'comment' :
-                      button.classList.contains('share-btn') ? 'share' : 'bookmark';
-        
-        const postId = button.getAttribute('data-post-id');
-        
-        // Animate button
-        button.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            button.style.transform = 'scale(1)';
-        }, 200);
-        
-        // Handle specific actions
-        switch (action) {
-            case 'like':
-                this.handleLike(button, postId);
-                break;
-            case 'comment':
-                this.handleComment(postId);
-                break;
-            case 'share':
-                this.handleShare(postId);
-                break;
-            case 'bookmark':
-                this.handleBookmark(button, postId);
-                break;
-        }
-        
-        // Track engagement
-        this.trackEngagement(action, postId);
-    }
-    
-    handleLike(button, postId) {
-        const icon = button.querySelector('i');
-        const isLiked = icon.classList.contains('fas');
-        
-        if (isLiked) {
-            icon.classList.remove('fas');
-            icon.classList.add('far');
-            button.classList.remove('liked');
-        } else {
-            icon.classList.remove('far');
-            icon.classList.add('fas');
-            button.classList.add('liked');
-            
-            // Create heart animation
-            this.createHeartAnimation(button);
-        }
-    }
-    
-    handleComment(postId) {
-        // Open Instagram post in new tab
-        const post = this.instagramPosts.find(p => p.id === postId);
-        if (post) {
-            window.open(post.permalink, '_blank');
-        }
-    }
-    
-    handleShare(postId) {
-        const post = this.instagramPosts.find(p => p.id === postId);
-        if (post && navigator.share) {
-            navigator.share({
-                title: 'Check out this Instagram post',
-                text: post.caption,
-                url: post.permalink
-            });
-        } else if (post) {
-            // Fallback: copy to clipboard
-            navigator.clipboard.writeText(post.permalink).then(() => {
-                this.showToast('Link copied to clipboard!');
-            });
-        }
-    }
-    
-    handleBookmark(button, postId) {
-        const icon = button.querySelector('i');
-        const isBookmarked = icon.classList.contains('fas');
-        
-        if (isBookmarked) {
-            icon.classList.remove('fas');
-            icon.classList.add('far');
-            this.removeBookmark(postId);
-        } else {
-            icon.classList.remove('far');
-            icon.classList.add('fas');
-            this.addBookmark(postId);
-        }
-    }
-    
-    createHeartAnimation(button) {
-        const heart = document.createElement('i');
-        heart.className = 'fas fa-heart heart-animation';
-        heart.style.position = 'absolute';
-        heart.style.color = '#ff3040';
-        heart.style.fontSize = '2rem';
-        heart.style.pointerEvents = 'none';
-        heart.style.zIndex = '1000';
-        
-        const rect = button.getBoundingClientRect();
-        heart.style.left = rect.left + (rect.width / 2) - 16 + 'px';
-        heart.style.top = rect.top + (rect.height / 2) - 16 + 'px';
-        
-        document.body.appendChild(heart);
-        
-        // Animate heart
-        heart.animate([
-            { transform: 'scale(0) rotate(0deg)', opacity: 1 },
-            { transform: 'scale(1.5) rotate(15deg)', opacity: 0.7 },
-            { transform: 'scale(0) rotate(30deg)', opacity: 0 }
-        ], {
-            duration: 800,
-            easing: 'ease-out'
-        }).onfinish = () => {
-            heart.remove();
-        };
-    }
-    
-    addBookmark(postId) {
-        const bookmarks = this.getBookmarks();
-        if (!bookmarks.includes(postId)) {
-            bookmarks.push(postId);
-            this.saveBookmarks(bookmarks);
-            this.showToast('Post bookmarked!');
-        }
-    }
-    
-    removeBookmark(postId) {
-        const bookmarks = this.getBookmarks();
-        const index = bookmarks.indexOf(postId);
-        if (index > -1) {
-            bookmarks.splice(index, 1);
-            this.saveBookmarks(bookmarks);
-            this.showToast('Bookmark removed!');
-        }
-    }
-    
-    getBookmarks() {
-        const bookmarks = localStorage.getItem('instagram-bookmarks');
-        return bookmarks ? JSON.parse(bookmarks) : [];
-    }
-    
-    saveBookmarks(bookmarks) {
-        localStorage.setItem('instagram-bookmarks', JSON.stringify(bookmarks));
-    }
-    
-    showToast(message) {
-        const toast = document.createElement('div');
-        toast.className = 'instagram-toast';
-        toast.textContent = message;
-        toast.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            z-index: 10000;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        `;
-        
-        document.body.appendChild(toast);
-        
-        setTimeout(() => {
-            toast.style.transform = 'translateX(0)';
-        }, 100);
-        
-        setTimeout(() => {
-            toast.style.transform = 'translateX(100%)';
-            setTimeout(() => toast.remove(), 300);
-        }, 3000);
-    }
-    
-    loadMorePosts() {
-        if (this.isLoading || !this.hasMorePosts) return;
-        
-        this.currentPage++;
-        this.loadPosts();
-    }
-    
-    updateLoadMoreButton() {
-        const loadMoreBtn = document.getElementById('loadMorePosts');
-        if (loadMoreBtn) {
-            if (this.hasMorePosts) {
-                loadMoreBtn.style.display = 'inline-flex';
-                loadMoreBtn.textContent = 'Load More Posts';
-                loadMoreBtn.disabled = false;
-            } else {
-                loadMoreBtn.style.display = 'none';
+                shape.className = `geometric-shape ${shapeType}`;
+                shape.style.left = Math.random() * 100 + '%';
+                shape.style.top = Math.random() * 100 + '%';
+                shape.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                shape.style.animationDelay = Math.random() * 5 + 's';
+
+                container.appendChild(shape);
+                this.shapes.push(shape);
             }
         }
-    }
-    
-    setupLazyLoading() {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        // Apply to existing images
-        const lazyImages = document.querySelectorAll('.instagram-image.lazy');
-        lazyImages.forEach(img => imageObserver.observe(img));
-    }
-    
-    refreshFeed() {
-        this.currentPage = 1;
-        this.hasMorePosts = true;
-        this.loadPosts();
-        this.updateStats();
-        
-        console.log('🔄 Instagram feed refreshed');
-    }
-    
-    updateStats() {
-        // Update follower stats with animation
-        const stats = {
-            followers: '125K',
-            posts: '1,234',
-            following: '567'
-        };
-        
-        const followerElement = document.getElementById('igFollowers');
-        const postsElement = document.getElementById('igPosts');
-        const followingElement = document.getElementById('igFollowing');
-        
-        if (followerElement) this.animateStatCounter(followerElement, stats.followers);
-        if (postsElement) this.animateStatCounter(postsElement, stats.posts);
-        if (followingElement) this.animateStatCounter(followingElement, stats.following);
-    }
-    
-    animateStatCounter(element, finalValue) {
-        const numericValue = parseInt(finalValue.replace(/[^\d]/g, ''));
-        let currentValue = 0;
-        const increment = numericValue / 50;
-        
-        const timer = setInterval(() => {
-            currentValue += increment;
-            
-            if (currentValue >= numericValue) {
-                element.textContent = finalValue;
-                clearInterval(timer);
-            } else {
-                const value = Math.floor(currentValue);
-                if (finalValue.includes('K')) {
-                    element.textContent = Math.floor(value / 1000) + 'K';
-                } else if (finalValue.includes('M')) {
-                    element.textContent = (value / 1000000).toFixed(1) + 'M';
-                } else {
-                    element.textContent = value.toLocaleString();
-                }
+
+        createShineOverlay() {
+            if (!this.performanceMode.highPerformance) return;
+
+            const existingShine = document.querySelector('.shine-overlay');
+            if (!existingShine) {
+                const shine = document.createElement('div');
+                shine.className = 'shine-overlay';
+                document.body.appendChild(shine);
             }
+        }
+
+        setupInteractionEffects() {
+            // Add glow effects to interactive elements
+            const interactiveElements = document.querySelectorAll('button, .nav-link, .card, .interactive-glow');
+            
+            interactiveElements.forEach(element => {
+                if (!element.classList.contains('interactive-glow')) {
+                    element.classList.add('interactive-glow');
+                }
+
+                element.addEventListener('mouseenter', (e) => {
+                    this.createRippleEffect(e);
+                });
+
+                element.addEventListener('click', (e) => {
+                    this.createClickEffect(e);
+                });
+            });
+        }
+
+        createRippleEffect(event) {
+            const element = event.currentTarget;
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+                border-radius: 50%;
+                pointer-events: none;
+                transform: scale(0);
+                animation: rippleAnimation 0.6s ease-out;
+                z-index: 1;
+            `;
+
+            if (element.style.position !== 'absolute' && element.style.position !== 'relative') {
+                element.style.position = 'relative';
+            }
+
+            element.appendChild(ripple);
+
+            setTimeout(() => {
+                if (ripple.parentNode) {
+                    ripple.remove();
+                }
+            }, 600);
+        }
+
+        createClickEffect(event) {
+            if (!this.performanceMode.highPerformance) return;
+
+            const particles = [];
+            const rect = event.currentTarget.getBoundingClientRect();
+            const centerX = event.clientX - rect.left;
+            const centerY = event.clientY - rect.top;
+
+            for (let i = 0; i < 8; i++) {
+                const particle = document.createElement('div');
+                const angle = (i / 8) * Math.PI * 2;
+                const velocity = 50 + Math.random() * 30;
+                
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: var(--primary-gold);
+                    border-radius: 50%;
+                    left: ${centerX}px;
+                    top: ${centerY}px;
+                    pointer-events: none;
+                    z-index: 1000;
+                `;
+
+                document.body.appendChild(particle);
+                particles.push(particle);
+
+                // Animate particle
+                const startTime = performance.now();
+                const animate = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / 500, 1);
+                    
+                    const x = centerX + Math.cos(angle) * velocity * progress;
+                    const y = centerY + Math.sin(angle) * velocity * progress;
+                    const opacity = 1 - progress;
+                    
+                    particle.style.transform = `translate(${x - centerX}px, ${y - centerY}px)`;
+                    particle.style.opacity = opacity;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        particle.remove();
+                    }
+                };
+                
+                requestAnimationFrame(animate);
+            }
+        }
+
+        startAnimationLoop() {
+            if (!this.performanceMode.highPerformance) return;
+
+            const animateParallax = () => {
+                const scrollY = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.parallax-element');
+                
+                parallaxElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    const yPos = -(scrollY * speed);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+
+                if (this.isAnimating) {
+                    requestAnimationFrame(animateParallax);
+                }
+            };
+
+            requestAnimationFrame(animateParallax);
+        }
+
+        pauseAnimations() {
+            this.isAnimating = false;
+            if (this.sparkleInterval) {
+                clearInterval(this.sparkleInterval);
+            }
+        }
+
+        resumeAnimations() {
+            this.isAnimating = true;
+            this.createSparkleSystem();
+            this.startAnimationLoop();
+        }
+    }
+
+    // Initialize Enhanced Animation Manager
+    const animationManager = new EnhancedAnimationManager();
+    window.animationManager = animationManager;
+
+    // ===== LOADING SCREEN =====
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+    }
+
+    // ===== ENHANCED HEADER FUNCTIONALITY =====
+    
+    // Enhanced Header Elements
+    const header = document.getElementById('mainHeader') || document.querySelector('.main-header');
+    const mobileToggle = document.getElementById('mobileToggle') || document.querySelector('.mobile-toggle');
+    const mobileMenu = document.getElementById('mobileMenu') || document.querySelector('.mobile-menu');
+    const mobileClose = document.getElementById('mobileClose') || document.querySelector('.mobile-close');
+    const mobileOverlay = document.getElementById('mobileOverlay') || document.querySelector('.mobile-overlay');
+    const searchToggle = document.getElementById('searchToggle') || document.querySelector('.search-toggle');
+    const searchOverlay = document.getElementById('searchOverlay') || document.querySelector('.search-overlay');
+    const searchClose = document.getElementById('searchClose') || document.querySelector('.search-close');
+    const searchInput = document.getElementById('searchInput') || document.querySelector('.search-input');
+    const themeToggle = document.getElementById('themeToggle') || document.querySelector('.theme-toggle');
+    const contactBtn = document.getElementById('contactBtn');
+    
+    // Create scroll indicator
+    createScrollIndicator();
+    
+    // Enhanced Header Scroll Effect
+    let lastScroll = 0;
+    let scrollTimeout;
+    let ticking = false;
+
+    function updateHeaderOnScroll() {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+            header?.classList.add('scrolled');
+        } else {
+            header?.classList.remove('scrolled');
+        }
+
+        // Update scroll indicator
+        updateScrollIndicator();
+
+        // Hide/show header based on scroll direction
+        if (currentScroll > lastScroll && currentScroll > 500) {
+            header?.classList.add('header-hidden');
+        } else {
+            header?.classList.remove('header-hidden');
+        }
+
+        lastScroll = currentScroll;
+        ticking = false;
+
+        // Debounced scroll end
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(() => {
+            updateActiveNav();
         }, 50);
     }
-    
-    showLoading() {
-        const loadingElement = document.createElement('div');
-        loadingElement.className = 'ig-loading';
-        loadingElement.id = 'instagram-loading';
-        loadingElement.innerHTML = `
-            <div class="ig-loader">
-                <i class="fab fa-instagram"></i>
-            </div>
-            <p>Loading Instagram posts...</p>
-        `;
-        
-        if (this.currentPage === 1) {
-            this.feedContainer.innerHTML = '';
-            this.feedContainer.appendChild(loadingElement);
-        }
-    }
-    
-    hideLoading() {
-        const loadingElement = document.getElementById('instagram-loading');
-        if (loadingElement) {
-            loadingElement.remove();
-        }
-    }
-    
-    showError(error) {
-        const errorElement = document.createElement('div');
-        errorElement.className = 'instagram-error';
-        errorElement.innerHTML = `
-            <i class="fas fa-exclamation-triangle"></i>
-            <h3>Unable to load Instagram posts</h3>
-            <p>${error.message || 'Please try again later.'}</p>
-            <button onclick="this.parentElement.remove(); window.instagramFeed.refreshFeed();" class="retry-btn">
-                <i class="fas fa-redo"></i> Try Again
-            </button>
-        `;
-        
-        this.feedContainer.appendChild(errorElement);
-    }
-    
-    trackPostClick(post) {
-        const postId = post.getAttribute('data-post-id');
-        const postType = post.getAttribute('data-post-type');
-        
-        // Google Analytics
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'instagram_post_click', {
-                'event_category': 'engagement',
-                'event_label': postId,
-                'post_type': postType
-            });
-        }
-        
-        console.log(`📊 Post clicked: ${postId} (${postType})`);
-    }
-    
-    trackEngagement(action, postId) {
-        // Google Analytics
-        if (typeof gtag !== 'undefined') {
-            gtag('event', `instagram_${action}`, {
-                'event_category': 'engagement',
-                'event_label': postId
-            });
-        }
-        
-        console.log(`📊 Engagement: ${action} on post ${postId}`);
-    }
-    
-    // Public API
-    getPosts() {
-        return this.instagramPosts;
-    }
-    
-    getPostById(id) {
-        return this.instagramPosts.find(post => post.id === id);
-    }
-    
-    addPost(post) {
-        this.instagramPosts.unshift(post);
-        this.refreshFeed();
-    }
-    
-    removePost(id) {
-        this.instagramPosts = this.instagramPosts.filter(post => post.id !== id);
-        this.refreshFeed();
-    }
-}
 
-// Auto-initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-    // Check if Instagram section exists
-    if (document.getElementById('instagram')) {
-        // Initialize Instagram Feed
-        window.instagramFeed = new InstagramFeed();
-        
-        // Setup additional features
-        setupInstagramFeatures();
-        
-        console.log('✅ Instagram Feed auto-initialized');
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateHeaderOnScroll);
+            ticking = true;
+        }
+    });
+
+    // ===== ENHANCED MOBILE MENU =====
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', toggleMobileMenu);
     }
+    
+    if (mobileClose) {
+        mobileClose.addEventListener('click', closeMobileMenu);
+    }
+    
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    function toggleMobileMenu() {
+        if (mobileMenu && mobileOverlay && mobileToggle) {
+            const isActive = mobileMenu.classList.contains('active');
+            
+            if (isActive) {
+                closeMobileMenu();
+            } else {
+                mobileMenu.classList.add('active');
+                mobileOverlay.classList.add('active');
+                mobileToggle.classList.add('active');
+                document.body.classList.add('menu-open');
+                
+                // Animate mobile menu items
+                const menuItems = mobileMenu.querySelectorAll('.mobile-nav-link');
+                menuItems.forEach((item, index) => {
+                    item.style.animationDelay = `${index * 0.1}s`;
+                    item.style.animation = 'slideInRight 0.4s ease-out forwards';
+                });
+            }
+        }
+    }
+
+    function closeMobileMenu() {
+        if (mobileMenu && mobileOverlay && mobileToggle) {
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            mobileToggle.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    }
+
+    // Enhanced Mobile Menu Links
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            closeMobileMenu();
+            
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            const rect = link.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+            `;
+            
+            link.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    // ===== ENHANCED SEARCH =====
+    if (searchToggle) {
+        searchToggle.addEventListener('click', toggleSearchOverlay);
+    }
+    
+    if (searchClose) {
+        searchClose.addEventListener('click', closeSearchOverlay);
+    }
+
+    function toggleSearchOverlay() {
+        if (searchOverlay) {
+            searchOverlay.classList.toggle('active');
+            if (searchOverlay.classList.contains('active') && searchInput) {
+                setTimeout(() => {
+                    searchInput.focus();
+                }, 300);
+            }
+        }
+    }
+
+    function closeSearchOverlay() {
+        if (searchOverlay && searchInput) {
+            searchOverlay.classList.remove('active');
+            searchInput.value = '';
+        }
+    }
+
+    // Enhanced Search Functionality
+    if (searchInput) {
+        let searchTimeout;
+        
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            
+            if (searchTimeout) {
+                clearTimeout(searchTimeout);
+            }
+            
+            searchTimeout = setTimeout(() => {
+                if (query.length > 2) {
+                    handleSearch(query);
+                    showSearchSuggestions(query);
+                }
+            }, 300);
+        });
+        
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+    }
+
+    function handleSearch(query) {
+        console.log('Searching for:', query);
+        
+        // Track search if analytics available
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'search', {
+                'search_term': query,
+                'event_category': 'engagement'
+            });
+        }
+    }
+
+    function performSearch() {
+        const query = searchInput.value.trim();
+        if (query) {
+            console.log('Performing search for:', query);
+            closeSearchOverlay();
+            // Implement actual search logic here
+        }
+    }
+
+    function showSearchSuggestions(query) {
+        const suggestions = document.querySelector('.search-suggestions');
+        if (suggestions) {
+            // Add logic to show relevant suggestions based on query
+            const tags = suggestions.querySelectorAll('.tag');
+            tags.forEach(tag => {
+                const tagText = tag.textContent.toLowerCase();
+                if (tagText.includes(query.toLowerCase())) {
+                    tag.style.display = 'inline-block';
+                    tag.classList.add('highlight');
+                } else {
+                    tag.style.display = 'none';
+                    tag.classList.remove('highlight');
+                }
+            });
+        }
+    }
+
+    // ===== ENHANCED THEME TOGGLE =====
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
+
+    function toggleTheme() {
+        const body = document.body;
+        const icon = themeToggle.querySelector('.theme-icon') || themeToggle.querySelector('i');
+        const tooltip = themeToggle.querySelector('.button-tooltip');
+        
+        body.classList.toggle('light-theme');
+        
+        // Animate theme transition
+        body.style.transition = 'all 0.3s ease';
+        
+        if (body.classList.contains('light-theme')) {
+            icon?.classList.remove('fa-moon');
+            icon?.classList.add('fa-sun');
+            if (tooltip) tooltip.textContent = 'Dark Mode';
+            localStorage.setItem('theme', 'light');
+            
+            // Update sparkles for light theme
+            if (window.animationManager) {
+                window.animationManager.sparkles.forEach(sparkle => {
+                    sparkle.style.filter = 'brightness(0.8)';
+                });
+            }
+        } else {
+            icon?.classList.remove('fa-sun');
+            icon?.classList.add('fa-moon');
+            if (tooltip) tooltip.textContent = 'Light Mode';
+            localStorage.setItem('theme', 'dark');
+            
+                        // Reset sparkles for dark theme
+            if (window.animationManager) {
+                window.animationManager.sparkles.forEach(sparkle => {
+                    sparkle.style.filter = 'none';
+                });
+            }
+        }
+        
+        // Animate theme toggle button
+        themeToggle.style.transform = 'scale(0.8)';
+        setTimeout(() => {
+            themeToggle.style.transform = '';
+        }, 150);
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        if (themeToggle) {
+            const icon = themeToggle.querySelector('.theme-icon') || themeToggle.querySelector('i');
+            const tooltip = themeToggle.querySelector('.button-tooltip');
+            if (icon) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+            if (tooltip) tooltip.textContent = 'Dark Mode';
+        }
+    }
+
+    // ===== CONTACT BUTTON =====
+    if (contactBtn) {
+        contactBtn.addEventListener('click', openContact);
+    }
+
+    function openContact() {
+        // Add click animation
+        contactBtn.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            contactBtn.style.transform = '';
+            window.location.href = 'contact.html';
+        }, 150);
+    }
+
+    // ===== KEYBOARD SHORTCUTS =====
+    document.addEventListener('keydown', (e) => {
+        // Escape key - close menus
+        if (e.key === 'Escape') {
+            closeMobileMenu();
+            closeSearchOverlay();
+        }
+        
+        // Ctrl/Cmd + K for search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            toggleSearchOverlay();
+        }
+        
+        // Ctrl/Cmd + M for menu (mobile)
+        if ((e.ctrlKey || e.metaKey) && e.key === 'm' && window.innerWidth <= 1024) {
+            e.preventDefault();
+            toggleMobileMenu();
+        }
+        
+        // Ctrl/Cmd + D for theme toggle
+        if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+            e.preventDefault();
+            toggleTheme();
+        }
+    });
+
+    // ===== WINDOW RESIZE HANDLER =====
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        if (resizeTimeout) {
+            clearTimeout(resizeTimeout);
+        }
+        
+        resizeTimeout = setTimeout(() => {
+            if (window.innerWidth > 1024) {
+                closeMobileMenu();
+            }
+            
+            // Recalculate scroll indicator
+            updateScrollIndicator();
+            
+            // Update animation manager settings
+            if (window.animationManager) {
+                window.animationManager.performanceMode = window.animationManager.detectPerformanceMode();
+            }
+        }, 250);
+    });
+
+    // ===== ENHANCED NAVIGATION =====
+    function createScrollIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'scroll-indicator';
+        indicator.innerHTML = '<div class="scroll-progress"></div>';
+        document.body.appendChild(indicator);
+    }
+
+    function updateScrollIndicator() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        
+        const progressBar = document.querySelector('.scroll-progress');
+        if (progressBar) {
+            progressBar.style.width = Math.min(scrollPercent, 100) + '%';
+        }
+    }
+
+    // Enhanced Smooth Scrolling
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            if (href !== '#' && href.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    
+                    // Add smooth scroll animation
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update active nav
+                    updateActiveNavLink(this);
+                    
+                    // Close mobile menu if open
+                    closeMobileMenu();
+                }
+            }
+        });
+    });
+
+    // Enhanced Active Navigation
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-link, .mobile-nav-link');
+
+    function updateActiveNav() {
+        const scrollY = window.pageYOffset;
+        let currentSection = '';
+
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 150;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                currentSection = sectionId;
+            }
+        });
+
+        navItems.forEach(item => {
+            item.classList.remove('active');
+            const href = item.getAttribute('href');
+            if (href === `#${currentSection}`) {
+                item.classList.add('active');
+            }
+        });
+    }
+
+    function updateActiveNavLink(activeLink) {
+        navItems.forEach(item => {
+            item.classList.remove('active');
+        });
+        activeLink.classList.add('active');
+    }
+
+    function highlightActiveNavigation() {
+        const currentPath = window.location.pathname;
+        const currentPage = currentPath.split('/').pop() || 'index.html';
+        
+        navItems.forEach(link => {
+            const href = link.getAttribute('href');
+            link.classList.remove('active');
+            
+            if (href === currentPage || 
+                (currentPage === 'index.html' && (href === '/' || href === 'index.html')) ||
+                (currentPage === '' && (href === '/' || href === 'index.html'))) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Call on page load
+    highlightActiveNavigation();
+
+    // ===== NOTIFICATION SYSTEM =====
+    class NotificationManager {
+        constructor() {
+            this.notifications = [];
+            this.createNotificationStack();
+        }
+
+        createNotificationStack() {
+            if (!document.querySelector('.notification-stack')) {
+                const stack = document.createElement('div');
+                stack.className = 'notification-stack';
+                document.body.appendChild(stack);
+            }
+        }
+
+        show(message, type = 'info', duration = 5000) {
+            const notification = document.createElement('div');
+            notification.className = `notification-item ${type}`;
+            
+            const id = Date.now().toString();
+            notification.setAttribute('data-id', id);
+            
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <i class="fas fa-${this.getIcon(type)}"></i>
+                    <span>${message}</span>
+                    <button class="notification-close" onclick="window.notificationManager.close('${id}')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+
+            const stack = document.querySelector('.notification-stack');
+            stack.appendChild(notification);
+            this.notifications.push({ id, element: notification });
+
+            // Animate in
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+
+            // Auto remove
+            setTimeout(() => {
+                this.close(id);
+            }, duration);
+
+            return id;
+        }
+
+        close(id) {
+            const notification = document.querySelector(`[data-id="${id}"]`);
+            if (notification) {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                    this.notifications = this.notifications.filter(n => n.id !== id);
+                }, 300);
+            }
+        }
+
+        getIcon(type) {
+            const icons = {
+                success: 'check-circle',
+                error: 'exclamation-triangle',
+                warning: 'exclamation-circle',
+                info: 'info-circle'
+            };
+            return icons[type] || 'info-circle';
+        }
+    }
+
+    // Initialize notification manager
+    window.notificationManager = new NotificationManager();
+
+    // ===== PARTICLE ANIMATION =====
+    function createParticles() {
+        const particleContainer = document.getElementById('particles');
+        if (!particleContainer) return;
+
+        const particleCount = window.innerWidth > 768 ? 50 : 25;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.cssText = `
+                position: absolute;
+                width: ${Math.random() * 3 + 1}px;
+                height: ${Math.random() * 3 + 1}px;
+                background: rgba(212, 175, 55, ${Math.random() * 0.5 + 0.3});
+                border-radius: 50%;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                animation: particleFloat ${Math.random() * 10 + 10}s linear infinite;
+                animation-delay: ${Math.random() * 5}s;
+            `;
+            particleContainer.appendChild(particle);
+        }
+    }
+
+    createParticles();
+
+    // ===== COUNTER ANIMATION =====
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+                counterObserver.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
+
+    // ===== SWIPER INITIALIZATION =====
+    function initializeSwiper() {
+        if (typeof Swiper === 'undefined') return;
+
+        // Pageants Swiper
+        const pageantsSwiper = new Swiper('.pageants-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                968: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // Testimonials Swiper
+        const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 7000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+        });
+
+        return { pageantsSwiper, testimonialsSwiper };
+    }
+
+    const swipers = initializeSwiper();
+
+    // ===== DYNAMIC CONTENT LOADING =====
+    
+    // Pageant Data
+    const pageantData = [
+        {
+            title: "Miss Universe",
+            image: "https://images.unsplash.com/photo-1596567055337-3b9a743cd1fd?w=800&q=80",
+            date: "December 2025",
+            location: "Las Vegas, USA",
+            description: "The most prestigious beauty pageant in the world",
+            category: "international"
+        },
+        {
+            title: "Miss World",
+            image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80",
+            date: "November 2025",
+            location: "London, UK",
+            description: "Beauty with a purpose",
+            category: "international"
+        },
+        {
+            title: "Miss International",
+            image: "https://images.unsplash.com/photo-1540324155974-7523202daa3f?w=800&q=80",
+            date: "October 2025",
+            location: "Tokyo, Japan",
+            description: "Ambassador of beauty and goodwill",
+            category: "international"
+        },
+        {
+            title: "Miss Earth",
+            image: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=800&q=80",
+            date: "November 2025",
+            location: "Manila, Philippines",
+            description: "Environmental advocacy through beauty",
+            category: "environmental"
+        }
+    ];
+
+    function loadPageants() {
+        const wrapper = document.getElementById('pageantsWrapper');
+        if (!wrapper) return;
+
+        pageantData.forEach((pageant, index) => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+            slide.innerHTML = `
+                <div class="pageant-card glass-morphism enhanced-card" data-aos="fade-up" data-aos-delay="${index * 100}">
+                    <div class="pageant-image">
+                        <img src="${pageant.image}" alt="${pageant.title}" loading="lazy">
+                        <div class="pageant-overlay">
+                            <span class="pageant-date">${pageant.date}</span>
+                        </div>
+                    </div>
+                    <div class="pageant-content">
+                        <span class="pageant-category">${pageant.category}</span>
+                        <h3 class="pageant-title">${pageant.title}</h3>
+                        <p class="pageant-location"><i class="fas fa-map-marker-alt"></i> ${pageant.location}</p>
+                        <p class="pageant-description">${pageant.description}</p>
+                        <a href="#" class="pageant-link enhanced-button">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            `;
+            wrapper.appendChild(slide);
+        });
+
+        // Update swiper
+        if (swipers?.pageantsSwiper) {
+            swipers.pageantsSwiper.update();
+        }
+    }
+
+    loadPageants();
+
+    // ===== ENHANCED NEWSLETTER FORM =====
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+            
+            const email = newsletterForm.querySelector('.newsletter-input').value;
+            const button = newsletterForm.querySelector('.btn-subscribe');
+            const originalText = button.innerHTML;
+            
+            // Validate email
+            if (!isValidEmail(email)) {
+                window.notificationManager.show('Please enter a valid email address', 'error');
+                return;
+            }
+            
+            // Show loading state
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+            button.disabled = true;
+            
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // Success state
+                button.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+                button.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+                
+                window.notificationManager.show('Successfully subscribed to newsletter!', 'success');
+                
+                // Track subscription
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'newsletter_subscribe', {
+                        'event_category': 'engagement',
+                        'event_label': 'Newsletter Subscription'
+                    });
+                }
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.background = '';
+                    button.disabled = false;
+                    newsletterForm.reset();
+                }, 3000);
+                
+            } catch (error) {
+                button.innerHTML = originalText;
+                button.disabled = false;
+                window.notificationManager.show('Subscription failed. Please try again.', 'error');
+            }
+        });
+    }
+
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    // ===== ENHANCED BACK TO TOP BUTTON =====
+    function createBackToTopButton() {
+        const backToTop = document.querySelector('.back-to-top') || (() => {
+            const button = document.createElement('button');
+            button.className = 'back-to-top glass-button';
+            button.innerHTML = '<i class="fas fa-arrow-up"></i>';
+            button.setAttribute('aria-label', 'Back to top');
+            document.body.appendChild(button);
+            return button;
+        })();
+        
+        let isVisible = false;
+        
+        function toggleVisibility() {
+            const shouldShow = window.pageYOffset > 500;
+            
+            if (shouldShow && !isVisible) {
+                backToTop.classList.add('visible');
+                isVisible = true;
+            } else if (!shouldShow && isVisible) {
+                backToTop.classList.remove('visible');
+                isVisible = false;
+            }
+        }
+        
+        window.addEventListener('scroll', throttle(toggleVisibility, 100));
+        
+        backToTop.addEventListener('click', () => {
+            // Add click animation
+            backToTop.style.transform = 'scale(0.9)';
+            
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+                backToTop.style.transform = '';
+            }, 150);
+            
+            // Track interaction
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'back_to_top_click', {
+                    'event_category': 'navigation',
+                    'event_label': 'Back to Top Button'
+                });
+            }
+        });
+
+        return backToTop;
+    }
+
+    createBackToTopButton();
+
+    // ===== ENHANCED MAGNETIC EFFECTS =====
+    function setupMagneticEffects() {
+        const magneticElements = document.querySelectorAll('.magnetic-hover, .magnetic-button, .logo, .enhanced-button');
+        
+        magneticElements.forEach(elem => {
+            let isHovering = false;
+            
+            elem.addEventListener('mouseenter', () => {
+                isHovering = true;
+                elem.style.transition = 'transform 0.1s ease';
+            });
+            
+            elem.addEventListener('mousemove', (e) => {
+                if (!isHovering) return;
+                
+                const rect = elem.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                const intensity = 0.1;
+                elem.style.transform = `translate(${x * intensity}px, ${y * intensity}px)`;
+            });
+            
+            elem.addEventListener('mouseleave', () => {
+                isHovering = false;
+                elem.style.transition = 'transform 0.3s ease';
+                elem.style.transform = '';
+            });
+        });
+    }
+
+    setupMagneticEffects();
+
+    // ===== ENHANCED TILT EFFECTS =====
+    function setupTiltEffects() {
+        const tiltElements = document.querySelectorAll('.tilt-effect, .enhanced-card');
+        
+        tiltElements.forEach(elem => {
+            elem.addEventListener('mousemove', (e) => {
+                const rect = elem.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width;
+                const y = (e.clientY - rect.top) / rect.height;
+                
+                const tiltX = (y - 0.5) * 10;
+                const tiltY = (x - 0.5) * -10;
+                
+                elem.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+            });
+            
+            elem.addEventListener('mouseleave', () => {
+                elem.style.transform = '';
+            });
+        });
+    }
+
+    setupTiltEffects();
+
+    // ===== LAZY LOADING ENHANCEMENT =====
+    function setupEnhancedLazyLoading() {
+        const lazyImages = document.querySelectorAll('img[loading="lazy"], img[data-src]');
+        
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        
+                        // Handle data-src lazy loading
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        
+                        // Add loading animation
+                        img.style.opacity = '0';
+                        img.style.transition = 'opacity 0.5s ease';
+                        
+                        img.onload = () => {
+                            img.style.opacity = '1';
+                            img.classList.add('loaded');
+                        };
+                        
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px',
+                threshold: 0.1
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+        }
+    }
+
+    setupEnhancedLazyLoading();
+
+    // ===== PERFORMANCE MONITORING =====
+    function setupPerformanceMonitoring() {
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    const perfData = performance.getEntriesByType('navigation')[0];
+                    const loadTime = perfData.loadEventEnd - perfData.loadEventStart;
+                    const domTime = perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart;
+                    
+                    console.log('📊 Performance Metrics:', {
+                        pageLoadTime: loadTime + 'ms',
+                        domLoadTime: domTime + 'ms',
+                        totalTime: perfData.loadEventEnd + 'ms'
+                    });
+                    
+                    // Track performance if analytics available
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'page_load_time', {
+                            'event_category': 'performance',
+                            'value': Math.round(loadTime),
+                            'custom_parameter': {
+                                'dom_time': Math.round(domTime)
+                            }
+                        });
+                    }
+                }, 0);
+            });
+        }
+    }
+
+    setupPerformanceMonitoring();
+
+    // ===== PAGE VISIBILITY API =====
+    function setupPageVisibilityHandler() {
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Pause heavy animations when page is hidden
+                document.body.classList.add('page-hidden');
+                if (window.animationManager) {
+                    window.animationManager.pauseAnimations();
+                }
+            } else {
+                // Resume animations when page is visible
+                document.body.classList.remove('page-hidden');
+                if (window.animationManager) {
+                    window.animationManager.resumeAnimations();
+                }
+            }
+        });
+    }
+
+    setupPageVisibilityHandler();
+
+    // ===== SERVICE WORKER REGISTRATION =====
+    function registerServiceWorker() {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('✅ ServiceWorker registered');
+                    
+                    // Handle updates
+                    registration.addEventListener('updatefound', () => {
+                        const newWorker = registration.installing;
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                showUpdateNotification();
+                            }
+                        });
+                    });
+                })
+                .catch(error => console.log('❌ ServiceWorker registration failed:', error));
+        }
+    }
+
+    function showUpdateNotification() {
+        window.notificationManager.show(
+            'New version available! <button onclick="window.location.reload()" style="margin-left: 10px; padding: 5px 10px; background: var(--primary-gold); border: none; border-radius: 4px; color: var(--dark-bg);">Update</button>',
+            'info',
+            10000
+        );
+    }
+
+    registerServiceWorker();
+
+    // ===== ERROR HANDLING =====
+    function setupErrorHandling() {
+        window.addEventListener('error', (e) => {
+            console.error('Global error:', e.error);
+            
+            // Track errors if analytics available
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exception', {
+                    'description': e.error.message,
+                    'fatal': false,
+                    'filename': e.filename,
+                    'lineno': e.lineno
+                });
+            }
+            
+            // Show user-friendly error message for critical errors
+            if (e.error.message.includes('critical')) {
+                window.notificationManager.show(
+                    'Something went wrong. Please refresh the page.',
+                    'error'
+                );
+            }
+        });
+
+        window.addEventListener('unhandledrejection', (e) => {
+            console.error('Unhandled promise rejection:', e.reason);
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exception', {
+                    'description': 'Unhandled Promise Rejection: ' + e.reason,
+                    'fatal': false
+                });
+            }
+        });
+    }
+
+    setupErrorHandling();
+
+    // ===== UTILITY FUNCTIONS =====
+    function throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+
+    function debounce(func, wait, immediate) {
+        let timeout;
+        return function() {
+            const context = this, args = arguments;
+            const later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+
+    // ===== INSTAGRAM INTEGRATION =====
+    function initializeInstagramFeed() {
+        // Try to load Instagram Manager
+        if (typeof InstagramManager !== 'undefined') {
+            window.instagramManager = new InstagramManager();
+        } else {
+            // Fallback for basic Instagram functionality
+            const instagramSection = document.querySelector('.instagram-section');
+            if (instagramSection) {
+                const posts = instagramSection.querySelectorAll('.instagram-post');
+                posts.forEach(post => {
+                    post.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        // Add click animation
+                        post.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            post.style.transform = '';
+                            
+                            // Open Instagram link
+                            const link = post.querySelector('a');
+                            if (link) {
+                                window.open(link.href, '_blank');
+                            }
+                        }, 150);
+                    });
+                });
+            }
+        }
+    }
+
+    // Initialize Instagram feed after a delay
+    setTimeout(initializeInstagramFeed, 1000);
+
+    // ===== FINAL INITIALIZATION =====
+    console.log('✅ PageantEmpress Enhanced Main.js initialized successfully');
+    
+    // Dispatch custom event for other scripts
+    const initEvent = new CustomEvent('pageantempress:initialized', {
+        detail: {
+            timestamp: Date.now(),
+            features: {
+                animations: !!window.animationManager,
+                notifications: !!window.notificationManager,
+                theme: localStorage.getItem('theme') || 'dark',
+                performance: window.animationManager?.performanceMode
+            }
+        }
+    });
+    
+    document.dispatchEvent(initEvent);
+    
+    // Make key functions globally available
+    window.PageantEmpressUtils = {
+        toggleTheme,
+        toggleMobileMenu,
+        toggleSearchOverlay,
+        showNotification: (msg, type) => window.notificationManager.show(msg, type),
+        throttle,
+        debounce
+    };
 });
 
-// Additional Instagram features
-function setupInstagramFeatures() {
-    // Setup keyboard shortcuts
-    setupKeyboardShortcuts();
+// ===== CSS INJECTION FOR DYNAMIC STYLES =====
+const dynamicStyles = document.createElement('style');
+dynamicStyles.textContent = `
+    /* Ripple Animation */
+    @keyframes rippleAnimation {
+        to {
+            transform: scale(4);
+            opacity: 0;
+        }
+    }
     
-    // Setup swipe gestures for mobile
-    setupSwipeGestures();
+    /* Slide In Right Animation */
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
     
-    // Setup infinite scroll
-    setupInfiniteScroll();
-    
-    // Setup image optimization
-    setupImageOptimization();
-    
-    // Setup accessibility features
-    setupAccessibility();
-}
+    /* Enhanced Card Styles */
+    .pageant-card {
+        height: 100%;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
 
-function setupKeyboardShortcuts() {
-    document.addEventListener('keydown', (e) => {
-        // Only trigger if not in input field
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-            return;
-        }
-        
-        switch (e.key) {
-            case 'r':
-                if (e.ctrlKey || e.metaKey) {
-                    e.preventDefault();
-                    window.instagramFeed.refreshFeed();
-                }
-                break;
-            case 'l':
-                if (e.ctrlKey || e.metaKey) {
-                    e.preventDefault();
-                    window.instagramFeed.loadMorePosts();
-                }
-                break;
-            case 'h':
-                if (e.ctrlKey || e.metaKey) {
-                    e.preventDefault();
-                    showKeyboardShortcuts();
-                }
-                break;
-        }
-    });
-}
+    .pageant-card:hover {
+        transform: translateY(-10px);
+    }
 
-function setupSwipeGestures() {
-    if (!('ontouchstart' in window)) return;
-    
-    let startX = 0;
-    let startY = 0;
-    let threshold = 50;
-    
-    const instagramSection = document.getElementById('instagram');
-    if (!instagramSection) return;
-    
-    instagramSection.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-    });
-    
-    instagramSection.addEventListener('touchend', (e) => {
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        
-        const deltaX = endX - startX;
-        const deltaY = endY - startY;
-        
-        // Swipe down to refresh
-        if (deltaY > threshold && Math.abs(deltaX) < threshold) {
-            window.instagramFeed.refreshFeed();
-        }
-        
-        // Swipe up to load more
-        if (deltaY < -threshold && Math.abs(deltaX) < threshold) {
-            window.instagramFeed.loadMorePosts();
-        }
-    });
-}
+    .pageant-image {
+        position: relative;
+        height: 250px;
+        overflow: hidden;
+    }
 
-function setupInfiniteScroll() {
-    let isScrolling = false;
-    
-    window.addEventListener('scroll', () => {
-        if (isScrolling) return;
-        
-        isScrolling = true;
-        
-        requestAnimationFrame(() => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.offsetHeight;
-            
-            // Load more when 200px from bottom
-            if (scrollTop + windowHeight >= documentHeight - 200) {
-                if (window.instagramFeed && window.instagramFeed.hasMorePosts) {
-                    window.instagramFeed.loadMorePosts();
-                }
-            }
-            
-            isScrolling = false;
-        });
-    });
-}
+    .pageant-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
 
-function setupImageOptimization() {
-    // Preload next batch of images
-    const preloadNextImages = () => {
-        const posts = window.instagramFeed.getPosts();
-        const currentPage = window.instagramFeed.currentPage;
-        const postsPerPage = window.instagramFeed.postsPerPage;
-        
-        const nextStartIndex = currentPage * postsPerPage;
-        const nextEndIndex = nextStartIndex + postsPerPage;
-        
-        const nextPosts = posts.slice(nextStartIndex, nextEndIndex);
-        
-        nextPosts.forEach(post => {
-            const img = new Image();
-            img.src = post.image;
-        });
-    };
-    
-    // Preload images when user scrolls to 50% of current content
-    window.addEventListener('scroll', () => {
-        const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-        
-        if (scrollPercent > 50) {
-            preloadNextImages();
-        }
-    });
-}
+        .pageant-card:hover .pageant-image img {
+        transform: scale(1.1);
+    }
 
-function setupAccessibility() {
-    // Add ARIA labels
-    const posts = document.querySelectorAll('.instagram-post');
-    posts.forEach((post, index) => {
-        post.setAttribute('role', 'article');
-        post.setAttribute('aria-label', `Instagram post ${index + 1}`);
-        
-        const link = post.querySelector('a');
-        if (link) {
-            link.setAttribute('aria-label', 'Open Instagram post in new tab');
-        }
-        
-        const img = post.querySelector('img');
-        if (img) {
-            img.setAttribute('role', 'img');
-        }
-    });
-    
-    // Add keyboard navigation
-    posts.forEach((post, index) => {
-        post.setAttribute('tabindex', '0');
-        
-        post.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                const link = post.querySelector('a');
-                if (link) {
-                    link.click();
-                }
-            }
-        });
-    });
-    
-    // Add focus indicators
-    const style = document.createElement('style');
-    style.textContent = `
-        .instagram-post:focus {
-            outline: 2px solid #007cba;
-            outline-offset: 2px;
-        }
-        
-        .instagram-post:focus-visible {
-            outline: 2px solid #007cba;
-            outline-offset: 2px;
-        }
-        
-        @media (prefers-reduced-motion: reduce) {
-            .instagram-post,
-            .instagram-post img,
-            .engagement-action {
-                transition: none !important;
-                animation: none !important;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-function showKeyboardShortcuts() {
-    const modal = document.createElement('div');
-    modal.className = 'keyboard-shortcuts-modal';
-    modal.innerHTML = `
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Instagram Keyboard Shortcuts</h3>
-                <button class="close-btn" onclick="this.closest('.keyboard-shortcuts-modal').remove()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="shortcut-item">
-                    <kbd>Ctrl</kbd> + <kbd>R</kbd>
-                    <span>Refresh feed</span>
-                </div>
-                <div class="shortcut-item">
-                    <kbd>Ctrl</kbd> + <kbd>L</kbd>
-                    <span>Load more posts</span>
-                </div>
-                <div class="shortcut-item">
-                    <kbd>Ctrl</kbd> + <kbd>H</kbd>
-                    <span>Show this help</span>
-                </div>
-                <div class="shortcut-item">
-                    <kbd>Enter</kbd> / <kbd>Space</kbd>
-                    <span>Open focused post</span>
-                </div>
-                <div class="shortcut-item">
-                    <kbd>Tab</kbd>
-                    <span>Navigate between posts</span>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    modal.style.cssText = `
-        position: fixed;
+    .pageant-overlay {
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8);
+        background: linear-gradient(to bottom, transparent 0%, rgba(10, 10, 10, 0.8) 100%);
         display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-    `;
-    
-    const content = modal.querySelector('.modal-content');
-    content.style.cssText = `
-        background: white;
-        padding: 2rem;
-        border-radius: 8px;
-        max-width: 400px;
-        width: 90%;
-        color: #333;
-    `;
-    
-    const header = modal.querySelector('.modal-header');
-    header.style.cssText = `
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
+        padding: 1rem;
+    }
+
+    .pageant-date {
+        background: var(--primary-gold);
+        color: var(--dark-bg);
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .pageant-content {
+        padding: 1.5rem;
+    }
+
+    .pageant-category {
+        display: inline-block;
+        background: rgba(212, 175, 55, 0.1);
+        color: var(--primary-gold);
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
         margin-bottom: 1rem;
-        padding-bottom: 1rem;
-        border-bottom: 1px solid #eee;
-    `;
-    
-    const shortcutItems = modal.querySelectorAll('.shortcut-item');
-    shortcutItems.forEach(item => {
-        item.style.cssText = `
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-        `;
-        
-        const kbds = item.querySelectorAll('kbd');
-        kbds.forEach(kbd => {
-            kbd.style.cssText = `
-                background: #f0f0f0;
-                border: 1px solid #ccc;
-                border-radius: 3px;
-                padding: 2px 6px;
-                font-size: 0.8rem;
-                font-family: monospace;
-            `;
-        });
-    });
-    
-    document.body.appendChild(modal);
-    
-    // Close on click outside
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.remove();
+    }
+
+    .pageant-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-family: var(--font-primary);
+    }
+
+    .pageant-location {
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .pageant-description {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .pageant-link {
+        color: var(--primary-gold);
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: gap 0.3s ease;
+        background: none;
+        border: 1px solid var(--primary-gold);
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+    }
+
+    .pageant-link:hover {
+        gap: 1rem;
+        background: var(--primary-gold);
+        color: var(--dark-bg);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+
+    /* Enhanced Loading States */
+    .loading-skeleton {
+        background: linear-gradient(90deg, var(--glass-bg) 25%, rgba(255,255,255,0.1) 50%, var(--glass-bg) 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+    }
+
+    /* Notification Enhanced Styles */
+    .notification-item {
+        backdrop-filter: blur(20px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .notification-item.success {
+        background: rgba(16, 185, 129, 0.1);
+        border-color: rgba(16, 185, 129, 0.3);
+        color: var(--success-color);
+    }
+
+    .notification-item.error {
+        background: rgba(239, 68, 68, 0.1);
+        border-color: rgba(239, 68, 68, 0.3);
+        color: var(--error-color);
+    }
+
+    .notification-item.warning {
+        background: rgba(245, 158, 11, 0.1);
+        border-color: rgba(245, 158, 11, 0.3);
+        color: var(--warning-color);
+    }
+
+    .notification-item.info {
+        background: rgba(59, 130, 246, 0.1);
+        border-color: rgba(59, 130, 246, 0.3);
+        color: #3b82f6;
+    }
+
+    /* Form Enhancement */
+    .form-input:invalid {
+        border-color: var(--error-color);
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+
+    .form-input:valid {
+        border-color: var(--success-color);
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+
+    /* Scroll Enhancement */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--surface-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary-gold);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--accent-gold);
+    }
+
+    /* Selection Enhancement */
+    ::selection {
+        background: var(--primary-gold);
+        color: var(--dark-bg);
+    }
+
+    ::-moz-selection {
+        background: var(--primary-gold);
+        color: var(--dark-bg);
+    }
+
+    /* Focus Enhancement */
+    *:focus {
+        outline: 2px solid var(--primary-gold);
+        outline-offset: 2px;
+    }
+
+    /* Print Optimization */
+    @media print {
+        .sparkle-container,
+        .shine-overlay,
+        .geometric-shapes,
+        .animated-background,
+        .notification-stack,
+        .back-to-top,
+        .mobile-menu,
+        .search-overlay {
+            display: none !important;
         }
-    });
-    
-    // Close on escape
-    document.addEventListener('keydown', function escapeHandler(e) {
-        if (e.key === 'Escape') {
-            modal.remove();
-            document.removeEventListener('keydown', escapeHandler);
+        
+        body {
+            background: white !important;
+            color: black !important;
         }
-    });
-}
-
-// Instagram Feed Error Handler
-class InstagramErrorHandler {
-    static handleImageError(img) {
-        img.onerror = null;
-        img.src = 'https://images.unsplash.com/photo-1611695434398-4f4b330623e6?w=400&h=400&fit=crop&crop=center';
-        img.classList.add('error-image');
         
-        // Add error styling
-        img.style.filter = 'grayscale(100%) brightness(0.8)';
-        
-        // Show error message
-        const post = img.closest('.instagram-post');
-        if (post) {
-            const errorMsg = document.createElement('div');
-            errorMsg.className = 'image-error-msg';
-            errorMsg.textContent = 'Image failed to load';
-            errorMsg.style.cssText = `
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(0, 0, 0, 0.7);
-                color: white;
-                padding: 4px 8px;
-                border-radius: 4px;
-                font-size: 0.7rem;
-                z-index: 10;
-            `;
-            
-            const wrapper = post.querySelector('.instagram-post-wrapper');
-            if (wrapper) {
-                wrapper.appendChild(errorMsg);
-            }
+        .glass-morphism {
+            background: white !important;
+            border: 1px solid #ddd !important;
+            box-shadow: none !important;
         }
     }
+
+    /* High Contrast Mode */
+    @media (prefers-contrast: high) {
+        .glass-morphism {
+            background: var(--dark-bg) !important;
+            border: 2px solid var(--primary-gold) !important;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary-gold) !important;
+            color: var(--dark-bg) !important;
+        }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+        
+        .sparkle-container,
+        .shine-overlay,
+        .geometric-shapes {
+            display: none !important;
+        }
+    }
+
+    /* Dark Mode Image Filters */
+    body:not(.light-theme) img {
+        filter: brightness(0.9) contrast(1.1);
+    }
+
+    body.light-theme img {
+        filter: brightness(1) contrast(1);
+    }
+
+    /* Enhanced Mobile Styles */
+    @media (max-width: 768px) {
+        .pageant-card {
+            margin-bottom: 2rem;
+        }
+        
+        .pageant-image {
+            height: 200px;
+        }
+        
+        .pageant-content {
+            padding: 1rem;
+        }
+        
+        .pageant-title {
+            font-size: 1.25rem;
+        }
+    }
+
+    /* Performance Optimization */
+    .gpu-accelerated {
+        transform: translateZ(0);
+        will-change: transform;
+    }
+
+    .optimize-animations {
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+
+    /* Accessibility Improvements */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+
+    /* Enhanced Hover States */
+    @media (hover: hover) {
+        .enhanced-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+    }
+
+    /* Enhanced Focus States */
+    .nav-link:focus-visible,
+    .glass-button:focus-visible,
+    .enhanced-button:focus-visible {
+        outline: 3px solid var(--primary-gold);
+        outline-offset: 3px;
+        box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Loading State Enhancements */
+    .btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none !important;
+    }
+
+    .btn:disabled:hover {
+        transform: none !important;
+    }
+
+    /* Enhanced Transitions */
+    * {
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Theme Transition */
+    body.light-theme * {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+    }
+
+    /* Enhanced Typography */
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 600;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Enhanced Links */
+    a {
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        text-decoration-color: var(--primary-gold);
+    }
+`;
+
+document.head.appendChild(dynamicStyles);
+
+// ===== EXPORT FOR MODULE USAGE =====
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        init: () => {
+            console.log('PageantEmpress main.js loaded as module');
+        },
+        utils: window.PageantEmpressUtils
+    };
 }
 
-// Instagram Performance Monitor
-class InstagramPerformanceMonitor {
-    constructor() {
-        this.metrics = {
-            loadTime: 0,
-            imageLoadTime: 0,
-            interactionCount: 0,
-            scrollDepth: 0
-        };
+// ===== FINAL PERFORMANCE CHECK =====
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        console.log('🚀 PageantEmpress fully loaded and optimized');
         
-        this.init();
-    }
-    
-    init() {
-        this.measureLoadTime();
-        this.trackScrollDepth();
-        this.trackInteractions();
-    }
-    
-    measureLoadTime() {
-        const startTime = performance.now();
+        // Check for any performance issues
+        const performanceEntries = performance.getEntriesByType('measure');
+        if (performanceEntries.length > 0) {
+            console.log('📊 Performance measures:', performanceEntries);
+        }
         
-        window.addEventListener('load', () => {
-            this.metrics.loadTime = performance.now() - startTime;
-            console.log(`📊 Instagram section load time: ${this.metrics.loadTime.toFixed(2)}ms`);
-        });
-    }
-    
-    trackScrollDepth() {
-        let maxScrollDepth = 0;
+        // Cleanup any unnecessary elements
+        const loadingElements = document.querySelectorAll('[data-loading]');
+        loadingElements.forEach(el => el.remove());
         
-        window.addEventListener('scroll', () => {
-            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-            maxScrollDepth = Math.max(maxScrollDepth, scrollPercent);
-            this.metrics.scrollDepth = maxScrollDepth;
-        });
-    }
-    
-    trackInteractions() {
-        document.addEventListener('click', (e) => {
-            if (e.target.closest('.instagram-section')) {
-                this.metrics.interactionCount++;
-            }
-        });
-    }
-    
-    getMetrics() {
-        return this.metrics;
-    }
-}
-
-// Initialize performance monitoring
-const performanceMonitor = new InstagramPerformanceMonitor();
-
-// Export for global access
-window.InstagramFeed = InstagramFeed;
-window.InstagramErrorHandler = InstagramErrorHandler;
-window.InstagramPerformanceMonitor = InstagramPerformanceMonitor;
-
-// Service Worker registration for offline support
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').then(() => {
-        console.log('✅ Service Worker registered for Instagram offline support');
-    }).catch((error) => {
-        console.log('❌ Service Worker registration failed:', error);
-    });
-}
-
-console.log('✅ Instagram.js loaded successfully');
+    }, 100);
+});
