@@ -347,9 +347,6 @@ blog/
 │   ├── 2024-11-25-winning-mindset-strategies.html
 │   └── ...
 ├── 📁 categories/
-│   
-```
-├── 📁 categories/
 │   ├── training-tips.html          # Training advice
 │   ├── success-stories.html        # Winner stories
 │   ├── beauty-tips.html            # Beauty & styling
