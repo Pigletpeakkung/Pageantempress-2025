@@ -201,6 +201,7 @@
     "mitt": "^3.0.1",
     "nodemailer": "^6.9.7",
     "@supabase/supabase-js": "^2.38.0",
+    "@sendgrid/mail": "^7.7.0",
     "vanilla-lazyload": "^17.8.5",
     "web-vitals": "^3.5.0"
   },
