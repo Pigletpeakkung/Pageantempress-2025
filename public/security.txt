@@ -1,0 +1,17 @@
+# ==========================================================================
+# SECURITY.TXT - PageantEmpress 2025
+# Security vulnerability disclosure information
+# ==========================================================================
+
+Contact: security@pageantempress.com
+Contact: https://pageantempress.com/security-report
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://pageantempress.com/pgp-key.asc
+Acknowledgments: https://pageantempress.com/security-hall-of-fame
+Preferred-Languages: en, es, fr
+Canonical: https://pageantempress.com/.well-known/security.txt
+Policy: https://pageantempress.com/security-policy
+
+# Please report security vulnerabilities to: security@pageantempress.com
+# We take security seriously and will respond within 24 hours
+# Bug bounty program available for qualifying vulnerabilities
