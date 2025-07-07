@@ -95,7 +95,7 @@
     "accessibility:test": "axe src/**/*.html",
     
     "performance:audit": "lighthouse https://pageantempress.com --output=html --output-path=reports/lighthouse-report.html",
-    "performance:budget": "lighthouse-ci autorun",
+    "performance:budget": "lhci autorun",
     "performance:analyze": "npm run js:analyze && npm run performance:audit",
     
     "pwa:generate": "node scripts/generate-pwa.js",
@@ -205,6 +205,7 @@
   "devDependencies": {
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.23.0",
+    "@lhci/cli": "^0.12.0",
     "@playwright/test": "^1.40.0",
     "@storybook/html": "^7.5.0",
     "@storybook/html-webpack5": "^7.5.0",
@@ -237,7 +238,6 @@
     "jsdoc": "^4.0.2",
     "jsdom": "^22.1.0",
     "lighthouse": "^11.3.0",
-    "lighthouse-ci": "^0.12.0",
     "netlify-cli": "^17.10.1",
     "postcss": "^8.4.32",
     "postcss-cli": "^11.0.0",
