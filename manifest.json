@@ -1,129 +1,188 @@
 {
-  "name": "Pageant Empress - Premier Pageant Training Platform",
+  "name": "PageantEmpress 2025 - Premier Beauty Pageant Competition",
   "short_name": "PageantEmpress",
-  "description": "Expert pageant training, coaching, and preparation for beauty pageant contestants worldwide",
+  "description": "Join the most prestigious beauty pageant competition of 2025. Celebrate elegance, talent, and empowerment with PageantEmpress.",
   "start_url": "/",
-  "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#d4af37",
-  "orientation": "portrait-primary",
   "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#d4af37",
+  "background_color": "#0a0a0a",
   "lang": "en-US",
   "dir": "ltr",
-  "categories": ["education", "lifestyle", "beauty"],
-  "screenshots": [
-    {
-      "src": "/assets/images/screenshot-mobile.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Mobile view of Pageant Empress homepage"
-    },
-    {
-      "src": "/assets/images/screenshot-desktop.png",
-      "sizes": "1920x1080",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Desktop view of Pageant Empress homepage"
-    }
+  "categories": [
+    "entertainment",
+    "lifestyle",
+    "social",
+    "beauty"
   ],
   "icons": [
     {
-      "src": "/assets/images/icon-72x72.png",
+      "src": "/assets/images/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "maskable"
     },
     {
-      "src": "/assets/images/icon-96x96.png",
+      "src": "/assets/images/icons/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "maskable"
     },
     {
-      "src": "/assets/images/icon-128x128.png",
+      "src": "/assets/images/icons/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "maskable"
     },
     {
-      "src": "/assets/images/icon-144x144.png",
+      "src": "/assets/images/icons/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "maskable"
     },
     {
-      "src": "/assets/images/icon-152x152.png",
+      "src": "/assets/images/icons/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "maskable"
     },
     {
-      "src": "/assets/images/icon-192x192.png",
+      "src": "/assets/images/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/assets/images/icon-384x384.png",
+      "src": "/assets/images/icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
-      "purpose": "maskable any"
+      "purpose": "maskable"
     },
     {
-      "src": "/assets/images/icon-512x512.png",
+      "src": "/assets/images/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
     }
   ],
-  "shortcuts": [
+  "screenshots": [
     {
-      "name": "FAQ",
-      "short_name": "FAQ",
-      "description": "Frequently asked questions about pageant training",
-      "url": "/faq",
-      "icons": [
-        {
-          "src": "/assets/images/shortcut-faq.png",
-          "sizes": "96x96"
-        }
-      ]
+      "src": "/assets/images/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "HomeScreen of PageantEmpress showing the main navigation and hero section"
     },
     {
-      "name": "Blog",
-      "short_name": "Blog",
-      "description": "Latest pageant tips and news",
-      "url": "/blog",
-      "icons": [
-        {
-          "src": "/assets/images/shortcut-blog.png",
-          "sizes": "96x96"
-        }
-      ]
+      "src": "/assets/images/screenshots/mobile-home.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile view of PageantEmpress with responsive design"
     },
     {
-      "name": "Services",
-      "short_name": "Services",
-      "description": "Pageant training services and packages",
-      "url": "/services",
-      "icons": [
-        {
-          "src": "/assets/images/shortcut-services.png",
-          "sizes": "96x96"
-        }
-      ]
+      "src": "/assets/images/screenshots/contestants-page.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Contestants showcase page with candidate profiles"
+    },
+    {
+      "src": "/assets/images/screenshots/gallery-page.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Photo gallery with pageant highlights and events"
     }
   ],
-  "related_applications": [
+  "shortcuts": [
     {
-      "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=com.pageantempress.app",
-      "id": "com.pageantempress.app"
+      "name": "Contestants",
+      "short_name": "Contestants",
+      "description": "View all contestants and their profiles",
+      "url": "/contestants",
+      "icons": [
+        {
+          "src": "/assets/images/icons/contestants-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "short_name": "Events",
+      "description": "Check event schedule and details",
+      "url": "/events",
+      "icons": [
+        {
+          "src": "/assets/images/icons/events-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Gallery",
+      "short_name": "Gallery",
+      "description": "Browse photo gallery and highlights",
+      "url": "/gallery",
+      "icons": [
+        {
+          "src": "/assets/images/icons/gallery-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Vote",
+      "short_name": "Vote",
+      "description": "Cast your vote for your favorite contestant",
+      "url": "/voting",
+      "icons": [
+        {
+          "src": "/assets/images/icons/vote-shortcut.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
     }
   ],
   "prefer_related_applications": false,
   "edge_side_panel": {
     "preferred_width": 400
-  }
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+pageant",
+      "url": "/share?url=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "file_handlers": [
+    {
+      "action": "/upload",
+      "accept": {
+        "image/*": [".jpg", ".jpeg", ".png", ".webp", ".gif"]
+      }
+    }
+  ],
+  "display_override": [
+    "window-controls-overlay",
+    "minimal-ui",
+    "browser"
+  ]
 }
