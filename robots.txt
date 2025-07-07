@@ -1,35 +1,143 @@
+# ==========================================================================
+# ROBOTS.TXT - PageantEmpress 2025
+# Search Engine Crawler Instructions
+# ==========================================================================
+
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://pageantempress.com/sitemap.xml
-Sitemap: https://pageantempress.com/sitemap-images.xml
-
-# Disallow admin areas
-Disallow: /admin/
-Disallow: /api/
-Disallow: /includes/
-Disallow: /temp/
-Disallow: /*.log$
-Disallow: /error/
-
-# Allow specific files
-Allow: /css/
-Allow: /js/
-Allow: /assets/
-Allow: /images/
-
-# Crawl delay
-Crawl-delay: 1
-
-# Specific bots
+# Allow all major search engines
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
 
 User-agent: facebookexternalhit
 Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Block admin areas
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /cgi-bin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /internal/
+Disallow: /temp/
+Disallow: /temporary/
+Disallow: /backup/
+Disallow: /backups/
+
+# Block search and filter pages
+Disallow: /search?
+Disallow: /filter?
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*?search=
+Disallow: /*?q=
+Disallow: /*?page=
+Disallow: /*?limit=
+
+# Block unnecessary files
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+Disallow: /*.log$
+Disallow: /*.sql$
+Disallow: /*.gz$
+Disallow: /*.zip$
+Disallow: /*.tar$
+Disallow: /*.bak$
+Disallow: /*.old$
+Disallow: /*.tmp$
+Disallow: /*.temp$
+
+# Block development files
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /tests/
+Disallow: /test/
+Disallow: /docs/
+Disallow: /documentation/
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /.vscode/
+Disallow: /.idea/
+
+# Block tracking and analytics
+Disallow: /analytics/
+Disallow: /tracking/
+Disallow: /stats/
+Disallow: /metrics/
+
+# Block error pages
+Disallow: /404/
+Disallow: /500/
+Disallow: /error/
+Disallow: /errors/
+
+# Block user-generated content that shouldn't be indexed
+Disallow: /uploads/temp/
+Disallow: /cache/
+Disallow: /tmp/
+Disallow: /logs/
+
+# Allow important directories
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /fonts/
+Allow: /icons/
+Allow: /videos/
+Allow: /audio/
+
+# Allow social media preview files
+Allow: /og-image.jpg
+Allow: /twitter-card.jpg
+Allow: /social-preview.jpg
+
+# Allow important files
+Allow: /favicon.ico
+Allow: /apple-touch-icon.png
+Allow: /manifest.json
+Allow: /sw.js
+Allow: /service-worker.js
+
+# Crawl delay (be respectful)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://pageantempress.com/sitemap.xml
+Sitemap: https://pageantempress.com/sitemap-news.xml
+Sitemap: https://pageantempress.com/sitemap-images.xml
+Sitemap: https://pageantempress.com/sitemap-videos.xml
+
+# Additional information
+# Host: https://pageantempress.com
+# Contact: webmaster@pageantempress.com
+# Last updated: 2024-12-19
