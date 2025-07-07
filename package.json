@@ -172,7 +172,7 @@
   ],
   "author": {
     "name": "PageantEmpress Team",
-        "email": "info@pageantempress.com",
+    "email": "info@pageantempress.com",
     "url": "https://pageantempress.com"
   },
   "contributors": [
@@ -200,6 +200,7 @@
     "lodash": "^4.17.21",
     "mitt": "^3.0.1",
     "nodemailer": "^6.9.7",
+    "@supabase/supabase-js": "^2.38.0",
     "vanilla-lazyload": "^17.8.5",
     "web-vitals": "^3.5.0"
   },
@@ -407,4 +408,3 @@
     "CHANGELOG.md"
   ]
 }
-
