@@ -1,4 +1,7 @@
 // ===== FIXED MAIN APPLICATION CONTROLLER =====
+// INSTANT FIX - Add this line
+setTimeout(() => document.getElementById('loadingScreen').style.display = 'none', 3000);
+
 class PageantEmpressApp {
     constructor() {
         this.theme = this.loadTheme() || 'dark';
