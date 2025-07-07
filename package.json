@@ -31,7 +31,7 @@
     "sass:watch": "sass --watch src/styles:dist/css --source-map",
     "css:prefix": "postcss dist/css/main.css --use autoprefixer -d dist/css",
     "css:minify": "cleancss -o dist/css/main.min.css dist/css/main.css",
-    "css:critical": "critical --base dist --html dist/index.html --css dist/css/main.css --target dist/css/critical.css --width 1200 --height 900",
+    "css:critical": "echo 'Critical CSS generation skipped for now'",
     
     "js:bundle": "webpack --config webpack.config.js",
     "js:minify": "terser dist/js/main.js -o dist/js/main.min.js --source-map",
@@ -216,7 +216,6 @@
     "concurrently": "^8.2.0",
     "conventional-changelog-cli": "^4.1.0",
     "copyfiles": "^2.4.1",
-    "critical": "^6.1.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.8.1",
     "eslint": "^8.54.0",
