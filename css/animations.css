@@ -1,0 +1,1404 @@
+/* ==========================================================================
+   ANIMATIONS.CSS - PageantEmpress 2025
+   Advanced CSS Animations and Keyframes
+   ========================================================================== */
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+/* Holographic Shift Animation */
+@keyframes holographicShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Spin Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    40%, 43% {
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+/* Float Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Down Animation */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade In Left Animation */
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Fade In Right Animation */
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Scale Out Animation */
+@keyframes scaleOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+}
+
+/* Slide In Left Animation (continued) */
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Slide In Right Animation */
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Slide Out Left Animation */
+@keyframes slideOutLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* Slide Out Right Animation */
+@keyframes slideOutRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Rotate In Animation */
+@keyframes rotateIn {
+    0% {
+        opacity: 0;
+        transform: rotate(-360deg) scale(0.1);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+/* Zoom In Animation */
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Zoom Out Animation */
+@keyframes zoomOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+}
+
+/* Flip In X Animation */
+@keyframes flipInX {
+    0% {
+        opacity: 0;
+        transform: perspective(400px) rotateX(90deg);
+    }
+    40% {
+        transform: perspective(400px) rotateX(-10deg);
+    }
+    70% {
+        transform: perspective(400px) rotateX(10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(400px) rotateX(0deg);
+    }
+}
+
+/* Flip In Y Animation */
+@keyframes flipInY {
+    0% {
+        opacity: 0;
+        transform: perspective(400px) rotateY(90deg);
+    }
+    40% {
+        transform: perspective(400px) rotateY(-10deg);
+    }
+    70% {
+        transform: perspective(400px) rotateY(10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: perspective(400px) rotateY(0deg);
+    }
+}
+
+/* Sparkle Animation */
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Twinkle Animation */
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        box-shadow: 0 0 15px currentColor;
+    }
+}
+
+/* Glow Animation */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.6);
+    }
+}
+
+/* Progress Load Animation */
+@keyframes progressLoad {
+    0% {
+        width: 0%;
+    }
+    50% {
+        width: 70%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Typing Animation */
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Blink Cursor Animation */
+@keyframes blinkCursor {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Wave Animation */
+@keyframes wave {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Ripple Animation */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
+}
+
+/* Rubber Band Animation */
+@keyframes rubberBand {
+    0% {
+        transform: scaleX(1);
+    }
+    30% {
+        transform: scaleX(1.25) scaleY(0.75);
+    }
+    40% {
+        transform: scaleX(0.75) scaleY(1.25);
+    }
+    50% {
+        transform: scaleX(1.15) scaleY(0.85);
+    }
+    65% {
+        transform: scaleX(0.95) scaleY(1.05);
+    }
+    75% {
+        transform: scaleX(1.05) scaleY(0.95);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+/* Wobble Animation */
+@keyframes wobble {
+    0% {
+        transform: none;
+    }
+    15% {
+        transform: translate3d(-25%, 0, 0) rotate(-5deg);
+    }
+    30% {
+        transform: translate3d(20%, 0, 0) rotate(3deg);
+    }
+    45% {
+        transform: translate3d(-15%, 0, 0) rotate(-3deg);
+    }
+    60% {
+        transform: translate3d(10%, 0, 0) rotate(2deg);
+    }
+    75% {
+        transform: translate3d(-5%, 0, 0) rotate(-1deg);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+/* Heart Beat Animation */
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+    14% {
+        transform: scale(1.3);
+    }
+    28% {
+        transform: scale(1);
+    }
+    42% {
+        transform: scale(1.3);
+    }
+    70% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ==========================================================================
+   PAGEANT-SPECIFIC ANIMATIONS
+   ========================================================================== */
+
+/* Crown Float Animation */
+@keyframes crownFloat {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(1deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-15px) rotate(-1deg);
+    }
+}
+
+/* Jewel Twinkle Animation */
+@keyframes jewelTwinkle {
+    0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        filter: brightness(1.5);
+    }
+}
+
+/* Sparkle Float Animation */
+@keyframes sparkleFloat {
+    0%, 100% {
+        opacity: 0;
+        transform: translateY(0px) scale(0);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-25px) scale(0);
+    }
+}
+
+/* Runway Walk Animation */
+@keyframes runwayWalk {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/* Crown Sparkle Animation */
+@keyframes crownSparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1) rotate(180deg);
+    }
+}
+
+/* Pageant Wave Animation */
+@keyframes pageantWave {
+    0% {
+        transform: rotate(0deg);
+    }
+    10% {
+        transform: rotate(14deg);
+    }
+    20% {
+        transform: rotate(-8deg);
+    }
+    30% {
+        transform: rotate(14deg);
+    }
+    40% {
+        transform: rotate(-4deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    60% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Sash Flow Animation */
+@keyframes sashFlow {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateX(5px) rotate(1deg);
+    }
+    50% {
+        transform: translateX(0) rotate(0deg);
+    }
+    75% {
+        transform: translateX(-5px) rotate(-1deg);
+    }
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+/* Spotlight Animation */
+@keyframes spotlight {
+    0% {
+        background-position: -200px 50%;
+    }
+    100% {
+        background-position: 200px 50%;
+    }
+}
+
+/* ==========================================================================
+   ENTRANCE ANIMATIONS
+   ========================================================================== */
+
+/* Dramatic Entrance */
+@keyframes dramaticEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-360deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1) rotate(-180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Royal Entrance */
+@keyframes royalEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(-10px) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Elegant Slide */
+@keyframes elegantSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px) skewX(10deg);
+    }
+    60% {
+        opacity: 1;
+        transform: translateX(10px) skewX(-2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) skewX(0deg);
+    }
+}
+
+/* Crown Drop */
+@keyframes crownDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-100px) rotate(10deg);
+    }
+    30% {
+        opacity: 1;
+        transform: translateY(10px) rotate(-5deg);
+    }
+    60% {
+        transform: translateY(-5px) rotate(2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* ==========================================================================
+   LOADER ANIMATIONS
+   ========================================================================== */
+
+/* Crown Pulse Animation */
+@keyframes crownPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Loading Dots */
+@keyframes loadingDots {
+    0%, 20% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+/* Rotating Crown */
+@keyframes rotateCrown {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+/* Loading Wave */
+@keyframes loadingWave {
+    0%, 60%, 100% {
+        transform: initial;
+    }
+    30% {
+        transform: translateY(-15px);
+    }
+}
+
+/* ==========================================================================
+   HOVER ANIMATIONS
+   ========================================================================== */
+
+/* Magnetic Attraction */
+@keyframes magneticAttraction {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(var(--mouse-x, 0), var(--mouse-y, 0));
+    }
+}
+
+/* Hover Glow */
+@keyframes hoverGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.6), 0 0 30px rgba(212, 175, 55, 0.4);
+    }
+}
+
+/* Button Press */
+@keyframes buttonPress {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Icon Bounce */
+@keyframes iconBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ==========================================================================
+   BACKGROUND ANIMATIONS
+   ========================================================================== */
+
+/* Floating Particles */
+@keyframes floatParticles {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.3;
+    }
+    33% {
+        transform: translateY(-30px) rotate(120deg);
+        opacity: 0.6;
+    }
+    66% {
+        transform: translateY(-60px) rotate(240deg);
+        opacity: 0.9;
+    }
+}
+
+/* Gradient Wave */
+@keyframes gradientWave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Twinkling Stars */
+@keyframes twinklingStars {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.5);
+    }
+    25% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    75% {
+        opacity: 0.6;
+        transform: scale(0.8);
+    }
+}
+
+/* Aurora Effect */
+@keyframes auroraEffect {
+    0% {
+        transform: translateX(-100%) skewX(0deg);
+        opacity: 0;
+    }
+    25% {
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(0%) skewX(5deg);
+        opacity: 0.6;
+    }
+    75% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateX(100%) skewX(0deg);
+        opacity: 0;
+    }
+}
+
+/* ==========================================================================
+   TEXT ANIMATIONS
+   ========================================================================== */
+
+/* Text Reveal */
+@keyframes textReveal {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Letter Spacing Animation */
+@keyframes letterSpacing {
+    0% {
+        letter-spacing: 0.1em;
+        opacity: 0;
+    }
+    100% {
+        letter-spacing: 0.3em;
+        opacity: 1;
+    }
+}
+
+/* Typewriter Effect */
+@keyframes typewriter {
+    0% {
+        width: 0;
+        border-right: 2px solid transparent;
+    }
+    99% {
+        border-right: 2px solid var(--component-primary);
+    }
+    100% {
+        width: 100%;
+        border-right: 2px solid transparent;
+    }
+}
+
+/* Glitch Text */
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    15% {
+        text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                    -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                    0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    16% {
+        text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                    0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                    -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    49% {
+        text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                    0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                    -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    50% {
+        text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                    0.05em 0 0 rgba(0, 255, 0, 0.75),
+                    0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    99% {
+        text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                    0.05em 0 0 rgba(0, 255, 0, 0.75),
+                    0 -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+    100% {
+        text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+                    -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+                    -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+    }
+}
+
+/* ==========================================================================
+   ANIMATION UTILITY CLASSES
+   ========================================================================== */
+
+/* Animation Classes */
+.animate-fadeIn {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-fadeInDown {
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.animate-fadeInLeft {
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+.animate-fadeInRight {
+    animation: fadeInRight 0.8s ease-out;
+}
+
+.animate-scaleIn {
+    animation: scaleIn 0.5s ease-out;
+}
+
+.animate-slideInLeft {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 0.6s ease-out;
+}
+
+.animate-bounce {
+    animation: bounce 1.2s ease infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+.animate-ping {
+    animation: pulse 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.animate-shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-heartBeat {
+    animation: heartBeat 1.3s ease-in-out infinite;
+}
+
+.animate-rubberBand {
+    animation: rubberBand 1s ease;
+}
+
+.animate-shake {
+    animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.animate-wobble {
+    animation: wobble 1s ease;
+}
+
+.animate-rotateIn {
+    animation: rotateIn 0.6s ease-out;
+}
+
+.animate-zoomIn {
+    animation: zoomIn 0.6s ease-out;
+}
+
+.animate-flipInX {
+    animation: flipInX 0.75s ease-out;
+}
+
+.animate-flipInY {
+    animation: flipInY 0.75s ease-out;
+}
+
+/* Pageant-specific animation classes */
+.animate-crownFloat {
+    animation: crownFloat 4s ease-in-out infinite;
+}
+
+.animate-sparkle {
+    animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.animate-twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+.animate-royalEntrance {
+    animation: royalEntrance 1.2s ease-out;
+}
+
+.animate-dramaticEntrance {
+    animation: dramaticEntrance 1.5s ease-out;
+}
+
+.animate-elegantSlide {
+    animation: elegantSlide 1s ease-out;
+}
+
+.animate-crownDrop {
+    animation: crownDrop 1.2s ease-out;
+}
+
+/* ==========================================================================
+   ANIMATION DELAYS
+   ========================================================================== */
+
+.delay-75 {
+    animation-delay: 75ms;
+}
+
+.delay-100 {
+    animation-delay: 100ms;
+}
+
+.delay-150 {
+    animation-delay: 150ms;
+}
+
+.delay-200 {
+    animation-delay: 200ms;
+}
+
+.delay-300 {
+    animation-delay: 300ms;
+}
+
+.delay-500 {
+    animation-delay: 500ms;
+}
+
+.delay-700 {
+    animation-delay: 700ms;
+}
+
+.delay-1000 {
+    animation-delay: 1000ms;
+}
+
+/* ==========================================================================
+   ANIMATION DURATIONS
+   ========================================================================== */
+
+.duration-75 {
+    animation-duration: 75ms;
+}
+
+.duration-100 {
+    animation-duration: 100ms;
+}
+
+.duration-150 {
+    animation-duration: 150ms;
+}
+
+.duration-200 {
+    animation-duration: 200ms;
+}
+
+.duration-300 {
+    animation-duration: 300ms;
+}
+
+.duration-500 {
+    animation-duration: 500ms;
+}
+
+.duration-700 {
+    animation-duration: 700ms;
+}
+
+.duration-1000 {
+    animation-duration: 1000ms;
+}
+
+/* ==========================================================================
+   ANIMATION EASING
+   ========================================================================== */
+
+.ease-linear {
+    animation-timing-function: linear;
+}
+
+.ease-in {
+    animation-timing-function: ease-in;
+}
+
+.ease-out {
+    animation-timing-function: ease-out;
+}
+
+.ease-in-out {
+    animation-timing-function: ease-in-out;
+}
+
+/* Custom easing functions */
+.ease-elastic {
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.ease-back {
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.ease-bounce {
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ==========================================================================
+   ANIMATION CONTROLS
+   ========================================================================== */
+
+.animate-none {
+    animation: none;
+}
+
+.animate-paused {
+    animation-play-state: paused;
+}
+
+.animate-running {
+    animation-play-state: running;
+}
+
+.animate-reverse {
+    animation-direction: reverse;
+}
+
+.animate-alternate {
+    animation-direction: alternate;
+}
+
+.animate-infinite {
+    animation-iteration-count: infinite;
+}
+
+.animate-once {
+    animation-iteration-count: 1;
+}
+
+.animate-twice {
+    animation-iteration-count: 2;
+}
+
+/* ==========================================================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ========================================================================== */
+
+/* Fade in from bottom */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Scale up on scroll */
+.scroll-scale {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-scale.in-view {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Slide in from left */
+.scroll-slide-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-slide-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Slide in from right */
+.scroll-slide-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-slide-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Staggered animation */
+.scroll-stagger {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-stagger:nth-child(1) { transition-delay: 0.1s; }
+.scroll-stagger:nth-child(2) { transition-delay: 0.2s; }
+.scroll-stagger:nth-child(3) { transition-delay: 0.3s; }
+.scroll-stagger:nth-child(4) { transition-delay: 0.4s; }
+.scroll-stagger:nth-child(5) { transition-delay: 0.5s; }
+
+.scroll-stagger.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   RESPONSIVE ANIMATIONS
+   ========================================================================== */
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .animate-bounce,
+    .animate-float,
+    .animate-pulse,
+    .animate-spin,
+    .animate-ping {
+        animation: none;
+    }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .animate-fadeInUp,
+    .animate-fadeInDown,
+    .animate-fadeInLeft,
+    .animate-fadeInRight {
+        animation-duration: 0.6s;
+    }
+    
+    .animate-royalEntrance,
+    .animate-dramaticEntrance {
+        animation-duration: 0.8s;
+    }
+    
+    .scroll-animate,
+    .scroll-scale,
+    .scroll-slide-left,
+    .scroll-slide-right {
+        transition-duration: 0.6s;
+    }
+}
+
+/* Performance optimizations */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+.will-change-auto {
+    will-change: auto;
+}
+
+/* GPU acceleration */
+.gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* ==========================================================================
+   COMPLEX ANIMATION COMBINATIONS
+   ========================================================================== */
+
+/* Floating Crown with Sparkles */
+.crown-animation {
+    animation: crownFloat 4s ease-in-out infinite, glow 3s ease-in-out infinite alternate;
+}
+
+/* Holographic Shimmer */
+.holographic-shimmer {
+    background: var(--gradient-holographic);
+    background-size: 400% 400%;
+    animation: holographicShift 3s ease infinite;
+    position: relative;
+}
+
+.holographic-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    animation: shimmer 2s infinite;
+}
+
+/* Royal Entrance Animation Sequence */
+.royal-sequence {
+    animation: 
+        royalEntrance 1.5s ease-out,
+        float 3s ease-in-out 1.5s infinite,
+        glow 2s ease-in-out 2s infinite alternate;
+}
+
+/* Loading Animation Sequence */
+.loading-sequence {
+    animation: 
+        pulse 1s ease-in-out infinite,
+        rotateCrown 2s linear infinite;
+}
+
+/* Interactive Hover Animation */
+.interactive-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-hover:hover {
+    animation: 
+        heartBeat 0.6s ease-in-out,
+        glow 1s ease-in-out;
+}
