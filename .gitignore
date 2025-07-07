@@ -1,34 +1,171 @@
-# Dependencies
+# ==========================================================================
+# GITIGNORE - PageantEmpress 2025
+# Comprehensive exclusion rules for the project
+# ==========================================================================
+
+# ========================================================================
+# Node.js Dependencies
+# ========================================================================
 node_modules/
-bower_components/
-vendor/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Build outputs
-dist/
-build/
-out/
-.cache/
-.parcel-cache/
-
-# Environment files
+# ========================================================================
+# Environment Variables
+# ========================================================================
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.staging
 
-# IDE and Editor files
+# ========================================================================
+# Build Output
+# ========================================================================
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vuepress/dist/
+.serverless/
+.fusebox/
+coverage/
+
+# ========================================================================
+# Cache Directories
+# ========================================================================
+.cache/
+.parcel-cache/
+.tmp/
+.temp/
+*.tmp
+*.temp
+
+# ========================================================================
+# Logs
+# ========================================================================
+logs/
+*.log
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+lerna-debug.log
+
+# ========================================================================
+# Runtime Data
+# ========================================================================
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ========================================================================
+# Coverage Directory
+# ========================================================================
+coverage/
+*.lcov
+.nyc_output/
+
+# ========================================================================
+# Dependency Directories
+# ========================================================================
+node_modules/
+jspm_packages/
+
+# ========================================================================
+# TypeScript
+# ========================================================================
+*.tsbuildinfo
+.tscache/
+
+# ========================================================================
+# Optional npm cache directory
+# ========================================================================
+.npm
+
+# ========================================================================
+# Optional eslint cache
+# ========================================================================
+.eslintcache
+
+# ========================================================================
+# Optional stylelint cache
+# ========================================================================
+.stylelintcache
+
+# ========================================================================
+# Microbundle cache
+# ========================================================================
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# ========================================================================
+# Optional REPL history
+# ========================================================================
+.node_repl_history
+
+# ========================================================================
+# Output of 'npm pack'
+# ========================================================================
+*.tgz
+
+# ========================================================================
+# Yarn Integrity file
+# ========================================================================
+.yarn-integrity
+
+# ========================================================================
+# Stores VSCode versions used for testing VSCode extensions
+# ========================================================================
+.vscode-test
+
+# ========================================================================
+# Yarn v2
+# ========================================================================
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ========================================================================
+# Editor Directories and Files
+# ========================================================================
 .vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+
+# ========================================================================
+# IDE Files
+# ========================================================================
 .idea/
-*.sublime-project
-*.sublime-workspace
+*.iml
+*.ipr
+*.iws
 .project
 .classpath
+.c9/
 *.launch
 .settings/
-*.code-workspace
+*.sublime-workspace
+*.sublime-project
 
-# OS files
+# ========================================================================
+# OS Generated Files
+# ========================================================================
 .DS_Store
 .DS_Store?
 ._*
@@ -36,129 +173,171 @@ out/
 .Trashes
 ehthumbs.db
 Thumbs.db
-desktop.ini
+Desktop.ini
 
-# Log files
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# ========================================================================
+# Image Processing
+# ========================================================================
+*.orig
+*.optimized
+.image-cache/
 
-# Testing
+# ========================================================================
+# Lighthouse Reports
+# ========================================================================
+lighthouse-reports/
+.lighthouseci/
+
+# ========================================================================
+# Performance Reports
+# ========================================================================
+reports/
+*.report.html
+*.report.json
+bundle-analyzer-report.html
+webpack-bundle-analyzer-report.html
+
+# ========================================================================
+# Test Coverage
+# ========================================================================
 coverage/
-.nyc_output/
-*.lcov
-.coverage
-*.cover
-.pytest_cache/
+.coverage/
+test-results/
+playwright-report/
+test-output/
 
-# Package files
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-# Temporary files
+# ========================================================================
+# Temporary Files
+# ========================================================================
 *.tmp
 *.temp
-*.swp
-*.swo
-*~
 .tmp/
 temp/
 
-# Database
-*.sql
-*.sqlite
-*.sqlite3
-*.db
-
-# Backup files
+# ========================================================================
+# Backup Files
+# ========================================================================
 *.bak
 *.backup
 *.old
-backup/
+*.orig
 
-# SSL certificates
+# ========================================================================
+# Archive Files
+# ========================================================================
+*.tar
+*.zip
+*.7z
+*.dmg
+*.iso
+
+# ========================================================================
+# Database Files
+# ========================================================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ========================================================================
+# Media Files (if too large)
+# ========================================================================
+# Uncomment if you have large media files
+# assets/videos/
+# assets/images/original/
+# *.mp4
+# *.mov
+# *.avi
+
+# ========================================================================
+# Generated Files
+# ========================================================================
+sitemap.xml
+sitemap-*.xml
+robots.txt.generated
+manifest.json.generated
+sw.js.generated
+
+# ========================================================================
+# Deployment Files
+# ========================================================================
+.deployment
+.deploy/
+.now
+.vercel
+.netlify/
+.firebase/
+.surge/
+
+# ========================================================================
+# API Keys and Secrets
+# ========================================================================
+secrets.json
+api-keys.json
+credentials.json
+service-account.json
+
+# ========================================================================
+# Tools and Utilities
+# ========================================================================
+.grunt
+.sass-cache/
+.connect.lock
+.lock-wscript
+.wafpickle-N
+.lock-wscript
+.sass-cache
+.cache
+.parcel-cache
+
+# ========================================================================
+# Documentation Build
+# ========================================================================
+docs/_build/
+docs/.doctrees/
+docs/build/
+
+# ========================================================================
+# WordPress (if applicable)
+# ========================================================================
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/themes/twentytwentyone/
+wp-content/plugins/akismet/
+wp-content/plugins/hello.php
+
+# ========================================================================
+# Monitoring and Analytics
+# ========================================================================
+*.trace
+*.cpuprofile
+*.heapprofile
+*.heapsnapshot
+
+# ========================================================================
+# Security Files
+# ========================================================================
 *.pem
 *.key
 *.crt
 *.csr
+*.p12
+*.pfx
 
-# Media files (optional - remove if you want to track these)
-# *.mp4
-# *.mov
-# *.avi
-# *.mpg
-# *.mpeg
+# ========================================================================
+# Ignore files for specific tools
+# ========================================================================
+.eslintignore
+.prettierignore
+.stylelintignore
+.gitattributes
 
-# Large asset files
-*.psd
-*.ai
-*.sketch
-*.fig
-
-# Documentation builds
-docs/_build/
-site/
-
-# Yarn
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
-
-# Firebase
-.firebase/
-.firebaserc
-
-# Netlify
-.netlify/
-
-# Vercel
-.vercel/
-
-# Next.js
-.next/
-out/
-
-# Gatsby
-.cache/
-public/
-
-# Vuepress
-.vuepress/dist/
-
-# Serverless
-.serverless/
-
-# FuseBox
-.fusebox/
-
-# DynamoDB
-.dynamodb/
-
-# TernJS
-.tern-port
-
-# Stores
-.pnpm-store/
-
-# Custom
-private/
-confidential/
-*.private
-*.confidential
-
-
-
+# ========================================================================
+# Custom Project Files
+# ========================================================================
+# Add any project-specific files here
+NOTES.md
+TODO.md
+.dev-notes/
+admin-panel/
+internal-docs/
