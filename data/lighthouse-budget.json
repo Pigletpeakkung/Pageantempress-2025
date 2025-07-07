@@ -1,0 +1,99 @@
+{
+  "budget": [
+    {
+      "path": "/*",
+      "timings": [
+        {
+          "metric": "first-contentful-paint",
+          "budget": 2000,
+          "tolerance": 500
+        },
+        {
+          "metric": "largest-contentful-paint",
+          "budget": 3000,
+          "tolerance": 500
+        },
+        {
+          "metric": "cumulative-layout-shift",
+          "budget": 0.1,
+          "tolerance": 0.05
+        },
+        {
+          "metric": "total-blocking-time",
+          "budget": 300,
+          "tolerance": 100
+        },
+        {
+          "metric": "speed-index",
+          "budget": 3000,
+          "tolerance": 500
+        },
+        {
+          "metric": "interactive",
+          "budget": 4000,
+          "tolerance": 1000
+        }
+      ],
+      "resourceSizes": [
+        {
+          "resourceType": "document",
+          "budget": 50
+        },
+        {
+          "resourceType": "stylesheet",
+          "budget": 100
+        },
+        {
+          "resourceType": "script",
+          "budget": 200
+        },
+        {
+          "resourceType": "image",
+          "budget": 500
+        },
+        {
+          "resourceType": "font",
+          "budget": 100
+        },
+        {
+          "resourceType": "other",
+          "budget": 50
+        },
+        {
+          "resourceType": "total",
+          "budget": 1000
+        }
+      ],
+      "resourceCounts": [
+        {
+          "resourceType": "document",
+          "budget": 1
+        },
+        {
+          "resourceType": "stylesheet",
+          "budget": 5
+        },
+        {
+          "resourceType": "script",
+          "budget": 10
+        },
+        {
+          "resourceType": "image",
+          "budget": 20
+        },
+        {
+          "resourceType": "font",
+          "budget": 5
+        },
+        {
+          "resourceType": "other",
+          "budget": 5
+        },
+        {
+          "resourceType": "total",
+          "budget": 50
+        }
+      ]
+    }
+  ]
+}
