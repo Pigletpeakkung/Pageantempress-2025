@@ -693,3 +693,395 @@ dist/ (auto-generated)
 ```bash
 # Create complete directory structure
 mkdir -p assets/{images/{logos,icons,pageants,gallery/{thumbnails,full-size,winners,before-after},blog/{featured,thumbnails,content},team,backgrounds/{section-dividers},youtube/{video-thumbnails,playlist-covers},screenshots,placeholders},videos
+
+# PageantEmpress 2025 - Complete File Structure
+
+```
+pageant-empress-2025/
+├── 📁 public/                          # Web root directory
+│   ├── 📄 index.php                    # Main entry point
+│   ├── 📄 404.html                     # Custom 404 error page
+│   ├── 📄 500.html                     # Custom 500 error page
+│   ├── 📄 sitemap.xml                  # XML sitemap
+│   ├── 📄 robots.txt                   # Search engine directives
+│   ├── 📄 humans.txt                   # Human-readable credits
+│   ├── 📄 security.txt                 # Security contact info
+│   ├── 📄 manifest.json                # PWA manifest
+│   ├── 📄 favicon.ico                  # Website favicon
+│   ├── 📄 _redirects                   # Netlify redirects
+│   ├── 📄 .htaccess                    # Apache configuration
+│   ├── 📄 web.config                   # IIS configuration
+│   │
+│   ├── 📁 assets/                      # Static assets
+│   │   ├── 📁 css/                     # Stylesheets
+│   │   │   ├── 📄 main.css             # Compiled main stylesheet
+│   │   │   ├── 📄 main.min.css         # Minified main stylesheet
+│   │   │   ├── 📄 critical.css         # Critical CSS for above-fold
+│   │   │   ├── 📄 print.css            # Print stylesheet
+│   │   │   └── 📄 admin.css            # Admin panel styles
+│   │   │
+│   │   ├── 📁 js/                      # JavaScript files
+│   │   │   ├── 📄 main.js              # Main JS bundle
+│   │   │   ├── 📄 main.min.js          # Minified main JS
+│   │   │   ├── 📄 vendor.js            # Third-party libraries
+│   │   │   ├── 📄 voting.js            # Voting functionality
+│   │   │   ├── 📄 gallery.js           # Gallery interactions
+│   │   │   ├── 📄 admin.js             # Admin panel JS
+│   │   │   └── 📄 sw.js                # Service Worker
+│   │   │
+│   │   ├── 📁 images/                  # Image assets
+│   │   │   ├── 📁 contestants/         # Contestant photos
+│   │   │   │   ├── 📁 avatars/         # Profile avatars
+│   │   │   │   ├── 📁 gallery/         # Gallery photos
+│   │   │   │   └── 📁 thumbnails/      # Thumbnail images
+│   │   │   │
+│   │   │   ├── 📁 events/              # Event photos
+│   │   │   │   ├── 📁 preliminary/     # Preliminary round
+│   │   │   │   ├── 📁 finals/          # Finals photos
+│   │   │   │   └── 📁 behind-scenes/   # Behind the scenes
+│   │   │   │
+│   │   │   ├── 📁 gallery/             # Main gallery
+│   │   │   │   ├── 📁 evening-gown/    # Evening gown category
+│   │   │   │   ├── 📁 swimsuit/        # Swimsuit category
+│   │   │   │   ├── 📁 talent/          # Talent show
+│   │   │   │   └── 📁 interview/       # Interview segment
+│   │   │   │
+│   │   │   ├── 📁 icons/               # Icon files
+│   │   │   │   ├── 📄 icon-16x16.png   # 16px icon
+│   │   │   │   ├── 📄 icon-32x32.png   # 32px icon
+│   │   │   │   ├── 📄 icon-192x192.png # 192px icon
+│   │   │   │   ├── 📄 icon-512x512.png # 512px icon
+│   │   │   │   └── 📄 apple-touch-icon.png # Apple touch icon
+│   │   │   │
+│   │   │   ├── 📁 backgrounds/         # Background images
+│   │   │   ├── 📁 banners/             # Banner images
+│   │   │   ├── 📁 sponsors/            # Sponsor logos
+│   │   │   └── 📁 ui/                  # UI elements
+│   │   │
+│   │   ├── 📁 fonts/                   # Font files
+│   │   │   ├── 📄 montserrat-regular.woff2
+│   │   │   ├── 📄 montserrat-bold.woff2
+│   │   │   ├── 📄 playfair-regular.woff2
+│   │   │   └── 📄 playfair-bold.woff2
+│   │   │
+│   │   ├── 📁 videos/                  # Video files
+│   │   │   ├── 📁 promotional/         # Promotional videos
+│   │   │   ├── 📁 interviews/          # Interview videos
+│   │   │   └── 📁 highlights/          # Event highlights
+│   │   │
+│   │   └── 📁 documents/               # Document files
+│   │       ├── 📄 rules.pdf            # Competition rules
+│   │       ├── 📄 application.pdf      # Application form
+│   │       └── 📄 media-kit.pdf        # Media kit
+│   │
+│   ├── 📁 api/                         # API endpoints
+│   │   ├── 📄 contestants.php          # Contestant API
+│   │   ├── 📄 voting.php               # Voting API
+│   │   ├── 📄 events.php               # Events API
+│   │   ├── 📄 gallery.php              # Gallery API
+│   │   ├── 📄 contact.php              # Contact API
+│   │   ├── 📄 news.php                 # News API
+│   │   ├── 📄 search.php               # Search API
+│   │   ├── 📄 stats.php                # Statistics API
+│   │   └── 📄 upload.php               # File upload API
+│   │
+│   ├── 📁 admin/                       # Admin panel
+│   │   ├── 📄 index.php                # Admin dashboard
+│   │   ├── 📄 login.php                # Admin login
+│   │   ├── 📄 logout.php               # Admin logout
+│   │   ├── 📄 contestants.php          # Manage contestants
+│   │   ├── 📄 events.php               # Manage events
+│   │   ├── 📄 gallery.php              # Manage gallery
+│   │   ├── 📄 voting.php               # Manage voting
+│   │   ├── 📄 news.php                 # Manage news
+│   │   ├── 📄 users.php                # Manage users
+│   │   ├── 📄 settings.php             # Site settings
+│   │   └── 📄 reports.php              # Analytics reports
+│   │
+│   └── 📁 uploads/                     # User uploads
+│       ├── 📁 contestants/             # Contestant uploads
+│       ├── 📁 events/                  # Event uploads
+│       ├── 📁 gallery/                 # Gallery uploads
+│       └── 📁 documents/               # Document uploads
+│
+├── 📁 src/                             # Source files (development)
+│   ├── 📁 pages/                       # Page templates
+│   │   ├── 📄 home.php                 # Homepage
+│   │   ├── 📄 contestants.php          # Contestants page
+│   │   ├── 📄 events.php               # Events page
+│   │   ├── 📄 gallery.php              # Gallery page
+│   │   ├── 📄 voting.php               # Voting page
+│   │   ├── 📄 news.php                 # News page
+│   │   ├── 📄 about.php                # About page
+│   │   ├── 📄 contact.php              # Contact page
+│   │   ├── 📄 faq.php                  # FAQ page
+│   │   ├── 📄 sponsors.php             # Sponsors page
+│   │   ├── 📄 apply.php                # Application page
+│   │   └── 📄 results.php              # Results page
+│   │
+│   ├── 📁 includes/                    # Include files
+│   │   ├── 📄 header.php               # Common header
+│   │   ├── 📄 footer.php               # Common footer
+│   │   ├── 📄 navigation.php           # Navigation menu
+│   │   ├── 📄 sidebar.php              # Sidebar content
+│   │   ├── 📄 meta.php                 # Meta tags
+│   │   └── 📄 functions.php            # Helper functions
+│   │
+│   ├── 📁 components/                  # Reusable components
+│   │   ├── 📄 contestant-card.php      # Contestant card
+│   │   ├── 📄 event-card.php           # Event card
+│   │   ├── 📄 gallery-grid.php         # Gallery grid
+│   │   ├── 📄 voting-form.php          # Voting form
+│   │   ├── 📄 news-card.php            # News card
+│   │   ├── 📄 contact-form.php         # Contact form
+│   │   └── 📄 pagination.php           # Pagination
+│   │
+│   ├── 📁 styles/                      # SCSS source files
+│   │   ├── 📄 main.scss                # Main stylesheet
+│   │   ├── 📄 _variables.scss          # SCSS variables
+│   │   ├── 📄 _mixins.scss             # SCSS mixins
+│   │   ├── 📄 _base.scss               # Base styles
+│   │   ├── 📄 _typography.scss         # Typography
+│   │   ├── 📄 _grid.scss               # Grid system
+│   │   ├── 📄 _components.scss         # Component styles
+│   │   ├── 📄 _layouts.scss            # Layout styles
+│   │   ├── 📄 _utilities.scss          # Utility classes
+│   │   └── 📄 _responsive.scss         # Responsive breakpoints
+│   │
+│   ├── 📁 scripts/                     # JavaScript source files
+│   │   ├── 📄 main.js                  # Main JS entry
+│   │   ├── 📄 components/              # Component JS
+│   │   │   ├── 📄 carousel.js          # Carousel component
+│   │   │   ├── 📄 modal.js             # Modal component
+│   │   │   ├── 📄 tabs.js              # Tabs component
+│   │   │   ├── 📄 accordion.js         # Accordion component
+│   │   │   └── 📄 lightbox.js          # Lightbox component
+│   │   │
+│   │   ├── 📄 modules/                 # JS modules
+│   │   │   ├── 📄 voting.js            # Voting module
+│   │   │   ├── 📄 gallery.js           # Gallery module
+│   │   │   ├── 📄 search.js            # Search module
+│   │   │   ├── 📄 analytics.js         # Analytics module
+│   │   │   └── 📄 utils.js             # Utility functions
+│   │   │
+│   │   └── 📄 vendor/                  # Third-party libs
+│   │       ├── 📄 jquery.min.js        # jQuery
+│   │       ├── 📄 swiper.min.js        # Swiper slider
+│   │       └── 📄 aos.min.js           # Animate on scroll
+│   │
+│   └── 📁 templates/                   # Email templates
+│       ├── 📄 welcome.html             # Welcome email
+│       ├── 📄 notification.html        # Notification email
+│       ├── 📄 newsletter.html          # Newsletter template
+│       └── 📄 contact-response.html    # Contact response
+│
+├── 📁 config/                          # Configuration files
+│   ├── 📄 config.php                   # Main configuration
+│   ├── 📄 database.php                 # Database connection
+│   ├── 📄 constants.php                # Site constants
+│   ├── 📄 mail.php                     # Email configuration
+│   ├── 📄 cache.php                    # Cache configuration
+│   └── 📄 security.php                 # Security settings
+│
+├── 📁 classes/                         # PHP classes
+│   ├── 📄 Database.php                 # Database class
+│   ├── 📄 Contestant.php               # Contestant model
+│   ├── 📄 Event.php                    # Event model
+│   ├── 📄 Vote.php                     # Vote model
+│   ├── 📄 Gallery.php                  # Gallery model
+│   ├── 📄 News.php                     # News model
+│   ├── 📄 User.php                     # User model
+│   ├── 📄 Auth.php                     # Authentication class
+│   ├── 📄 Mailer.php                   # Email class
+│   ├── 📄 FileUpload.php               # File upload class
+│   ├── 📄 ImageProcessor.php           # Image processing class
+│   └── 📄 Validator.php                # Validation class
+│
+├── 📁 database/                        # Database files
+│   ├── 📄 schema.sql                   # Database schema
+│   ├── 📄 migrations/                  # Database migrations
+│   │   ├── 📄 001_create_contestants.sql
+│   │   ├── 📄 002_create_events.sql
+│   │   ├── 📄 003_create_votes.sql
+│   │   ├── 📄 004_create_gallery.sql
+│   │   └── 📄 005_create_news.sql
+│   │
+│   ├── 📄 seeds/                       # Database seeders
+│   │   ├── 📄 contestants.sql          # Sample contestants
+│   │   ├── 📄 events.sql               # Sample events
+│   │   └── 📄 settings.sql             # Default settings
+│   │
+│   └── 📄 backups/                     # Database backups
+│       └── 📄 .gitkeep
+│
+├── 📁 scripts/                         # Build & utility scripts
+│   ├── 📄 build.js                     # Build script
+│   ├── 📄 watch.js                     # File watcher
+│   ├── 📄 deploy.js                    # Deployment script
+│   ├── 📄 backup.js                    # Backup script
+│   ├── 📄 cleanup.js                   # Cleanup script
+│   ├── 📄 seo-audit.js                 # SEO audit script
+│   ├── 📄 generate-sitemap.js          # Sitemap generator
+│   ├── 📄 generate-icons.js            # Icon generator
+│   ├── 📄 optimize-images.js           # Image optimizer
+│   └── 📄 performance-test.js          # Performance testing
+│
+├── 📁 tests/                           # Test files
+│   ├── 📄 unit/                        # Unit tests
+│   │   ├── 📄 ContestantTest.php       # Contestant tests
+│   │   ├── 📄 EventTest.php            # Event tests
+│   │   ├── 📄 VoteTest.php             # Vote tests
+│   │   └── 📄 AuthTest.php             # Auth tests
+│   │
+│   ├── 📄 integration/                 # Integration tests
+│   │   ├── 📄 APITest.php              # API tests
+│   │   ├── 📄 DatabaseTest.php         # Database tests
+│   │   └── 📄 EmailTest.php            # Email tests
+│   │
+│   ├── 📄 e2e/                         # End-to-end tests
+│   │   ├── 📄 voting.spec.js           # Voting flow tests
+│   │   ├── 📄 gallery.spec.js          # Gallery tests
+│   │   └── 📄 contact.spec.js          # Contact form tests
+│   │
+│   └── 📄 fixtures/                    # Test fixtures
+│       ├── 📄 contestants.json         # Test contestant data
+│       ├── 📄 events.json              # Test event data
+│       └── 📄 images/                  # Test images
+│
+├── 📁 docs/                            # Documentation
+│   ├── 📄 README.md                    # Main documentation
+│   ├── 📄 API.md                       # API documentation
+│   ├── 📄 DATABASE.md                  # Database documentation
+│   ├── 📄 DEPLOYMENT.md                # Deployment guide
+│   ├── 📄 CONTRIBUTING.md              # Contributing guide
+│   ├── 📄 CHANGELOG.md                 # Change log
+│   └── 📄 SECURITY.md                  # Security guidelines
+│
+├── 📁 logs/                            # Log files
+│   ├── 📄 access.log                   # Access logs
+│   ├── 📄 error.log                    # Error logs
+│   ├── 📄 voting.log                   # Voting logs
+│   ├── 📄 admin.log                    # Admin activity logs
+│   └── 📄 .gitkeep
+│
+├── 📁 cache/                           # Cache files
+│   ├── 📄 templates/                   # Template cache
+│   ├── 📄 images/                      # Image cache
+│   ├── 📄 data/                        # Data cache
+│   └── 📄 .gitkeep
+│
+├── 📁 vendor/                          # Composer dependencies
+│   └── 📄 (auto-generated)             # Third-party packages
+│
+├── 📁 node_modules/                    # NPM dependencies
+│   └── 📄 (auto-generated)             # Node.js packages
+│
+├── 📁 reports/                         # Generated reports
+│   ├── 📄 coverage/                    # Test coverage
+│   ├── 📄 performance/                 # Performance reports
+│   ├── 📄 seo/                         # SEO audit reports
+│   └── 📄 security/                    # Security scan reports
+│
+├── 📁 docker/                          # Docker configuration
+│   ├── 📄 Dockerfile                   # Main Dockerfile
+│   ├── 📄 docker-compose.yml           # Docker Compose
+│   ├── 📄 nginx.conf                   # Nginx configuration
+│   └── 📄 php.ini                      # PHP configuration
+│
+├── 📁 deployment/                      # Deployment files
+│   ├── 📄 netlify.toml                 # Netlify configuration
+│   ├── 📄 vercel.json                  # Vercel configuration
+│   ├── 📄 cloudflare.yml               # Cloudflare configuration
+│   └── 📄 github-actions.yml           # GitHub Actions
+│
+├── 📁 .github/                         # GitHub configuration
+│   ├── 📄 workflows/                   # GitHub Actions workflows
+│   │   ├── 📄 ci.yml                   # Continuous Integration
+│   │   ├── 📄 deploy.yml               # Deployment workflow
+│   │   └── 📄 security.yml             # Security scanning
+│   │
+│   ├── 📄 ISSUE_TEMPLATE/              # Issue templates
+│   │   ├── 📄 bug_report.md            # Bug report template
+│   │   ├── 📄 feature_request.md       # Feature request template
+│   │   └── 📄 security_report.md       # Security report template
+│   │
+│   └── 📄 PULL_REQUEST_TEMPLATE.md     # PR template
+│
+├── 📁 .vscode/                         # VS Code configuration
+│   ├── 📄 settings.json                # Editor settings
+│   ├── 📄 launch.json                  # Debug configuration
+│   ├── 📄 tasks.json                   # Task configuration
+│   └── 📄 extensions.json              # Recommended extensions
+│
+├── 📄 package.json                     # NPM package configuration
+├── 📄 package-lock.json                # NPM lock file
+├── 📄 composer.json                    # Composer configuration
+├── 📄 composer.lock                    # Composer lock file
+├── 📄 .gitignore                       # Git ignore rules
+├── 📄 .env.example                     # Environment variables example
+├── 📄 .env                             # Environment variables (not in git)
+├── 📄 .editorconfig                    # Editor configuration
+├── 📄 .eslintrc.json                   # ESLint configuration
+├── 📄 .stylelintrc.json                # Stylelint configuration
+├── 📄 .prettierrc.json                 # Prettier configuration
+├── 📄 phpunit.xml                      # PHPUnit configuration
+├── 📄 jest.config.js                   # Jest configuration
+├── 📄 webpack.config.js                # Webpack configuration
+├── 📄 gulpfile.js                      # Gulp configuration
+├── 📄 tailwind.config.js               # Tailwind CSS configuration
+├── 📄 LICENSE                          # License file
+├── 📄 README.md                        # Project documentation
+├── 📄 CHANGELOG.md                     # Change log
+└── 📄 SECURITY.md                      # Security policy
+```
+
+## 🎯 **Key Directory Explanations:**
+
+### **📁 public/** - Web Root
+- **Production-ready files** served to users
+- **Static assets** (CSS, JS, images)
+- **API endpoints** for dynamic functionality
+- **Admin panel** for content management
+
+### **📁 src/** - Source Files
+- **Development files** before compilation
+- **SCSS source** for stylesheets
+- **Component templates** for reusability
+- **JavaScript modules** for functionality
+
+### **📁 config/** - Configuration
+- **Database settings** and connections
+- **Security configurations** and keys
+- **Email and caching** settings
+- **Environment-specific** configurations
+
+### **📁 classes/** - PHP Classes
+- **Object-oriented** PHP classes
+- **Database models** for data handling
+- **Authentication** and security classes
+- **File processing** and utilities
+
+### **📁 database/** - Database Files
+- **SQL schema** and migrations
+- **Sample data** seeders
+- **Database backups** and maintenance
+
+### **📁 scripts/** - Build Tools
+- **Build automation** scripts
+- **SEO and performance** tools
+- **Image optimization** utilities
+- **Deployment automation**
+
+### **📁 tests/** - Testing Suite
+- **Unit tests** for individual components
+- **Integration tests** for system interaction
+- **End-to-end tests** for user workflows
+- **Test fixtures** and sample data
+
+This structure provides:
+- **🏗️ Scalable architecture** for growth
+- **🔧 Development efficiency** with organized code
+- **🚀 Production optimization** with build tools
+- **🔒 Security best practices** with proper separation
+- **📊 Comprehensive testing** coverage
+- **📚 Clear documentation** structure
