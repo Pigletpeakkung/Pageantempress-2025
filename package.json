@@ -1,15 +1,416 @@
 {
-  "name": "pageantempress",
+  "name": "pageant-empress-2025",
   "version": "1.0.0",
-  "description": "Pageant Empress - Ultimate Pageant Training Website",
-  "scripts": {
-    "build": "echo 'Static site build'",
-    "dev": "netlify dev"
+  "description": "PageantEmpress 2025 - Premier Beauty Pageant Competition Website",
+  "main": "index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   },
+  "scripts": {
+    "start": "npm run serve",
+    "dev": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"npm run serve:dev\"",
+    "build": "npm run clean && npm run build:css && npm run build:js && npm run build:assets && npm run build:html",
+    "build:prod": "cross-env NODE_ENV=production npm run build && npm run optimize",
+    "preview": "npm run build && npm run serve:preview",
+    
+    "serve": "http-server ./dist -p 3000 -c-1 --gzip",
+    "serve:dev": "http-server ./src -p 3001 -c-1 --cors",
+    "serve:preview": "http-server ./dist -p 3002 -c-1 --gzip",
+    
+    "clean": "rimraf dist coverage reports .cache",
+    "clean:all": "npm run clean && rimraf node_modules package-lock.json",
+    
+    "build:css": "npm run sass:compile && npm run css:prefix && npm run css:minify",
+    "build:js": "npm run js:bundle && npm run js:minify",
+    "build:assets": "npm run assets:copy && npm run assets:optimize",
+    "build:html": "npm run html:process && npm run html:minify",
+    
+    "sass:compile": "sass src/styles/main.scss dist/css/main.css --source-map",
+    "sass:watch": "sass --watch src/styles:dist/css --source-map",
+    "css:prefix": "postcss dist/css/main.css --use autoprefixer -d dist/css",
+    "css:minify": "cleancss -o dist/css/main.min.css dist/css/main.css",
+    "css:critical": "critical --base dist --html dist/index.html --css dist/css/main.css --target dist/css/critical.css --width 1200 --height 900",
+    
+    "js:bundle": "webpack --config webpack.config.js",
+    "js:minify": "terser dist/js/main.js -o dist/js/main.min.js --source-map",
+    "js:analyze": "webpack-bundle-analyzer dist/js/main.js",
+    
+    "assets:copy": "copyfiles -u 1 'src/assets/**/*' dist/",
+    "assets:optimize": "npm run images:optimize && npm run icons:generate",
+    
+    "images:optimize": "imagemin 'src/assets/images/**/*.{jpg,jpeg,png}' --out-dir='dist/assets/images' --plugin=imagemin-mozjpeg --plugin=imagemin-pngquant",
+    "images:webp": "imagemin 'src/assets/images/**/*.{jpg,jpeg,png}' --out-dir='dist/assets/images' --plugin=imagemin-webp",
+    "images:avif": "imagemin 'src/assets/images/**/*.{jpg,jpeg,png}' --out-dir='dist/assets/images' --plugin=imagemin-avif",
+    "images:all": "npm run images:optimize && npm run images:webp && npm run images:avif",
+    
+    "icons:generate": "node scripts/generate-icons.js",
+    "icons:favicon": "node scripts/generate-favicon.js",
+    
+    "html:process": "node scripts/process-html.js",
+    "html:minify": "html-minifier --input-dir dist --output-dir dist --file-ext html --collapse-whitespace --remove-comments --minify-css --minify-js",
+    
+    "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"npm run watch:html\"",
+    "watch:css": "npm run sass:watch",
+    "watch:js": "webpack --config webpack.config.js --watch",
+    "watch:html": "chokidar 'src/**/*.html' -c 'npm run html:process'",
+    
+    "optimize": "npm run optimize:images && npm run optimize:js && npm run optimize:css && npm run optimize:html",
+    "optimize:images": "npm run images:all",
+    "optimize:js": "npm run js:minify",
+    "optimize:css": "npm run css:minify && npm run css:critical",
+    "optimize:html": "npm run html:minify",
+    
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "playwright test",
+    "test:unit": "jest --testPathPattern=unit",
+    "test:integration": "jest --testPathPattern=integration",
+    "test:ci": "jest --ci --coverage --watchAll=false",
+    
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint:js": "eslint src/**/*.js --fix",
+    "lint:css": "stylelint src/**/*.scss --fix",
+    "lint:html": "htmlhint src/**/*.html",
+    "lint:check": "npm run lint:js -- --max-warnings 0 && npm run lint:css -- --max-warnings 0",
+    
+    "format": "prettier --write 'src/**/*.{js,css,scss,html,json,md}'",
+    "format:check": "prettier --check 'src/**/*.{js,css,scss,html,json,md}'",
+    
+    "validate": "npm run validate:html && npm run validate:css && npm run validate:js",
+    "validate:html": "html-validate src/**/*.html",
+    "validate:css": "css-validator src/styles/main.scss",
+    "validate:js": "eslint src/**/*.js --max-warnings 0",
+    
+    "seo:audit": "node scripts/seo-audit.js",
+    "seo:sitemap": "node scripts/generate-sitemap.js",
+    "seo:meta": "node scripts/generate-meta-tags.js",
+    "seo:all": "npm run seo:sitemap && npm run seo:meta && npm run seo:audit",
+    "seo:validate": "node scripts/validate-seo.js",
+    "seo:report": "node scripts/generate-seo-report.js",
+    
+    "accessibility:audit": "pa11y-ci --sitemap https://pageantempress.com/sitemap.xml",
+    "accessibility:test": "axe src/**/*.html",
+    
+    "performance:audit": "lighthouse https://pageantempress.com --output=html --output-path=reports/lighthouse-report.html",
+    "performance:budget": "lighthouse-ci autorun",
+    "performance:analyze": "npm run js:analyze && npm run performance:audit",
+    
+    "pwa:generate": "node scripts/generate-pwa.js",
+    "pwa:validate": "pwa-asset-generator -m src/assets/icons/icon-512x512.png",
+    
+    "security:audit": "npm audit --audit-level=moderate",
+    "security:fix": "npm audit fix",
+    "security:check": "snyk test",
+    
+    "deploy": "npm run build:prod && npm run deploy:netlify",
+    "deploy:netlify": "netlify deploy --prod --dir=dist",
+    "deploy:vercel": "vercel --prod",
+    "deploy:gh-pages": "gh-pages -d dist",
+    "deploy:preview": "npm run build && netlify deploy --dir=dist",
+    
+    "backup": "node scripts/backup.js",
+    "restore": "node scripts/restore.js",
+    
+    "docs": "jsdoc src/**/*.js -d docs",
+    "docs:serve": "http-server docs -p 3003",
+    
+    "analytics:setup": "node scripts/setup-analytics.js",
+    "analytics:report": "node scripts/generate-analytics-report.js",
+    
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "version:patch": "npm version patch && npm run changelog",
+    "version:minor": "npm version minor && npm run changelog",
+    "version:major": "npm version major && npm run changelog",
+    
+    "pre-commit": "npm run lint:check && npm run test:ci",
+    "pre-push": "npm run build:prod && npm run test:e2e",
+    
+    "install:dev": "npm install && npm run build:dev",
+    "install:prod": "npm ci --only=production",
+    
+    "health:check": "node scripts/health-check.js",
+    "monitor": "node scripts/monitor.js",
+    
+    "db:seed": "node scripts/seed-database.js",
+    "db:migrate": "node scripts/migrate-database.js",
+    "db:backup": "node scripts/backup-database.js",
+    
+    "docker:build": "docker build -t pageant-empress .",
+    "docker:run": "docker run -p 3000:3000 pageant-empress",
+    "docker:dev": "docker-compose up -d",
+    "docker:stop": "docker-compose down",
+    
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    
+    "stats": "npm run stats:bundle && npm run stats:performance",
+    "stats:bundle": "webpack-bundle-analyzer dist/js/main.js",
+    "stats:performance": "node scripts/performance-stats.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pageant-empress/pageant-empress-2025.git"
+  },
+  "homepage": "https://pageantempress.com",
+  "bugs": {
+    "url": "https://github.com/pageant-empress/pageant-empress-2025/issues"
+  },
+  "keywords": [
+    "beauty-pageant",
+    "pageant-competition",
+    "beauty-contest",
+    "crown-competition",
+    "elegance",
+    "empowerment",
+    "pwa",
+    "responsive",
+    "accessibility",
+    "performance"
+  ],
+  "author": {
+    "name": "PageantEmpress Team",
+    "email": "info@pageantempress.com",
+    "url": "https://pageantempress.com"
+  },
+  "contributors": [
+    {
+      "name": "George Gurung",
+      "email": "sarah@pageantempress.com",
+      "role": "Project Manager"
+    },
+    {
+      "name": "Emily Rodriguez",
+      "email": "emily@pageantempress.com",
+      "role": "Lead Developer"
+    },
+    {
+      "name": "Thanattsitt Santisamranwilai",
+      "email": "michael@pageantempress.com",
+      "role": "Creative Director"
+    }
+  ],
+  "license": "MIT",
+  "private": false,
   "dependencies": {
-    "nodemailer": "^6.9.7"
+    "axios": "^1.6.0",
+    "intersection-observer": "^0.12.2",
+    "lodash": "^4.17.21",
+    "mitt": "^3.0.1",
+    "vanilla-lazyload": "^17.8.5",
+    "web-vitals": "^3.5.0"
   },
   "devDependencies": {
-    "netlify-cli": "^17.0.0"
-  }
+    "@babel/core": "^7.23.0",
+    "@babel/preset-env": "^7.23.0",
+    "@playwright/test": "^1.40.0",
+    "@storybook/html": "^7.5.0",
+    "@storybook/html-webpack5": "^7.5.0",
+    "autoprefixer": "^10.4.16",
+    "axe-core": "^4.8.2",
+    "babel-loader": "^9.1.3",
+    "chokidar-cli": "^3.0.0",
+    "clean-css-cli": "^5.6.2",
+    "concurrently": "^8.2.0",
+    "conventional-changelog-cli": "^4.1.0",
+    "copyfiles": "^2.4.1",
+    "critical": "^6.1.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.8.1",
+    "css-validator": "^1.3.0",
+    "eslint": "^8.54.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "file-loader": "^6.2.0",
+    "gh-pages": "^6.1.0",
+    "html-minifier": "^4.0.0",
+    "html-validate": "^8.6.0",
+    "html-webpack-plugin": "^5.5.3",
+    "htmlhint": "^1.1.4",
+    "http-server": "^14.1.1",
+    "husky": "^8.0.3",
+    "imagemin": "^8.0.1",
+    "imagemin-avif": "^0.1.5",
+    "imagemin-cli": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-webp": "^8.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdoc": "^4.0.2",
+    "jsdom": "^22.1.0",
+    "lighthouse": "^11.3.0",
+    "lighthouse-ci": "^0.12.0",
+    "netlify-cli": "^17.10.1",
+    "pa11y-ci": "^3.0.1",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "prettier": "^3.1.0",
+    "pwa-asset-generator": "^6.3.1",
+    "rimraf": "^5.0.5",
+    "sass": "^1.69.5",
+    "sass-loader": "^13.3.2",
+    "snyk": "^1.1248.0",
+    "storybook": "^7.5.0",
+    "style-loader": "^3.3.3",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "terser": "^5.26.0",
+    "url-loader": "^4.1.1",
+    "vercel": "^32.7.2",
+    "webpack": "^5.89.0",
+    "webpack-bundle-analyzer": "^4.9.1",
+    "webpack-cli": "^5.1.4",
+    "workbox-webpack-plugin": "^7.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"],
+    "testMatch": [
+      "<rootDir>/tests/**/*.test.js",
+      "<rootDir>/src/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/*.test.js",
+      "!src/vendor/**",
+      "!src/assets/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "standard"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-debugger": "error",
+      "no-unused-vars": "error",
+      "prefer-const": "error",
+      "no-var": "error"
+    },
+    "ignorePatterns": [
+      "dist/",
+      "node_modules/",
+      "coverage/"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard",
+      "stylelint-config-standard-scss"
+    ],
+    "rules": {
+      "indentation": 2,
+      "max-nesting-depth": 3,
+      "no-duplicate-selectors": true,
+      "color-hex-case": "lower",
+      "color-hex-length": "short",
+      "declaration-block-trailing-semicolon": "always",
+      "declaration-colon-space-after": "always",
+      "declaration-colon-space-before": "never"
+    },
+    "ignoreFiles": [
+      "dist/**/*.css",
+      "node_modules/**/*.css"
+    ]
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "printWidth": 80,
+    "arrowParens": "avoid",
+    "endOfLine": "lf"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit",
+      "pre-push": "npm run pre-push",
+      "commit-msg": "conventional-changelog-lint -e"
+    }
+  },
+  "lighthouse-ci": {
+    "ci": {
+      "collect": {
+        "staticDistDir": "./dist",
+        "numberOfRuns": 3
+      },
+      "assert": {
+        "assertions": {
+          "categories:performance": ["warn", { "minScore": 0.8 }],
+          "categories:accessibility": ["error", { "minScore": 0.9 }],
+          "categories:best-practices": ["error", { "minScore": 0.8 }],
+          "categories:seo": ["error", { "minScore": 0.9 }],
+          "categories:pwa": ["warn", { "minScore": 0.8 }]
+        }
+      },
+      "upload": {
+        "target": "temporary-public-storage"
+      }
+    }
+  },
+  "config": {
+    "port": 3000,
+    "host": "localhost",
+    "ssl": false,
+    "cors": true,
+    "analytics": {
+      "google": {
+        "trackingId": "G-XXXXXXXXXX"
+      },
+      "facebook": {
+        "pixelId": "XXXXXXXXXX"
+      },
+      "hotjar": {
+        "siteId": "XXXXXXXXXX"
+      }
+    }
+  },
+  "funding": {
+    "type": "sponsorship",
+    "url": "https://pageantempress.com/sponsor"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "scripts/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ]
 }
