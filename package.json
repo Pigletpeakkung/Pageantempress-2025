@@ -4,16 +4,12 @@
   "description": "PageantEmpress 2025 - Beauty Pageant Competition Website",
   "homepage": "https://pageantempress.com",
   "scripts": {
-    "dev": "concurrently \"sass --watch src/styles:css\" \"netlify dev\"",
-    "build": "npm run build:css && npm run sitemap",
-    "build:css": "sass src/styles/main.scss css/main.css --style compressed",
-    "sitemap": "node scripts/generate-sitemap.js",
-    "start": "netlify dev",
-    "deploy": "npm run build && netlify deploy --prod"
+    "build": "echo 'Static site build complete'",
+    "dev": "netlify dev",
+    "deploy": "netlify deploy --prod"
   },
-  "devDependencies": {
-    "sass": "^1.69.5",
-    "netlify-cli": "^17.10.1",
-    "concurrently": "^8.2.0"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pigletpeakkung/Pageantempress-2025.git"
   }
 }
