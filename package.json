@@ -2,14 +2,129 @@
   "name": "pageantempress",
   "version": "1.0.0",
   "description": "Pageant Empress - Ultimate Pageant Training Website",
+  "main": "index.js",
+  "type": "module",
+  "author": {
+    "name": "George G. & Thanattsitt S.",
+    "email": "info@pageantempress.com",
+    "url": "https://pageantempress.com"
+  },
+  "license": "MIT",
+  "homepage": "https://pageantempress.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pageantempress/pageantempress.git"
+  },
+  "keywords": [
+    "pageant",
+    "training",
+    "empress",
+    "beauty",
+    "competition",
+    "coaching",
+    "web-animation",
+    "netlify"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
-    "build": "echo 'Static site build'",
-    "dev": "netlify dev"
+    "build": "echo 'Static site build complete'",
+    "dev": "netlify dev",
+    "start": "netlify dev",
+    "serve": "netlify serve",
+    "deploy": "netlify deploy",
+    "deploy:prod": "netlify deploy --prod",
+    "functions:build": "netlify functions:build",
+    "functions:serve": "netlify functions:serve",
+    "lint": "eslint . --ext .js,.mjs --fix",
+    "format": "prettier --write .",
+    "test": "echo 'No tests specified'",
+    "clean": "rm -rf .netlify dist",
+    "postinstall": "echo 'Dependencies installed successfully'"
   },
   "dependencies": {
-    "nodemailer": "^6.9.7"
+    "@supabase/supabase-js": "^2.39.0",
+    "nodemailer": "^6.9.7",
+    "axios": "^1.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.1.0",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "rate-limiter-flexible": "^3.0.8",
+    "uuid": "^9.0.1",
+    "bcryptjs": "^2.4.3",
+    "crypto-js": "^4.2.0",
+    "validator": "^13.11.0",
+    "sanitize-html": "^2.11.0",
+    "moment": "^2.29.4",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "cookie-parser": "^1.4.6",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.32.6",
+    "image-size": "^1.0.2",
+    "mime-types": "^2.1.35",
+    "compression": "^1.7.4",
+    "body-parser": "^1.20.2"
   },
   "devDependencies": {
-    "netlify-cli": "^17.0.0"
+    "netlify-cli": "^17.0.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "prettier": "^3.1.1",
+    "@netlify/functions": "^2.4.0",
+    "netlify-plugin-cypress": "^2.2.1",
+    "cypress": "^13.6.0",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2022": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-unused-vars": "warn",
+      "prefer-const": "error",
+      "no-var": "error",
+      "prettier/prettier": "error"
+    }
+  },
+  "prettier": {
+    "semi": true,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "endOfLine": "lf"
+  },
+  "netlify": {
+    "functions": {
+      "directory": "netlify/functions"
+    },
+    "build": {
+      "functions": "netlify/functions"
+    }
   }
 }
