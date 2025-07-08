@@ -1,267 +1,41 @@
 {
-  "name": "pageant-empress-2025",
-  "version": "1.0.0",
-  "description": "PageantEmpress 2025 - Premier Beauty Pageant Competition Website",
+  "name": "pageantempress",
+  "version": "2.1.0",
+  "description": "Advanced Web Animation Showcase - Experience the pinnacle of web animation artistry with cutting-edge CSS effects, interactive elements, and performance optimization",
   "main": "index.js",
   "type": "module",
-  "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=9.0.0"
-  },
-  "scripts": {
-    "start": "npm run serve",
-    "dev": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"npm run serve:dev\"",
-    "build": "npm run clean && npm run build:css && npm run build:js && npm run build:assets && npm run build:html",
-    "build:prod": "cross-env NODE_ENV=production npm run build && npm run optimize",
-    "preview": "npm run build && npm run serve:preview",
-    
-    "serve": "http-server ./dist -p 3000 -c-1 --gzip",
-    "serve:dev": "http-server ./src -p 3001 -c-1 --cors",
-    "serve:preview": "http-server ./dist -p 3002 -c-1 --gzip",
-    
-    "clean": "rimraf dist coverage reports .cache",
-    "clean:all": "npm run clean && rimraf node_modules package-lock.json",
-    
-    "build:css": "npm run sass:compile && npm run css:prefix && npm run css:minify",
-    "build:js": "npm run js:bundle && npm run js:minify",
-    "build:assets": "npm run assets:copy && npm run assets:optimize",
-    "build:html": "npm run html:process && npm run html:minify",
-    
-    "sass:compile": "sass src/styles/main.scss dist/css/main.css --source-map",
-    "sass:watch": "sass --watch src/styles:dist/css --source-map",
-    "css:prefix": "postcss dist/css/main.css --use autoprefixer -d dist/css",
-    "css:minify": "cleancss -o dist/css/main.min.css dist/css/main.css",
-    "css:critical": "echo 'Critical CSS generation skipped for now'",
-    
-    "js:bundle": "webpack --config webpack.config.js",
-    "js:minify": "terser dist/js/main.js -o dist/js/main.min.js --source-map",
-    "js:analyze": "webpack-bundle-analyzer dist/js/main.js",
-    
-    "assets:copy": "copyfiles -u 1 'src/assets/**/*' dist/",
-    "assets:optimize": "npm run images:optimize && npm run icons:generate",
-    
-    "images:optimize": "node scripts/optimize-images.js",
-    "images:webp": "node scripts/convert-webp.js",
-    "images:avif": "node scripts/convert-avif.js",
-    "images:all": "npm run images:optimize && npm run images:webp && npm run images:avif",
-    
-    "icons:generate": "node scripts/generate-icons.js",
-    "icons:favicon": "node scripts/generate-favicon.js",
-    
-    "html:process": "node scripts/process-html.js",
-    "html:minify": "html-minifier-terser --input-dir dist --output-dir dist --file-ext html --collapse-whitespace --remove-comments --minify-css --minify-js",
-    
-    "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\" \"npm run watch:html\"",
-    "watch:css": "npm run sass:watch",
-    "watch:js": "webpack --config webpack.config.js --watch",
-    "watch:html": "chokidar 'src/**/*.html' -c 'npm run html:process'",
-    
-    "optimize": "npm run optimize:images && npm run optimize:js && npm run optimize:css && npm run optimize:html",
-    "optimize:images": "npm run images:all",
-    "optimize:js": "npm run js:minify",
-    "optimize:css": "npm run css:minify && npm run css:critical",
-    "optimize:html": "npm run html:minify",
-    
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "test:e2e": "playwright test",
-    "test:unit": "jest --testPathPattern=unit",
-    "test:integration": "jest --testPathPattern=integration",
-    "test:ci": "jest --ci --coverage --watchAll=false",
-    
-    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
-    "lint:js": "eslint src/**/*.js --fix",
-    "lint:css": "stylelint src/**/*.scss --fix",
-    "lint:html": "htmlhint src/**/*.html",
-    "lint:check": "npm run lint:js -- --max-warnings 0 && npm run lint:css -- --max-warnings 0",
-    
-    "format": "prettier --write 'src/**/*.{js,css,scss,html,json,md}'",
-    "format:check": "prettier --check 'src/**/*.{js,css,scss,html,json,md}'",
-    
-    "validate": "npm run validate:html && npm run validate:css && npm run validate:js",
-    "validate:html": "html-validate src/**/*.html",
-    "validate:css": "stylelint src/**/*.scss",
-    "validate:js": "eslint src/**/*.js --max-warnings 0",
-    
-    "seo:audit": "node scripts/seo-audit.js",
-    "seo:sitemap": "node scripts/generate-sitemap.js",
-    "seo:meta": "node scripts/generate-meta-tags.js",
-    "seo:all": "npm run seo:sitemap && npm run seo:meta && npm run seo:audit",
-    "seo:validate": "node scripts/validate-seo.js",
-    "seo:report": "node scripts/generate-seo-report.js",
-    
-    "accessibility:audit": "axe-core --dir dist",
-    "accessibility:test": "axe src/**/*.html",
-    
-    "performance:audit": "lighthouse https://pageantempress.com --output=html --output-path=reports/lighthouse-report.html",
-    "performance:budget": "lhci autorun",
-    "performance:analyze": "npm run js:analyze && npm run performance:audit",
-    
-    "pwa:generate": "node scripts/generate-pwa.js",
-    "pwa:validate": "node scripts/validate-pwa.js",
-    
-    "security:audit": "npm audit --audit-level=moderate",
-    "security:fix": "npm audit fix",
-    "security:check": "snyk test",
-    
-    "deploy": "npm run build:prod && npm run deploy:netlify",
-    "deploy:netlify": "netlify deploy --prod --dir=dist",
-    "deploy:vercel": "vercel --prod",
-    "deploy:gh-pages": "gh-pages -d dist",
-    "deploy:preview": "npm run build && netlify deploy --dir=dist",
-    
-    "backup": "node scripts/backup.js",
-    "restore": "node scripts/restore.js",
-    
-    "docs": "jsdoc src/**/*.js -d docs",
-    "docs:serve": "http-server docs -p 3003",
-    
-    "analytics:setup": "node scripts/setup-analytics.js",
-    "analytics:report": "node scripts/generate-analytics-report.js",
-    
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "version:patch": "npm version patch && npm run changelog",
-    "version:minor": "npm version minor && npm run changelog",
-    "version:major": "npm version major && npm run changelog",
-    
-    "pre-commit": "npm run lint:check && npm run test:ci",
-    "pre-push": "npm run build:prod && npm run test:e2e",
-    
-    "install:dev": "npm install && npm run build:dev",
-    "install:prod": "npm ci --only=production",
-    
-    "health:check": "node scripts/health-check.js",
-    "monitor": "node scripts/monitor.js",
-    
-    "db:seed": "node scripts/seed-database.js",
-    "db:migrate": "node scripts/migrate-database.js",
-    "db:backup": "node scripts/backup-database.js",
-    
-    "docker:build": "docker build -t pageant-empress .",
-    "docker:run": "docker run -p 3000:3000 pageant-empress",
-    "docker:dev": "docker-compose up -d",
-    "docker:stop": "docker-compose down",
-    
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
-    
-    "stats": "npm run stats:bundle && npm run stats:performance",
-    "stats:bundle": "webpack-bundle-analyzer dist/js/main.js",
-    "stats:performance": "node scripts/performance-stats.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pageant-empress/pageant-empress-2025.git"
-  },
-  "homepage": "https://pageantempress.com",
-  "bugs": {
-    "url": "https://github.com/pageant-empress/pageant-empress-2025/issues"
-  },
-  "keywords": [
-    "beauty-pageant",
-    "pageant-competition",
-    "beauty-contest",
-    "crown-competition",
-    "elegance",
-    "empowerment",
-    "pwa",
-    "responsive",
-    "accessibility",
-    "performance"
-  ],
   "author": {
-    "name": "PageantEmpress Team",
+    "name": "George G. & Thanattsitt S.",
     "email": "info@pageantempress.com",
     "url": "https://pageantempress.com"
   },
-  "contributors": [
-    {
-      "name": "George Gurung",
-      "email": "sarah@pageantempress.com",
-      "role": "Project Manager"
-    },
-    {
-      "name": "Emily Rodriguez",
-      "email": "emily@pageantempress.com",
-      "role": "Lead Developer"
-    },
-    {
-      "name": "Thanattsitt Santisamranwilai",
-      "email": "michael@pageantempress.com",
-      "role": "Creative Director"
-    }
-  ],
   "license": "MIT",
-  "private": false,
-  "dependencies": {
-    "axios": "^1.6.0",
-    "intersection-observer": "^0.12.2",
-    "lodash": "^4.17.21",
-    "mitt": "^3.0.1",
-    "nodemailer": "^6.9.7",
-    "@supabase/supabase-js": "^2.38.0",
-    "@sendgrid/mail": "^7.7.0",
-    "vanilla-lazyload": "^17.8.5",
-    "web-vitals": "^3.5.0"
+  "homepage": "https://pageantempress.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pageantempress/pageantempress.git"
   },
-  "devDependencies": {
-    "@babel/core": "^7.23.0",
-    "@babel/preset-env": "^7.23.0",
-    "@lhci/cli": "^0.12.0",
-    "@playwright/test": "^1.40.0",
-    "@storybook/html": "^7.5.0",
-    "@storybook/html-webpack5": "^7.5.0",
-    "autoprefixer": "^10.4.16",
-    "axe-core": "^4.8.2",
-    "babel-loader": "^9.1.3",
-    "chokidar-cli": "^3.0.0",
-    "clean-css-cli": "^5.6.2",
-    "concurrently": "^8.2.0",
-    "conventional-changelog-cli": "^4.1.0",
-    "copyfiles": "^2.4.1",
-    "cross-env": "^7.0.3",
-    "css-loader": "^6.8.1",
-    "eslint": "^8.54.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.1.1",
-    "file-loader": "^6.2.0",
-    "gh-pages": "^6.1.0",
-    "glob": "^10.3.0",
-    "html-minifier-terser": "^7.2.0",
-    "html-validate": "^8.6.0",
-    "html-webpack-plugin": "^5.5.3",
-    "htmlhint": "^1.1.4",
-    "http-server": "^14.1.1",
-    "husky": "^8.0.3",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "jsdoc": "^4.0.2",
-    "jsdom": "^22.1.0",
-    "lighthouse": "^11.3.0",
-    "netlify-cli": "^17.10.1",
-    "postcss": "^8.4.32",
-    "postcss-cli": "^11.0.0",
-    "prettier": "^3.1.0",
-    "rimraf": "^5.0.5",
-    "sass": "^1.69.5",
-    "sass-loader": "^13.3.2",
-    "sharp": "^0.33.0",
-    "snyk": "^1.1248.0",
-    "storybook": "^7.5.0",
-    "style-loader": "^3.3.3",
-    "stylelint": "^15.11.0",
-    "stylelint-config-standard": "^34.0.0",
-    "stylelint-config-standard-scss": "^11.1.0",
-    "terser": "^5.26.0",
-    "url-loader": "^4.1.1",
-    "vercel": "^32.7.2",
-    "webpack": "^5.89.0",
-    "webpack-bundle-analyzer": "^4.9.1",
-    "webpack-cli": "^5.1.4",
-    "workbox-webpack-plugin": "^7.0.0"
+  "bugs": {
+    "url": "https://github.com/pageantempress/pageantempress/issues"
+  },
+  "keywords": [
+    "web-animation",
+    "css-effects",
+    "interactive-design",
+    "performance-optimization",
+    "pwa",
+    "accessibility",
+    "pageant",
+    "crown-effects",
+    "particle-system",
+    "theme-switching",
+    "glass-morphism",
+    "holographic-effects",
+    "modern-web-development"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   },
   "browserslist": [
     "> 1%",
@@ -269,108 +43,257 @@
     "not dead",
     "not ie 11"
   ],
-  "jest": {
-    "testEnvironment": "jsdom",
-    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"],
-    "testMatch": [
-      "<rootDir>/tests/**/*.test.js",
-      "<rootDir>/src/**/*.test.js"
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "npm run lint && npm run test && vite build",
+    "build:prod": "npm run build && npm run optimize",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "serve": "http-server dist -p 8080 -c-1",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:html",
+    "lint:js": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint:css": "stylelint \"**/*.{css,scss}\" --fix",
+    "lint:html": "htmlhint \"**/*.html\"",
+    "format": "prettier --write .",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:lighthouse": "lhci autorun",
+    "test:accessibility": "axe-core \"http://localhost:3000\"",
+    "analyze": "npm run analyze:bundle && npm run analyze:performance",
+    "analyze:bundle": "vite-bundle-analyzer dist/stats.json",
+    "analyze:performance": "lighthouse http://localhost:3000 --output=html --output-path=./lighthouse-report.html",
+    "optimize": "npm run optimize:images && npm run optimize:css && npm run optimize:js",
+    "optimize:images": "imagemin 'assets/images/**/*.{jpg,jpeg,png,gif,svg}' --out-dir=dist/assets/images --plugin=imagemin-mozjpeg --plugin=imagemin-pngquant --plugin=imagemin-gifsicle --plugin=imagemin-svgo",
+    "optimize:css": "cssnano dist/assets/*.css --no-map",
+    "optimize:js": "terser dist/assets/*.js --compress --mangle --output dist/assets/",
+    "pwa:generate": "npm run pwa:icons && npm run pwa:manifest",
+    "pwa:icons": "pwa-asset-generator assets/logo.svg dist/assets/icons --manifest dist/manifest.json",
+    "pwa:manifest": "node scripts/generate-manifest.js",
+    "deploy": "npm run build:prod && npm run deploy:vercel",
+    "deploy:vercel": "vercel --prod",
+    "deploy:netlify": "netlify deploy --prod --dir dist",
+    "deploy:github": "gh-pages -d dist",
+    "security": "npm audit --audit-level moderate",
+    "security:fix": "npm audit fix",
+    "clean": "rimraf dist coverage .nyc_output",
+    "docs": "jsdoc -c jsdoc.json",
+    "docs:serve": "http-server docs -p 8081",
+    "precommit": "lint-staged",
+    "postinstall": "husky install",
+    "validate": "npm run lint && npm run test && npm run build",
+    "ci": "npm ci && npm run validate && npm run test:e2e",
+    "release": "semantic-release",
+    "release:dry": "semantic-release --dry-run"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "swiper": "^11.0.5",
+    "gsap": "^3.12.2",
+    "three": "^0.159.0",
+    "lottie-web": "^5.12.2",
+    "intersection-observer": "^0.12.2",
+    "web-animations-js": "^2.3.2",
+    "particles.js": "^2.0.0",
+    "hammer.js": "^2.0.8",
+    "focus-visible": "^5.2.0",
+    "workbox-sw": "^7.0.0",
+    "workbox-strategies": "^7.0.0",
+    "workbox-routing": "^7.0.0",
+    "workbox-precaching": "^7.0.0",
+    "workbox-cacheable-response": "^7.0.0",
+    "workbox-expiration": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "@types/three": "^0.159.0",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "@vitejs/plugin-legacy": "^5.2.0",
+    "@vitejs/plugin-pwa": "^0.17.4",
+    "@vitest/coverage-v8": "^1.1.3",
+    "@vitest/ui": "^1.1.3",
+    "autoprefixer": "^10.4.16",
+    "axe-core": "^4.8.3",
+    "cssnano": "^6.0.2",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-accessibility": "^3.2.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-performance": "^2.0.1",
+    "eslint-plugin-prettier": "^5.1.2",
+    "eslint-plugin-security": "^1.7.1",
+    "gh-pages": "^6.1.1",
+    "htmlhint": "^1.1.4",
+    "http-server": "^14.1.1",
+    "husky": "^8.0.3",
+    "imagemin": "^8.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-svgo": "^10.0.1",
+    "jsdom": "^23.0.1",
+    "jsdoc": "^4.0.2",
+    "lighthouse": "^11.4.0",
+    "lighthouse-ci": "^0.12.1",
+    "lint-staged": "^15.2.0",
+    "netlify-cli": "^17.15.0",
+    "postcss": "^8.4.32",
+    "postcss-preset-env": "^9.3.0",
+    "prettier": "^3.1.1",
+    "pwa-asset-generator": "^6.3.1",
+    "rimraf": "^5.0.5",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "semantic-release": "^22.0.12",
+    "stylelint": "^16.1.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "terser": "^5.26.0",
+    "typescript": "^5.3.3",
+    "vercel": "^32.8.0",
+    "vite": "^5.0.10",
+    "vite-bundle-analyzer": "^0.7.0",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-html": "^3.2.0",
+    "vite-plugin-pwa": "^0.17.4",
+    "vitest": "^1.1.3",
+    "@playwright/test": "^1.40.1",
+    "playwright": "^1.40.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
     ],
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "!src/**/*.test.js",
-      "!src/vendor/**",
-      "!src/assets/**"
+    "*.{css,scss}": [
+      "stylelint --fix",
+      "prettier --write"
     ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
-        "lines": 80,
-        "statements": 80
-      }
-    },
-    "coverageReporters": [
-      "text",
-      "lcov",
-      "html"
+    "*.{html,json,md}": [
+      "prettier --write"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run validate",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   },
   "eslintConfig": {
     "env": {
       "browser": true,
-      "es2021": true,
+      "es2022": true,
       "node": true,
-      "jest": true
+      "serviceworker": true
     },
     "extends": [
-      "standard"
+      "eslint:recommended",
+      "@typescript-eslint/recommended",
+      "plugin:import/recommended",
+      "plugin:jsx-a11y/recommended",
+      "plugin:security/recommended",
+      "plugin:performance/recommended",
+      "prettier"
     ],
+    "plugins": [
+      "@typescript-eslint",
+      "import",
+      "jsx-a11y",
+      "security",
+      "performance",
+      "accessibility"
+    ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaVersion": "latest",
       "sourceType": "module"
     },
     "rules": {
       "no-console": "warn",
-      "no-debugger": "error",
-      "no-unused-vars": "error",
+      "no-unused-vars": "warn",
       "prefer-const": "error",
-      "no-var": "error"
-    },
-    "ignorePatterns": [
-      "dist/",
-      "node_modules/",
-      "coverage/"
-    ]
+      "no-var": "error",
+      "accessibility/no-display-none": "error",
+      "security/detect-object-injection": "error",
+      "performance/no-global-event-listener": "warn"
+    }
   },
   "stylelint": {
     "extends": [
       "stylelint-config-standard",
-      "stylelint-config-standard-scss"
+      "stylelint-config-prettier"
     ],
     "rules": {
-      "indentation": 2,
-      "max-nesting-depth": 3,
-      "no-duplicate-selectors": true,
-      "color-hex-case": "lower",
-      "color-hex-length": "short",
       "declaration-block-trailing-semicolon": "always",
+      "block-no-empty": true,
+      "color-no-invalid-hex": true,
       "declaration-colon-space-after": "always",
-      "declaration-colon-space-before": "never"
-    },
-    "ignoreFiles": [
-      "dist/**/*.css",
-      "node_modules/**/*.css"
-    ]
+      "declaration-colon-space-before": "never",
+      "function-comma-space-after": "always",
+      "function-url-quotes": "always",
+      "media-feature-colon-space-after": "always",
+      "media-feature-colon-space-before": "never",
+      "media-feature-name-no-vendor-prefix": true,
+      "max-empty-lines": 2,
+      "number-leading-zero": "always",
+      "number-no-trailing-zeros": true,
+      "property-no-vendor-prefix": true,
+      "rule-empty-line-before": [
+        "always",
+        {
+          "except": ["first-nested"],
+          "ignore": ["after-comment"]
+        }
+      ],
+      "selector-list-comma-newline-after": "always",
+      "selector-no-id": true,
+      "shorthand-property-no-redundant-values": true,
+      "string-quotes": "single",
+      "value-no-vendor-prefix": true
+    }
   },
   "prettier": {
     "semi": true,
-    "singleQuote": true,
-    "tabWidth": 2,
     "trailingComma": "es5",
+    "singleQuote": true,
     "printWidth": 80,
+    "tabWidth": 2,
+    "useTabs": false,
+    "bracketSpacing": true,
+    "bracketSameLine": false,
     "arrowParens": "avoid",
     "endOfLine": "lf"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run pre-commit",
-      "pre-push": "npm run pre-push",
-      "commit-msg": "conventional-changelog-lint -e"
-    }
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
+  "release": {
+    "branches": ["main", "next"],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
   },
   "lighthouse-ci": {
     "ci": {
       "collect": {
-        "staticDistDir": "./dist",
+        "url": ["http://localhost:3000"],
         "numberOfRuns": 3
       },
       "assert": {
         "assertions": {
-          "categories:performance": ["warn", { "minScore": 0.8 }],
-          "categories:accessibility": ["error", { "minScore": 0.9 }],
-          "categories:best-practices": ["error", { "minScore": 0.8 }],
-          "categories:seo": ["error", { "minScore": 0.9 }],
+          "categories:performance": ["warn", { "minScore": 0.9 }],
+          "categories:accessibility": ["error", { "minScore": 0.95 }],
+          "categories:best-practices": ["warn", { "minScore": 0.9 }],
+          "categories:seo": ["warn", { "minScore": 0.9 }],
           "categories:pwa": ["warn", { "minScore": 0.8 }]
         }
       },
@@ -379,33 +302,20 @@
       }
     }
   },
+  "workspaces": [
+    "packages/*"
+  ],
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/pageantempress"
+  },
   "config": {
-    "port": 3000,
-    "host": "localhost",
-    "ssl": false,
-    "cors": true,
-    "analytics": {
-      "google": {
-        "trackingId": "G-XXXXXXXXXX"
-      },
-      "facebook": {
-        "pixelId": "XXXXXXXXXX"
-      },
-      "hotjar": {
-        "siteId": "XXXXXXXXXX"
-      }
+    "commitizen": {
+      "path": "cz-conventional-changelog"
     }
   },
-  "funding": {
-    "type": "sponsorship",
-    "url": "https://pageantempress.com/sponsor"
-  },
-  "files": [
-    "dist/",
-    "src/",
-    "scripts/",
-    "README.md",
-    "LICENSE",
-    "CHANGELOG.md"
-  ]
+  "volta": {
+    "node": "18.19.0",
+    "npm": "10.2.4"
+  }
 }
