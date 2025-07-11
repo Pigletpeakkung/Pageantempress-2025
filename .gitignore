@@ -1,171 +1,95 @@
-# ==========================================================================
-# GITIGNORE - PageantEmpress 2025
-# Comprehensive exclusion rules for the project
-# ==========================================================================
-
-# ========================================================================
-# Node.js Dependencies
-# ========================================================================
+# Dependencies
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-# ========================================================================
-# Environment Variables
-# ========================================================================
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript v1 declaration files
+typings/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-.env.staging
 
-# ========================================================================
-# Build Output
-# ========================================================================
-dist/
-build/
-out/
-.next/
-.nuxt/
-.vuepress/dist/
-.serverless/
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# next.js build output
+.next
+
+# nuxt.js build output
+.nuxt
+
+# vuepress build output
+.vuepress/dist
+
+# Serverless directories
+.serverless
+
+# FuseBox cache
 .fusebox/
-coverage/
 
-# ========================================================================
-# Cache Directories
-# ========================================================================
-.cache/
-.parcel-cache/
-.tmp/
-.temp/
-*.tmp
-*.temp
+# DynamoDB Local files
+.dynamodb/
 
-# ========================================================================
-# Logs
-# ========================================================================
-logs/
-*.log
-npm-debug.log
-yarn-debug.log
-yarn-error.log
-pnpm-debug.log
-lerna-debug.log
+# TernJS port file
+.tern-port
 
-# ========================================================================
-# Runtime Data
-# ========================================================================
-pids/
-*.pid
-*.seed
-*.pid.lock
-
-# ========================================================================
-# Coverage Directory
-# ========================================================================
-coverage/
-*.lcov
-.nyc_output/
-
-# ========================================================================
-# Dependency Directories
-# ========================================================================
-node_modules/
-jspm_packages/
-
-# ========================================================================
-# TypeScript
-# ========================================================================
-*.tsbuildinfo
-.tscache/
-
-# ========================================================================
-# Optional npm cache directory
-# ========================================================================
-.npm
-
-# ========================================================================
-# Optional eslint cache
-# ========================================================================
-.eslintcache
-
-# ========================================================================
-# Optional stylelint cache
-# ========================================================================
-.stylelintcache
-
-# ========================================================================
-# Microbundle cache
-# ========================================================================
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
-
-# ========================================================================
-# Optional REPL history
-# ========================================================================
-.node_repl_history
-
-# ========================================================================
-# Output of 'npm pack'
-# ========================================================================
-*.tgz
-
-# ========================================================================
-# Yarn Integrity file
-# ========================================================================
-.yarn-integrity
-
-# ========================================================================
-# Stores VSCode versions used for testing VSCode extensions
-# ========================================================================
-.vscode-test
-
-# ========================================================================
-# Yarn v2
-# ========================================================================
-.yarn/cache
-.yarn/unplugged
-.yarn/build-state.yml
-.yarn/install-state.gz
-.pnp.*
-
-# ========================================================================
-# Editor Directories and Files
-# ========================================================================
+# IDE and Editor files
 .vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+.idea/
 *.swp
 *.swo
 *~
 
-# ========================================================================
-# IDE Files
-# ========================================================================
-.idea/
-*.iml
-*.ipr
-*.iws
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-*.sublime-project
-
-# ========================================================================
-# OS Generated Files
-# ========================================================================
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -173,171 +97,52 @@ jspm_packages/
 .Trashes
 ehthumbs.db
 Thumbs.db
-Desktop.ini
 
-# ========================================================================
-# Image Processing
-# ========================================================================
-*.orig
-*.optimized
-.image-cache/
+# Build outputs
+dist/
+build/
+public/build/
 
-# ========================================================================
-# Lighthouse Reports
-# ========================================================================
-lighthouse-reports/
-.lighthouseci/
+# Logs
+logs
+*.log
 
-# ========================================================================
-# Performance Reports
-# ========================================================================
-reports/
-*.report.html
-*.report.json
-bundle-analyzer-report.html
-webpack-bundle-analyzer-report.html
-
-# ========================================================================
-# Test Coverage
-# ========================================================================
-coverage/
-.coverage/
-test-results/
-playwright-report/
-test-output/
-
-# ========================================================================
-# Temporary Files
-# ========================================================================
-*.tmp
-*.temp
-.tmp/
+# Temporary files
+tmp/
 temp/
 
-# ========================================================================
-# Backup Files
-# ========================================================================
-*.bak
+# Local development
+.local
+
+# Analytics and tracking
+.analytics
+
+# Service worker cache
+sw.js.map
+
+# Performance monitoring
+performance-data/
+
+# Testing
+test-results/
+coverage-reports/
+
+# Backup files
 *.backup
-*.old
-*.orig
+*.bak
 
-# ========================================================================
-# Archive Files
-# ========================================================================
-*.tar
+# Compressed files
 *.zip
-*.7z
-*.dmg
-*.iso
+*.tar.gz
+*.rar
 
-# ========================================================================
-# Database Files
-# ========================================================================
+# Database
 *.db
 *.sqlite
-*.sqlite3
 
-# ========================================================================
-# Media Files (if too large)
-# ========================================================================
-# Uncomment if you have large media files
-# assets/videos/
-# assets/images/original/
-# *.mp4
-# *.mov
-# *.avi
-
-# ========================================================================
-# Generated Files
-# ========================================================================
-sitemap.xml
-sitemap-*.xml
-robots.txt.generated
-manifest.json.generated
-sw.js.generated
-
-# ========================================================================
-# Deployment Files
-# ========================================================================
-.deployment
-.deploy/
-.now
-.vercel
-.netlify/
-.firebase/
-.surge/
-
-# ========================================================================
-# API Keys and Secrets
-# ========================================================================
+# Configuration files with sensitive data
+config.local.js
 secrets.json
-api-keys.json
-credentials.json
-service-account.json
 
-# ========================================================================
-# Tools and Utilities
-# ========================================================================
-.grunt
-.sass-cache/
-.connect.lock
-.lock-wscript
-.wafpickle-N
-.lock-wscript
-.sass-cache
-.cache
-.parcel-cache
-
-# ========================================================================
-# Documentation Build
-# ========================================================================
-docs/_build/
-docs/.doctrees/
-docs/build/
-
-# ========================================================================
-# WordPress (if applicable)
-# ========================================================================
-wp-config.php
-wp-content/uploads/
-wp-content/cache/
-wp-content/themes/twentytwentyone/
-wp-content/plugins/akismet/
-wp-content/plugins/hello.php
-
-# ========================================================================
-# Monitoring and Analytics
-# ========================================================================
-*.trace
-*.cpuprofile
-*.heapprofile
-*.heapsnapshot
-
-# ========================================================================
-# Security Files
-# ========================================================================
-*.pem
-*.key
-*.crt
-*.csr
-*.p12
-*.pfx
-
-# ========================================================================
-# Ignore files for specific tools
-# ========================================================================
-.eslintignore
-.prettierignore
-.stylelintignore
-.gitattributes
-
-# ========================================================================
-# Custom Project Files
-# ========================================================================
-# Add any project-specific files here
-NOTES.md
-TODO.md
-.dev-notes/
-admin-panel/
-internal-docs/
+# Netlify
+.netlify/
