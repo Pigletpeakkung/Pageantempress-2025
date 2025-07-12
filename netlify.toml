@@ -2,19 +2,212 @@
   # Build command (if you have a build process)
   command = "npm run build"
   
-  # Directory to publish (change if your files are in a different folder)
+  # Directory to publish (change if your files are in a different folder)  
   publish = "."
   
   # Environment variables
   [build.environment]
     NODE_VERSION = "18"
 
-# Redirect rules
+# DOMAIN REDIRECTS
+[[redirects]]
+  from = "https://www.pageantempress.com/*"
+  to = "https://pageantempress.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://pageantempress.com/*"
+  to = "https://pageantempress.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.pageantempress.com/*"
+  to = "https://pageantempress.com/:splat"
+  status = 301
+  force = true
+
+# SOCIAL MEDIA REDIRECTS
+[[redirects]]
+  from = "/fb"
+  to = "https://facebook.com/pageantempress"
+  status = 301
+
+[[redirects]]
+  from = "/facebook"
+  to = "https://facebook.com/pageantempress"
+  status = 301
+
+[[redirects]]
+  from = "/ig"
+  to = "https://instagram.com/pageantempress"
+  status = 301
+
+[[redirects]]
+  from = "/instagram"
+  to = "https://instagram.com/pageantempress"
+  status = 301
+
+[[redirects]]
+  from = "/linkedin"
+  to = "https://linkedin.com/company/pageantempress"
+  status = 301
+
+[[redirects]]
+  from = "/li"
+  to = "https://linkedin.com/company/pageantempress"
+  status = 301
+
+[[redirects]]
+  from = "/twitter"
+  to = "https://twitter.com/pageantempress"
+  status = 301
+
+[[redirects]]
+  from = "/youtube"
+  to = "https://youtube.com/pageantempress"
+  status = 301
+
+[[redirects]]
+  from = "/tiktok"
+  to = "https://tiktok.com/@pageantempress"
+  status = 301
+
+# UTILITY REDIRECTS
+[[redirects]]
+  from = "/sitemap"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/sitemaps"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/rss"
+  to = "/feed.xml"
+  status = 301
+
+[[redirects]]
+  from = "/feed"
+  to = "/feed.xml"
+  status = 301
+
+# MOBILE REDIRECTS
+[[redirects]]
+  from = "https://m.pageantempress.com/*"
+  to = "https://pageantempress.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://mobile.pageantempress.com/*"
+  to = "https://pageantempress.com/:splat"
+  status = 301
+  force = true
+
+# LEGACY REDIRECTS
+[[redirects]]
+  from = "/pageant-tips/*"
+  to = "/blog/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/profiles/*"
+  to = "/contestants/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/schedule/*"
+  to = "/events/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/photos/*"
+  to = "/gallery/:splat"
+  status = 301
+
+# SPECIAL REDIRECTS
+[[redirects]]
+  from = "/crown"
+  to = "/contestants"
+  status = 301
+
+[[redirects]]
+  from = "/queens"
+  to = "/contestants"
+  status = 301
+
+[[redirects]]
+  from = "/beauty"
+  to = "/contestants"
+  status = 301
+
+[[redirects]]
+  from = "/pageant"
+  to = "/events"
+  status = 301
+
+[[redirects]]
+  from = "/winners"
+  to = "/news/winners"
+  status = 301
+
+# SECURITY REDIRECTS
+[[redirects]]
+  from = "/.env"
+  to = "/404"
+  status = 404
+
+[[redirects]]
+  from = "/.git/*"
+  to = "/404"
+  status = 404
+
+[[redirects]]
+  from = "/*wp-admin*"
+  to = "/404"
+  status = 404
+
+# FILE EXTENSION REDIRECTS
+[[redirects]]
+  from = "/about.html"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/contact"
+  status = 301
+
+[[redirects]]
+  from = "/events.html"
+  to = "/events"
+  status = 301
+
+# LANGUAGE REDIRECTS
+[[redirects]]
+  from = "/en/*"
+  to = "/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/es/*"
+  to = "/es/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/fr/*"
+  to = "/fr/:splat"
+  status = 301
+
+# SPA FALLBACK (Keep this last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = false
 
 # Headers for security and performance
 [[headers]]
@@ -46,14 +239,8 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Edge functions (if needed)
-# [[edge_functions]]
-#   function = "geolocation"
-#   path = "/api/*"
-
 # Form handling
 [forms]
-  # Enable form handling
   spam_protection = true
 
 # Functions (if using Netlify Functions)
