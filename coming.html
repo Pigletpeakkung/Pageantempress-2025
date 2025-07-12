@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon - PageantEmpress</title>
+  <link href="https://cdn.tailwindcss.com/3.3.0" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .golden-text {
+      background: linear-gradient(45deg, #d4af37, #ffd700, #b8860b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .crown-float {
+      animation: crownFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes crownFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-10px) rotate(5deg); }
+      50% { transform: translateY(0px) rotate(0deg); }
+      75% { transform: translateY(-5px) rotate(-5deg); }
+    }
+
+    .sparkle {
+      position: absolute;
+      color: #ffd700;
+      animation: sparkle 3s linear infinite;
+    }
+
+    @keyframes sparkle {
+      0% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0); }
+    }
+
+    .countdown-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+
+<body class="flex items-center justify-center min-h-screen relative">
+  
+  <!-- Sparkle Effects -->
+  <div class="sparkle" style="top: 10%; left: 15%; animation-delay: 0s;">✨</div>
+  <div class="sparkle" style="top: 20%; right: 20%; animation-delay: 1s;">⭐</div>
+  <div class="sparkle" style="bottom: 30%; left: 10%; animation-delay: 2s;">💎</div>
+  <div class="sparkle" style="bottom: 15%; right: 15%; animation-delay: 0.5s;">✨</div>
+  <div class="sparkle" style="top: 40%; left: 80%; animation-delay: 1.5s;">🌟</div>
+  
+  <div class="text-center text-white max-w-4xl px-6">
+    
+    <!-- Crown -->
+    <div class="crown-float mb-8">
+      <i class="fas fa-crown text-8xl text-yellow-400"></i>
+    </div>
+    
+    <!-- Logo & Title -->
+    <h1 class="text-5xl md:text-7xl font-bold golden-text mb-6">
+      PageantEmpress
+    </h1>
+    
+    <h2 class="text-2xl md:text-4xl font-semibold mb-8">
+      Something Amazing is Coming Soon
+    </h2>
+    
+    <p class="text-lg md:text-xl text-gray-200 mb-12 max-w-2xl mx-auto leading-relaxed">
+      We're crafting the ultimate beauty pageant experience. Get ready for exclusive content, 
+      live coverage, and the most comprehensive pageant platform ever created.
+    </p>
+    
+    <!-- Countdown Timer -->
+    <div class="mb-12">
+      <h3 class="text-xl font-semibold mb-6 golden-text">Launch Countdown</h3>
+      <div class="grid grid-cols-4 gap-4 max-w-lg mx-auto">
+        <div class="countdown-box rounded-2xl p-4">
+          <div class="text-3xl font-bold" id="days">00</div>
+          <div class="text-sm text-gray-300">Days</div>
+        </div>
+        <div class="countdown-box rounded-2xl p-4">
+          <div class="text-3xl font-bold" id="hours">00</div>
+          <div class="text-sm text-gray-300">Hours</div>
+        </div>
+        <div class="countdown-box rounded-2xl p-4">
+          <div class="text-3xl font-bold" id="minutes">00</div>
+          <div class="text-sm text-gray-300">Minutes</div>
+        </div>
+        <div class="countdown-box rounded-2xl p-4">
+          <div class="text-3xl font-bold" id="seconds">00</div>
+          <div class="text-sm text-gray-300">Seconds</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Features Preview -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="countdown-box rounded-2xl p-6">
+        <i class="fas fa-crown text-3xl text-yellow-400 mb-4"></i>
+        <h4 class="font-semibold mb-2">Exclusive Coverage</h4>
+        <p class="text-sm text-gray-300">Behind-the-scenes content from major pageants worldwide</p>
+      </div>
+      <div class="countdown-box rounded-2xl p-6">
+        <i class="fas fa-video text-3xl text-blue-400 mb-4"></i>
+        <h4 class="font-semibold mb-2">Live Streaming</h4>
+        <p class="text-sm text-gray-300">Watch pageant events live with expert commentary</p>
+      </div>
+      <div class="countdown-box rounded-2xl p-6">
+        <i class="fas fa-users text-3xl text-green-400 mb-4"></i>
+        <h4 class="font-semibold mb-2">Community</h4>
+        <p class="text-sm text-gray-300">Connect with pageant fans from around the globe</p>
+      </div>
+    </div>
+    
+    <!-- Email Signup -->
+    <div class="countdown-box rounded-2xl p-8 mb-8 max-w-md mx-auto">
+      <h3 class="text-xl font-semibold mb-4 golden-text">Get Early Access</h3>
+      <p class="text-sm text-gray-300 mb-6">Be the first to know when we launch and get exclusive early access.</p>
+      <form class="flex gap-2">
+        <input
