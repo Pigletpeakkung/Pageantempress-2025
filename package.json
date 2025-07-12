@@ -1,0 +1,138 @@
+{
+  "name": "pageantempress",
+  "version": "1.0.0",
+  "description": "PageantEmpress 2025 - The ultimate platform for beauty pageants, contestants, events, and pageant enthusiasts worldwide",
+  "author": "George G. & Thanattsitt S.",
+  "license": "MIT",
+  "homepage": "https://pageantempress.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pigletpeakkung/Pageantempress-2025.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pigletpeakkung/Pageantempress-2025/issues"
+  },
+  "keywords": [
+    "pageant",
+    "beauty",
+    "contest",
+    "crown",
+    "fashion",
+    "entertainment",
+    "miss-universe",
+    "miss-world",
+    "webapp",
+    "pwa"
+  ],
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "http-server dist -p 3000",
+    "start": "npm run dev",
+    "lint": "eslint . --ext .js,.html --fix",
+    "format": "prettier --write .",
+    "optimize": "npm run build && npm run minify",
+    "minify": "html-minifier --input-dir dist --output-dir dist --file-ext html --collapse-whitespace --remove-comments",
+    "deploy": "npm run build && netlify deploy --prod --dir=dist",
+    "test": "echo \"No tests specified\" && exit 0",
+    "validate": "html-validate dist/*.html",
+    "lighthouse": "lighthouse https://pageantempress.com --output html --output-path ./reports/lighthouse.html",
+    "sitemap": "sitemap-generator https://pageantempress.com --filepath ./dist/sitemap.xml"
+  },
+  "dependencies": {
+    "gsap": "^3.12.2",
+    "aos": "^2.3.4",
+    "swiper": "^11.0.5",
+    "vanilla-lazyload": "^17.8.8",
+    "workbox-precaching": "^7.0.0",
+    "workbox-routing": "^7.0.0",
+    "workbox-strategies": "^7.0.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "vite-plugin-pwa": "^0.17.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.0",
+    "html-minifier": "^4.0.0",
+    "html-validate": "^8.7.0",
+    "http-server": "^14.1.1",
+    "lighthouse": "^11.4.0",
+    "sitemap-generator": "^8.5.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "cssnano": "^6.0.2",
+    "tailwindcss": "^3.3.6",
+    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/forms": "^0.5.7",
+    "@vitejs/plugin-legacy": "^5.2.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "type": "module",
+  "private": false,
+  "config": {
+    "build_dir": "dist",
+    "public_dir": "public",
+    "src_dir": "src"
+  },
+  "pwa": {
+    "name": "PageantEmpress 2025",
+    "short_name": "PageantEmpress",
+    "theme_color": "#d4af37",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/"
+  },
+  "netlify": {
+    "build": {
+      "command": "npm run build",
+      "publish": "dist"
+    },
+    "redirects": [
+      {
+        "from": "/*",
+        "to": "/index.html",
+        "status": 200
+      }
+    ]
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://pageantempress.com/support"
+  },
+  "contributors": [
+    {
+      "name": "George G.",
+      "email": "george@pageantempress.com",
+      "role": "Lead Developer & Content Creator"
+    },
+    {
+      "name": "Thanattsitt S.",
+      "email": "thanattsitt@pageantempress.com", 
+      "role": "Co-Developer & Designer"
+    }
+  ],
+  "sideEffects": false,
+  "files": [
+    "dist/",
+    "public/",
+    "src/",
+    "*.html",
+    "*.css",
+    "*.js",
+    "manifest.json",
+    "_redirects",
+    "netlify.toml"
+  ]
+}
