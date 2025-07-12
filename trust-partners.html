@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  
+  <!-- SEO Meta Tags -->
+  <title>Partners & Trust - PageantEmpress 2025</title>
+  <meta name="description" content="PageantEmpress partners with the world's most prestigious beauty pageant organizations including Miss Universe, Miss World, Miss International, and Miss Earth.">
+  <meta name="keywords" content="pageant partners, Miss Universe, Miss World, Miss International, Miss Earth, beauty pageant organizations">
+  
+  <!-- Core Styles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    }
+
+    .golden-text {
+      background: linear-gradient(45deg, #d4af37, #ffd700, #b8860b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .partner-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(212, 175, 55, 0.3);
+      border-color: rgba(212, 175, 55, 0.5);
+    }
+
+    .partner-logo-container {
+      width: 100%;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .partner-logo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .partner-card:hover .partner-logo {
+      transform: scale(1.1);
+    }
+
+    .partner-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #d4af37;
+      margin-bottom: 0.75rem;
+    }
+
+    .partner-description {
+      color: #6b7280;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .partner-stats {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .stat-item {
+      background: linear-gradient(135deg, #d4af37, #ffd700);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .partner-logo-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .partner-logo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+    }
+
+    .partner-logo-card .logo {
+      width: 100%;
+      height: 60px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+
+    .logo-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .national-logo-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .national-logo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+    }
+
+    .national-logo {
+      width: 100%;
+      height: 40px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+      border-radius: 6px;
+    }
+
+    .national-name {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .specialty-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .specialty-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+    }
+
+    .specialty-logo-bg {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .specialty-logo {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .specialty-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    [data-counter] {
+      animation: countUp 1s ease-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .partner-card {
+        padding: 1.5rem;
+      }
+      
+      .partner-logo-container {
+        height: 80px;
+      }
+      
+      .partner-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <a href="index.html" class="flex items-center space-x-2">
+            <i class="fas fa-crown text-yellow-600 text-2xl"></i>
+            <span class="text-2xl font-bold golden-text">PageantEmpress</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="index.html" class="text-gray-600 hover:text-yellow-600 transition-colors">Home</a>
+          <a href="contestants.html" class="text-gray-600 hover:text-yellow-600 transition-colors">Contestants</a>
+          <a href="events.html" class="text-gray-600 hover:text-yellow-600 transition-colors">Events</a>
+          <a href="gallery.html" class="text-gray-600 hover:text-yellow-600 transition-colors">Gallery</a>
+          <a href="news.html" class="text-gray-600 hover:text-yellow-600 transition-colors">News</a>
+          <a href="faq.html" class="text-gray-600 hover:text-yellow-600 transition-colors">FAQ</a>
+          <a href="contact.html" class="bg-yellow-500 text-white px-4 py-2 rounded-lg hover:bg-yellow-600 transition-colors">Contact</a>
+        </div>
+        <!-- Mobile menu button -->
+        <button class="md:hidden text-gray-600 hover:text-yellow-600">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Trust & Partners Section -->
+  <section class="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <div class="container mx-auto px-6">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16" data-aos="fade-up">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full mb-6 floating">
+          <i class="fas fa-handshake text-white text-3xl"></i>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold golden-text mb-6">
+          Trusted Partners & Pageants
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          PageantEmpress is proud to cover and collaborate with the world's most prestigious beauty pageants and organizations, bringing you comprehensive coverage of global pageantry.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-6">
+          <div class="flex items-center text-yellow-600">
+            <i class="fas fa-shield-alt mr-2"></i>
+            <span class="font-semibold">Verified Coverage</span>
+          </div>
+          <div class="w-2 h-2 bg-yellow-600 rounded-full"></div>
+          <div class="flex items-center text-yellow-600">
+            <i class="fas fa-globe mr-2"></i>
+            <span class="font-semibold">200+ Countries</span>
+          </div>
+          <div class="w-2 h-2 bg-yellow-600 rounded-full"></div>
+          <div class="flex items-center text-yellow-600">
+            <i class="fas fa-star mr-2"></i>
+            <span class="font-semibold">Official Content</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Major International Pageants -->
+      <div class="mb-20" data-aos="fade-up" data-aos-delay="200">
+        <h2 class="text-3xl font-bold text-center mb-4 golden-text">
+          <i class="fas fa-globe mr-3"></i>
+          The Big Four International Pageants
+        </h2>
+        <p class="text-center text-gray-600 mb-12">The most prestigious beauty pageants in the world</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Miss Universe -->
+          <div class="partner-card group">
+            <div class="partner-logo-container">
+              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/de/Miss_Universe_Logo.svg/1200px-Miss_Universe_Logo.svg.png" alt="Miss Universe" class="partner-logo">
+            </div>
+            <h3 class="partner-name">Miss Universe</h3>
+            <p class="partner-description">The most prestigious beauty pageant, celebrating women's empowerment and global unity since 1952.</p>
+            <div class="partner-stats">
+              <span class="stat-item">70+ Years</span>
+              <span class="stat-item">190+ Countries</span>
+            </div>
+          </div>
+
+          <!-- Miss World -->
+          <div class="partner-card group">
+            <div class="partner-logo-container">
+              <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/50/Miss_World_logo.svg/1200px-Miss_World_logo.svg.png" alt="Miss World" class="partner-logo">
+            </div>
+            <h3 class="partner-name">Miss World</h3>
+            <p class="partner-description">The longest-running international beauty pageant, promoting beauty with a purpose since 1951.</p>
+            <div class="partner-stats">
+              <span class="stat-item">72+ Years</span>
+              <span class="stat-item">150+ Countries</span>
+            </div>
+          </div>
+
+          <!-- Miss International -->
+          <div class="partner-card group">
+            <div class="partner-logo-container">
+              <img src="https://missinternational.org/wp-content/uploads/2021/05/Logo-MI.png" alt="Miss International" class="partner-logo">
+            </div>
+            <h3 class="partner-name">Miss International</h3>
+            <p class="partner-description">Promoting international friendship and goodwill through beauty and cultural exchange since 1960.</p>
+            <div class="partner-stats">
+              <span class="stat-item">63+ Years</span>
+              <span class="stat-item">80+ Countries</span>
+            </div>
+          </div>
+
+          <!-- Miss Earth -->
+          <div class="partner-card group">
+            <div class="partner-logo-container">
+              <img src="https://www.missearth.tv/images/logo.png" alt="Miss Earth" class="partner-logo">
+            </div>
+            <h3 class="partner-name">Miss Earth</h3>
+            <p class="partner-description">Environmental awareness pageant promoting ecological conservation and sustainability since 2001.</p>
+            <div class="partner-stats">
+              <span class="stat-item">22+ Years</span>
+              <span class="stat-item">100+ Countries</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Continental Pageants -->
+      <div class="mb-20" data-aos="fade-up" data-aos-delay="400">
+        <h2 class="text-3xl font-bold text-center mb-4 golden-text">
+          <i class="fas fa-map mr-3"></i>
+          Continental & Regional Pageants
+        </h2>
+        <p class="text-center text-gray-600 mb-12">Celebrating beauty and culture across continents</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <!-- Miss Asia Pacific -->
+          <div class="partner-logo-card">
+            <img src="https://pageantplanet.com/wp-content/uploads/2020/07/miss-asia-pacific-international-logo.png" alt="Miss Asia Pacific" class="logo">
+            <span class="logo-name">Miss Asia Pacific</span>
+          </div>
+
+          <!-- Miss Europe -->
+          <div class="partner-logo-card">
+            <img src="https://www.themisseurope.eu/wp-content/uploads/2019/03/logo-miss-europe.png" alt="Miss Europe" class="logo">
+            <span class="logo-name">Miss Europe</span>
+          </div>
+
+          <!-- Miss Africa -->
+          <div class="partner-logo-card">
+            <img src="https://images.squarespace-cdn.com/content/v1/5c8f8b8c3560c3b8c1b8c8b8/1553702400000-LOGO-MISS-AFRICA-2019.png" alt="Miss Africa" class="logo">
+            <span class="logo-name">Miss Africa</span>
+          </div>
+
+          <!-- Miss Americas -->
+          <div class="partner-logo-card">
+            <img src="https://www.missamerica.org/wp-content/uploads/2019/01/MAO-Logo-Color.png" alt="Miss America" class="logo">
+            <span class="logo-name">Miss America</span>
+          </div>
+
+          <!-- Miss Oceania -->
+          <div class="partner-logo-card">
+            <img src="https://images.squarespace-cdn.com/content/v1/5c8f8b8c3560c3b8c1b8c8b8/1553702400000-LOGO-MISS-OCEANIA-2019.png" alt="Miss Oceania" class="logo">
+            <span class="logo-name">Miss Oceania</span>
+          </div>
+
+          <!-- Miss Global -->
+          <div class="partner-logo-card">
+            <img src="https://www.missglobal.org/images/logo-miss-global.png" alt="Miss Global" class="logo">
+            <span class="logo-name">Miss Global</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- National Pageants -->
+      <div class="mb-20" data-aos="fade-up" data-aos-delay="600">
+        <h2 class="text-3xl font-bold text-center mb-4 golden-text">
+          <i class="fas fa-flag mr-3"></i>
+          National Pageants Worldwide
+        </h2>
+        <p class="text-center text-gray-600 mb-12">Representing the beauty and culture of nations</p>
+        
+        <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4">
+          <!-- USA -->
+          <div class="national-logo-card">
+            <img src="https://www.missusa.com/wp-content/uploads/2021/01/Miss-USA-Logo.png" alt="Miss USA" class="national-logo">
+            <span class="national-name">Miss USA</span>
+          </div>
+
+          <!-- Philippines -->
+          <div class="national-logo-card">
+            <img src="https://www.binibiningpilipinas.com/images/logo.png" alt="Miss Philippines" class="national-logo">
+            <span class="national-name">Miss Philippines</span>
+          </div>
+
+          <!-- Thailand -->
+          <div class="national-logo-card">
+            <img src="https://images.squarespace-cdn.com/content/v1/5c8f8b8c3560c3b8c1b8c8b8/1553702400000-LOGO-MISS-THAILAND-2019.png" alt="Miss Thailand" class="national-logo">
+            <span class="national-name">Miss Thailand</span>
+          </div>
+
+          <!-- India -->
+          <div class="national-logo-card">
+            <img src="https://www.missindiaorg.com/images/logo.png" alt="Miss India" class="national-logo">
+            <span class="national-name">Miss India</span>
+          </div>
+
+          <!-- Brazil -->
+          <div class="national-logo-card">
+            <img src="https://www.missbrasil.com.br/images/logo.png" alt="Miss Brazil" class="national-logo">
+            <span class="national-name">Miss Brazil</span>
+          </div>
+
+          <!-- Colombia -->
+          <div class="national-logo-card">
+            <img src="https://www.misscolombia.org/images/logo.png" alt="Miss Colombia" class="national-logo">
+            <span class="national-name">Miss Colombia</span>
+          </div>
+
+          <!-- Venezuela -->
+          <div class="national-logo-card">
+            <img src="https://www.missvenezuela.com/images/logo.png" alt="Miss Venezuela" class="national-logo">
+            <span class="national-name">Miss Venezuela</span>
+          </div>
+
+          <!-- France -->
+          <div class="national-logo-card">
+            <img src="https://www.missfrance.fr/images/logo.png" alt="Miss France" class="national-logo">
+            <span class="national-name">Miss France</span>
+          </div>
+
+          <!-- Spain -->
+          <div class="national-logo-card">
+            <img src="https://1.bp.blogspot.com/-xvQQQQQQQQQ/XxXxXxXxXxX/AAAAAAAAAAA/xXxXxXxXxXx/s1600/miss-espana-logo.png" alt="Miss Spain" class="national-logo">
+            <span class="national-name">Miss Spain</span>
+          </div>
+
+          <!-- Italy -->
+          <div class="national-logo-card">
+            <img src="https://www.missitalia.it/images/logo.png" alt="Miss Italy" class="national-logo">
+            <span class="national-name">Miss Italy</span>
+          </div>
+
+          <!-- Germany -->
+          <div class="national-logo-card">
+            <img src="https://www.miss-germany.de/images/logo.png" alt="Miss Germany" class="national-logo">
+            <span class="national-name">Miss Germany</span>
+          </div>
+
+          <!-- Japan -->
+          <div class="national-logo-card">
+            <img src="https://cdn.worldmissuniversity.com/wp-content/uploads/2019/12/miss-japan-logo.png" alt="Miss Japan" class="national-logo">
+            <span class="national-name">Miss Japan</span>
+          </div>
+
+          <!-- South Korea -->
+          <div class="national-logo-card">
+            <img src="https://www.misskorea.tv/images/logo.png" alt="Miss Korea" class="national-logo">
+            <span class="national-name">Miss Korea</span>
+          </div>
+
+          <!-- China -->
+          <div class="national-logo-card">
+            <img src="https://www.missworld.com/images/flags/cn.png" alt="Miss China" class="national-logo">
+            <span class="national-name">Miss China</span>
+          </div>
+
+          <!-- Australia -->
+          <div class="national-logo-card">
+            <img src="https://www.missaustralia.com.au/images/logo.png" alt="Miss Australia" class="national-logo">
+            <span class="national-name">Miss Australia</span>
+          </div>
+
+          <!-- Canada -->
+          <div class="national-logo-card">
+            <img src="https://www.misscanada.ca/images/logo.png" alt="Miss Canada" class="national-logo">
+            <span class="national-name">Miss Canada</span>
+          </div>
+        </div>
+        
+        <!-- View More Button -->
+        <div class="text-center mt-8">
+          <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+            <i class="fas fa-globe mr-2"></i>
+            View All 200+ Countries
+          </button>
+        </div>
+      </div>
+
+      <!-- Specialty Pageants -->
+      <div class="mb-20" data-aos="fade-up" data-aos-delay="800">
+        <h2 class="text-3xl font-bold text-center mb-4 golden-text">
+          <i class="fas fa-star mr-3"></i>
+          Specialty & Emerging Pageants
+        </h2>
+        <p class="text-center text-gray-600 mb-12">Celebrating diversity and unique aspects of beauty</p>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          <!-- Miss Supranational -->
+          <div class="specialty-card">
+            <div class="specialty-logo-bg">
+              <img src="https://www.misssupranational.com/images/logo.png" alt="Miss Supranational" class="specialty-logo">
+            </div>
+            <span class="specialty-name">Miss Supranational</span>
+          </div>
+
+          <!-- Miss Grand International -->
+          <div class="specialty-card">
+            <div class="specialty-logo-bg">
+              <img src="https://www.missgrandinternational.com/images/logo.png" alt="Miss Grand International" class="specialty-logo">
+            </div>
+            <span class="specialty-name">Miss Grand International</span>
+          </div>
+
+          <!-- Miss Eco -->
+          <div class="specialty-card">
+            <div class="specialty-logo-bg">
+              <img src="https://www.missecointernational.com/images/logo.png" alt="Miss Eco" class="specialty-logo">
+            </div>
+            <span class="specialty-name">Miss Eco</span>
+          </div>
+
+          <!-- Miss Tourism -->
+          <div class="specialty-card">
+            <div class="specialty-logo-bg">
+              <img src="https://cdn.worldmissuniversity.com/wp-content/uploads/2019/12/miss-tourism-world-logo.png" alt="Miss Tourism" class="specialty-logo">
+            </div>
+            <span class="specialty-name">Miss Tourism</span>
+          </div>
+
+          <!-- Miss Friendship -->
+          <div class="specialty-card">
+            <div class="specialty-logo-bg">
+              <img src="https://images.squarespace-cdn.com/content/v1/5c8f8b8c3560c3b8c1b8c8b8/1553702400000-LOGO-MISS-FRIENDSHIP-2019.png" alt="Miss Friendship" class="specialty-logo">
+            </div>
+            <span class="specialty-name">Miss Friendship</span>
+          </div>
+
+          <!-- Miss Charm -->
+          <div class="specialty-card">
+            <div class="specialty-logo-bg">
+              <img src="https://www.misscharminternational.com/images/logo.png" alt="Miss Charm" class="specialty-logo">
+            </div>
+            <span class="specialty-name">Miss Charm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Statistics -->
+      <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-3xl p-12 mb-20" data-aos="fade-up" data-aos-delay="1000">
+        <h2 class="text-3xl font-bold text-center mb-12 golden-text">
+          <i class="fas fa-chart-line mr-3"></i>
+          Global Pageant Coverage
+        </h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div class="text-center">
+            <div class="text-4xl font-bold text-yellow-600 mb-2" data-counter="200">0</div>
+            <div class="text-gray-600 font-medium">Countries Covered</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-yellow-600 mb-2" data-counter="50">0</div>
+            <div class="text-gray-600 font-medium">Pageant Organizations</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-yellow-600 mb-2" data-counter="10000">0</div>
+            <div class="text-gray-600 font-medium">Contestants Featured</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold text-yellow-600 mb-2" data-counter="500">0</div>
+            <div class="text-gray-600 font-medium">Events Covered</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partnership CTA -->
+      <div class="text-center" data-aos="fade-up" data-aos-delay="1200">
+        <div class="bg-white rounded-3xl p-12 shadow-lg border border-yellow-200">
+          <i class="fas fa-handshake text-5xl text-yellow-600 mb-6"></i>
+          <h2 class="text-3xl font-bold mb-4 golden-text">Partner With Us</h2>
+          <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Are you a pageant organization looking to showcase your event? Partner with PageantEmpress for comprehensive coverage and global reach.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="contact.html" class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-8 py-4 rounded-full font-semibold hover:from-yellow-600 hover:to-yellow-700 transition-all">
+              <i class="fas fa-envelope mr-2"></i>
+              Contact Partnership Team
+            </a>
+            <a href="mailto:partnerships@pageantempress.com" class="border-2 border-yellow-500 text-yellow-600 px-8 py-4 rounded-full font-semibold hover:bg-yellow-500 hover:text-white transition-all">
+              <i class="fas fa-paper-plane mr-2"></i>
+              Email Direct
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Decorations -->
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+      <div class="absolute top-20 left-10 text-yellow-200 text-8xl opacity-50">👑</div>
+      <div class="absolute top-40 right-20 text-yellow-200 text-6xl opacity-30">✨</div>
+      <div class="absolute bottom-40 left-20 text-yellow-200 text-7xl opacity-40">💎</div>
+      <div class="absolute bottom-20 right-10 text-yellow-200 text-5xl opacity-50">🌟</div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <i class="fas fa-crown text-yellow-
