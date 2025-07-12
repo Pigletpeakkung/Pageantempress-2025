@@ -1,102 +1,124 @@
 {
-  "name": "PageantEmpress - Advanced Web Animation Showcase",
+  "name": "PageantEmpress 2025 - Beauty Pageant Platform",
   "short_name": "PageantEmpress",
-  "description": "Experience the pinnacle of web animation artistry with advanced CSS effects, interactive elements, and cutting-edge performance optimization.",
+  "description": "The ultimate platform for beauty pageants, contestants, events, and pageant enthusiasts worldwide",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#D4AF37",
+  "background_color": "#ffffff",
+  "theme_color": "#d4af37",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
-  "categories": ["entertainment", "lifestyle", "productivity"],
+  "dir": "ltr",
+  
   "icons": [
     {
-      "src": "/assets/images/icon-72x72.png",
+      "src": "/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/assets/images/icon-96x96.png",
+      "src": "/icons/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/assets/images/icon-128x128.png",
+      "src": "/icons/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/assets/images/icon-144x144.png",
+      "src": "/icons/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/assets/images/icon-152x152.png",
+      "src": "/icons/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/assets/images/icon-192x192.png",
+      "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/assets/images/icon-384x384.png",
+      "src": "/icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable any"
     },
     {
-      "src": "/assets/images/icon-512x512.png",
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
     }
   ],
+  
   "screenshots": [
     {
-      "src": "/assets/images/screenshot-wide.png",
+      "src": "/screenshots/desktop-home.png",
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "PageantEmpress Desktop View"
+      "label": "PageantEmpress Homepage on Desktop"
     },
     {
-      "src": "/assets/images/screenshot-narrow.png",
-      "sizes": "750x1334",
+      "src": "/screenshots/mobile-contestants.png",
+      "sizes": "390x844",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "PageantEmpress Mobile View"
+      "label": "Contestants Page on Mobile"
     }
   ],
+  
+  "categories": [
+    "entertainment",
+    "lifestyle",
+    "social",
+    "beauty"
+  ],
+  
   "shortcuts": [
     {
-      "name": "Featured Animations",
-      "short_name": "Featured",
-      "description": "View featured animation showcase",
-      "url": "/#featured",
+      "name": "Contestants",
+      "short_name": "Contestants",
+      "description": "View all pageant contestants",
+      "url": "/contestants",
       "icons": [
         {
-          "src": "/assets/images/shortcut-featured.png",
+          "src": "/icons/contestants-96x96.png",
           "sizes": "96x96"
         }
       ]
     },
     {
-      "name": "Interactive Demo",
-      "short_name": "Interactive",
-      "description": "Try interactive elements",
-      "url": "/#interactive",
+      "name": "Events",
+      "short_name": "Events",
+      "description": "Browse upcoming pageant events",
+      "url": "/events",
       "icons": [
         {
-          "src": "/assets/images/shortcut-interactive.png",
+          "src": "/icons/events-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Vote",
+      "short_name": "Vote",
+      "description": "Cast your vote for contestants",
+      "url": "/voting",
+      "icons": [
+        {
+          "src": "/icons/vote-96x96.png",
           "sizes": "96x96"
         }
       ]
@@ -104,34 +126,31 @@
     {
       "name": "Gallery",
       "short_name": "Gallery",
-      "description": "Browse animation gallery",
-      "url": "/#gallery",
+      "description": "View pageant photo gallery",
+      "url": "/gallery",
       "icons": [
         {
-          "src": "/assets/images/shortcut-gallery.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "Performance",
-      "short_name": "Performance",
-      "description": "View performance metrics",
-      "url": "/#performance",
-      "icons": [
-        {
-          "src": "/assets/images/shortcut-performance.png",
+          "src": "/icons/gallery-96x96.png",
           "sizes": "96x96"
         }
       ]
     }
   ],
-  "prefer_related_applications": false,
+  
   "related_applications": [],
-  "edge_side_panel": {
-    "preferred_width": 400
-  },
-  "handle_links": "preferred",
+  "prefer_related_applications": false,
+  
+  "protocol_handlers": [
+    {
+      "protocol": "mailto",
+      "url": "/contact?email=%s"
+    }
+  ],
+  
+  "edge_side_includes": false,
+  
+  "iarc_rating_id": "",
+  
   "launch_handler": {
     "client_mode": "navigate-existing"
   }
