@@ -1,0 +1,320 @@
+# PageantEmpress - Redirects Configuration
+# This file handles URL redirects for better SEO and user experience
+
+# ======================================
+# HOMEPAGE & MAIN REDIRECTS
+# ======================================
+
+# Redirect root domain variations
+http://pageantempress.com/* https://www.pageantempress.com/:splat 301!
+https://pageantempress.com/* https://www.pageantempress.com/:splat 301!
+
+# Redirect www to non-www (or vice versa - choose one)
+https://www.pageantempress.com/* https://pageantempress.com/:splat 301!
+
+# Homepage variations
+/home /index.html 301
+/homepage /index.html 301
+/main /index.html 301
+
+# ======================================
+# PAGEANT SPECIFIC REDIRECTS
+# ======================================
+
+# Miss Universe redirects
+/miss-universe /contestants.html?pageant=miss-universe 301
+/universe /contestants.html?pageant=miss-universe 301
+/mu /contestants.html?pageant=miss-universe 301
+/missuniverse /contestants.html?pageant=miss-universe 301
+
+# Miss World redirects
+/miss-world /contestants.html?pageant=miss-world 301
+/world /contestants.html?pageant=miss-world 301
+/mw /contestants.html?pageant=miss-world 301
+/missworld /contestants.html?pageant=miss-world 301
+
+# Miss International redirects
+/miss-international /contestants.html?pageant=miss-international 301
+/international /contestants.html?pageant=miss-international 301
+/mi /contestants.html?pageant=miss-international 301
+/missinternational /contestants.html?pageant=miss-international 301
+
+# Miss Earth redirects
+/miss-earth /contestants.html?pageant=miss-earth 301
+/earth /contestants.html?pageant=miss-earth 301
+/me /contestants.html?pageant=miss-earth 301
+/missearth /contestants.html?pageant=miss-earth 301
+
+# ======================================
+# CONTENT SECTION REDIRECTS
+# ======================================
+
+# News & Articles
+/blog /news.html 301
+/articles /news.html 301
+/updates /news.html 301
+/latest /news.html 301
+/breaking /news.html 301
+
+# Gallery variations
+/photos /gallery.html 301
+/images /gallery.html 301
+/pictures /gallery.html 301
+/photogallery /gallery.html 301
+
+# Events variations
+/calendar /events.html 301
+/schedule /events.html 301
+/competitions /events.html 301
+/pageants /events.html 301
+
+# Contestants variations
+/models /contestants.html 301
+/candidates /contestants.html 301
+/beauties /contestants.html 301
+/queens /contestants.html 301
+
+# ======================================
+# SUPPORT & INFO REDIRECTS
+# ======================================
+
+# Help & Support
+/help /faq.html 301
+/support /contact.html 301
+/helpdesk /contact.html 301
+/customer-service /contact.html 301
+
+# About variations
+/about-us /index.html#about 301
+/about /index.html#about 301
+/team /index.html#about 301
+/who-we-are /index.html#about 301
+
+# Contact variations
+/contact-us /contact.html 301
+/get-in-touch /contact.html 301
+/reach-us /contact.html 301
+
+# ======================================
+# COUNTRY SPECIFIC REDIRECTS
+# ======================================
+
+# Popular countries
+/usa /contestants.html?country=usa 301
+/united-states /contestants.html?country=usa 301
+/philippines /contestants.html?country=philippines 301
+/thailand /contestants.html?country=thailand 301
+/india /contestants.html?country=india 301
+/brazil /contestants.html?country=brazil 301
+/colombia /contestants.html?country=colombia 301
+/venezuela /contestants.html?country=venezuela 301
+/france /contestants.html?country=france 301
+/spain /contestants.html?country=spain 301
+
+# ======================================
+# YEAR SPECIFIC REDIRECTS
+# ======================================
+
+# Current and recent years
+/2025 /events.html?year=2025 301
+/2024 /events.html?year=2024 301
+/2023 /events.html?year=2023 301
+/current /events.html?year=2025 301
+/this-year /events.html?year=2025 301
+
+# ======================================
+# LEGACY URL REDIRECTS
+# ======================================
+
+# Old site structure
+/old-site/* /index.html 301
+/legacy/* /index.html 301
+/v1/* /index.html 301
+/old/* /index.html 301
+
+# Common typos and variations
+/pagent* /index.html 301
+/pageant-empress* /index.html 301
+/empress* /index.html 301
+
+# ======================================
+# SOCIAL MEDIA REDIRECTS
+# ======================================
+
+# Social media shortcuts
+/facebook https://facebook.com/pageantempress 302
+/fb https://facebook.com/pageantempress 302
+/instagram https://instagram.com/pageantempress 302
+/ig https://instagram.com/pageantempress 302
+/twitter https://twitter.com/pageantempress 302
+/youtube https://youtube.com/pageantempress 302
+/yt https://youtube.com/pageantempress 302
+/tiktok https://tiktok.com/@pageantempress 302
+
+# ======================================
+# SPECIAL CAMPAIGNS & FEATURES
+# ======================================
+
+# Special sections
+/voting /index.html#voting 301
+/winners /contestants.html?filter=winners 301
+/predictions /news.html?category=predictions 301
+/fashion /gallery.html?category=fashion 301
+/gowns /gallery.html?category=gowns 301
+/crowns /gallery.html?category=crowns 301
+
+# ======================================
+# ADMIN & TECHNICAL REDIRECTS
+# ======================================
+
+# Admin areas (redirect to login)
+/admin /contact.html 301
+/dashboard /contact.html 301
+/wp-admin /contact.html 301
+/administrator /contact.html 301
+
+# Old file extensions
+/*.php /index.html 301
+/*.asp /index.html 301
+/*.jsp /index.html 301
+
+# ======================================
+# PARTNERSHIPS & BUSINESS
+# ======================================
+
+# Partnership pages
+/partnerships /contact.html?subject=partnership 301
+/partner /contact.html?subject=partnership 301
+/collaborate /contact.html?subject=collaboration 301
+/sponsor /contact.html?subject=sponsorship 301
+/advertise /contact.html?subject=advertising 301
+
+# Press & Media
+/press /contact.html?subject=press 301
+/media /contact.html?subject=media 301
+/journalist /contact.html?subject=press 301
+
+# ======================================
+# MOBILE APP REDIRECTS
+# ======================================
+
+# App download redirects
+/app /index.html#download 301
+/download /index.html#download 301
+/mobile /index.html#download 301
+/ios https://apps.apple.com/app/pageantempress 302
+/android https://play.google.com/store/apps/details?id=com.pageantempress 302
+
+# ======================================
+# SEARCH & FILTER REDIRECTS
+# ======================================
+
+# Search shortcuts
+/search /contestants.html?search=:query 301
+/find /contestants.html 301
+/lookup /contestants.html 301
+
+# Filter shortcuts
+/filter /contestants.html 301
+/sort /contestants.html 301
+/browse /contestants.html 301
+
+# ======================================
+# SPECIAL EVENTS REDIRECTS
+# ======================================
+
+# Awards and ceremonies
+/awards /events.html?category=awards 301
+/ceremony /events.html?category=ceremony 301
+/finale /events.html?category=finale 301
+/coronation /events.html?category=coronation 301
+
+# ======================================
+# API & DEVELOPER REDIRECTS
+# ======================================
+
+# API documentation
+/api /contact.html?subject=api 301
+/developers /contact.html?subject=developers 301
+/docs /faq.html 301
+
+# ======================================
+# ERROR HANDLING REDIRECTS
+# ======================================
+
+# Common 404 patterns
+/undefined /index.html 301
+/null /index.html 301
+/error /index.html 301
+/notfound /index.html 301
+
+# ======================================
+# LANGUAGE REDIRECTS
+# ======================================
+
+# Language variations (if you add multilingual support)
+/en/* /:splat 301
+/english/* /:splat 301
+/es/* /:splat 301
+/spanish/* /:splat 301
+/fr/* /:splat 301
+/french/* /:splat 301
+
+# ======================================
+# SEASONAL & CAMPAIGN REDIRECTS
+# ======================================
+
+# Holiday and seasonal
+/christmas /events.html?category=holiday 301
+/newyear /events.html?category=newyear 301
+/valentines /gallery.html?category=love 301
+
+# ======================================
+# CATCH-ALL REDIRECTS
+# ======================================
+
+# Catch common patterns
+/page/* /index.html 301
+/post/* /news.html 301
+/category/* /news.html 301
+/tag/* /news.html 301
+
+# Final catch-all for any unmatched URLs
+/* /index.html 404
+
+# ======================================
+# HEADERS FOR SECURITY & PERFORMANCE
+# ======================================
+
+# Security headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Cache headers for static assets
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# ======================================
+# NOTES
+# ======================================
+
+# Redirect codes:
+# 301 - Permanent redirect (SEO juice transfers)
+# 302 - Temporary redirect (no SEO juice transfer)
+# 404 - Not found
+
+# Syntax:
+# from to [status]
+# /old-path /new-path 301
+# Use :splat to capture and forward path segments
+# Use :query to capture query parameters
